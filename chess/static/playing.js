@@ -348,7 +348,7 @@ $(".area").click(function(e){
 // CHANGE PAGE - LOST MATCH
 // resign if change or close the page 
 var hidden, visibilityChange;
-if (typeof document.hidden !== "undefined") {
+/*if (typeof document.hidden !== "undefined") {
     hidden = "hidden";
     visibilityChange = "visibilitychange";
 } else if (typeof document.mozHidden !== "undefined") {
@@ -362,9 +362,9 @@ if (typeof document.hidden !== "undefined") {
     visibilityChange = "webkitvisibilitychange";
 }
 
-document.addEventListener(visibilityChange, action, false);
+document.addEventListener(visibilityChange, action, false);*/
 var action_resign_1 = 0
-function action() {
+/*function action() {
  if (player1.name == request_player || player2.name == request_player){
 
   var b = $('body');
@@ -380,7 +380,7 @@ function action() {
   
 }
 
-action();
+action();*/
 
 // count time for resign if no move any piece in the begin of the match
 
@@ -389,7 +389,7 @@ var verify_playing = 0
 var can_play = 1
 
 var resign = 0
-function can_do_play(){
+/*function can_do_play(){
   if (request_player == player2.name){
     call_socket('', '', 'Can play')
     setTimeout(add_one, 10000)
@@ -410,7 +410,7 @@ function add_one(){
   }
 }
 
-setTimeout(can_do_play, 1000)
+setTimeout(can_do_play, 1000)*/
 
 
 
