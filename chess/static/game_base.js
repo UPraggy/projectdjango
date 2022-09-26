@@ -208,7 +208,7 @@ function catch_piece(king_color, piece, arg1, arg2='default'){
       return 'nothing'
     }
   try{
-    if (king_color.split("_")[0] == piece[0]){
+    if (king_color.split("_")[0] != piece[0]){
       if(piece[1][0] == arg1 || piece[1][0] == arg2){
           return true
         }
@@ -240,6 +240,14 @@ function check_king_line(self, future_pos){
   //Read the board and find the king opposite color and see if the piece targeted attack the king
   let piece = ''
   let return_catch = 'nothing'
+  if (future_pos == undefined){
+      return false
+    }
+    else if (future_pos[0] >= 8 || future_pos[0] < 0){
+      return false
+    }else if (future_pos[1] >= 8 || future_pos[1] < 0){
+      return false
+    }
   for (let x = 0; x < 8; x++){
         if (catch_king_compare((future_pos[0]-(1+x)),(future_pos[1]+(1+x)))){
 
