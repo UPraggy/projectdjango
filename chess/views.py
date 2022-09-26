@@ -19,6 +19,7 @@ def search(request):
 		roomname = f'{request.user.username}__vs__'
 		try:
 			roomName = Match.objects.get(roomname = roomname)
+			return redirect(f'../waiting/{roomname}')
 		except:
 			Match.objects.create(roomname = roomname, player1 = f'{request.user.username}', num_players=0)
 			return redirect(f'../waiting/{roomname}')
