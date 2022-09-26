@@ -245,8 +245,13 @@ var dragEnd = function(e){
             actual_position = target.getAttribute("actual_position")
             future_position = area.getAttribute("actual_position")
 
-
-
+            print_(actual_selected_piece)
+             print_(actual_position)
+             print_(future_position)
+             print_(actual_player)
+             print_(target)
+             print_(area)
+            print_("\n\n\n")
           let pos = future_position.split("_")
           pos = [parseInt(pos[0]),parseInt(pos[1])]
           let init_pos = actual_position.split("_")
