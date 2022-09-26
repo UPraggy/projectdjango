@@ -251,6 +251,7 @@ var dragEnd = function(e){
           pos = [parseInt(pos[0]),parseInt(pos[1])]
           let init_pos = actual_position.split("_")
           init_pos = [parseInt(init_pos[0]),parseInt(init_pos[1])]
+            print_(actual_selected_piece.id, [actual_position, future_position], actual_player)
           if (can_play >= 1){
 
             call_socket(target.id, [actual_position, future_position], actual_player)
