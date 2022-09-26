@@ -384,13 +384,16 @@ action();
 
 var verify_playing = 0 
 
-var can_play = 1
+var can_play = 0
 
 var resign = 0
 function can_do_play(){
   if (request_player == player2.name){
     call_socket('', '', 'Can play')
     setTimeout(add_one, 10000)
+  }
+  if (can_play < 1){
+    setTimeout(can_do_play, 500)
   }
   
 }
