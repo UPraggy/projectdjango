@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% block title %}Home Page{% endblock %}
+
+
+{% block content %}
+<style>
+	#home_content{
+		color: white;
+	}
+</style>
+
+<h1 id="home_content">Welcome to your Home Page</h1>
+<h1 id="home_content">{{user.id}}</h1>
+{% endblock %}

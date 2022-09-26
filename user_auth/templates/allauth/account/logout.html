@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+
+
+
+{% block content %}
+<form name="form_log" method="post">
+  {% csrf_token %}
+<a href="javascript: submitform()"></a>
+</form>
+<script>
+    function submitform() {
+        document.form_log.submit();
+    }
+    window.onload = function () {
+      submitform()
+    }
+</script>
+{% endblock %}
+

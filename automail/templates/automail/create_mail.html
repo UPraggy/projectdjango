@@ -1,0 +1,398 @@
+{% extends 'automail/base.html' %}
+
+{% block main_menu_opt %}
+<a href="/automail/" class='btn'>Emails</a>
+{% endblock %}
+
+{% block nav_content %}
+<div id="nav_cont" class="container-fluid edit_menu">
+  
+                <div id="edit_text" class="row nav_child options_temp">
+
+                  <!-- <input id="input_edit_text" type="text" class="col form-control" placeholder="Insert Text" > -->
+
+                  <select id="font_edit_text" name="fonts" class="form-select font_edit" style="margin-right:10px;">
+                    <option value="Arial" selected>Arial</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Lucida Console">Lucida Console</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                    <option value="Verdana">Verdana</option>
+                  </select>
+
+
+                  <div id="font_size_edit_text" class="col edit_size">
+
+                    <div class="row">
+                      <div id="size_less_edit_text" class="col"><strong>-</strong></div>
+
+                      <input id="size_field_edit_text" class="col" maxlength="3">
+
+                      <div id="size_plus_edit_text" class="col"><strong>+</strong></div>
+                    </div>
+                  </div>
+
+                  <input id="color_back_edit_text" type="color" class="col color_edit ">
+
+                  <input id="color_edit_text" type="color" class="col color_edit">
+
+                  <div id="align_edit_text" class="col align-left align_edit"></div>
+
+                  <div class="col delete_edit_element"></div>
+                </div>
+
+                <div id="edit_spacer" class="row nav_child options_temp">
+                  <div class="col edit_size">
+
+                    <div class="row">
+                      <div id="size_less_edit_spacer" class="col"><strong>-</strong></div>
+
+                      <input id="size_field_edit_spacer" class="col" maxlength="3">
+
+                      <div id="size_plus_edit_spacer" class="col"><strong>+</strong></div>
+                    </div>
+                  </div>
+
+                  <input id="color_edit_spacer" type="color" class="col color_edit">
+
+                  <div class="col delete_edit_element"></div>
+                </div>
+
+
+                <div id="edit_divider" class="row nav_child options_temp">
+                  <div class="col edit_size">
+
+                    <div class="row">
+                      <div id="size_less_edit_divider" class="col"><strong>-</strong></div>
+
+                      <input id="size_field_edit_divider" class="col" maxlength="3">
+
+                      <div id="size_plus_edit_divider" class="col"><strong>+</strong></div>
+                    </div>
+                  </div>
+
+                  <input id="color_back_edit_divider" type="color" class="col color_edit">
+                  <input id="color_edit_divider" type="color" class="col color_edit color_edit_border">
+
+                  <div class="col delete_edit_element"></div>
+                </div>
+
+
+                <div id="edit_link" class="row nav_child options_temp">
+
+                  <select id="font_edit_link" name="fonts" class="form-select font_edit" style="margin-right:10px;">
+                    <option value="Arial" selected>Arial</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Lucida Console">Lucida Console</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                    <option value="Verdana">Verdana</option>
+                  </select>
+
+
+                  <div class="col edit_size">
+
+                    <div class="row">
+                      <div id="size_less_edit_link" class="col"><strong>-</strong></div>
+
+                      <input id="size_field_edit_link" class="col" maxlength="3">
+
+                      <div id="size_plus_edit_link" class="col"><strong>+</strong></div>
+                    </div>
+                  </div>
+
+                  <input id="color_back_edit_link" type="color" class="col color_edit">
+                  <input id="color_edit_link" type="color" class="col color_edit">
+
+                  <div id="align_edit_link" class="col align-left align_edit"></div>
+
+                  <input id="input_edit_link" type="text" class="col form-control" placeholder="Insert Link" style="max-width: 300px; margin-right: 10px;">
+                  <div class="col delete_edit_element"></div>
+                </div>
+
+                <div id="edit_image" class="row nav_child options_temp">
+                  <input id="input_edit_image" type="text" class="col form-control" placeholder="Insert Link" style="max-width: 300px; margin-right: 10px;">
+
+                  <div class="col edit_size">
+
+                    <div class="row">
+                      <div id="size_less_edit_image" class="col"><strong>-</strong></div>
+
+                      <input id="size_field_edit_image" class="col" maxlength="3">
+
+                      <div id="size_plus_edit_image" class="col"><strong>+</strong></div>
+                    </div>
+                  </div>
+                  <input id="color_back_edit_image" type="color" class="col color_edit">
+
+                  <div id="align_edit_image" class="col align-left align_edit"></div>
+
+                  <div class="col delete_edit_element"></div>
+                </div>
+
+
+
+                <div id="edit_tableCel" class="row nav_child options_temp" style="height:100%;">
+
+                  <select id="custom_table" name="table" class="form-select col" style="margin-right:5px 0 0 10px; height: 50%; max-width: 200px;padding: 0;
+    padding-left: 10px;">
+                    <option value="table" selected>Table</option>
+                    <option value="cel">Row, Col and Cel</option>
+                  </select>
+
+
+
+                    <div id="table_option" class="row table_options col" >
+                      <button id="tableCol_box" 
+                       class="side_items mail_template table_items btn btn-primary " 
+                        onclick="insert_for_table(event, 'col')" style="width: max-content; height: 60%; padding-top: 2px;">
+                        INSERT COL
+                        <div style="display:none;">
+                          {{template.9}}
+                        </div>
+                        </button>
+
+                        <button id="tableRow_box" 
+                       class="side_items mail_template table_items btn btn-primary " 
+                        onclick="insert_for_table(event, 'row')" style="width: max-content; height: 60%; padding-top: 2px;">INSERT ROW<div style="display:none;">
+                          {{template.10}}
+                        </div>
+                        </button>
+
+                        <input id="color_edit_table" type="color" class="col color_edit color_edit_border" style="margin:5px 0 0 10px; height: 30px">
+
+                        <div class="col edit_size" style="margin:5px 0 0 10px;">
+
+                    <div class="row">
+                      <div id="size_less_edit_table" class="col"><strong>-</strong></div>
+
+                      <input id="size_field_edit_table" class="col" maxlength="3">
+
+                      <div id="size_plus_edit_table" class="col"><strong>+</strong></div>
+                    </div>
+                  </div>
+
+                    <div id="table_del" 
+                       class=" mail_template table_items btn secondary_t" 
+                        onclick="table_del(event, 'table')"></div>
+
+                    </div>
+
+                  <div id="another_option" class="row table_options col" style="height:100%;"> 
+                    
+                    <input id="input_edit_cel" type="text" class="col form-control" placeholder="Insert Link" style="max-width: 300px; margin: 10px 10px 0 10px; height: 60%;">
+
+                    <input id="color_back_edit_cel" type="color" class="col color_edit" style="margin:10px 0 0 10px;">
+
+
+                    <div id="row_del" 
+                       class=" mail_template table_items btn secondary_t" 
+                        onclick="table_del(event, 'row')"></div>
+
+                    
+                    <div id="column_del" 
+                       class=" mail_template table_items btn secondary_t" 
+                        onclick="table_del(event, 'column')"></div>
+
+
+                  </div>
+
+                  </div>
+             
+                
+</div>
+
+{% endblock %}
+
+
+{% block side_opt %}
+  <div class="row" style="margin-left: 0px; ">
+    <a id="text_box" 
+           class="side_items mail_template btn" 
+            onclick="insert_element(event)">
+            <div style="display:none;">
+              {{template.0}}
+            </div>
+            </a>
+        <a id="spacer_box" 
+           class="side_items mail_template" 
+            onclick="insert_element(event)">
+            <div style="display:none;">
+              {{template.2}}
+            </div>
+        </a>
+        <a id="divider_box" 
+           class="side_items mail_template" 
+            onclick="insert_element(event)">
+            <div style="display:none;">
+              {{template.3}}
+            </div>
+        </a>
+  </div>
+  <div class="row" style="margin-left: 0px; margin-top: 10px;">
+        
+        <a id="link_box" 
+           class="side_items mail_template" 
+            onclick="insert_element(event)">
+            <div style="display:none;">
+              {{template.4}}
+            </div>
+        </a>
+        <a id="image_box" 
+           class="side_items mail_template" 
+            onclick="insert_element(event)">
+            <div style="display:none;">
+              {{template.5}}
+            </div>
+        </a>
+        <a id="table_box" 
+           class="side_items mail_template" 
+            onclick="insert_element(event, 'table')">
+            <div style="display:none;">
+              {{template.8}}
+            </div>
+        </a>
+    </div>
+{% endblock %}
+
+
+{% block side_buttons %}
+<button id="template_opt" class="opt menu-toggle" onclick="showopt('mail_template')"></button>
+
+<button id="save_button" class="opt" onclick="save_or_subm(event, 'save')"></button>
+
+<button id="send_button" class="opt" onclick="save_or_subm(event, 'submit')"></button>
+
+{% endblock %}
+
+
+
+
+
+
+{% block content_view %}
+<style>
+/*SCROLL*/
+  .scrollbar-dusty-grass::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+      background-color: #F5F5F5;
+      border-radius: 10px;
+
+  }
+
+  .scrollbar::-webkit-scrollbar {
+      width: 7px;
+      background-color: #F5F5F5;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+  	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  	border-radius: 10px;
+    background-image: -webkit-linear-gradient(330deg, #ff3547 0%, #f5576c 100%);
+    background-image: linear-gradient(120deg, #ff3547 0%, #f7687b 100%);
+  }
+
+
+</style>
+ <div id="card_informations" style="width: 900px; height: 800px; margin: 0 auto;">
+
+  <form id="form_email" method="POST"  style="padding-top: 10px;">{% csrf_token %}
+    {{form.user}}
+    <div style="width: 900px; margin: 0 auto;" class="row">
+      {% if config_mail == "configure" %}
+        <div class="form-floating mb-3" style="padding: 0;width:30%;margin: 0 auto;">
+              <input type="email" name="to_email" class="form-control" maxlength="254" required="" id="id_to_email" placeholder="To Email" value={{email.to_email}}>
+              <label for="floatingInput">To Email</label>
+          </div>
+      {% else %}
+        <input type="hidden" name="to_email" class="form-control" maxlength="254" required="" id="id_to_email" placeholder="To Email" value={{request.user.email}}>
+      {% endif %}
+        <div class="form-floating mb-3 " style="padding: 0;width:30%;margin: 0 auto">
+            <input type="email" name="subject" class="form-control" maxlength="50" required="" id="id_subject" placeholder="Assunto"value={{email.subject}}>
+            <label for="floatingInput">Assunto</label>
+        </div>  
+        {% if auto_password == True and auto_password != None or auto_password == "Query DoesNotExist" %}
+        <input type="hidden" name="password" class="form-control" maxlength="50" required="" id="id_password" value="none">
+        {% else %}
+        <div class="form-floating mb-3 " style="padding: 0;width:30%;margin: 0 auto" placeholder="Password">
+        <input type="text" name="password" class="form-control" maxlength="50" required="" id="id_password">
+        <label for="floatingInput">Password</label>
+        </div>
+        {% endif %}
+
+        <textarea hidden name="content" cols="40" rows="10" id="id_content" value="{{email.content}}" style="display:none;"></textarea>
+        <input type="hidden" name="save_or_submit" maxlength="7" required="" id="id_save_or_submit" value="None">
+      </div>
+  </form>
+
+  <div id="card_create" style="width: 100%; height: 90%;" >
+    <div id="mail_card" class="scrollbar" style="position: relative; background: white; width: 900px; height: 100%; margin: 0 auto; /*padding: 0 20px 0 0;*/ overflow-x: hidden;"></div>
+  </div>
+</div> 
+
+
+{% endblock %}
+
+{% block scripts %}
+{% if email == False %}
+<script>
+function save_or_subm(e, type){
+  $("#id_save_or_submit").val(type)
+  $(".editable_el").css('border','0')
+
+  if ($("#id_subject").val() == ""){
+    $("#id_subject").val("Subject")
+  }
+  if ($("#id_to_email").val() == ""){
+    $("#id_to_email").val("email@gmail.com")
+  }
+
+
+  let content = $('#mail_card').html()
+  $("#id_content").val(content)
+  var form = $("#form_email")
+  form.submit();
+};
+</script>
+{% else %}
+<script>
+function save_or_subm(e, type){
+  $("#id_save_or_submit").val(type)
+  $(".editable_el").css('border','0')
+/*$('.area')
+  .detach()
+  .children()
+  .each((_, child) => { 
+    $("#mail_card").append(child); 
+  });*/
+  
+  let content = $('#mail_card').html()
+  $("#id_content").val(content)
+  var form = $("#form_email")
+  form.submit();
+};
+</script>
+{% endif %}
+
+
+
+{% load static %}
+<script type="text/javascript" src="{% static 'email_create.js' %}"></script>
+<script>
+$("#id_user").css("display","none")
+            .val({{request.user.id}})
+
+function insert_previous_data() {
+  value = $('#id_content').attr('value')
+  $('#mail_card').append(value)
+}
+insert_previous_data()
+
+
+
+</script>
+{% endblock %}

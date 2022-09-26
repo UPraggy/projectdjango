@@ -1,0 +1,53 @@
+{% extends 'chess/base.html' %}
+
+{% block title %}Chess Game{% endblock %}
+
+{% block nav_content %}
+<style>
+  .navbar{
+    background: #2c4a4f;
+  }
+  #game{
+  background-color: transparent !important;
+}
+.area.active{
+      background-color: transparent !important;
+    }
+
+
+  .piece{
+    width: 95%; 
+    height:95%; 
+    margin: 2px;
+    background-size: 60%; 
+    background-position: center;
+    background-repeat: no-repeat; 
+
+  }
+</style>
+<h2 style="color: white; width: max-content">DRAW</h2> 
+
+{% endblock %}
+
+
+{% block chess_content %}
+
+
+
+{% load static %}
+{% load i18n %}
+{% load chess_custom_filter %}
+
+<div id="chess_content">
+
+  <div class="row" style=" width:100%; height: 100%; margin:0;">
+      <div id="game" style="
+            margin: 5% auto; height:100%; width:60%; padding:0;">
+            <h1 style="text-align: center; padding-right: 5%">{{request.user.username}}</h1>
+            <img src="/static/pieces/WHITE.png" style="width:22%;height:25%; padding-bottom: 10%;">
+            <img src="/static/pieces/DRAW.png" style="width:50%;height:50%;">
+            <img src="/static/pieces/BLACK.png" style="width:22%;height:25%; padding-bottom: 10%;">
+      </div>
+  </div>    
+</div>
+{% endblock %}
