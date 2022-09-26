@@ -245,18 +245,11 @@ var dragEnd = function(e){
             actual_position = target.getAttribute("actual_position")
             future_position = area.getAttribute("actual_position")
 
-            print_(actual_selected_piece)
-             print_(actual_position)
-             print_(future_position)
-             print_(actual_player)
-             print_(target)
-             print_(area)
-            print_("\n\n\n")
+
           let pos = future_position.split("_")
           pos = [parseInt(pos[0]),parseInt(pos[1])]
           let init_pos = actual_position.split("_")
           init_pos = [parseInt(init_pos[0]),parseInt(init_pos[1])]
-            print_(actual_selected_piece.id, [actual_position, future_position], actual_player)
           if (can_play >= 1){
 
             call_socket(target.id, [actual_position, future_position], actual_player)
@@ -341,7 +334,6 @@ $(".area").click(function(e){
   pos = [parseInt(pos[0]),parseInt(pos[1])]
   let init_pos = actual_position.split("_")
   init_pos = [parseInt(init_pos[0]),parseInt(init_pos[1])]
-    print_(actual_selected_piece.id, [actual_position, future_position], actual_player)
   if (can_play >= 1){
       call_socket(actual_selected_piece.id, [actual_position, future_position], actual_player)
   }
@@ -354,7 +346,7 @@ $(".area").click(function(e){
 // CHANGE PAGE - LOST MATCH
 // resign if change or close the page 
 var hidden, visibilityChange;
-/*if (typeof document.hidden !== "undefined") {
+if (typeof document.hidden !== "undefined") {
     hidden = "hidden";
     visibilityChange = "visibilitychange";
 } else if (typeof document.mozHidden !== "undefined") {
@@ -368,9 +360,9 @@ var hidden, visibilityChange;
     visibilityChange = "webkitvisibilitychange";
 }
 
-document.addEventListener(visibilityChange, action, false);*/
+document.addEventListener(visibilityChange, action, false);
 var action_resign_1 = 0
-/*function action() {
+function action() {
  if (player1.name == request_player || player2.name == request_player){
 
   var b = $('body');
@@ -386,7 +378,7 @@ var action_resign_1 = 0
   
 }
 
-action();*/
+action();
 
 // count time for resign if no move any piece in the begin of the match
 
@@ -395,7 +387,7 @@ var verify_playing = 0
 var can_play = 1
 
 var resign = 0
-/*function can_do_play(){
+function can_do_play(){
   if (request_player == player2.name){
     call_socket('', '', 'Can play')
     setTimeout(add_one, 10000)
@@ -416,7 +408,7 @@ function add_one(){
   }
 }
 
-setTimeout(can_do_play, 1000)*/
+setTimeout(can_do_play, 1000)
 
 
 
