@@ -10,7 +10,7 @@ const charSocket = new WebSocket(
 charSocket.onmessage = function(e){
   /*receive the json message verify if player can play, or promote pice, or is in check or drowned. 
   Redirect too for pages of Draw, Victory and Lose*/
-    //console.log('onmessage')
+    console.log('onmessage')
 
     const data = JSON.parse(e.data);
     const parameters = [data["parameters"][0], action_resign_1, 'Resign'] 
@@ -76,7 +76,7 @@ charSocket.onmessage = function(e){
 
       if (resign == 0 && data["parameters"][2] == "Resign"){
         print_("\n\nRESIGN\n\n")
-        /*if (player1.name == data["parameters"][0]){
+        if (player1.name == data["parameters"][0]){
           resign += 1;
           alert("Player "+ data["parameters"][0] + " resign of the match!\n"+ player2.name +" Win!")
           window.location = '../result/'+player2.name+"__vs__"+player1.name;
@@ -85,7 +85,7 @@ charSocket.onmessage = function(e){
           alert("Player "+ data["parameters"][0] + " resign of the match!\n"+ player1.name +" Win!")
           window.location = '../result/'+player1.name+"__vs__"+player2.name;
           
-        }*/
+        }
       }
 
     pos = [data["parameters"][1][0],data["parameters"][1][1]]
@@ -144,17 +144,17 @@ charSocket.onmessage = function(e){
     if (checkmate_val == false && drowning == true){
       if(check_pieces_movement(player1) || check_pieces_movement(player2)){
         print_("\n\nDRAW\n\n")
-        /*player2.play_state = 'waiting'
+        player2.play_state = 'waiting'
         player1.play_state = 'waiting'
-        window.location.href = "../result/draw/"+player1.name+"__vs__"+player2.name;*/
+        window.location.href = "../result/draw/"+player1.name+"__vs__"+player2.name;
       }
     }
     if (checkmate_val == true && drowning == true){
         print_("\n\nCHECK MATE\n\n")
-        /*player2.play_state = 'waiting'
+        player2.play_state = 'waiting'
         player1.play_state = 'waiting'
 
-        window.location.href = "../result/"+who_win+"__vs__"+who_lose;*/
+        window.location.href = "../result/"+who_win+"__vs__"+who_lose;
 
       }
 
