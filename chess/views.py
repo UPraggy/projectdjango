@@ -26,6 +26,7 @@ def search(request):
 
 @login_required
 def wait(request, slug):
+		wait_time = 9000
 		try: 
 			roomName = Match.objects.get(roomname__contains = slug)
 		except:
@@ -46,6 +47,7 @@ def wait(request, slug):
 				obj.player2 = f'{request.user.username}'
 				obj.num_players = '2'
 				obj.save()
+				wait_time = 9000
 			elif (int(roomName.num_players) == 2):
 				try:
 					return redirect(f'../play/{slug}')
@@ -54,7 +56,7 @@ def wait(request, slug):
 					return redirect(f'../play/{slug}{obj.player2}')
 
 		
-			return render (request, 'chess/waiting_room.html', {'slug':slug})
+			return render (request, 'chess/waiting_room.html', {'slug':slug, 'wait_time' : wait_time})
 		except AttributeError:
 			''''QuerySet' object has no attribute "num_players"'''
 			return redirect(f'../waiting/')
