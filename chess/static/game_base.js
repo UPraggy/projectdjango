@@ -1,6 +1,6 @@
 function check_pieces_movement(player_){ //DROWING KING
   /* This function calculate if any player piece can do a movement, if not this return is false,
-  what consequently the king is not drowned*/
+  what consequently the king is drowned*/
   let player_color_actual = ''
   let element_actual = ''
   if (player_.color == 'black'){
@@ -13,7 +13,7 @@ function check_pieces_movement(player_){ //DROWING KING
       if (board[x][y][0] != '    '){
         if (board[x][y][0].split("_")[0] == player_color_actual){
 
-
+          print_("FIRST IF")
           if (board[x][y][0].split("_")[1][0] == 'P'){
             element_actual = player_.pieces.find(element => element.identifier == board[x][y][0])
 
@@ -23,6 +23,7 @@ function check_pieces_movement(player_){ //DROWING KING
                 if (element_actual.check_movement([x-1, y+1], true) && (y+1) < 8) { return false };
                 if (element_actual.check_movement([x-1, y-1], true) && (y-1) > 0) { return false };
                 if (element_actual.check_movement([x-2, y], true) && (x-2) > 0) { return false };
+                print_("DEU")
               }
             }
             else{
@@ -235,8 +236,16 @@ function catch_king_compare(pos1, pos2){
       }
 }
 
+function find_piece(self, name){
+  print_(self)
+  for (let x = 0; x < self.pieces.length; x++){
+    if (name == self.pieces[x].identifier){
+      return x
+    }
+  }
+}
 
-function check_king_line(self, future_pos){
+function check_king_line(self, future_pos, enemy = 'default', another_piece = "default"){
   //Read the board and find the king opposite color and see if the piece targeted attack the king
   let piece = ''
   let return_catch = 'nothing'
@@ -250,11 +259,15 @@ function check_king_line(self, future_pos){
     }
   for (let x = 0; x < 8; x++){
         if (catch_king_compare((future_pos[0]-(1+x)),(future_pos[1]+(1+x)))){
-
           piece = board[(future_pos[0]-(1+x))][(future_pos[1]+(1+x))]
           return_catch = catch_piece(self.identifier,piece,'Q','B')
           if (return_catch == true){
-            return true
+            if(enemy != 'default'){ // if the king is in check, the
+              //funtion looks if the player manages to capture the piece that checked
+              let temp = self.__prototype__.pieces[find_piece(enemy,piece)]
+              return check_king_line(temp, temp.position_board)
+            }
+              return true
           }else if (return_catch == 'nothing'){
             break;
           }
@@ -266,6 +279,10 @@ function check_king_line(self, future_pos){
             piece = board[(future_pos[0]+(1+x))][(future_pos[1]+(1+x))]
             return_catch = catch_piece(self.identifier,piece,'Q','B')
             if (return_catch == true){
+              if(enemy != 'default'){
+              let temp = self.__prototype__.pieces[find_piece(enemy,piece)]
+              return check_king_line(temp, temp.position_board)
+            }
               return true
             }else if (return_catch == 'nothing'){
               break;
@@ -277,6 +294,10 @@ function check_king_line(self, future_pos){
             piece = board[(future_pos[0]-(1+x))][(future_pos[1]-(1+x))]
             return_catch = catch_piece(self.identifier,piece,'Q','B')
             if (return_catch == true){
+              if(enemy != 'default'){
+              let temp = self.__prototype__.pieces[find_piece(enemy,piece)]
+              return check_king_line(temp, temp.position_board)
+            }
               return true
             }else if (return_catch == 'nothing'){
               break;
@@ -289,6 +310,10 @@ function check_king_line(self, future_pos){
             piece = board[(future_pos[0]+(1+x))][(future_pos[1]-(1+x))]
             return_catch = catch_piece(self.identifier,piece,'Q','B')
             if (return_catch == true){
+              if(enemy != 'default'){
+              let temp = self.__prototype__.pieces[find_piece(enemy,piece)]
+              return check_king_line(temp, temp.position_board)
+            }
               return true
             }else if (return_catch == 'nothing'){
               break;
@@ -297,13 +322,16 @@ function check_king_line(self, future_pos){
           }
   }
 
-
   //CHECK VERTICAL OR HORIZONTAL PIECES
   for (let x = 0; x < 8; x++){
         if (catch_king_compare((future_pos[0]-(1+x)),future_pos[1])){
           piece = board[(future_pos[0]-(1+x))][future_pos[1]]
           return_catch = catch_piece(self.identifier,piece,'Q','T')
           if (return_catch == true){
+            if(enemy != 'default'){
+              let temp = self.__prototype__.pieces[find_piece(enemy,piece)]
+              return check_king_line(temp, temp.position_board)
+            }
             return true
           }else if (return_catch == 'nothing'){
             break;
@@ -316,6 +344,10 @@ function check_king_line(self, future_pos){
             piece = board[(future_pos[0]+(1+x))][future_pos[1]]
             return_catch = catch_piece(self.identifier,piece,'Q','T')
             if (return_catch == true){
+              if(enemy != 'default'){
+              let temp = self.__prototype__.pieces[find_piece(enemy,piece)]
+              return check_king_line(temp, temp.position_board)
+            }
               return true
             }else if (return_catch == 'nothing'){
               break;
@@ -327,6 +359,11 @@ function check_king_line(self, future_pos){
             piece = board[future_pos[0]][(future_pos[1]-(1+x))]
             return_catch = catch_piece(self.identifier,piece,'Q','T')
             if (return_catch == true){
+              if(enemy != 'default'){
+              let temp = self.__prototype__.pieces[find_piece(enemy,piece)]
+              return check_king_line(temp, temp.position_board)
+            }
+
               return true
             }else if (return_catch == 'nothing'){
               break;
@@ -339,6 +376,11 @@ function check_king_line(self, future_pos){
             piece = board[future_pos[0]][(future_pos[1]+(1+x))]
             return_catch = catch_piece(self.identifier,piece,'Q','T')
             if (return_catch == true){
+              if(enemy != 'default'){
+              let temp = self.__prototype__.pieces[find_piece(enemy,piece)]
+              return check_king_line(temp, temp.position_board)
+            }
+
               return true
             }else if (return_catch == 'nothing'){
               break;
@@ -364,6 +406,11 @@ function check_king_line(self, future_pos){
               piece = board[(possible[x][0])][(possible[x][1])]
               return_catch = catch_piece(self.identifier,piece,'H')
               if (return_catch == true){
+                if(enemy != 'default'){
+              let temp = self.__prototype__.pieces[find_piece(enemy,piece)]
+              return check_king_line(temp, temp.position_board)
+            }
+
                 return true
               }
 
@@ -375,6 +422,11 @@ function check_king_line(self, future_pos){
       piece = board[(future_pos[0]+1)][(future_pos[1]+1)]
             return_catch = catch_piece(self.identifier,piece,'P')
             if (return_catch == true){
+              if(enemy != 'default'){
+              let temp = self.__prototype__.pieces[find_piece(enemy,piece)]
+              return check_king_line(temp, temp.position_board)
+            }
+
               return true
             }
     }
@@ -382,6 +434,11 @@ function check_king_line(self, future_pos){
       piece = board[(future_pos[0]+1)][(future_pos[1]-1)] 
             return_catch = catch_piece(self.identifier,piece,'P')
             if (return_catch == true){
+              if(enemy != 'default'){
+              let temp = self.__prototype__.pieces[find_piece(enemy,piece)]
+              return check_king_line(temp, temp.position_board)
+            }
+
               return true
             }
     }
@@ -391,6 +448,11 @@ function check_king_line(self, future_pos){
       piece = board[(future_pos[0]-1)][(future_pos[1]-1)]
             return_catch = catch_piece(self.identifier,piece,'P')
             if (return_catch == true){
+              if(enemy != 'default'){
+              let temp = self.__prototype__.pieces[find_piece(enemy,piece)]
+              return check_king_line(temp, temp.position_board)
+            }
+
               return true
             }
     }
@@ -398,6 +460,11 @@ function check_king_line(self, future_pos){
       piece = board[(future_pos[0]-1)][(future_pos[1]+1)]
             return_catch = catch_piece(self.identifier,piece,'P')
             if (return_catch == true){
+              if(enemy != 'default'){
+              let temp = self.__prototype__.pieces[find_piece(enemy,piece)]
+              return check_king_line(temp, temp.position_board)
+            }
+
               return true
             }
     }

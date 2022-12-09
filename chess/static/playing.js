@@ -10,7 +10,7 @@ const charSocket = new WebSocket(
 charSocket.onmessage = function(e){
   /*receive the json message verify if player can play, or promote pice, or is in check or drowned. 
   Redirect too for pages of Draw, Victory and Lose*/
-    console.log('onmessage')
+    //console.log('onmessage')
 
     const data = JSON.parse(e.data);
     const parameters = [data["parameters"][0], action_resign_1, 'Resign'] 
@@ -75,7 +75,8 @@ charSocket.onmessage = function(e){
 
 
       if (resign == 0 && data["parameters"][2] == "Resign"){
-        if (player1.name == data["parameters"][0]){
+        print_("\n\nRESIGN\n\n")
+        /*if (player1.name == data["parameters"][0]){
           resign += 1;
           alert("Player "+ data["parameters"][0] + " resign of the match!\n"+ player2.name +" Win!")
           window.location = '../result/'+player2.name+"__vs__"+player1.name;
@@ -84,11 +85,10 @@ charSocket.onmessage = function(e){
           alert("Player "+ data["parameters"][0] + " resign of the match!\n"+ player1.name +" Win!")
           window.location = '../result/'+player1.name+"__vs__"+player2.name;
           
-        }
+        }*/
       }
 
     pos = [data["parameters"][1][0],data["parameters"][1][1]]
-
     let checkmate_val = false
     let who_win = ''
     let drowning = ''
@@ -96,7 +96,7 @@ charSocket.onmessage = function(e){
 
     if (player1.name == data["parameters"][2]){
          player1.moved = true
-        valid_move = get_future_pos(player1,player2, pos[0].split("_"), pos[1].split("_"), data["parameters"][3])
+          valid_move = get_future_pos(player1,player2, pos[0].split("_"), pos[1].split("_"), data["parameters"][3])
       }else{
         player2.moved = true
         valid_move = get_future_pos(player2,player1, pos[0].split("_"), pos[1].split("_"), data["parameters"][3])
@@ -122,14 +122,14 @@ charSocket.onmessage = function(e){
         player1.play_state = 'waiting'
         player2.play_state = 'play'
         drowning = checkmate(player2.pieces[12]) 
-        checkmate_val = check_king_line(player2.pieces[12], player2.pieces[12].position_board)
+        checkmate_val = check_king_line(player2.pieces[12], player2.pieces[12].position_board, player1)
         who_win = player1.name
         who_lose = player2.name
       }else{
         player1.play_state = 'play'
         player2.play_state = 'waiting'
         drowning = checkmate(player1.pieces[12]) 
-        checkmate_val = check_king_line(player1.pieces[12], player1.pieces[12].position_board)
+        checkmate_val = check_king_line(player1.pieces[12], player1.pieces[12].position_board, player2)
         who_win = player2.name
         who_lose = player1.name
       }
@@ -144,16 +144,17 @@ charSocket.onmessage = function(e){
     if (checkmate_val == false && drowning == true){
       if(check_pieces_movement(player1) || check_pieces_movement(player2)){
         print_("\n\nDRAW\n\n")
-        player2.play_state = 'waiting'
+        /*player2.play_state = 'waiting'
         player1.play_state = 'waiting'
-        window.location.href = "../result/draw/"+player1.name+"__vs__"+player2.name;
+        window.location.href = "../result/draw/"+player1.name+"__vs__"+player2.name;*/
       }
     }
     if (checkmate_val == true && drowning == true){
-        player2.play_state = 'waiting'
+        print_("\n\nCHECK MATE\n\n")
+        /*player2.play_state = 'waiting'
         player1.play_state = 'waiting'
 
-        window.location.href = "../result/"+who_win+"__vs__"+who_lose;
+        window.location.href = "../result/"+who_win+"__vs__"+who_lose;*/
 
       }
 
