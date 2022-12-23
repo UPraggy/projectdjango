@@ -82,32 +82,24 @@ if (width_ >= 900){
 
 }
 else if ((width_/height_) < 1.77 && (width_/height_) > 0.94){ //){
-	let temp_string = "url(" + "{% static 'apresentacoes/web_mobile2.png' %}" + ")"
-	$('body').css('background',temp_string)
-	.css('background-size','cover')
-	.css('background-repeat','no-repeat');
+
+	change_back("{% static 'apresentacoes/web_mobile2.png' %}","body");
 		
 }else if ((width_/height_) < 0.94 && (width_/height_) > 0.81){ //&& (width_/height_) > 0.95){
-	let temp_string = "url(" + "{% static 'apresentacoes/web_mobile.png' %}" + ")"
-	$('body').css('background',temp_string)
-	.css('background-size','cover')
-	.css('background-repeat','no-repeat');
 
+	change_back("{% static 'apresentacoes/web_mobile.png' %}","body");
 		
 }else if ((width_/height_) < 0.81 && (width_/height_) > 0.61){ //&& (width_/height_) > 0.95){
-	let temp_string = "url(" + "{% static 'apresentacoes/web_mobile3.png' %}" + ")"
-	$('body').css('background',temp_string)
-	.css('background-size','cover')
-	.css('background-repeat','no-repeat');
+
+	change_back("{% static 'apresentacoes/web_mobile3.png' %}","body");
+
 	$('#websocket p').css('font-size','23px')
 	$('#websocket #weblink a').css('font-size','23px')
 		
 }else if ((width_/height_) < 0.61){
 
-	let temp_string = "url(" + "{% static 'apresentacoes/web_mobile4.png' %}" + ")"
-	$('body').css('background',temp_string)
-	.css('background-size','cover')
-	.css('background-repeat','no-repeat');
+	change_back("{% static 'apresentacoes/web_mobile4.png' %}","body");
+
 	$('#websocket h1').css('color','rgb(0, 120, 150)')
 	.css('text-align','center')
 	.css('text-shadow','0 0 0.2em rgba(180, 180, 180, 0.3), 0 0 0.2em rgba(180, 180, 180, 0.3), \

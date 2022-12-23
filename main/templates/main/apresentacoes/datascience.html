@@ -84,11 +84,8 @@ if (width_ >= 900){
 
 }
 else if ((width_/height_) < 1.77){
-	let temp_string = "url(" + "{% static 'apresentacoes/data_mobile.png' %}" + ")"
-	$('body').css('background',temp_string)
-	.css('background-size','cover')
-	.css('background-repeat','no-repeat');
 
+	change_back("{% static 'apresentacoes/data_mobile.png' %}","body");
 }
 
 
