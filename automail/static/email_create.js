@@ -206,7 +206,7 @@ function display_options_edit(element){
       temp = document.querySelector("#"+element.id+" .divider_inner")
       $("#size_field_edit_divider").val(parseInt(temp.style.borderTop.split("px")[0]))
 
-          rgb_to_hex(temp.style.borderColor,"#color_edit_divider","#000000")
+          rgb_to_hex(temp.style.borderTopColor,"#color_edit_divider","#000000")
           rgb_to_hex(element.style.backgroundColor,"#color_back_edit_divider","#ffffff")
     }
     else if (temp == "link"){
@@ -272,6 +272,10 @@ function modify_attr_element(input, element, parameter){
 
 function sizeElement(input, operation, element, parameter, secondParameter = ""){
   let input_src = document.querySelector(input).value.split("px")[0];
+  if(secondParameter == "divider"){
+    secondParameter = $(element).css("border-top").split("px")[1]
+    console.log(secondParameter)
+  }
   if (operation == "sum" || operation == "sub"){
     if (operation == "sum"){
     input_src = parseInt(input_src) + 1
@@ -280,12 +284,13 @@ function sizeElement(input, operation, element, parameter, secondParameter = "")
       input_src = parseInt(input_src) - 1
     }
     $(input).val(input_src)
-    $(element).css(parameter,input_src+"px");
+    $(element).css(parameter,input_src+"px"+secondParameter);
   }
   else{
     let input_src = document.querySelector(input).value
-    $(element).css(parameter,input_src+"px"+secondParameter);
+    $(element).css(parameter,input_src+"px "+secondParameter);
   }
+  console.log(input_src+"px "+secondParameter)
 }
 
 function alignElement(e, element){
@@ -368,11 +373,11 @@ $("#color_edit_spacer").change(function(e){edit_color_element("#color_edit_space
 
         //DIVIDER SIZE
 
-$("#size_less_edit_divider").click(function(event){sizeElement("#size_field_edit_divider", "sub", "#"+edit_element.id+" .divider_inner", "border-top", " dashed")});
+$("#size_less_edit_divider").click(function(event){sizeElement("#size_field_edit_divider", "sub", "#"+edit_element.id+" .divider_inner", "border-top", "divider")});
 
-$("#size_plus_edit_divider").click(function(event){sizeElement("#size_field_edit_divider", "sum", "#"+edit_element.id+" .divider_inner", "border-top", " dashed")});
+$("#size_plus_edit_divider").click(function(event){sizeElement("#size_field_edit_divider", "sum", "#"+edit_element.id+" .divider_inner", "border-top", "divider")});
 
-$("#size_field_edit_divider").bind("change",function(event){sizeElement("#size_field_edit_divider", "change", "#"+edit_element.id+" .divider_inner", "border-top", " dashed")});
+$("#size_field_edit_divider").bind("change",function(event){sizeElement("#size_field_edit_divider", "change", "#"+edit_element.id+" .divider_inner", "border-top", "divider")});
 
       // DIVIDER BACKGROUND COLOR
 
@@ -380,7 +385,7 @@ $("#color_back_edit_divider").change(function(e){edit_color_element("#color_back
 
       // DIVIDER COLOR
 
-$("#color_edit_divider").change(function(e){edit_color_element("#color_edit_divider", "#"+edit_element.id+" .divider_inner", "border-color")});
+$("#color_edit_divider").change(function(e){edit_color_element("#color_edit_divider", "#"+edit_element.id+" .divider_inner", "border-top-color")});
 
 
 //FUNCTION FOR LINK

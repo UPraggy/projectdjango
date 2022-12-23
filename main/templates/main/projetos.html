@@ -1,0 +1,127 @@
+{% extends 'main/portifolio.html' %}
+{% block title %}Projetos{% endblock %}
+
+
+{% block content %}
+{% load static %}
+		{% load i18n %}
+<style type="text/css">
+	html{
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	body{
+		background: url("{% static 'projetos/projeto.png' %}");
+		background-size: cover;
+	}
+
+    .projetos p{
+    	font-family: DM_Serif_Display;
+    	font-weight: bold;
+    	text-align:  center;
+	   }
+
+	 .projetos, .projetos .card{
+	 	margin:  0 auto 15px auto;
+	 	padding: 0;
+	 }
+	 .projetos .card a{
+	 	text-decoration: none;
+	 	color: black;
+	 }
+
+
+</style>
+
+<div id="projetos1" class="row projetos" >
+
+<div class="card" style="width: 15rem;">
+	<a href="chess">
+	  <img src="{% static 'projetos/chess_game.png' %}" class="card-img-top" alt="...">
+	  <div class="card-body">
+	    <p class="card-text">Chess Game</p>
+	  </div>
+	</a>
+</div>
+
+<div class="card" style="width: 15rem;">
+	<a href="chat">
+  <img src="{% static 'projetos/chatapp.png' %}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">Chat App</p>
+  </div>
+</a>
+</div>
+
+
+<div class="card" style="width: 15rem;">
+	<a href="automail">
+  <img src="{% static 'projetos/Automail.png' %}" class="card-img-top" alt="...">
+
+  <div class="card-body">
+    <p class="card-text">AutoMail</p>
+  </div>
+</a>
+</div>
+
+</div>
+
+<div id="projetos2" class="row projetos" >
+	<div class="card" style="width: 15rem;">
+		<a href="food_dev">
+	  <img src="{% static 'projetos/Food_dev.png' %}" class="card-img-top" alt="...">
+
+	  <div class="card-body">
+	    <p class="card-text">Food_dev</p>
+	  </div>
+	</a>
+	</div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+	
+	$(".menu_font a").css('color','white')
+	$(".menu_font").mousedown(function(e){$("#"+e.currentTarget.id+" a").css('color','white')})
+	$(".menu_font").mouseover(function(e){console.log(e) 
+		$("#"+e.currentTarget.id+" a").css('color','white')})
+	$(".menu_font").mouseout(function(e){
+	$("#"+e.currentTarget.id+" a").css('color','white')
+		$("#btn2 a").css('color','rgba(120,7,0,1.0)')})
+	$("#btn2 a").css('color','rgba(120,7,0,1.0)')	
+
+
+
+/*
+let temp = $(".card a").css('height').split("px")[0]
+$(".card").css('height',temp)*/
+
+	let temp = $(".card").css('width').split("px")[0]
+$(".card").css('height',(temp*1.25))
+
+if(width_ >= 700){
+
+	$("#projetos .card:nth-child(1)").css('margin','0 auto 15px auto');
+
+}
+
+if ((width_/height_) < 1.77 && width_ <= 900){ 
+
+	change_back("{% static 'projetos/projeto_mobile.png' %}","body","cover","repeat");
+		
+}
+	
+
+</script>
+
+
+{% endblock%}

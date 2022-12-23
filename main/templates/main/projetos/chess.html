@@ -1,0 +1,189 @@
+{% extends 'main/portifolio.html' %}
+{% block title %}Chess Game{% endblock %}
+
+
+{% block content %}
+{% load static %}
+		{% load i18n %}
+<style type="text/css">
+	html{
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	body{
+		background: url("{% static 'projetos/back_chess.png' %}");
+		background-size: 100%;
+		
+	}
+
+    	#chess{
+    	font-family: DM_Serif_Display;
+    	text-align:  left;
+    	color: white;
+    	width: 100%;
+    	height: 100%;
+	   }
+
+	   #chess_title{
+	   	display: flex;
+	   	justify-content: center;
+	   	width: 100%;
+	   	height: 10vw;
+	   }
+
+	   #logo_chess{
+		border-radius: 10px;
+		width: 7%;
+		margin: auto 2% auto 0;
+	   }
+	   #logo_git{
+		border-radius: 100px;
+		width: 5%;
+		margin: auto 0 auto 2%;
+	   }
+
+	   #chess_title h1{
+	   		margin: auto 0;
+	   		font-size: 5vw;
+	   		background: linear-gradient(to right, black 50%,white 50%);
+  			-webkit-background-clip: text;
+  			-webkit-text-fill-color: transparent;
+	   		text-shadow: 0 0 0.2em rgba(255, 255, 255, 0.1), 0 0 0.2em rgba(255, 255, 255, 0.1),
+        0 0 0.2em rgba(255, 255, 255, 0.1)
+	   }
+	   #chess p{
+	   	margin: 0 auto;
+	   	width: 80%;
+	   	text-align: center;
+	   	font-size: 2vw;
+	   	text-shadow: 0.1em 0.1em 0.2em black;
+	   	padding: 1%;
+	   	border-radius: 10px;
+	   	background:  rgba(2, 3, 26, 0.5);
+	   }
+
+	   .images_chess{
+	   	width: 30%;
+		margin: 1% auto;
+	   }
+	   
+	   
+
+	  #trailer_chess{
+	  	width: 35%;
+	  	margin: 1% auto 4% auto;
+	  } 
+	  #trailer_chess video{
+	  	width: 100%;
+	  }
+
+	   #chess #weblink a{
+	   	text-decoration: none;
+	   	color: rgba(5, 179, 130, 1.0);
+	   	font-size: 3vw;
+	   	text-shadow: 0.1em 0.1em 0.2em black
+	   }
+	   #chess #weblink {
+	   	background: rgba(0, 50, 50, 0.5);
+	   	width: 40%;
+	   	margin: 0 auto 3% auto;
+	   	padding-bottom: 5px;
+	   	border-radius: 10px;
+			text-align: center;
+	   }
+
+	   #spacer_chess{
+	   	height: 5vw;
+	   }
+
+</style>
+
+
+
+<!---->
+<div id="chess">
+	<div id="chess_title">
+
+	<div id="logo_chess"></div>
+	<h1>CHESS GAME</h1>
+	<a id="logo_git" href="https://github.com/UPraggy/projectdjango/tree/master/chess"></a>
+
+	</div>
+	<div id="weblink">
+	<a href="../chess/waiting">Link para o projeto</a>
+	</div>
+	
+	<p>Ao abrir a pagina, você será redirecionado a uma tela de espera. Seu objetivo é buscar um oponente.
+	É recomendado para teste abrir em dois dispositivos diferentes.
+	</p>
+
+	<div id="tela_wait" class="images_chess"></div>
+
+	<p>Ao encontrar o oponente o jogo inicia, assim que ambos estiverem conectados a sala. Abaixo, um exemplo do jogo:</p>
+
+	<div id="trailer_chess" class="images_chess" style="margin-bottom: 6%;">
+		<video  controls>
+		  <source src="{% static 'projetos/trailer_chess.mp4' %}" type="video/mp4">
+		</video>
+	</div>
+
+	<p>Sua logica foi baseada em uma matriz, onde cada peça dentro dela contém um identificador, e o movimento das peças foi calculado através do eixo X e Y:</p>
+
+
+	<div id="board_chess" class="images_chess"></div>
+
+
+
+	<p>Cada peça foi dividida em classes de acordo com seu comportamento e limitações de movimentação, abaixo a classe Horse (cavalo) como exemplo:</p>
+
+
+
+	<div id="classes_chess" class="images_chess"></div>
+
+	<p>Basicamente no projeto foi utilizado WebSocket, e aprofundamento em JavaScript OOP, além de ajax e outras tecnologias, o intuito do projeto foi trabalhar um pouco mais de logica e cálculo.
+<br>Data de início: 30/08/22 &nbsp&nbsp Termino : 26/09/22</p>
+	
+	<div id="spacer_chess"></div>
+	
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+	
+$(".menu_font a").css('color','white')
+$("#btn2 a").css('color','rgba(255, 145, 77,1.0)')	
+
+//console.log("SUM "+ (width_/height_))
+
+let wit = $('#logo_chess').css('width').split("px")[0];
+$('#logo_chess').css('height',wit);
+
+wit = $('#logo_git').css('width').split("px")[0];
+$('#logo_git').css('height',wit);
+
+
+wit = $('.images_chess').css('width').split("px")[0];
+$('.images_chess').css('height',(wit/2));
+
+
+change_back("{% static 'projetos/chess_wait.png' %}","#tela_wait");
+change_back("{% static 'projetos/board.png' %}","#board_chess");
+change_back("{% static 'projetos/tower_class.png' %}","#classes_chess");
+change_back("{% static 'projetos/chess_game.png' %}","#logo_chess");
+change_back("{% static 'contato/git.png' %}","#logo_git");
+
+
+
+
+</script>
+
+
+{% endblock%}

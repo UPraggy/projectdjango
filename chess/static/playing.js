@@ -140,7 +140,9 @@ charSocket.onmessage = function(e){
       final_pos.empty()
       final_pos.append(target)
     
-    
+    console.log("DROWING")
+    console.log("DROWING " + drowning)
+    console.log("CHECKMATE " + checkmate_val)
     if (checkmate_val == false && drowning == true){
       if(check_pieces_movement(player1) || check_pieces_movement(player2)){
         print_("\n\nDRAW\n\n")
@@ -414,7 +416,13 @@ function add_one(){
 
 setTimeout(can_do_play, 1000)
 
-
+function resigns_match(){
+  if (request_player == player1_name){
+    call_socket(player1.name, 3, 'Resign')
+  }else if (request_player == player2_name){
+    call_socket(player2.name, 3, 'Resign')
+  }
+}
 
 
 

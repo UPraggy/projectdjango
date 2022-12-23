@@ -1,0 +1,212 @@
+{% extends 'main/portifolio.html' %}
+{% block title %}ChatApp{% endblock %}
+
+
+{% block content %}
+{% load static %}
+		{% load i18n %}
+<style type="text/css">
+	html{
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	body{
+		background: url("{% static 'projetos/chat_back.png' %}");
+		background-size: 100%;
+		
+	}
+    	#chat{
+    	font-family: DM_Serif_Display;
+    	text-align:  left;
+    	color: white;
+    	width: 100%;
+    	height: 100%;
+	   }
+
+	   #chat_title{
+	   	display: flex;
+	   	justify-content: center;
+	   	width: 100%;
+	   	height: 10vw;
+	   }
+
+	   #logo_chat{
+		border-radius: 10px;
+		width: 7%;
+		margin: auto 2% auto 0;
+	   }
+	   #logo_git{
+		border-radius: 100px;
+		width: 5%;
+		margin: auto 0 auto 2%;
+	   }
+
+	   #chat_title h1{
+	   		margin: auto 0;
+	   		font-size: 5vw;
+	   		color: black;
+	   		text-shadow: 0 0 0.2em rgba(255, 255, 255, 0.5), 0 0 0.2em rgba(255, 255, 255, 0.5),
+        0 0 0.2em rgba(255, 255, 255, 0.5)
+	   }
+	   #chat p{
+	   	margin: 0 auto;
+	   	width: 80%;
+	   	text-align: center;
+	   	font-size: 2vw;
+	   	text-shadow: 0.1em 0.1em 0.2em black;
+	   	padding: 1%;
+	   	border-radius: 10px;
+	   	background:  rgba(15, 72, 122, 0.5);
+	   }
+
+	   .images_chat{
+	   	width: 30%;
+		margin: 1% auto;
+	   }
+	   
+	   
+
+	  .video_chat{
+	  	width: 35%;
+	  	margin: 1% auto 4% auto;
+	  } 
+	  .video_chat video{
+	  	width: 100%;
+	  }
+
+	   #chat #weblink a{
+	   	text-decoration: none;
+	   	color: rgba(5, 150, 80, 1.0);
+	   	font-size: 3vw;
+	   	text-shadow: 0.1em 0.1em 0.2em black
+	   }
+	   #chat #weblink {
+	   	background: rgba(50, 50, 50, 0.5);
+	   	width: 40%;
+	   	margin: 0 auto 3% auto;
+	   	padding-bottom: 5px;
+	   	border-radius: 10px;
+			text-align: center;
+	   }
+
+	   #spacer_chat{
+	   	height: 5vw;
+	   }
+
+</style>
+
+
+
+<!---->
+<div id="chat">
+	<div id="chat_title">
+
+	<div id="logo_chat"></div>
+	<h1>CHATAPP</h1>
+	<a id="logo_git" href="https://github.com/UPraggy/projectdjango/tree/master/chat"></a>
+
+	</div>
+	<div id="weblink">
+	<a href="../chat">Link para o projeto</a>
+	</div>
+	
+	<p>O app foi desenvolvido com opções de sala: privada, grupo e publico. Onde privada comporta apenas dois usuários, grupo quantos forem (desde que sejam adicionados) e publico que fica disponível e visível para todos. Neste video, seguirá o exemplo de um chat privado, desde sua criação até troca de mensagens.
+	</p>
+
+	<div id="trailer_chat" class="images_chat video_chat" style="margin-bottom: 6%;">
+		<video  controls>
+		  <source src="{% static 'projetos/trailer_chat.mp4' %}" type="video/mp4">
+		</video>
+	</div>
+
+	<p>Ao entrar em um dos tipos de sala, é possivel ver as salas criadas:</p>
+
+	<div id="salas_chat" class="images_chat video_chat" style="margin-bottom: 6%;">
+		<video  controls>
+		  <source src="{% static 'projetos/salas_chat.mp4' %}" type="video/mp4">
+		</video>
+	</div>
+
+	<p>Neste exemplo, vamos ver como criar uma sala, onde é possível escolher o nome, tipo de sala e imagem. 
+		Obs.: Na sala privada é necessário colocar o nome do usuário que deseja iniciar uma conversa</p>
+
+
+	<div id="cria_chat" class="images_chat video_chat" style="margin-bottom: 6%;">
+		<video  controls>
+		  <source src="{% static 'projetos/cria_chat.mp4' %}" type="video/mp4">
+		</video>
+	</div>
+
+
+
+	<p>Para adicionar usuários na sala  em grupo siga é preciso alterar a sala e adicionar os usuários seguidos por virgula:</p>
+
+
+
+	<div id="add_user_chat" class="images_chat video_chat" style="margin-bottom: 6%;">
+		<video  controls>
+		  <source src="{% static 'projetos/add_user_chat.mp4' %}" type="video/mp4">
+		</video>
+	</div>
+
+
+	<p>É possivel deletar e alterar nome e imagem da sala, desde que seja o proprietario:</p>
+
+
+	<div id="delete_chat" class="images_chat"></div>
+
+
+	<p>A criação desse projeto foi o ponto de partida para ter o primeiro contato com a biblioteca django do python, alé de usar fixar e realizar a manutenção dos conhecimentos sobre JavaScript , JQuery, HTML e CSS. Para a troca de mensagens, foi utilizado WebSocket (elaborei uma apresentação sobre).
+
+<br>Data de início: 26/06/22 &nbsp&nbsp Termino : 28/07/22</p>
+	
+	<div id="spacer_chat"></div>
+	
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+	
+$(".menu_font a").css('color','black')
+$("#btn2 a").css('color','rgba(120,7,0,1.0)')	
+
+//console.log("SUM "+ (width_/height_))
+
+let wit = $('#logo_chat').css('width').split("px")[0];
+$('#logo_chat').css('height',wit);
+
+wit = $('#logo_git').css('width').split("px")[0];
+$('#logo_git').css('height',wit);
+
+
+wit = $('.images_chat').css('width').split("px")[0];
+$('.images_chat').css('height',(wit/2));
+
+
+
+change_back("{% static 'projetos/delete_chat.jpg' %}","#delete_chat");
+change_back("{% static 'projetos/chat_logo.png' %}","#logo_chat");
+change_back("{% static 'contato/git.png' %}","#logo_git");
+
+
+if (width_ >= 900){
+
+}
+else if ((width_/height_) < 1.77){
+	change_back("{% static 'projetos/chat_back_mobile.png' %}","body", "cover","repeat");
+}
+
+
+
+</script>
+
+
+{% endblock%}

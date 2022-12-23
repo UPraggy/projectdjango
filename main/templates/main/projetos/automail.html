@@ -1,0 +1,216 @@
+{% extends 'main/portifolio.html' %}
+{% block title %}Automail{% endblock %}
+
+
+{% block content %}
+{% load static %}
+		{% load i18n %}
+<style type="text/css">
+	html{
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	body{
+		background: url("{% static 'projetos/automail_back.png' %}");
+		background-size: 100%;
+		
+	}
+
+    	#automail{
+    	font-family: DM_Serif_Display;
+    	text-align:  left;
+    	color: white;
+    	width: 100%;
+    	height: 100%;
+	   }
+
+	   #automail_title{
+	   	display: flex;
+	   	justify-content: center;
+	   	width: 100%;
+	   	height: 10vw;
+	   }
+
+	   #logo_automail{
+		border-radius: 10px;
+		width: 7%;
+		margin: auto 2% auto 0;
+	   }
+	   #logo_git{
+		border-radius: 100px;
+		width: 5%;
+		margin: auto 0 auto 2%;
+	   }
+
+	   #automail_title h1{
+	   		margin: auto 0;
+	   		font-size: 5vw;
+	   		color: rgb(46, 9, 117);
+	   		text-shadow:  0 0 0.2em rgba(138, 206, 119, 0.1), 0 0 0.2em rgba(138, 206, 119, 0.1),
+        0 0 0.2em rgba(138, 206, 119, 0.1);
+	   }
+	   #automail p{
+	   	margin: 0 auto;
+	   	width: 80%;
+	   	text-align: center;
+	   	font-size: 2vw;
+	   	text-shadow: 0.1em 0.1em 0.2em black;
+	   	padding: 1%;
+	   	border-radius: 10px;
+	   	background:  rgba(46, 9, 117, 0.5);
+	   	/*background:  rgba(118, 186, 99, 0.5);*/
+	   }
+
+	   .images_automail{
+	   	width: 30%;
+		margin: 1% auto;
+	   }
+	   
+	   
+
+	  .video_automail{
+	  	width: 35%;
+	  	margin: 1% auto 4% auto;
+	  } 
+	  .video_automail video{
+	  	width: 100%;
+	  }
+
+	   #automail #weblink a{
+	   	text-decoration: none;
+	   	color: rgba(5, 150, 80, 1.0);
+	   	font-size: 3vw;
+	   	text-shadow: 0.1em 0.1em 0.2em black
+	   }
+	   #automail #weblink {
+	   	background: rgba(50, 50, 50, 0.5);
+	   	width: 40%;
+	   	margin: 0 auto 3% auto;
+	   	padding-bottom: 5px;
+	   	border-radius: 10px;
+			text-align: center;
+	   }
+
+	   #spacer_automail{
+	   	height: 5vw;
+	   }
+
+</style>
+
+
+
+<!---->
+<div id="automail">
+	<div id="automail_title">
+
+	<div id="logo_automail"></div>
+	<h1>AutoMail</h1>
+	<a id="logo_git" href="https://github.com/UPraggy/projectdjango/tree/master/automail"></a>
+
+	</div>
+	<div id="weblink">
+	<a href="../automail">Link para o projeto</a>
+	</div>
+	
+	<p>O app foi desenvolvido para a criação de e-mails um pouco mais profissionais, ideal para criar emails de marketing, convites e outras destinações. Abaixo um exemplo de envio:
+	</p>
+
+	<div id="trailer_automail" class="images_automail video_automail" style="margin-bottom: 6%;">
+		<video  controls>
+		  <source src="{% static 'projetos/trailer_automail.mp4' %}" type="video/mp4">
+		</video>
+	</div>
+
+	<p style="text-align: left;">Para o envio, existe dois modos:
+<br>
+- Envio para o email do usuario através do email do servidor.<br>
+- Envio utilizando o email do usuario<br>
+Para o envio do email do usuario, ele precisará configurar o email, e habilitar o SMTP, além disso, para sua segurança ele pode decidir digitar a senha no momento do envio ou já cadastra-la no app:</p>
+
+	<div id="cad_automail" class="images_automail video_automail" style="margin-bottom: 6%;">
+		<video  controls>
+		  <source src="{% static 'projetos/cad_automail.mp4' %}" type="video/mp4">
+		</video>
+	</div>
+
+	<p>Para a personalização dos e-mails, há uma variedade de opções de customização, vale ressaltar, que por ser e-mail ele tem uma certa limitação de estilos que podem ser aplicados, ou seja, o app oferece os disponíveis:</p>
+
+
+	<div id="opcoes_automail" class="images_automail"></div>
+
+
+	<p>Para a personalização, foi criado templates em texto, e o python juntamente com Javascript conversam e utilizam esse template:</p>
+
+
+	<div id="personaliza_automail" class="images_automail"></div>
+
+
+	<p>Os e-mails enviados ou não, são salvos automaticamente após a tentativa de envio ou ao pressionar a opção de salvar:</p>
+
+
+	<div id="emails_automail" class="images_automail"></div>
+
+
+	<p>A criação desse projeto foi inspirado na necessidade que uma empresa tinha de gerenciar "cartões postais" enviados por e-mails e gostariam de ter um registro deles. Com isso, foi obtida a ideia de um app que personalizasse esses e-mails.
+
+Data de início e término real :  até 
+
+<br>Data de início: 23/07/22 &nbsp&nbsp Termino : 27/08/22</p>
+	
+	<div id="spacer_automail"></div>
+	
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+	
+$(".menu_font a").css('color','white').css('text-shadow','0.1em 0.1em 0.2em black')
+$("#btn2 a").css('color','rgba(120,7,0,1.0)')
+
+//console.log("SUM "+ (width_/height_))
+
+let wit = $('#logo_automail').css('width').split("px")[0];
+$('#logo_automail').css('height',wit);
+
+wit = $('#logo_git').css('width').split("px")[0];
+$('#logo_git').css('height',wit);
+
+
+wit = $('.images_automail').css('width').split("px")[0];
+$('.images_automail').css('height',(wit/2));
+
+
+
+change_back("{% static 'projetos/automail.png' %}","#logo_automail");
+change_back("{% static 'contato/git.png' %}","#logo_git");
+change_back("{% static 'projetos/opcoes_automail.png' %}","#opcoes_automail");
+change_back("{% static 'projetos/personaliza_automail.png' %}","#personaliza_automail");
+change_back("{% static 'projetos/emails_automail.png' %}","#emails_automail");
+
+
+if (width_ >= 900){
+
+}
+else if ((width_/height_) < 1.77){ 
+
+	change_back("{% static 'projetos/automail_mobile.png' %}","body","cover","repeat");
+
+	$('#automail_title h1').css('text-shadow','0 0 0.2em rgba(138, 206, 119, 0.1), 0 0 0.2em rgba(138, 206, 119, 0.1),	\
+        0 0 0.2em rgba(138, 206, 119, 0.1)');
+		
+
+}
+
+
+</script>
+
+
+{% endblock%}

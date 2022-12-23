@@ -1,6 +1,7 @@
 body{
-	background: url('Wall_bg.jpg');/*#526b62;*/
-	background-size: 100%;
+	background: url('Wall_bg.png');/*#526b62;*/
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 /* Sidebar */
 

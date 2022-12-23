@@ -4,11 +4,11 @@ from .models import Match
 from .forms import MatchForm
 # Create your views here.
 @login_required
-def chess(request):
+def red_wait(request):
 	context = {
 		
 	}
-	return render (request, 'chess/play.html', context)
+	return redirect('waiting/')
 
 @login_required
 def search(request):

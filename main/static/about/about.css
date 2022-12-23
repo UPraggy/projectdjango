@@ -1,0 +1,182 @@
+
+	html{
+		overflow: hidden;
+	}
+	body{
+		background: rgba(20, 20, 20, 1);
+	}
+
+	#sobre{
+		color: #EBDFCC;
+		width: 100%;
+		height: 100%;
+		padding:  0;
+		padding-left: 1%;
+	}
+	#left_info{
+		width: 20%;
+		height: 100%;
+		background: #02031A;
+	}
+	#left_info p:nth-child(1){
+		font-family: DM_Serif_Display;
+		font-size: 2vw;
+		text-align: center;
+		color: white;
+
+	}
+	#photo_l{
+		margin: 0 auto;
+		width: 50%;
+		border-radius: 133px;
+		background: #8083ea;
+		box-shadow:  6px 6px 8px #3c3e6e,
+             -6px -6px 8px #c4c8ff;
+	}
+	
+	#left_info p:nth-child(3){
+		font-family: DM_Serif_Display;
+		font-size: 1.5vw;
+		text-align: center;
+		color: #EBDFCC;
+		margin: 5% 0 10% 0;
+		padding: 2%;
+	}
+
+	#bar{
+		width: 90%;
+		height: 5px;
+		margin: 0 auto;
+		border-radius: 100px;
+		background: white;
+	}
+
+	#left_info #visite2{
+		font-family: Montserrat;
+		font-size: 2vw;
+		text-align: center;
+		color: white;
+		margin-top: 5%;
+		padding: 0 1%;
+	}	
+
+	#social_links a{
+
+		width: 15%;
+		height: 100%;
+		margin: 0 auto;
+	}
+
+
+	#right_info{
+		width: 80%;
+		height: 100%;
+	}
+	#right_info_top p:nth-child(1){
+		font-family: DM_Serif_Display;
+		font-size: 4vw;
+		margin: 1% 0 0 3%;
+		text-align: left;
+		color: #021B2B;
+	}
+	#right_info_top p:nth-child(2){
+		font-family: Montserrat;
+		font-size: 1.7vw;
+		margin: -1% 0 0 3%;
+		text-align: left;
+		color: #B10C43;
+	}
+
+	#right_info_top p:nth-child(3){
+		font-family: Montserrat;
+		font-size: 1.3vw;
+		margin: 0 0 0 3%;
+		padding-right: 5%;
+		text-align: left;
+		color: #021B2B;
+	}
+
+	.bar_normal{
+		width: 95%;
+		height: 5px;
+		margin: 2% auto;
+		border-radius: 5px;
+		background: #021B2B;
+	}
+
+	#right_info_top p:nth-child(5){
+		font-family: Montserrat;
+		font-size: 2.2vw;
+		margin: 0 0 0 3%;
+		padding-right: 5%;
+		text-align: left;
+		color: #B10C43;
+	}
+
+	#right_info_top p:nth-child(6){
+		font-family: Montserrat;
+		font-size: 1.3vw;
+		margin: 0 0 0 3%;
+		padding-right: 5%;
+		text-align: left;
+		color: #021B2B;
+	}
+	#habilities{
+		margin: 0 3% 0 0;
+		margin-top: 4%;
+		height: 40%;
+	}
+
+	#habilities p{
+		font-family: Montserrat;
+		font-size: 1.4vw;
+		text-align: center;
+		margin: 0 0 0 3%;
+		color: #B10C43;
+	}
+
+	#habilities .obj{
+		margin: 0 auto 0 2%;
+		width: 20%;
+		height: 100%;
+	}
+	#habilities .line{
+		width: 95%;
+		height: 5px;
+		margin: 2% auto;
+		border-radius: 5px;
+		background: #021B2B;
+	}
+
+	#habilities .grid_icons{
+		display: flex;
+		width: 100%;
+		height: 100%;
+ 	}
+
+ 	#habilities .icon{
+ 		width: 25%;
+ 		height: 100%;
+		margin: 5% auto 0 auto;	
+ 	} 
+
+	#Back-end .icon:nth-child(2){
+		margin-top: 2%;
+	}
+					
+	#habilities .obj:nth-child(4){
+		padding: 0 2%;
+	}
+
+	#Versão .icon{
+		width: 40%;
+		margin: 4% auto 0 auto;			
+	}
+
+	#Design .icon{
+		margin: 4% auto 0 auto;			
+	}
+
+	#Design .icon:nth-child(2){
+		margin: 7% auto 0 auto;	
+	}

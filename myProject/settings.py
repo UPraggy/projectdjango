@@ -169,24 +169,24 @@ LOGOUT_REDIRECT_URL = '/accounts/login'
 
 
 # Provider specific settings
-SOCIALACCOUNT_PROVIDERS = {
+'''SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': '1044250897214-glc82sjf2pceact0p10l0cfc3igcnqhk.apps.googleusercontent.com',
-            'secret': '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',
+            'client_id': '-.apps.googleusercontent.com',
+            'secret': 'GOCSPX-',
             'key': ''
         }
     }
-}
+}'''
 
 
 #EMAIL RESET
-'''EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.office365.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "testemailur@gmail.com"
-EMAIL_HOST_PASSWORD = 
-EMAIL_USE_TLS = True'''
+#EMAIL_HOST_USER = ""
+#EMAIL_HOST_PASSWORD = ""
+EMAIL_USE_TLS = True
 
 #heroku
 

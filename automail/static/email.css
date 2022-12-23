@@ -182,6 +182,7 @@
 #table_del{
     margin-top: 0px;
     background-image: url('/static/IMAGES/REMOVE_TABLE.png');
+    background-size: contain;
 }
 #row_del{
     background-image: url('/static/IMAGES/REMOVE_ROW.png');
