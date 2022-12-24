@@ -116,7 +116,7 @@ body::-webkit-scrollbar-thumb {
 					<div class="row" style="height:87.5%; margin-top:1%;">
 					{% block content %}
 					<div id="center" >
-						<div id="myphoto"></div>
+						<div id="myphoto" style=" position: relative; margin: 0 auto;"></div>
 					</div>
 					{% endblock%}
 					</div>
@@ -172,6 +172,8 @@ function change_back(back, query = 'body', mode = "cover", repeat = "no-repeat")
 	.css('background-repeat',repeat);
 }
 
+
+
 // CONFIGURATION FOR DIFFERENTS DEVICES
 
 
@@ -216,22 +218,12 @@ else{
 
 <script type="text/javascript">
 
-if (width_ >= 1300 || width_ >= 850) {//1000
 
-  $('#center').css('margin','0 0 0 2%');//61x45
-}
-else if (width_ >= 1000 || width_ >= 850){
-	$('#center').css('margin','0 0 0 4%');//61x45
-}
-else if(width_ >= 768){
-
-	$('#center').css('margin','0 0 0 6%');//61x45
+if(width_ >= 768){
 
   	change_back("{% static 'back_porto_mobile.png' %}");
 }
 else{
-
-	$('#center').css('margin','0 0 0 4%');//61x45
 
   	change_back("{% static 'back_porto_mobile.png' %}");
 }	
