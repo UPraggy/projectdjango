@@ -18,7 +18,13 @@
 		<div id="left_info">
 
 			<p>Rafael Moreira</p>
-			<div id="photo_l"></div>
+			<!--<div id="photo_l"></div>-->
+			<div id="photo_l" style="
+			    background-color: white;
+			"><img src="/static/about/profile.png" style="
+			    width: 100%;
+			    height: 100%;
+			"></div>
 
 			
 				<p>Olá! Me chamo Rafael Moreira. E seja bem vindo a minha aba sobre!</p>
@@ -131,7 +137,7 @@ let wit = $('#photo_l').css('width').split("px")[0];
 $('#photo_l').css('height',wit);
 
 
-change_back("{% static 'about/profile.png' %}","#photo_l","contain");
+//change_back("{% static 'about/profile.png' %}","#photo_l","contain");
 change_back("{% static 'contato/email.png' %}","#mail","contain");
 change_back("{% static 'contato/wp.png' %}","#tel","contain");
 change_back("{% static 'contato/linkedin.png' %}","#linkedin","contain");
