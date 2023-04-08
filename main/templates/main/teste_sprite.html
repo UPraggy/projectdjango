@@ -1,0 +1,76 @@
+{% extends 'main/portifolio.html' %}
+{% block title %}Home Page{% endblock %}
+
+
+{% block content %}
+{% load static %}
+{% load i18n %}
+	<style>
+		body{
+			background: url("{% static 'teste_pixel/back.png' %}");
+			background-size: cover;
+			background-repeat: no-repeat;
+			width: 10000px;
+		}
+		html{
+			width: 10000px;
+			height: 100%;
+		}
+	</style>
+
+	<!--<div id="personagem" style="position: absolute; left:500px; width:  70px; height: 94px;">48 65
+
+	</div>-->
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+
+class Sprite{
+
+	constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+	return_url(name){
+		let temp = "url(\"static/teste_pixel/" 
+		temp += name
+		temp += ".png\")"
+		return temp
+	}
+	run_right(id){
+		self = this;
+		self.change_back(id,'persg_pos1')
+		let time = 1000;
+		console.log("ENTROU")
+		setTimeout(function(){self.change_back(id,'persg_pos2')},time*1)
+		setTimeout(function(){self.change_back(id,'persg_pos1')},time*2)
+		setTimeout(function(){self.change_back(id,'persg_pos2')},time*3)
+	}
+	change_back(id, img){
+		$("#"+id).css("background",this.return_url(img))
+		.css('background-size','cover')
+		.css('background-repeat','no-repeat');
+	}
+
+}
+
+const sprite1 = new Sprite();
+sprite1.change_back('personagem','persg_pos1')
+//sprite1.run_right('personagem');
+var color = 'red';
+
+const element = document.getElementById('personagem');
+
+let start, previousTimeStamp;
+let done = false
+const var_temp = document.querySelector('body');
+window.onscroll = temp;
+function temp() {
+    console.log(window.scrollX)
+}
+
+</script>
+{% endblock %}

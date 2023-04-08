@@ -1,0 +1,137 @@
+{% extends 'main/portifolio.html' %}
+{% block title %}Apresentações{% endblock %}
+
+
+{% block content %}
+{% load static %}
+		{% load i18n %}
+<style type="text/css">
+	html{
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	body{
+		background: url("{% static 'apresentacoes/apresentacao.png' %}");
+		background-size: cover;
+		background-repeat: repeat;
+	}
+
+    #apresentacoes p{
+    	font-family: DM_Serif_Display;
+    	font-weight: bold;
+    	text-align:  center;
+	   }
+
+	 #apresentacoes, #apresentacoes .card{
+	 	margin:  0 auto 15px auto;
+	 	padding: 0;
+	 }
+	 #apresentacoes .card a{
+	 	text-decoration: none;
+	 	color: black;
+	 }
+
+	 #first a{
+	 	/*text-shadow: 0 0 0.2em rgba(255, 255, 255, 0.5), 0 0 0.2em rgba(255, 255, 255, 0.5),
+        0 0 0.2em rgba(255, 255, 255, 0.5)*/
+	 }
+
+</style>
+
+<div id="apresentacoes" class="row" >
+
+<div class="card" style="width: 18rem;">
+	<a href="websocket">
+	  <img src="{% static 'apresentacoes/Web_Socket.png' %}" class="card-img-top" alt="...">
+	  <div class="card-body">
+	    <p class="card-text">WebSocket</p>
+	  </div>
+	</a>
+</div>
+
+<div class="card" style="width: 18rem;">
+	<a href="mysql">
+  <img src="{% static 'apresentacoes/MySQL.png' %}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">MySQL</p>
+  </div>
+</a>
+</div>
+
+<div class="card" style="width: 18rem;">
+	<a href="sql">
+  <img src="{% static 'apresentacoes/SQL.png' %}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">SQL</p>
+  </div>
+</a>
+</div>
+
+
+<div class="card" style="width: 18rem;">
+	<a href="datascience">
+  <img src="{% static 'apresentacoes/DATA_.png' %}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">Data Science</p>
+  </div>
+</a>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+	
+	$(".menu_font a").css('color','black')
+	$(".menu_font").mousedown(function(e){$("#"+e.currentTarget.id+" a").css('color','white')})
+	$(".menu_font").mouseover(function(e){console.log(e) 
+		$("#"+e.currentTarget.id+" a").css('color','white')})
+	$(".menu_font").mouseout(function(e){
+	$("#"+e.currentTarget.id+" a").css('color','black')
+		$("#btn3 a").css('color','rgba(120,7,0,1.0)')})
+	$("#btn3 a").css('color','rgba(120,7,0,1.0)')	
+
+
+let temp = $(".card").css('width').split("px")[0]
+$(".card").css('height',(temp/1.3))
+
+
+
+if(width_ >= 700){
+
+	$("#apresentacoes .card:nth-child(1)").css('margin','0 auto 15px auto');
+
+}
+
+
+if(width_ >= 900){
+
+	$("#apresentacoes .card:nth-child(1)").css('margin','0 auto 15px auto');
+
+}
+else if ((width_/height_) < 1.77 && (width_/height_) > 0.95){
+
+	change_back("{% static 'apresentacoes/apresentacao_mobile.png' %}","body","cover","repeat");
+		
+}else if((width_/height_) < 0.95){
+
+	change_back("{% static 'apresentacoes/present_mobile.png' %}","body","cover","repeat");
+
+}
+	
+
+</script>
+
+
+{% endblock%}

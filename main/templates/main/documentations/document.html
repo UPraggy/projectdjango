@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="/static/documentations/style.css" rel="stylesheet" type="text/css" />
+  <link href="/static/documentations/styleCode.css" rel="stylesheet" type="text/css" />
+  <link href="/static/documentations/styleCodeGit.css" rel="stylesheet" type="text/css" />
+  <link id="favicon" rel="shortcut icon" type="image/png" href="/static/documentations/favicon.png" />
+</head>
+
+<body>
+  <div style="display: flex;flex-direction: row;">
+    <div id="indexOpt" class="indexTab">
+      <p id="indexTitle">INDICE</p>
+    </div>
+    <div id="backIndex" class="indexTab"></div>
+    <div id="content"></div>
+    <div id='Dbtn_index'><button id="btn_index" onclick="showIndice()"></button></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var docUrl = "{{doc}}"
+      var imgUrl = "{{img}}"
+      //setTitle
+      $(document).attr('title', docUrl)
+      //setIcon
+      $("#favicon").attr("href", "/static/documentations/icons/" + imgUrl + ".png");
+      //
+
+
+      fetch("/doc/"+docUrl + ".html")
+        .then(val => val.text())
+        .then((html) => {
+
+          var parser = new DOMParser();
+
+          var doc = parser.parseFromString(html, "text/html");
+
+          let documentation = doc.querySelector('body').innerHTML;
+
+          $("#content").append(documentation);
+          callModifications();
+        })
+    </script>
+  <script src="/static/documentations/script.js"></script>
+</body>
+
+</html>

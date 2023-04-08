@@ -1,0 +1,67 @@
+{% extends 'main/base.html' %}
+{% block title %}Home Page{% endblock %}
+
+
+{% block content %}
+<style>
+	#home_content{
+		color: white;
+	}
+	html{
+		overflow-y: hidden;
+	}
+	h1{
+		text-shadow: 6px 4px black;
+	}
+h2{
+	text-shadow: 6px 4px black;
+	animation: animate 4s linear infinite;
+ } 
+  
+ @keyframes animate{
+   0%{
+     opacity: 0;
+   }
+   10%{
+     opacity: 0.33;
+   }
+   30%{
+     opacity: 0.66;
+   }
+   45%{
+     opacity: 1;
+   }
+   70%{
+     opacity: 0.66;
+   }
+   80%{
+     opacity: 0.33;
+   }
+   100%{
+     opacity: 0;
+   }
+ }
+</style>
+
+
+<div id="home_content" style="display: flex; height: 90vh; width: 100%;">
+	<div style="margin: 10% 0;text-align: center; width: 100%;">
+	<h1  style=" font-size: 5vw;">WELCOME TO MAIN PAGE</h1>
+	<h2  style="font-size: 3vw;">Select the a option on menu for continue</h1>
+	</div>
+</div>
+
+
+{% endblock %}
+
+
+
+{% block script_cont %}
+<script type="text/javascript">
+	
+
+
+</script>
+
+
+{% endblock %}

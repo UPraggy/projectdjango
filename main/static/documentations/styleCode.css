@@ -1,0 +1,31 @@
+.hljs-keyword, .hljs-name, .hljs-section{
+  color: #d72359;
+}
+.hljs-string, .lang-json, .lang-json .hljs-keyword{
+  color: #e3be02;
+}
+
+.hljs-comment{
+  color: #a6a6a6;
+}
+.hljs-params{
+  color: #f0b000;
+}
+.hljs-function .hljs-title, .hljs-attr, .hljs-class .hljs-title{
+  color: #64a503;
+}
+.hljs-built_in, .hljs-function{
+  color: #52a5ff;
+}
+.hljs-number, .hljs-literal{
+  color:  #7332f5;
+}
+.divCode{
+  background-color: #000;
+  color: #fff;
+  padding: 1%;
+}
+
+.lang-cmd *,.lang-cmd .hljs-function *, .lang-cmd .hljs-class *{
+  color: #fff;
+}

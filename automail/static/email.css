@@ -1,0 +1,253 @@
+/*ESTILO BASICO CARTAO POSTAL*/
+
+/*NAVBAR*/
+.navbar{
+    z-index: 2;
+  }
+.opt{
+  width: 50px; 
+  height: 50px;
+  margin: 10px 0 0 8px;
+  border: none;
+}
+.opt:hover{
+    opacity: 0.7;
+}
+#menu_opt{
+    background: url('/static/IMAGES/MENU.png');
+    background-size: cover;
+}
+
+/*NAVBAR*/
+
+#nav_cont{
+    background-color: white; 
+    width: 100%; 
+    height: 50px; 
+    padding-left: 70px;
+}
+
+#nav_cont .nav_child{
+    display: none; /*DEFAULT*/
+    width: 100%;
+    height: 100%; 
+    margin-left: 20px; 
+    justify-content:  start; 
+    align-items:  center;
+
+}
+
+
+#template_opt{
+    background: url('/static/IMAGES/template.png');
+    background-size: cover;
+}
+#send_button{
+    background: url('/static/IMAGES/SEND.png');
+    background-size: cover;
+}
+#save_button{
+    background: url('/static/IMAGES/SAVE.png');
+    background-size: cover;
+}
+
+.mail_template{
+    width: 65px; 
+    height: 65px; 
+    /*margin-top: 10px;*/
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+.delete_edit_element{
+    max-width: 30px;
+    height: 30px; 
+    background: url('/static/IMAGES/REMOVE.png');
+    background-size: cover;
+    
+}
+/*EDIT TEXT*/
+
+
+
+#edit_text #input_edit_text{
+    max-width: 200px; 
+    margin-right: 12px;
+}
+
+/*#edit_text*/
+.color_edit{
+    max-width: 35px;
+    height: 60%; 
+    padding: 0;
+    margin-right: 10px;
+    border: 0;
+}
+#color_edit_text, #color_edit_link{
+    max-width: 25px;
+    background-image: url('/static/IMAGES/Color.png');
+    background-size: 25px;
+    background-color: white;
+    padding: 0;
+    padding-top: 25px; 
+}
+.color_edit_border{
+    max-width: 25px;
+    background-image: url('/static/IMAGES/Border Color.png');
+    background-size: 25px;
+    background-color: white;
+    padding: 0;
+    padding-top: 25px; 
+}
+
+.align_edit{
+    max-width: 30px; 
+    height: 60%; 
+    margin-right: 12px;
+}
+.align_edit:hover{
+    background-color: rgba(200, 200, 200, 0.4);
+    border-radius: 5px;
+}
+
+/*#edit_text*/ 
+.edit_size{
+    max-width: 100px;
+    height: 60%;
+    padding: 0;
+    margin-right: 12px;
+}
+
+.font_edit{
+    max-width: 200px;
+    height: 60%;
+    padding: 0;
+    padding-left: 10px;
+}
+
+.edit_size .row{
+    width: 100%; 
+    height: 100%; 
+    border: 1px solid gray; 
+    border-radius: 5%; 
+    margin: 0;
+
+}
+
+.edit_size  .row div:nth-child(1), .edit_size .row div:nth-child(3){
+    max-width:30px;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: white; 
+    border-right: 1px solid gray;
+    text-align: center;
+    text-decoration: none; 
+    color: black;
+    cursor: pointer;
+}
+.edit_size .row div:nth-child(3){
+    border: 0;
+    border-left: 1px solid gray;
+
+}
+
+.edit_size .row input{
+    max-width: 40px;
+    height: 100%;
+    padding: 0;
+    border: 0; 
+    margin: 0; 
+    font-weight: bold; 
+    text-align: center;
+}
+
+
+.align-left{
+    background-image: url('/static/IMAGES/align_left.png');
+    background-size: cover;
+    background-position: center;
+}
+.align-center{
+    background-image: url('/static/IMAGES/align_center.png');
+    background-size: cover;
+    background-position: center;
+}
+.align-right{
+    background-image: url('/static/IMAGES/align_right.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#table_del{
+    margin-top: 0px;
+    background-image: url('/static/IMAGES/REMOVE_TABLE.png');
+    background-size: contain;
+}
+#row_del{
+    background-image: url('/static/IMAGES/REMOVE_ROW.png');
+}
+#column_del{
+    
+    background-image: url('/static/IMAGES/REMOVE_COLUMN.png');
+    
+}
+.secondary_t{
+    margin-top: 5px;
+    max-width: 46px;
+    max-height: 45px;
+
+
+    background-size: 45px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/*TEMPLATE BTNS*/
+
+#text_box{
+    background: url('/static/IMAGES/TEXT.png');
+    background-size: cover; 
+}
+/*#paragraph_box{
+    background: url('/static/IMAGES/paragraph.png');
+    background-size: cover; 
+}*/
+#spacer_box{
+    background: url('/static/IMAGES/spacer.png');
+    background-size: cover; 
+    margin-top: 15px;
+    height: 40px;
+    width: 70px; 
+}
+#divider_box{
+    background: url('/static/IMAGES/divider.png');
+    background-size: cover; 
+    width: 70px; 
+}
+#link_box{
+    background: url('/static/IMAGES/link.png');
+    background-size: cover; 
+    width: 70px; 
+}
+#image_box{
+    background: url('/static/IMAGES/IMAGE.png');
+    background-size: cover; 
+    margin-top: 10px;
+    margin-right: 4px;
+    width: 55px; 
+    height: 55px;
+}
+/*#social_base_box{
+    background: url('/static/IMAGES/social.png');
+    background-size: cover; 
+    height: 70px; 
+    width: 70px; 
+}*/
+#table_box{
+    background: url('/static/IMAGES/ADD_TABLE.png');
+    background-size: cover; 
+    margin: 10px 0 0 20px;
+    height: 60px; 
+    width: 60px; 
+}

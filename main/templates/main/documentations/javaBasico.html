@@ -1,0 +1,985 @@
+{% verbatim %}
+<h1 id="java">Java</h1>
+<div class='imgModulo' style="background-image: url('/static/documentations/icons/java.png');"></div>
+<h2 id="indice">INDICE</h2>
+<ul>
+  <li><strong><a href="#introdução">Introdução</a></strong></li>
+  <li><strong><a href="#leitura-de-dados">Leitura de Dados</a></strong></li>
+  <li><strong><a href="#condições-e-loops">Condições e Loops</a></strong></li>
+  <li><strong><a href="#arrays-e-matrizes">Arrays e Matrizes</a></strong></li>
+  <li><strong><a href="#strings">Strings</a></strong></li>
+  <li><strong><a href="#classes-e-metodos">Classes e Metodos</a></strong></li>
+  <li><strong><a href="#classe-heranca">Classe Herança</a></strong></li>
+  <li><strong><a href="#interface">Interface</a></strong></li>
+  <li><strong><a href="#polimorfismo-override-and-overload">Polimorfismo - Override and Overload</a></strong></li>
+  <li><strong><a href="#passagem-por-referência">Passagem por referência</a></strong></li>
+  <li><strong><a href="#tryandcatch">Try And Catch</a></strong></li>
+  <li><strong><a href="#arraylist">ArrayList</a></strong></li>
+</ul>
+<h1 id="introdução">INTRODUÇÃO</h1>
+<h4
+  id="java-uma-linguagem-amplamente-usada-e-semelhante-ao-c-e-c-ela-fortemente-tipada-caso-tenha-estudado-os-mecionados-ser-facilitada-a-compreens-o-da-linguagem-java-br-nota-jamais-esque-a-do-ponto-e-v-rgula-">
+  Java é uma linguagem amplamente usada, e semelhante ao c e c++ ela é fortemente tipada, caso tenha estudado os
+  mecionados, será facilitada a compreensão da linguagem Java<br><strong>Nota: Jamais esqueça do ponto e vírgula
+    =)</strong></h4>
+<p><br><br></p>
+
+
+<h2 id="primeiro-programa">PRIMEIRO PROGRAMA</h2>
+<h4
+  id="todo-programa-em-java-baseado-em-classe-como-primeiro-programa-preciso-criar-um-arquivo-tendo-em-mente-que-o-nome-dele-tem-que-ser-o-mesmo-que-a-classe-ou-seja-vamos-criar-um-arquivo-chamado-helloworld-java-br-dentro-do-arquivo-">
+  Todo programa em Java é baseado em classe, como primeiro programa é preciso criar um arquivo tendo em mente que o nome
+  dele tem que ser o mesmo que a classe, ou seja, vamos criar um arquivo chamado helloWorld.java<br>Dentro do arquivo:
+</h4>
+<pre><code class="lang-java"><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">helloWorld</span>{
+  <span class="pl-c">/*criando o metodo principal da classe a ser executado</span>
+<span class="pl-c">  publico - modificador de acesso</span>
+<span class="pl-c">  estatico - pode ser acessado sem instanciar , ou seja,</span>
+<span class="pl-c">  em vez de InstanciaDeClasse.funcao(), pode se usar Classe.funcao()</span>
+<span class="pl-c">  void - retorno vazio</span>
+<span class="pl-c">  main - nome do metodo</span>
+<span class="pl-c">  Neste exemplo recebeu um array de strings*/</span>
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>){
+    <span class="pl-c">//println -&gt; não quebra a linha</span>
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">print</span>(<span class="pl-s">"Hello World!"</span>);
+    <span class="pl-c">//println -&gt; quebra a linha</span>
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Imprimindo outro texto!"</span>);
+  }
+}
+</code></pre>
+<h4 id="para-executar-basta-colocar">Para executar basta colocar</h4>
+<pre><code class="lang-cmd">javac helloWorld.java -<span class="pl-k">&gt;</span> para compilar
+java helloWorld -<span class="pl-k">&gt;</span> para executar
+</code></pre>
+<h2 id="declarando-e-imprimindo-variaveis">DECLARANDO E IMPRIMINDO VARIAVEIS</h2>
+<pre><code class="lang-java"><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">helloWorld</span>{
+  
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>){
+    <span class="pl-smi">int</span> <span class="pl-s1">num</span>;
+      <span class="pl-smi">String</span> <span class="pl-s1">hello</span>;
+      <span class="pl-k">final</span> <span class="pl-smi">int</span> <span class="pl-c1">CONSTANTE</span> = <span class="pl-c1">50</span>;
+        <span class="pl-s1">hello</span> = <span class="pl-s">"Palavra"</span>;
+      <span class="pl-s1">num</span> = <span class="pl-c1">50</span>;
+    <span class="pl-c">/*</span>
+<span class="pl-c">      Use printf para imprimir variaveis, basta</span>
+<span class="pl-c">      usar antes da virgula o caractere especial referente</span>
+<span class="pl-c">      ao tipo da variavel</span>
+<span class="pl-c">    */</span>
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">printf</span>(<span class="pl-s">"%s\n"</span>,<span class="pl-s">"Imprimindo Variavel!"</span>);
+        <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">printf</span>(<span class="pl-s">"%s\n"</span>,<span class="pl-s1">hello</span>);
+      <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">printf</span>(<span class="pl-s">"%d\n"</span>,<span class="pl-s1">num</span>);
+      <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Numero "</span> + <span class="pl-s1">num</span> + <span class="pl-s">"\n"</span>);
+      <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">printf</span>(<span class="pl-s">"%d\n%d\n%d\n%d"</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>);
+  }
+  
+}
+</code></pre>
+<p><br><br></p>
+
+
+<h1 id="leitura-de-dados">LEITURA DE DADOS</h1>
+<pre><code class="lang-java"><span class="pl-k">import</span> <span class="pl-s1">java</span>.<span class="pl-s1">util</span>.<span class="pl-s1">Scanner</span>; <span class="pl-c">//pacote para leitura de dados</span>
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">helloWorld</span>{
+  
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>){
+
+      <span class="pl-c">//Declaração e instanciação do objeto scanner</span>
+      <span class="pl-smi">Scanner</span> <span class="pl-s1">scan</span> = <span class="pl-k">new</span> <span class="pl-smi">Scanner</span>(<span class="pl-smi">System</span>.<span class="pl-s1">in</span>);
+      <span class="pl-smi">int</span> <span class="pl-s1">num</span>;
+      <span class="pl-c">/*</span>
+<span class="pl-c">        next -&gt; captura string</span>
+<span class="pl-c">        nextLine -&gt; captura string</span>
+<span class="pl-c">        nextInt -&gt; captura int</span>
+<span class="pl-c">      */</span>
+      <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Insira um numero"</span>);
+      <span class="pl-s1">num</span> = <span class="pl-s1">scan</span>.<span class="pl-en">nextInt</span>();
+      <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Numero: "</span> + <span class="pl-s1">num</span>);
+
+  }
+}
+</code></pre>
+<h1 id="condições-e-loops">CONDIÇÕES E LOOPS</h1>
+<pre><code class="lang-java"><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">helloWorld</span>{
+  
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>){
+      <span class="pl-smi">int</span> <span class="pl-s1">num</span>;
+      <span class="pl-s1">num</span> = <span class="pl-c1">50</span>;
+      <span class="pl-smi">int</span> <span class="pl-s1">x</span> = <span class="pl-c1">2</span>;
+      <span class="pl-smi">String</span> <span class="pl-s1">resultado</span> = <span class="pl-s">""</span>;
+      <span class="pl-k">if</span> (<span class="pl-s1">num</span> &lt; <span class="pl-c1">50</span>){
+        <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Numero menor que 50\n"</span>);
+      }<span class="pl-k">else</span> <span class="pl-k">if</span> (<span class="pl-s1">num</span> == <span class="pl-c1">50</span>){
+        <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Numero igual a 50\n"</span>);
+      }<span class="pl-k">else</span>{
+        <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Numero maior a 50\n"</span>);
+      }
+	
+      <span class="pl-c">// É possível criar condições em uma unica linha, basta colocar </span>
+      <span class="pl-c">//"condicao" ? "retorno se verdadeiro" : "retorno se falso"</span>
+      <span class="pl-s1">resultado</span> = (<span class="pl-s1">num</span> == <span class="pl-c1">0</span> ? <span class="pl-s">"num é par"</span> : <span class="pl-s">"num é impar"</span>);
+      <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">printf</span>(<span class="pl-s">"Resultado: %s\n"</span>,<span class="pl-s1">resultado</span>);
+    
+      <span class="pl-k">switch</span>(<span class="pl-s1">x</span>){
+        <span class="pl-k">case</span> <span class="pl-c1">1</span>:
+          <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Case 1\n"</span>);
+          <span class="pl-k">break</span>; <span class="pl-c">//entrou no case, não precisa verificar os outros</span>
+        <span class="pl-k">case</span> <span class="pl-c1">2</span>:
+          <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Case 2\n"</span>);
+          <span class="pl-k">break</span>;
+        <span class="pl-k">default</span>:
+          <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Case padrão\n"</span>);
+          <span class="pl-k">break</span>; 
+          
+      }
+
+
+      <span class="pl-k">for</span>(<span class="pl-smi">int</span> <span class="pl-s1">cont</span> = <span class="pl-c1">0</span>; <span class="pl-s1">cont</span> &lt; <span class="pl-c1">4</span>;<span class="pl-s1">cont</span>++){
+     	 <span class="pl-k">if</span> (<span class="pl-s1">cont</span> == <span class="pl-c1">3</span>){
+          <span class="pl-c">/* Este comando, faz com que todo o codigo abaixo dentro do loop,</span>
+<span class="pl-c">          não seja executado, e volte a ser executado após essa contagem, ele funciona </span>
+<span class="pl-c">          como o break porém ele não interrompe todo o loop, apenas prossegue para o proximo loop*/</span>
+          <span class="pl-k">continue</span>; 
+        }
+        <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">printf</span>(<span class="pl-s">"%d\n"</span>,<span class="pl-s1">cont</span>);
+      }
+
+      <span class="pl-smi">int</span> <span class="pl-s1">cont</span> = <span class="pl-c1">3</span>;
+      <span class="pl-k">while</span>(<span class="pl-s1">cont</span> &lt; <span class="pl-c1">6</span>){
+        <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">printf</span>(<span class="pl-s">"Novo cont %d\n"</span>,<span class="pl-s1">cont</span>);
+        <span class="pl-s1">cont</span> += <span class="pl-c1">1</span>;
+      }
+      
+  }
+  
+}
+</code></pre>
+<p><br><br></p>
+
+
+
+<h1 id="arrays-e-matrizes">ARRAYS E MATRIZES</h1>
+<h2 id="criando-e-percorrendo-arrays">Criando e percorrendo arrays</h2>
+<pre><code class="lang-java"><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">helloWorld</span>{
+  
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>){
+
+    <span class="pl-smi">int</span>[] <span class="pl-s1">nums</span> = <span class="pl-k">new</span> <span class="pl-smi">int</span>[<span class="pl-c1">6</span>];<span class="pl-c">//instaciando uma nova variavel</span>
+
+    <span class="pl-smi">int</span>[] <span class="pl-s1">varios</span> = {<span class="pl-c1">5</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>};<span class="pl-c">//recebendo uma cadeia de valores</span>
+    
+    <span class="pl-s1">nums</span>[<span class="pl-c1">1</span>] = <span class="pl-c1">1</span>;
+    <span class="pl-s1">nums</span>[<span class="pl-c1">3</span>] = <span class="pl-c1">5</span>;
+    <span class="pl-s1">nums</span>[<span class="pl-c1">5</span>] = <span class="pl-c1">10</span>;
+    <span class="pl-k">for</span>(<span class="pl-smi">int</span> <span class="pl-s1">cont</span> = <span class="pl-c1">0</span>; <span class="pl-s1">cont</span> &lt; <span class="pl-c1">4</span>;<span class="pl-s1">cont</span>++){
+      <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">printf</span>(<span class="pl-s">"%d - %d\n"</span>,<span class="pl-s1">nums</span>[<span class="pl-s1">cont</span>],<span class="pl-s1">varios</span>[<span class="pl-s1">cont</span>]);
+    }
+
+    <span class="pl-c">//Uma forma mais facil de impressão e percorrer arrays</span>
+    <span class="pl-s1">nums</span>[<span class="pl-c1">0</span>] = <span class="pl-c1">4</span>;
+    <span class="pl-s1">nums</span>[<span class="pl-c1">2</span>] = <span class="pl-c1">3</span>;
+    <span class="pl-s1">nums</span>[<span class="pl-c1">4</span>] = <span class="pl-c1">9</span>;
+    <span class="pl-k">for</span> (<span class="pl-smi">int</span> <span class="pl-s1">x</span>:<span class="pl-s1">nums</span>){ <span class="pl-c">//tipo variavel:array</span>
+      <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Novo valor: "</span>+(<span class="pl-s1">x</span>*<span class="pl-c1">2</span>));
+    }
+  }
+}
+</code></pre>
+<h2 id="metodos-de-array">Metodos de array</h2>
+<pre><code class="lang-java"><span class="pl-k">import</span> <span class="pl-s1">java</span>.<span class="pl-s1">util</span>.<span class="pl-s1">Arrays</span>; <span class="pl-c">//Importe a biblioteca para utilizar as funções</span>
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">helloWorld</span>{
+  
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>){
+
+    <span class="pl-smi">int</span>[] <span class="pl-s1">varios</span> = {<span class="pl-c1">5</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>};
+    
+    <span class="pl-c">// ORDENANDO ARRAY</span>
+    <span class="pl-s1">Arrays</span>.<span class="pl-en">sort</span>(<span class="pl-s1">varios</span>);
+    <span class="pl-c">//2,3,4,5</span>
+
+
+    <span class="pl-c">//PREENCHENDO ARRAY</span>
+    <span class="pl-smi">int</span>[] <span class="pl-s1">numbers</span> = <span class="pl-k">new</span> <span class="pl-smi">int</span>[<span class="pl-c1">4</span>];
+
+    <span class="pl-s1">Arrays</span>.<span class="pl-en">fill</span>(<span class="pl-s1">numbers</span>,<span class="pl-c1">33</span>);
+    <span class="pl-c">//33,33,33,33</span>
+
+    <span class="pl-c">//COPIANDO ARRAY</span>
+    <span class="pl-c">//(origem,inicioOrigem,destino,inicioDestino,quantidade)</span>
+    <span class="pl-s1">System</span>.<span class="pl-en">arraycopy</span>(<span class="pl-s1">varios</span>,<span class="pl-c1">0</span>,<span class="pl-s1">numbers</span>,<span class="pl-c1">1</span>,<span class="pl-c1">3</span>);
+    <span class="pl-c">/*</span>
+<span class="pl-c">      numbers -&gt; 33,2,3,4</span>
+<span class="pl-c">    */</span>
+
+
+    <span class="pl-c">//COMPARANDO ARRAYS</span>
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">Arrays</span>.<span class="pl-en">equals</span>(<span class="pl-s1">varios</span>,<span class="pl-s1">numbers</span>));
+    <span class="pl-c">//false</span>
+
+
+
+    <span class="pl-c">/*Buscando elementos</span>
+<span class="pl-c">    (array,elemento)</span>
+<span class="pl-c">    Nota: è preciso ordenar o array primeiro. Use</span>
+<span class="pl-c">    Arrays.sort</span>
+<span class="pl-c">    Se o retorno for menor que 0 o item não está no array</span>
+<span class="pl-c">    */</span>
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">Arrays</span>.<span class="pl-en">binarySearch</span>(<span class="pl-s1">numbers</span>,<span class="pl-c1">2</span>));
+    <span class="pl-c">//Elemento na posição -&gt; 1</span>
+  }
+}
+</code></pre>
+<h2 id="matrizes">Matrizes</h2>
+<pre><code class="lang-java"><span class="pl-k">import</span> <span class="pl-s1">java</span>.<span class="pl-s1">util</span>.<span class="pl-s1">Arrays</span>; <span class="pl-c">//Importe a biblioteca para utilizar as funções</span>
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">helloWorld</span>{
+  
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>){
+
+    <span class="pl-c">//criado uma matriz</span>
+    <span class="pl-smi">int</span>[][] <span class="pl-s1">matriz</span> = <span class="pl-k">new</span> <span class="pl-smi">int</span>[<span class="pl-c1">2</span>][<span class="pl-c1">3</span>];
+    <span class="pl-smi">int</span>[][] <span class="pl-s1">matriz2</span> = {{<span class="pl-c1">5</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>},{<span class="pl-c1">1</span>,<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>}};
+    
+    <span class="pl-k">for</span> (<span class="pl-smi">int</span> <span class="pl-s1">x</span> = <span class="pl-c1">0</span>; <span class="pl-s1">x</span>&lt;<span class="pl-c1">2</span>; <span class="pl-s1">x</span>++){
+      <span class="pl-s1">Arrays</span>.<span class="pl-en">fill</span>(<span class="pl-s1">matriz</span>[<span class="pl-s1">x</span>],<span class="pl-s1">x</span>+<span class="pl-c1">5</span>);
+    }
+
+    <span class="pl-k">for</span> (<span class="pl-smi">int</span>[] <span class="pl-s1">x</span>: <span class="pl-s1">matriz</span>){
+      <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Array"</span>);
+      <span class="pl-k">for</span> (<span class="pl-smi">int</span> <span class="pl-s1">y</span>: <span class="pl-s1">x</span>){
+        <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">y</span>);
+      }
+    }
+    
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"\nMatriz 2"</span>);
+    <span class="pl-k">for</span> (<span class="pl-smi">int</span>[] <span class="pl-s1">x</span>: <span class="pl-s1">matriz2</span>){
+      <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Outro Array"</span>);
+      <span class="pl-k">for</span> (<span class="pl-smi">int</span> <span class="pl-s1">y</span>: <span class="pl-s1">x</span>){
+        <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">y</span>);
+      }
+    }
+    
+  }
+}
+</code></pre>
+<p><br><br></p>
+
+
+<h1 id="strings">STRINGS</h1>
+<h4 id="neste-modulo-ser-apresentado-alguns-metodos-para-strings-e-fun-es-da-biblioteca-java-lang">Neste modulo será
+  apresentado alguns metodos para Strings e funções da biblioteca java.lang</h4>
+<pre><code class="lang-java"><span class="pl-k">package</span> <span class="pl-s1">Testes</span>;
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">StringMetods</span> {
+
+	<span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>) {
+		<span class="pl-smi">String</span> <span class="pl-s1">text</span> = <span class="pl-s">"\n   Esta e uma string de teste, sera utilizada para alguns testes de metodos   "</span>;
+		<span class="pl-c">//Pegar a letra em determinada posição</span>
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"String em determinada posicão: "</span>+<span class="pl-s1">text</span>.<span class="pl-en">charAt</span>(<span class="pl-c1">3</span>));
+		
+		<span class="pl-c">//Tamanho da String</span>
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Tamanho da String: "</span>+<span class="pl-s1">text</span>.<span class="pl-en">length</span>());
+		
+		<span class="pl-c">//Retirando espaços a esquerda e direita</span>
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Sem espaços: "</span>+<span class="pl-s1">text</span>.<span class="pl-en">trim</span>());
+		<span class="pl-s1">text</span> = <span class="pl-s1">text</span>.<span class="pl-en">trim</span>();
+		
+		<span class="pl-c">//Maiusculo e Minusculo</span>
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Maiusculo: "</span>+<span class="pl-s1">text</span>.<span class="pl-en">toUpperCase</span>());
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Minusculo: "</span>+<span class="pl-s1">text</span>.<span class="pl-en">toLowerCase</span>());
+		
+		
+		<span class="pl-c">//Contem alguma letra, palavra ou trecho de frase</span>
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Contem \"string de teste\": "</span>+<span class="pl-s1">text</span>.<span class="pl-en">contains</span>(<span class="pl-s">"string de teste"</span>));
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Contem \"palavra\": "</span>+<span class="pl-s1">text</span>.<span class="pl-en">contains</span>(<span class="pl-s">"palavra"</span>));
+		
+		
+		<span class="pl-c">//Substituir letra, palavra ou trecho de frase por outra</span>
+		<span class="pl-c">//Nota.: no exemplo abaixo, pode-se verificar que ele substitui até alguns casos </span>
+		<span class="pl-c">//que podem não ser desejados</span>
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Substitui: "</span>+<span class="pl-s1">text</span>.<span class="pl-en">replace</span>(<span class="pl-s">"teste"</span>,<span class="pl-s">"NOVO TESTE"</span>));
+		<span class="pl-c">//para corrigir isso</span>
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Correcao substitui: "</span>+<span class="pl-s1">text</span>.<span class="pl-en">replace</span>(<span class="pl-s">"teste,"</span>,<span class="pl-s">"NOVO TESTE"</span>));
+		
+		
+		<span class="pl-c">//Comparacao de Strings</span>
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"E igual? "</span>+<span class="pl-s1">text</span>.<span class="pl-en">equals</span>(<span class="pl-s">"Uma outra String"</span>));
+		
+		<span class="pl-c">//Comparacao de Strings ignorando maiusculo ou minusculo</span>
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"E igual? "</span>+<span class="pl-s1">text</span>.<span class="pl-en">equalsIgnoreCase</span>(<span class="pl-s">"Esta e uma STRING de TESTE, sera UtiLiZadA para alguns testes de metodos"</span>));
+		
+		
+		<span class="pl-c">//Dividindo String</span>
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Parte da string de 21 a 26: "</span>+<span class="pl-s1">text</span>.<span class="pl-en">substring</span>(<span class="pl-c1">21</span>,<span class="pl-c1">26</span>));
+	}
+}
+</code></pre>
+<h4 id="al-m-dos-metodos-normais-de-uma-string-h-tamb-m-a-classe-string-builder">Além dos metodos normais de uma string,
+  há também a classe STRING BUILDER</h4>
+<h3>STRING BUILDER</h3>
+
+<pre><code class="lang-java"><span class="pl-k">package</span> <span class="pl-s1">Testes</span>;
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">StringMetods</span> {
+
+	<span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>) {
+		<span class="pl-smi">StringBuilder</span> <span class="pl-s1">text</span> = <span class="pl-k">new</span> <span class="pl-smi">StringBuilder</span>(<span class="pl-s">"string de teste"</span>);
+		
+		<span class="pl-c">//Adicionando frase à string no final</span>
+		<span class="pl-s1">text</span>.<span class="pl-en">append</span>(<span class="pl-s">" simples"</span>);
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">text</span>);
+		
+		<span class="pl-c">//Adicionando frase à string em posição especifica</span>
+		<span class="pl-s1">text</span>.<span class="pl-en">insert</span>(<span class="pl-c1">0</span>,<span class="pl-s">"Uma "</span>);
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">text</span>);
+				
+	
+		<span class="pl-c">//revertendo String</span>
+		<span class="pl-s1">text</span>.<span class="pl-en">reverse</span>();
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">text</span>);
+		<span class="pl-s1">text</span>.<span class="pl-en">reverse</span>();
+		
+		<span class="pl-c">//convertendo para tipo String</span>
+		<span class="pl-smi">String</span> <span class="pl-s1">text2</span> = <span class="pl-s1">text</span>.<span class="pl-en">toString</span>();
+		
+		<span class="pl-c">//Convertendo string em array</span>
+		<span class="pl-c">//Neste metodo, é necessario colocar o separador</span>
+		<span class="pl-c">//que vai servir para dividir a string e retorna um array</span>
+		<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">text2</span>.<span class="pl-en">split</span>(<span class="pl-s">" "</span>)[<span class="pl-c1">0</span>]);
+	}
+}
+</code></pre>
+<h3 id="ainda-h-diversos-outros-metodos-neste-modulo-foi-colocado-alguns-dos-mais-usados">Ainda há diversos outros
+  metodos, neste modulo foi colocado alguns dos mais usados</h3>
+<p><br><br></p>
+
+<h1 id="classes-e-metodos">CLASSES E METODOS</h1>
+<h4
+  id="neste-exemplo-vamos-criar-uma-classe-chamada-contabancaria-com-alguns-metodos-e-atributos-e-vamos-importar-para-o-arquivo-principal-assim-como-criar-uma-classe-e-setar-os-atributos-br-nota-br-public-qualquer-classe-pode-acessar-br-protected-apenas-subclasses-podem-acessar-br-private-restrito-a-apenas-a-classe">
+  Neste exemplo, vamos criar uma classe chamada ContaBancaria com alguns metodos e atributos e vamos importar para o
+  arquivo principal, assim como criar uma classe e setar os atributos<br><strong>Nota:</strong><br>Public -&gt; qualquer
+  classe pode acessar<br>Protected -&gt; apenas subclasses podem acessar<br>Private -&gt; restrito a apenas a classe
+</h4>
+<h3 id="arquivo-contabancaria">Arquivo ContaBancaria</h3>
+<pre><code class="lang-java"><span class="pl-k">package</span> <span class="pl-s1">aula</span>; <span class="pl-c">//Nome do pacote atual</span>
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">ContaBancaria</span> { <span class="pl-c">//Classe publica (visivel para todos os outros arquivos)</span>
+  
+  <span class="pl-c">/*------------ Criando variaveis -------------*/</span>
+  <span class="pl-smi">String</span> <span class="pl-s1">cliente</span>;
+  <span class="pl-smi">int</span> <span class="pl-s1">contaNum</span>;
+  <span class="pl-smi">double</span> <span class="pl-s1">saldo</span>;
+  
+  <span class="pl-c">/*----- Criando Variaveis Privadas -------*/</span>
+    <span class="pl-k">private</span> <span class="pl-smi">String</span> <span class="pl-s1">extrato</span>;
+    
+  <span class="pl-c">/*--------- Criando metodos ------------*/</span>
+
+  
+  <span class="pl-c">/* Constructor de classe, para inicializar as variaveis</span>
+<span class="pl-c">   * public ContaBancaria(String cliente, int contaNum, double saldo) {</span>
+<span class="pl-c">    this.cliente = cliente;</span>
+<span class="pl-c">    this.contaNum = contaNum;</span>
+<span class="pl-c">    this.saldo = saldo;</span>
+<span class="pl-c">  }*/</span>
+  
+  
+  <span class="pl-c">/*---- Para variaveis privadas -------*/</span>
+  
+   <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">setExtrato</span>(<span class="pl-smi">String</span> <span class="pl-s1">val</span>){
+        <span class="pl-smi">this</span>.<span class="pl-s1">extrato</span> = <span class="pl-s1">val</span>;
+    }
+    
+    
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">registraExtrato</span>(<span class="pl-smi">double</span> <span class="pl-s1">val</span>){
+    <span class="pl-k">if</span> (<span class="pl-s1">val</span> &gt; <span class="pl-c1">0</span>){
+      <span class="pl-smi">this</span>.<span class="pl-s1">extrato</span> += <span class="pl-s">"Conta "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">contaNum</span>+<span class="pl-s">" - C - "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">saldo</span>+<span class="pl-s">"\n"</span>;
+    }<span class="pl-k">else</span>{
+      <span class="pl-smi">this</span>.<span class="pl-s1">extrato</span> += <span class="pl-s">"Conta "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">contaNum</span>+<span class="pl-s">" - D - "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">saldo</span>+<span class="pl-s">"\n"</span>;
+    }
+  }
+  
+  <span class="pl-k">public</span> <span class="pl-smi">String</span> <span class="pl-en">consultaExtrato</span>(){
+      <span class="pl-k">return</span> <span class="pl-smi">this</span>.<span class="pl-s1">extrato</span>;
+    }
+
+  <span class="pl-k">public</span> <span class="pl-smi">double</span> <span class="pl-en">consultarSaldo</span>(){ <span class="pl-c">//metodo publico (visivel para todos os outros arquivos)</span>
+    <span class="pl-k">return</span> <span class="pl-smi">this</span>.<span class="pl-s1">saldo</span>;
+  }
+  
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">depositar</span>(<span class="pl-smi">double</span> <span class="pl-s1">val</span>){
+    <span class="pl-smi">this</span>.<span class="pl-s1">saldo</span> = <span class="pl-smi">this</span>.<span class="pl-s1">saldo</span> + <span class="pl-s1">val</span>;
+    <span class="pl-smi">this</span>.<span class="pl-en">registraExtrato</span>(<span class="pl-s1">val</span>);
+  }
+  
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">sacar</span>(<span class="pl-smi">double</span> <span class="pl-s1">val</span>){
+    <span class="pl-smi">this</span>.<span class="pl-s1">saldo</span> = <span class="pl-smi">this</span>.<span class="pl-s1">saldo</span> - <span class="pl-s1">val</span>;
+    <span class="pl-smi">this</span>.<span class="pl-en">registraExtrato</span>(-<span class="pl-s1">val</span>);
+  }
+}
+</code></pre>
+<h3 id="arquivo-main">Arquivo main</h3>
+<pre><code class="lang-java"><span class="pl-k">package</span> <span class="pl-s1">aula</span>;
+<span class="pl-k">import</span> <span class="pl-s1">aula</span>.<span class="pl-s1">ContaBancaria</span>;
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">main</span>{ 
+  
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>){
+    
+  <span class="pl-c">/*Inicializando sem constructor*/</span>
+    <span class="pl-smi">ContaBancaria</span> <span class="pl-s1">conta1</span> = <span class="pl-k">new</span> <span class="pl-smi">ContaBancaria</span>();
+    
+    <span class="pl-c">/*Inserindo valores nos atributos classe instanciada*/</span>
+    <span class="pl-s1">conta1</span>.<span class="pl-s1">cliente</span> = <span class="pl-s">"rafa"</span>;
+    <span class="pl-s1">conta1</span>.<span class="pl-s1">contaNum</span> = <span class="pl-c1">36</span>;
+    <span class="pl-s1">conta1</span>.<span class="pl-s1">saldo</span> = <span class="pl-c1">5000.00</span>;
+    
+    
+    <span class="pl-c">/*Inicializando com constructor, não é necessario inserir os valores depois</span>
+<span class="pl-c">     ContaBancaria conta1 = new ContaBancaria("rafa",36,500.00);</span>
+<span class="pl-c">     */</span>
+    <span class="pl-s1">conta1</span>.<span class="pl-en">setExtrato</span>(<span class="pl-s">"Extrato 2023\n------------\n"</span>);
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Cliente: "</span> + <span class="pl-s1">conta1</span>.<span class="pl-s1">cliente</span>);
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Numero da conta "</span> + <span class="pl-s1">conta1</span>.<span class="pl-s1">contaNum</span>);
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Saldo Atual: "</span> + <span class="pl-s1">conta1</span>.<span class="pl-en">consultarSaldo</span>());
+    
+    <span class="pl-c">/*Chamando funções da classe instanciada*/</span>
+    <span class="pl-s1">conta1</span>.<span class="pl-en">depositar</span>(<span class="pl-c1">20</span>);
+    <span class="pl-s1">conta1</span>.<span class="pl-en">sacar</span>(<span class="pl-c1">100</span>);
+    <span class="pl-s1">conta1</span>.<span class="pl-en">sacar</span>(<span class="pl-c1">1000</span>);
+    <span class="pl-s1">conta1</span>.<span class="pl-en">sacar</span>(<span class="pl-c1">30</span>);
+    <span class="pl-s1">conta1</span>.<span class="pl-en">depositar</span>(<span class="pl-c1">200</span>);
+    <span class="pl-s1">conta1</span>.<span class="pl-en">sacar</span>(<span class="pl-c1">852</span>);
+    
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">conta1</span>.<span class="pl-en">consultaExtrato</span>());
+  }
+
+}
+</code></pre>
+<h2 id="utilizando-variaveis-estaticas">Utilizando variaveis estaticas</h2>
+<h4
+  id="variaveis-estaticas-tem-como-funcionalidade-de-serem-variaveis-como-se-fossem-globais-mesmo-que-sejam-instanciadas-diversas-vezes-o-valor-dela-sera-o-mesmo-para-todas-as-instancias-permanecendo-a-ultima-altera-o-do-valor-br-nota-essas-variaveis-tira-a-necessidade-do-this-visto-que-a-variavel-nunca-ser-de-uma-s-instancia-pois-as-variaveis-possuem-um-unico-endere-o-de-mem-ria">
+  Variaveis estaticas tem como funcionalidade, de serem variaveis como se fossem globais, mesmo que sejam instanciadas
+  diversas vezes, o valor dela sera o mesmo para todas as instancias permanecendo a ultima alteração do valor. <br>Nota:
+  essas variaveis tira a necessidade do &#39;this&#39; visto que a variavel nunca será de uma só instancia, pois as
+  variaveis possuem um unico endereço de memória</h4>
+<h3 id="arquivo-contabancaria">Arquivo ContaBancaria</h3>
+<pre><code class="lang-java"><span class="pl-k">package</span> <span class="pl-s1">aula</span>; 
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">ContaBancaria</span> { 
+  
+  <span class="pl-c">/*------------ Criando variaveis estaticas-------------*/</span>
+  <span class="pl-c">/*Ao criar variaveis estaticas, elas podem ser acessadas sem </span>
+<span class="pl-c">   * inicializar/instanciar a classe*/</span>
+  <span class="pl-k">static</span> <span class="pl-smi">String</span> <span class="pl-s1">cliente</span> = <span class="pl-s">"Padrao"</span>;
+  <span class="pl-k">static</span> <span class="pl-smi">int</span> <span class="pl-s1">contaNum</span> = <span class="pl-c1">1</span>;
+  <span class="pl-k">static</span> <span class="pl-smi">double</span> <span class="pl-s1">saldo</span> = <span class="pl-c1">100.00</span>;
+
+  
+  <span class="pl-c">/* Constructor de classe, para inicializar as variaveis*/</span>
+   <span class="pl-k">public</span> <span class="pl-smi">ContaBancaria</span>(<span class="pl-smi">String</span> <span class="pl-s1">cliente_</span>, <span class="pl-smi">int</span> <span class="pl-s1">contaNum_</span>, <span class="pl-smi">double</span> <span class="pl-s1">saldo_</span>) {
+    <span class="pl-s1">cliente</span> = <span class="pl-s1">cliente_</span>;
+    <span class="pl-s1">contaNum</span> = <span class="pl-s1">contaNum_</span>;
+    <span class="pl-s1">saldo</span> = <span class="pl-s1">saldo_</span>;
+  }
+}
+</code></pre>
+<h3 id="arquivo-main">Arquivo main</h3>
+<pre><code class="lang-java"><span class="pl-k">package</span> <span class="pl-s1">aula</span>;
+<span class="pl-k">import</span> <span class="pl-s1">aula</span>.<span class="pl-s1">ContaBancaria</span>;
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">main</span>{ 
+  
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>){
+    
+  <span class="pl-c">/*Utilizando valores estaticos*/</span>
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">printf</span>(<span class="pl-s">"Valores estaticos \nNome: %s\nConta: %d \nSaldo: %.2f\n--------------\n"</span>,<span class="pl-smi">ContaBancaria</span>.<span class="pl-s1">cliente</span>,<span class="pl-smi">ContaBancaria</span>.<span class="pl-s1">contaNum</span>,<span class="pl-smi">ContaBancaria</span>.<span class="pl-s1">saldo</span>);
+    
+    
+    
+    <span class="pl-c">/*Inicializando com constructor, não é necessario inserir os valores depois*/</span>
+     <span class="pl-smi">ContaBancaria</span> <span class="pl-s1">conta1</span> = <span class="pl-k">new</span> <span class="pl-smi">ContaBancaria</span>(<span class="pl-s">"rafa"</span>,<span class="pl-c1">36</span>,<span class="pl-c1">500.00</span>);
+     <span class="pl-smi">ContaBancaria</span> <span class="pl-s1">conta2</span> = <span class="pl-k">new</span> <span class="pl-smi">ContaBancaria</span>(<span class="pl-s">"Rod"</span>,<span class="pl-c1">2</span>,<span class="pl-c1">600.00</span>);
+     
+     <span class="pl-c">//Imprimindo valores conta1</span>
+     <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">printf</span>(<span class="pl-s">"Valores estaticos \nNome: %s\nConta: %d \nSaldo: %.2f\n--------------\n"</span>,<span class="pl-s1">conta1</span>.<span class="pl-s1">cliente</span>,<span class="pl-s1">conta1</span>.<span class="pl-s1">contaNum</span>,<span class="pl-s1">conta1</span>.<span class="pl-s1">saldo</span>);
+     <span class="pl-c">//Ao instanciar uma classe mesmo ao receber novos valores, os atributos </span>
+     <span class="pl-c">//static, alteram em todas as intancias o valor</span>
+     <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">printf</span>(<span class="pl-s">"Valores estaticos \nNome: %s\nConta: %d \nSaldo: %.2f\n--------------\n"</span>,<span class="pl-smi">ContaBancaria</span>.<span class="pl-s1">cliente</span>,<span class="pl-smi">ContaBancaria</span>.<span class="pl-s1">contaNum</span>,<span class="pl-smi">ContaBancaria</span>.<span class="pl-s1">saldo</span>);
+
+    
+  }
+
+  
+}
+</code></pre>
+<p><br><br></p>
+
+
+
+<h1 id="classe-heranca">CLASSE HERANCA</h1>
+<h4
+  id="a-heran-a-em-classes-tem-como-importancia-a-facilidade-assim-como-modulariza-o-de-pre-definir-alguns-atributos-ao-utilizar-heran-a-de-classe-possivel-um-classe-herdar-todos-os-atributos-e-funcoes-do-pai-br-nota-a-classe-filho-apenas-herda-atributos-e-metodos-publicos-ou-protected">
+  A herança em classes tem como importancia a facilidade assim como modularização de pre-definir alguns atributos, ao
+  utilizar herança de classe é possivel um classe herdar todos os atributos e funcoes do pai.<br>Nota: a classe filho
+  apenas herda atributos e metodos publicos ou protected</h4>
+<h3 id="arquivo-animal">Arquivo Animal</h3>
+<pre><code class="lang-java"><span class="pl-k">package</span> <span class="pl-s1">aula</span>;
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">Animal</span> {
+	
+	<span class="pl-k">private</span> <span class="pl-smi">String</span> <span class="pl-s1">tipo</span> = <span class="pl-s">"Sem tipo"</span>; 
+	<span class="pl-k">private</span> <span class="pl-smi">String</span> <span class="pl-s1">vivo</span> = <span class="pl-s">"Vivo"</span>;
+    
+    <span class="pl-smi">Animal</span>(<span class="pl-smi">String</span> <span class="pl-s1">tipo</span>,<span class="pl-smi">String</span> <span class="pl-s1">vivo</span>){
+        <span class="pl-smi">this</span>.<span class="pl-s1">vivo</span> = <span class="pl-s1">vivo</span>;
+        <span class="pl-smi">this</span>.<span class="pl-s1">tipo</span> = <span class="pl-s1">tipo</span>;
+    }
+    
+    <span class="pl-k">protected</span> <span class="pl-smi">void</span> <span class="pl-en">setTipo</span>(<span class="pl-smi">String</span> <span class="pl-s1">tipo</span>) { <span class="pl-c">//protected, pode ser acessado apenas pelos modulos internos</span>
+    	<span class="pl-smi">this</span>.<span class="pl-s1">tipo</span> = <span class="pl-s1">tipo</span>;
+    }
+    <span class="pl-k">protected</span> <span class="pl-smi">void</span> <span class="pl-en">setVivo</span>(<span class="pl-smi">String</span> <span class="pl-s1">vivo</span>) {
+    	<span class="pl-smi">this</span>.<span class="pl-s1">vivo</span> = <span class="pl-s1">vivo</span>;
+    }
+    
+    <span class="pl-k">protected</span> <span class="pl-smi">String</span> <span class="pl-en">getTipo</span>(){
+    	<span class="pl-k">return</span> <span class="pl-smi">this</span>.<span class="pl-s1">tipo</span>;
+    }
+    
+    <span class="pl-k">protected</span> <span class="pl-smi">String</span> <span class="pl-en">getVivo</span>(){
+    	<span class="pl-k">return</span> <span class="pl-smi">this</span>.<span class="pl-s1">vivo</span>;
+    }
+    
+    
+    <span class="pl-k">protected</span> <span class="pl-smi">String</span> <span class="pl-en">status</span>(){ <span class="pl-c">//limitando funcao a apenas os filhos</span>
+        <span class="pl-k">return</span> <span class="pl-s">" encontra-se "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">vivo</span>;
+    }
+}
+</code></pre>
+<h3 id="arquivo-mamifero">Arquivo Mamifero</h3>
+<pre><code class="lang-java"><span class="pl-k">package</span> <span class="pl-s1">aula</span>;
+<span class="pl-k">import</span> <span class="pl-s1">aula</span>.<span class="pl-s1">Animal</span>;
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">Mamifero</span> <span class="pl-k">extends</span> <span class="pl-smi">Animal</span>{
+	<span class="pl-k">private</span> <span class="pl-smi">String</span> <span class="pl-s1">nome</span> = <span class="pl-s">"Nome Novo"</span>; 
+	<span class="pl-k">private</span> <span class="pl-smi">int</span> <span class="pl-s1">patas</span> = <span class="pl-c1">0</span>;
+	
+	<span class="pl-smi">Mamifero</span>(<span class="pl-smi">String</span> <span class="pl-s1">nome</span>, <span class="pl-smi">int</span> <span class="pl-s1">patas</span>, <span class="pl-smi">String</span> <span class="pl-s1">tipo</span>, <span class="pl-smi">String</span> <span class="pl-s1">vivo</span>){
+        <span class="pl-c">/*em classe uma forma de inicializar/chamar o contrutor da classe, </span>
+<span class="pl-c">        é usando a palavra chave 'super' que funciona como o this</span>
+<span class="pl-c">        porém para referenciar a classe Pai*/</span>
+        <span class="pl-en">super</span>(<span class="pl-s1">tipo</span>,<span class="pl-s1">vivo</span>); 
+        <span class="pl-smi">this</span>.<span class="pl-s1">nome</span> = <span class="pl-s1">nome</span>;
+        <span class="pl-smi">this</span>.<span class="pl-s1">patas</span> = <span class="pl-s1">patas</span>;
+        <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Mamifero Criado"</span>);
+        
+    }
+	
+	<span class="pl-k">protected</span> <span class="pl-smi">void</span> <span class="pl-en">setNome</span>(<span class="pl-smi">String</span> <span class="pl-s1">nome</span>) {
+    	<span class="pl-smi">this</span>.<span class="pl-s1">nome</span> = <span class="pl-s1">nome</span>;
+    }
+    <span class="pl-k">protected</span> <span class="pl-smi">void</span> <span class="pl-en">setPatas</span>(<span class="pl-smi">int</span> <span class="pl-s1">patas</span>) {
+    	<span class="pl-smi">this</span>.<span class="pl-s1">patas</span> = <span class="pl-s1">patas</span>;
+    }
+    
+    <span class="pl-k">protected</span> <span class="pl-smi">String</span> <span class="pl-en">getNome</span>(){
+    	<span class="pl-k">return</span> <span class="pl-smi">this</span>.<span class="pl-s1">nome</span>;
+    }
+    
+    <span class="pl-k">protected</span> <span class="pl-smi">int</span> <span class="pl-en">getPatas</span>(){
+    	<span class="pl-k">return</span> <span class="pl-smi">this</span>.<span class="pl-s1">patas</span>;
+    }
+
+    <span class="pl-k">protected</span> <span class="pl-smi">String</span> <span class="pl-en">status</span>(){
+    	<span class="pl-k">if</span> (<span class="pl-en">super</span>.<span class="pl-en">getVivo</span>() == <span class="pl-s">"Morto"</span>) {
+    		<span class="pl-c">/*Utilizando funcao do pai, poderia ser usada a variavel super.vivo</span>
+<span class="pl-c">    		 * para verificar , se a variavel fosse protected</span>
+<span class="pl-c">    		 */</span>
+    		<span class="pl-k">return</span> <span class="pl-s">"O "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">nome</span>+<span class="pl-s">" tipo "</span> +<span class="pl-en">super</span>.<span class="pl-en">getTipo</span>()+<span class="pl-en">super</span>.<span class="pl-en">status</span>()+<span class="pl-s">" =(\n\t Meus pesames pelo "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">nome</span>;
+    	}
+        <span class="pl-k">return</span> <span class="pl-s">"O "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">nome</span>+<span class="pl-s">" tipo "</span> +<span class="pl-smi">this</span>.<span class="pl-en">getTipo</span>()+<span class="pl-en">super</span>.<span class="pl-en">status</span>()+<span class="pl-s">"\n"</span>; <span class="pl-c">//utilizando super para chamar o metodo do pai</span>
+    }
+}
+</code></pre>
+<h3 id="arquivo-main">Arquivo Main</h3>
+<pre><code class="lang-java"><span class="pl-k">package</span> <span class="pl-s1">aula</span>;
+<span class="pl-k">import</span> <span class="pl-s1">aula</span>.<span class="pl-s1">Mamifero</span>;
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">main</span>{ 
+  
+	<span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>){
+		
+	<span class="pl-smi">aula</span>.<span class="pl-smi">Mamifero</span> <span class="pl-s1">cachorro</span> = <span class="pl-k">new</span> <span class="pl-smi">aula</span>.<span class="pl-smi">Mamifero</span>(<span class="pl-s">"Spike"</span>, <span class="pl-c1">4</span>, <span class="pl-s">"cachorro"</span>, <span class="pl-s">"Vivo"</span>);
+	
+	<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">cachorro</span>.<span class="pl-en">status</span>());
+	<span class="pl-s1">cachorro</span>.<span class="pl-en">setVivo</span>(<span class="pl-s">"Morto"</span>);
+	<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">cachorro</span>.<span class="pl-en">status</span>());
+	
+	<span class="pl-c">//É possível acessar a partir de uma instancia, as funções do pai</span>
+	<span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"\n"</span>+<span class="pl-s1">cachorro</span>.<span class="pl-en">getTipo</span>()); 
+  }
+
+  
+}
+</code></pre>
+<p><br><br></p>
+
+
+
+<h1 id="interface">INTERFACE</h1>
+<h4
+  id="interfaces-nada-mais-s-o-que-um-documento-onde-fornece-instru-es-asinatura-de-metodos-de-como-ser-criada-a-classe-ao-criar-uma-classe-recebendo-uma-interface-como-heran-a-essa-classe-obrigada-a-criar-os-metodos-da-interface-al-m-disso-poss-vel-importar-multiplas-interfaces-em-uma-classe-ao-mesmo-tempo-que-uma-classe-n-o-pode-receber-por-heran-a-multiplas-classes-br-br-com-base-nisso-utilizaremos-algumas-classes-e-metodos-de-exemplos-anteriores-">
+  Interfaces nada mais são que um documento onde fornece &quot;instruções&quot;/&quot;asinatura de metodos&quot; de como
+  será criada a classe, ao criar uma classe recebendo uma interface como herança essa classe é obrigada a criar os
+  metodos da interface. Além disso, é possível importar multiplas interfaces em uma classe, ao mesmo tempo que uma
+  classe não pode receber por herança, multiplas classes.<br><br>Com base nisso, utilizaremos algumas classes e metodos
+  de exemplos anteriores.</h4>
+<h3 id="arquivo-disciplina">Arquivo Disciplina</h3>
+<pre><code class="lang-java"><span class="pl-k">package</span> <span class="pl-s1">Interface</span>;
+
+<span class="pl-c">//Use public interface -&gt; para definir uma interface</span>
+<span class="pl-k">public</span> <span class="pl-k">interface</span> <span class="pl-smi">Disciplina</span> { 
+  
+  <span class="pl-c">/*Caso deseje definir alguma variavel, tenha certeza de</span>
+<span class="pl-c">  dar um valor inicial, isso exclui a necessidade de </span>
+<span class="pl-c">  declarar variaveis na classe ao implementar a interface,</span>
+<span class="pl-c">  lembrando que as variaveis não podem ser modificadas*/</span>
+  <span class="pl-k">public</span> <span class="pl-smi">String</span> <span class="pl-s1">professor</span> = <span class="pl-s">"Sem Professor"</span>;
+  <span class="pl-k">public</span> <span class="pl-smi">String</span> <span class="pl-s1">sala</span> = <span class="pl-s">"A definir"</span>;
+  <span class="pl-k">public</span> <span class="pl-smi">Boolean</span> <span class="pl-s1">obrigatoria</span> = <span class="pl-c1">true</span>;
+  
+
+  <span class="pl-c">//Definindo metodos de interface</span>
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">setNome</span>(<span class="pl-smi">String</span> <span class="pl-s1">nome</span>);
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">setProfessor</span>(<span class="pl-smi">String</span> <span class="pl-s1">professor</span>);
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">setDuracao</span>(<span class="pl-smi">int</span> <span class="pl-s1">duracao</span>);
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">setSala</span>(<span class="pl-smi">String</span> <span class="pl-s1">sala</span>);
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">setObrigatoria</span>(<span class="pl-smi">Boolean</span> <span class="pl-s1">obrigatoria</span>);
+  <span class="pl-k">public</span> <span class="pl-smi">String</span> <span class="pl-en">getAll</span>();
+  
+}
+</code></pre>
+<h3 id="arquivo-java">Arquivo Java</h3>
+<pre><code class="lang-java"><span class="pl-k">package</span> <span class="pl-s1">Interface</span>;
+<span class="pl-k">import</span> <span class="pl-smi">Interface</span>.<span class="pl-s1">Disciplina</span>;
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">Java</span> <span class="pl-k">implements</span> <span class="pl-smi">Disciplina</span>{ 
+  <span class="pl-k">private</span> <span class="pl-smi">String</span> <span class="pl-s1">nome</span>;
+  <span class="pl-k">private</span> <span class="pl-smi">String</span> <span class="pl-s1">professor</span> = <span class="pl-smi">Disciplina</span>.<span class="pl-s1">professor</span>; <span class="pl-c">//recebendo valores definidos em disciplina</span>
+  <span class="pl-k">private</span> <span class="pl-smi">int</span> <span class="pl-s1">duracaoMeses</span>;
+  <span class="pl-k">private</span> <span class="pl-smi">String</span> <span class="pl-s1">sala</span> = <span class="pl-smi">Disciplina</span>.<span class="pl-s1">sala</span>;
+  <span class="pl-k">private</span> <span class="pl-smi">Boolean</span> <span class="pl-s1">obrigatoria</span> = <span class="pl-smi">Disciplina</span>.<span class="pl-s1">obrigatoria</span>;
+  
+  <span class="pl-smi">Java</span>(<span class="pl-smi">String</span> <span class="pl-s1">nome</span>, <span class="pl-smi">int</span> <span class="pl-s1">duracao</span>){ <span class="pl-c">//constructor basico</span>
+    <span class="pl-smi">this</span>.<span class="pl-s1">nome</span> = <span class="pl-s1">nome</span>;
+    <span class="pl-smi">this</span>.<span class="pl-s1">duracaoMeses</span> = <span class="pl-s1">duracao</span>;
+  }
+  <span class="pl-smi">Java</span>(<span class="pl-smi">String</span> <span class="pl-s1">nome</span>,<span class="pl-smi">String</span> <span class="pl-s1">professor</span>, <span class="pl-smi">int</span> <span class="pl-s1">duracao</span>,<span class="pl-smi">String</span> <span class="pl-s1">sala</span>, <span class="pl-smi">Boolean</span> <span class="pl-s1">obrigatoria</span>){ <span class="pl-c">//constructor completo</span>
+  <span class="pl-smi">this</span>.<span class="pl-s1">nome</span> = <span class="pl-s1">nome</span>;
+    <span class="pl-smi">this</span>.<span class="pl-s1">professor</span> = <span class="pl-s1">professor</span>;
+    <span class="pl-smi">this</span>.<span class="pl-s1">duracaoMeses</span> = <span class="pl-s1">duracao</span>;
+    <span class="pl-smi">this</span>.<span class="pl-s1">sala</span> = <span class="pl-s1">sala</span>;
+    <span class="pl-smi">this</span>.<span class="pl-s1">obrigatoria</span> = <span class="pl-s1">obrigatoria</span>;
+  }
+
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">setNome</span>(<span class="pl-smi">String</span> <span class="pl-s1">nome</span>){
+    <span class="pl-smi">this</span>.<span class="pl-s1">nome</span> = <span class="pl-s1">nome</span>;
+  }
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">setProfessor</span>(<span class="pl-smi">String</span> <span class="pl-s1">professor</span>){
+    <span class="pl-smi">this</span>.<span class="pl-s1">professor</span> = <span class="pl-s1">professor</span>;
+  }
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">setDuracao</span>(<span class="pl-smi">int</span> <span class="pl-s1">duracao</span>){
+    <span class="pl-smi">this</span>.<span class="pl-s1">duracaoMeses</span> = <span class="pl-s1">duracao</span>;
+  }
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">setSala</span>(<span class="pl-smi">String</span> <span class="pl-s1">sala</span>){
+    <span class="pl-smi">this</span>.<span class="pl-s1">sala</span> = <span class="pl-s1">sala</span>;
+  }
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">setObrigatoria</span>(<span class="pl-smi">Boolean</span> <span class="pl-s1">obrigatoria</span>){
+    <span class="pl-smi">this</span>.<span class="pl-s1">obrigatoria</span> = <span class="pl-s1">obrigatoria</span>;
+  }
+
+  <span class="pl-k">public</span> <span class="pl-smi">String</span> <span class="pl-en">getAll</span>() {
+    <span class="pl-k">return</span> <span class="pl-s">"DISCIPLINA \n---------\nNome: "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">nome</span>+
+        <span class="pl-s">"\nProfessor: "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">professor</span>+
+        <span class="pl-s">"\nDuracao: "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">duracaoMeses</span>+<span class="pl-s">" meses"</span>+
+        <span class="pl-s">"\nSala: "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">sala</span>+
+        <span class="pl-s">"\nObrigatoria: "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">obrigatoria</span>+
+        <span class="pl-s">"\n---------\n\n"</span>;
+  }
+}
+</code></pre>
+<h3 id="arquivo-main">Arquivo main</h3>
+<pre><code class="lang-java"><span class="pl-k">package</span> <span class="pl-s1">Interface</span>;
+<span class="pl-k">import</span> <span class="pl-smi">Interface</span>.<span class="pl-s1">Java</span>;
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">Main</span>{ 
+
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>){
+    <span class="pl-smi">Java</span> <span class="pl-s1">javaBasics</span> = <span class="pl-k">new</span> <span class="pl-smi">Java</span>(<span class="pl-s">"Java Basics I"</span>,<span class="pl-c1">5</span>);
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">javaBasics</span>.<span class="pl-en">getAll</span>());
+  }
+}
+
+
+<span class="pl-c">/*</span>
+<span class="pl-c">SAIDA</span>
+<span class="pl-c">DISCIPLINA </span>
+<span class="pl-c">---------</span>
+<span class="pl-c">Nome: Java Basics I</span>
+<span class="pl-c">Professor: Sem Professor</span>
+<span class="pl-c">Duracao: 5 meses</span>
+<span class="pl-c">Sala: A definir</span>
+<span class="pl-c">Obrigatoria: true</span>
+<span class="pl-c">---------</span>
+<span class="pl-c">*/</span>
+</code></pre>
+<p><br><br></p>
+
+
+
+
+<h1 id="polimorfismo-override-and-overload">POLIMORFISMO - OVERRIDE AND OVERLOAD</h1>
+<h4
+  id="os-conceitos-de-overload-e-override-se-d-o-pela-diferencia-o-de-parametros-e-nome-de-metodos-das-classes-exemplo-">
+  Os conceitos de overload e override se dão pela diferenciação de parametros e nome de metodos das classes, Exemplo:
+</h4>
+<h4
+  id="caso-uma-classe-herdando-a-outra-queira-ter-uma-metodos-de-mesmo-nome-mas-com-fun-es-diferentes-substituindo-a-fun-o-da-superclasse-basta-usar-o-metodo-override-para-sobreescrever-a-fun-o-logo-ao-chamar-a-fun-o-o-metodo-que-ser-considerado-ser-da-subclasse">
+  Caso uma classe herdando a outra, queira ter metodos de mesmo nome mas com funções diferentes substituindo a
+  função da superclasse, basta usar o metodo OVERRIDE para sobreescrever a função, logo ao chamar a função, o metodo que
+  será considerado, será da subclasse</h4>
+<h4
+  id="caso-uma-classe-deseja-ter-metodos-com-mesmos-nomes-mas-com-fun-es-diferentes-basta-que-elas-tenham-param-tros-diferentes-seja-pela-quantidade-ou-tipo-dos-mesmos-assim-o-java-priorizar-a-fun-o-com-aquela-assinatura-especifica">
+  Caso uma classe deseja ter metodos com mesmos nomes, mas com funções diferentes, basta que elas tenham paramêtros
+  diferentes, seja pela quantidade ou tipo, assim o java priorizará a função com aquela
+  &quot;assinatura&quot; especifica</h4>
+<h3 id="arquivo-forma2d">Arquivo Forma2D</h3>
+<pre><code class="lang-java">
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">Forma2D</span> {
+    <span class="pl-k">protected</span> <span class="pl-smi">float</span> <span class="pl-s1">x</span>;
+    <span class="pl-k">protected</span> <span class="pl-smi">float</span> <span class="pl-s1">y</span>;
+    
+    <span class="pl-k">public</span> <span class="pl-smi">float</span> <span class="pl-en">calculaArea</span>() {
+        <span class="pl-k">return</span> <span class="pl-smi">this</span>.<span class="pl-s1">x</span>*<span class="pl-smi">this</span>.<span class="pl-s1">y</span>;
+    }
+}
+</code></pre>
+<h3 id="arquivo-triangulo">Arquivo Triangulo</h3>
+<pre><code class="lang-java">
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">Triangulo</span> <span class="pl-k">extends</span> <span class="pl-smi">Forma2D</span>{
+
+    <span class="pl-c1">@</span><span class="pl-c1">Override</span> <span class="pl-c">//Substituindo função da superclasse</span>
+    <span class="pl-k">public</span> <span class="pl-smi">float</span> <span class="pl-en">calculaArea</span>() { <span class="pl-c">//reescrevendo um metodo com mesmo nome, mas função diferente da superclasse</span>
+        <span class="pl-k">return</span> (<span class="pl-s1">x</span>*<span class="pl-s1">y</span>)/<span class="pl-c1">2</span>;
+    }
+    
+    <span class="pl-k">public</span> <span class="pl-smi">String</span> <span class="pl-en">mudaLados</span>(<span class="pl-smi">int</span> <span class="pl-s1">multiplicador</span>) { <span class="pl-c">//criando função com um parametro</span>
+        <span class="pl-smi">this</span>.<span class="pl-s1">x</span> *= <span class="pl-s1">multiplicador</span>;
+        <span class="pl-smi">this</span>.<span class="pl-s1">y</span> *= <span class="pl-s1">multiplicador</span>;
+        <span class="pl-k">return</span> <span class="pl-s">"Lados Alterados: "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">x</span>+<span class="pl-s">","</span>+<span class="pl-smi">this</span>.<span class="pl-s1">y</span>;
+    }
+    
+
+    <span class="pl-c">//criando função com mesmo nome mas com um parametros diferentes</span>
+    <span class="pl-k">public</span> <span class="pl-smi">String</span> <span class="pl-en">mudaLados</span>(<span class="pl-smi">float</span> <span class="pl-s1">x</span>, <span class="pl-smi">float</span> <span class="pl-s1">y</span>) {
+        <span class="pl-smi">this</span>.<span class="pl-s1">x</span> = <span class="pl-s1">x</span>;
+        <span class="pl-smi">this</span>.<span class="pl-s1">y</span> = <span class="pl-s1">y</span>;
+        <span class="pl-k">return</span> <span class="pl-s">"Lados Alterados: "</span>+<span class="pl-smi">this</span>.<span class="pl-s1">x</span>+<span class="pl-s">","</span>+<span class="pl-smi">this</span>.<span class="pl-s1">y</span>;
+    }
+}
+</code></pre>
+<h3 id="arquivo-testearea">Arquivo TesteArea</h3>
+<pre><code class="lang-java">
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">TesteArea</span> {
+
+    <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>) {
+        <span class="pl-smi">Triangulo</span> <span class="pl-s1">triangulo</span> = <span class="pl-k">new</span> <span class="pl-smi">Triangulo</span>();
+        
+        
+        <span class="pl-s1">triangulo</span>.<span class="pl-s1">x</span> = <span class="pl-c1">5</span>;
+        <span class="pl-s1">triangulo</span>.<span class="pl-s1">y</span> = <span class="pl-c1">5</span>;
+        
+        
+        <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"Area: "</span>+<span class="pl-s1">triangulo</span>.<span class="pl-en">calculaArea</span>());
+        <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">triangulo</span>.<span class="pl-en">mudaLados</span>(<span class="pl-c1">2</span>));
+        <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">triangulo</span>.<span class="pl-en">mudaLados</span>(<span class="pl-c1">8</span>,<span class="pl-c1">6</span>));
+        
+
+        <span class="pl-c">/*SAIDA</span>
+<span class="pl-c">        </span>
+<span class="pl-c">        Area: 12.5</span>
+<span class="pl-c">        Lados Alterados: 10.0,10.0</span>
+<span class="pl-c">        Lados Alterados: 8.0,6.0</span>
+<span class="pl-c">        */</span>
+        
+
+    }
+
+}
+</code></pre>
+<p><br><br></p>
+
+
+
+
+<h1 id="passagem-por-referência">PASSAGEM POR REFERÊNCIA</h1>
+<h4
+  id="como-poss-vel-verificar-o-java-n-o-cont-m-o-conceito-de-ponteiros-assim-como-c-e-a-passagem-de-valores-para-uma-fun-o-limitada-ao-escopo-br-ex-">
+  Como é possível verificar, o Java não contém o conceito de ponteiros assim como C++, e a passagem de valores para uma
+  função é limitada ao escopo. <br>Ex.:</h4>
+<pre><code class="lang-java"><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">Main</span>{ 
+  
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>){
+    <span class="pl-smi">int</span> <span class="pl-s1">variavel</span> = <span class="pl-c1">0</span>;
+    <span class="pl-en">soma1</span>(<span class="pl-s1">variavel</span>);
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">variavel</span>);
+    <span class="pl-c">/*</span>
+<span class="pl-c">      SAIDA -&gt; 0</span>
+<span class="pl-c">    */</span>
+  }
+  
+  <span class="pl-k">public</span> <span class="pl-smi">soma1</span>(<span class="pl-smi">int</span> <span class="pl-s1">variavel</span>){
+    <span class="pl-s1">variavel</span> += <span class="pl-c1">1</span>;
+  }
+}
+</code></pre>
+<h4
+  id="por-m-h-uma-forma-de-contornar-isso-que-atrav-s-de-arrays-ao-declarar-um-array-poss-vel-passar-a-variavel-por-refer-ncia-dentro-da-fun-o-ligando-o-mesmo-espa-o-de-mem-ria-">
+  Porém há uma forma de contornar isso, que é através de arrays, ao declarar um array, é possível passar a variavel por
+  referência dentro da função, ligando o mesmo espaço de memória.</h4>
+<pre><code class="lang-java"><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">Main</span>{ 
+  
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(<span class="pl-smi">String</span>[] <span class="pl-s1">args</span>){
+    <span class="pl-smi">int</span> <span class="pl-s1">variavel</span> = <span class="pl-c1">0</span>;
+    <span class="pl-smi">int</span> []<span class="pl-s1">variavel2</span> = {<span class="pl-c1">0</span>};
+    <span class="pl-en">soma1</span>(<span class="pl-s1">variavel</span>);
+
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">variavel</span>);
+    <span class="pl-c">/*</span>
+<span class="pl-c">      SAIDA -&gt; 0</span>
+<span class="pl-c">    */</span>
+    <span class="pl-en">soma1</span>(<span class="pl-s1">variavel2</span>);
+    <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">variavel2</span>[<span class="pl-c1">0</span>]);
+    <span class="pl-c">/*</span>
+<span class="pl-c">      SAIDA -&gt; 1</span>
+<span class="pl-c">    */</span>
+  }
+  
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">soma1</span>(<span class="pl-smi">int</span> <span class="pl-s1">variavel</span>){
+      <span class="pl-s1">variavel</span> += <span class="pl-c1">1</span>;
+    }
+
+  <span class="pl-c">/*Mesmo criando a funções de mesmos nomes, </span>
+<span class="pl-c">  elas tem assinaturas diferentes de acordo com seus parâmetros*/</span>
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">soma1</span>(<span class="pl-smi">int</span>[] <span class="pl-s1">variavel</span>){
+        <span class="pl-s1">variavel</span>[<span class="pl-c1">0</span>] += <span class="pl-c1">1</span>;
+    }
+}
+</code></pre>
+<p><br><br></p>
+
+
+<h1 id="arraylist">ARRAYLIST</h1>
+<h4
+  id="arraylist-uma-classe-objeto-que-funciona-como-um-array-por-m-com-m-todos-avan-ados-tornando-mais-facil-e-pratico-uma-das-vantagens-criar-um-array-dinamico-onde-o-tamanho-pode-variar-facilmente-abaixo-a-cria-o-e-metodos-">
+  ArrayList é uma classe/objeto que funciona como um array, porém com métodos avançados tornando mais facil e pratico,
+  uma das vantagens é criar um array dinamico, onde o tamanho pode variar facilmente, abaixo a criação e metodos:</h4>
+<h2 id="criando-arrays-e-apresentando-metodos">Criando arrays e apresentando metodos</h2>
+<pre><code class="lang-java">
+ <span class="pl-k">import</span> <span class="pl-s1">java</span>.<span class="pl-s1">util</span>.<span class="pl-s1">ArrayList</span>; <span class="pl-c">//importando arrayList</span>
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">ArrayListExample</span> {
+    <span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">Main</span>(){
+        <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(){
+
+            <span class="pl-smi">ArrayList</span>&lt;<span class="pl-smi">String</span>&gt; <span class="pl-s1">animais</span> = <span class="pl-k">new</span> <span class="pl-smi">ArrayList</span>&lt;&gt;();
+
+            <span class="pl-c">/* Caso queira criar com posições use</span>
+<span class="pl-c">            ArrayList&lt;String&gt; animais = new ArrayList&lt;&gt;(100);</span>
+<span class="pl-c">            */</span>
+
+            <span class="pl-c">//Adicionando valores</span>
+            <span class="pl-s1">animais</span>.<span class="pl-en">add</span>(<span class="pl-s">"galo"</span>);
+            <span class="pl-s1">animais</span>.<span class="pl-en">add</span>(<span class="pl-s">"cavalo"</span>);
+            <span class="pl-s1">animais</span>.<span class="pl-en">add</span>(<span class="pl-s">"gato"</span>);
+            <span class="pl-s1">animais</span>.<span class="pl-en">add</span>(<span class="pl-s">"cachorro"</span>);
+            <span class="pl-s1">animais</span>.<span class="pl-en">add</span>(<span class="pl-s">"peixe"</span>);
+
+            <span class="pl-c">/*Acessando elemento especifico</span>
+<span class="pl-c">            dentro do get coloque o indice desejado</span>
+<span class="pl-c">            */</span>
+            <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">animais</span>.<span class="pl-en">get</span>(<span class="pl-c1">0</span>));
+
+
+            <span class="pl-c">/*dentro da função coloque o objeto desejado</span>
+<span class="pl-c">            e como retorno é recebido o indice*/</span>
+            <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">animais</span>.<span class="pl-en">indexOf</span>(<span class="pl-s">"cachorro"</span>));
+
+
+            <span class="pl-c">/*dentro da função coloque o objeto ou indice</span>
+<span class="pl-c">            desejado e ele será apagado*/</span>
+            <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">animais</span>.<span class="pl-en">remove</span>(<span class="pl-s">"cavalo"</span>));
+            <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">animais</span>.<span class="pl-en">get</span>(<span class="pl-c1">1</span>));<span class="pl-c">//gato agora é indice 1</span>
+
+
+            <span class="pl-c">//Tamanho do array</span>
+            <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">animais</span>.<span class="pl-en">size</span>());
+
+
+            <span class="pl-c">//Limpando posições inutilizadas do array</span>
+            <span class="pl-s1">animais</span>.<span class="pl-en">trimToSize</span>();
+            <span class="pl-c">//Limpando array</span>
+            <span class="pl-s1">animais</span>.<span class="pl-en">clear</span>();
+
+          <span class="pl-c">/*ERRO pois não há mais elementos</span>
+<span class="pl-c">            System.out.println(animais.get(0));*/</span>
+        }
+    }
+</code></pre>
+<h1 id="tryandcatch">Try And Catch</h1>
+<h4
+  id="assim-como-em-praticamente-todas-as-linguagens-de-programa-o-java-cont-m-tratamento-de-erros-ao-dar-erro-em-um-programa-esse-tratamento-possibilita-que-o-programa-n-o-seja-interrompido-e-continue-executando-de-forma-normal-neste-modulo-ser-apresentada-todas-as-formas-de-tratamento-">
+  Assim como em praticamente todas as linguagens de programação, Java contém tratamento de erros. Ao dar erro em um
+  programa esse tratamento possibilita que o programa não seja interrompido e continue executando de forma normal, neste
+  modulo será apresentada todas as formas de tratamento:</h4>
+<h4 id="try-tente-fazer-x-br-">Try -&gt; tente fazer X<br></h4>
+<h4 id="catch-se-x-der-erro-execute-meu-codigo-br-">Catch -&gt; Se X der erro, execute meu codigo<br></h4>
+<h4 id="finally-n-o-importa-x-execute-meu-codigo-br-">Finally -&gt; Não importa X, execute meu codigo<br></h4>
+<h4 id="trow-lance-essa-exce-o-na-tela-br-">Trow -&gt; Lance essa exceção na tela<br></h4>
+
+<h2 id="criando-arrays-e-apresentando-metodos">Criando arrays e apresentando metodos</h2>
+<pre><code class="lang-java">
+<span class="pl-k">import</span> <span class="pl-s1">java</span>.<span class="pl-s1">util</span>.<span class="pl-s1">ArrayList</span>; <span class="pl-c">//importando arrayList</span>
+    <span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">TryCatch</span>(){
+        <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">void</span> <span class="pl-en">main</span>(){
+
+            <span class="pl-smi">ArrayList</span>&lt;<span class="pl-smi">String</span>&gt; <span class="pl-s1">animais</span> = <span class="pl-k">new</span> <span class="pl-smi">ArrayList</span>&lt;&gt;();
+
+            <span class="pl-s1">animais</span>.<span class="pl-en">add</span>(<span class="pl-s">"galo"</span>);
+            <span class="pl-s1">animais</span>.<span class="pl-en">add</span>(<span class="pl-s">"cavalo"</span>);
+            <span class="pl-s1">animais</span>.<span class="pl-en">add</span>(<span class="pl-s">"gato"</span>);
+
+
+            <span class="pl-k">try</span>{
+                <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">animais</span>.<span class="pl-en">get</span>(<span class="pl-c1">5</span>));
+            }<span class="pl-k">catch</span>(<span class="pl-smi">Exception</span> <span class="pl-s1">e</span>){
+                <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"ERRO DE INDICE"</span>);
+                <span class="pl-c">//Mostrando erro</span>
+                <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s1">e</span>.<span class="pl-en">getMessage</span>());
+            }<span class="pl-k">finally</span>{
+                <span class="pl-smi">System</span>.<span class="pl-s1">out</span>.<span class="pl-en">println</span>(<span class="pl-s">"FIM"</span>);
+            }
+            
+
+            <span class="pl-c">/*use trow.SUAEXCECAO e dentro a mensagem do erro para lança-lo</span>
+<span class="pl-c">            para o Trow é comum usa-lo com alguma condição, normalmente</span>
+<span class="pl-c">            um if onde ele iclui a exceção desejada*/</span>
+            <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-smi">IllegalArgumentException</span>(<span class="pl-s">"ERRO DE ARGUMENTO"</span>);
+        }
+    }
+</code></pre>
+<p><br><br></p>
+
+
+<h1 id="referencias">REFERENCIAS</h1>
+<p><a href="https://www.youtube.com/watch?v=X8AnVQ-GqLU&amp;list=PLx4x_zx8csUjFC5WWjoNUL7LOOD7LCKRW">PLAYLIST JAVA
+    CFB</a></p>
+    {% endverbatim %}

@@ -1,0 +1,1216 @@
+{% verbatim %}
+<h1 id="javascript-basico-ao-avan-ado">JavaScript Basico ao Avançado</h1>
+<div class='imgModulo' style="background-image: url('/static/documentations/icons/javaScript.png');"></div>
+<h2 id="indice">INDICE</h2>
+
+<ul>
+  <h3 id="js-basico">JS BASICO</h3>
+  <li><strong><a href="#variaveis">Variaveis</a></strong></li>
+  <li><strong><a href="#tipos-de-dados">Tipos de Dados</a></strong></li>
+  <li><strong><a href="#impressão">Impressão</a></strong></li>
+  <li><strong><a href="#array-basico">Array Básico</a></strong></li>
+  <li><strong><a href="#objetos">Objetos</a></strong></li>
+  <li><strong><a href="#funções">Funções</a></strong></li>
+  <li><strong><a href="#classes">Classes</a></strong></li>
+  <li><strong><a href="#try-and-catch">Exceções - Try And Catch</a></strong></li>
+  <li><strong><a href="#forIn">For/in</a></strong></li>
+  <h3 id="js-aprofundando">JS APROFUNDANDO</h3>
+  <li><strong><a href="#aprofundando-funções">Funções</a></strong></li>
+  <li><strong><a href="#json">Json</a></strong></li>
+  <li><strong><a href="#aprofundando-objetos">Objetos</a></strong></li>
+  <li><strong><a href="#aprofundando-classe">Classe</a></strong></li>
+  <li><strong><a href="#aprofundando-array">Array</a></strong></li>
+</ul>
+
+</ul>
+<h2 id="obs-">Obs.:</h2>
+<h4
+  id="os-programas-contem-comentarios-sobre-o-assunto-ele-pode-ser-executado-para-melhor-entendimento-use-console-log-para-ver-as-saidas-e-altera-es-">
+  Os programas contem comentarios sobre o assunto, ele pode ser executado para melhor entendimento, use
+  &#39;console.log()&#39; para ver as saidas e alterações.</h4>
+<h1 id="variaveis">VARIAVEIS</h1>
+<h2 id="var">VAR</h2>
+<h4 id="o-var-pode-ser-chamada-fora-do-escopo-de-outras-fun-es-desde-que-ela-seja-usada-depois-da-sua-declara-o-">o var
+  pode ser chamada fora do escopo de outras funções, desde que ela seja usada depois da sua declaração.</h4>
+<h4 id="exemplo-">EXEMPLO:</h4>
+<pre><code class="lang-js">   <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">temp</span><span class="pl-kos">)</span> <span class="pl-c">//imprime indefined (variavel não existe ainda), mas não da erro</span>
+
+    <span class="pl-kos">{</span>
+        <span class="pl-k">var</span> <span class="pl-s1">temp</span> <span class="pl-c1">=</span> <span class="pl-c1">10</span><span class="pl-kos">;</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">temp</span><span class="pl-kos">)</span> <span class="pl-c">//imprime 10</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">temp</span><span class="pl-kos">)</span> <span class="pl-c">//imprime 10</span>
+</code></pre>
+<h2 id="let">LET</h2>
+<h4 id="o-let-pode-ser-chamada-apenas-dentro-do-escopo-da-fun-o-a-mais-recomendada-para-usar-">o let pode ser chamada
+  apenas dentro do escopo da função. É a mais recomendada para usar.</h4>
+<h4 id="exemplo-">EXEMPLO:</h4>
+<pre><code class="lang-js">    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">temp</span><span class="pl-kos">)</span> <span class="pl-c">//retorna erro 'temp is not defined'</span>
+
+    <span class="pl-kos">{</span>
+        <span class="pl-k">let</span> <span class="pl-s1">temp</span> <span class="pl-c1">=</span> <span class="pl-c1">10</span><span class="pl-kos">;</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">temp</span><span class="pl-kos">)</span> <span class="pl-c">//imprime 10</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">temp</span><span class="pl-kos">)</span> <span class="pl-c">//retorna erro 'temp is not defined'</span>
+</code></pre>
+<h2 id="const">CONST</h2>
+<h4 id="-semelhante-ao-let-por-m-ele-n-o-aceita-novos-valores">É semelhante ao let, porém ele não aceita novos valores
+</h4>
+<pre><code class="lang-js">   <span class="pl-k">const</span> <span class="pl-s1">temp</span> <span class="pl-c1">=</span> <span class="pl-c1">10</span><span class="pl-kos">;</span>
+    <span class="pl-s1">temp</span> <span class="pl-c1">=</span> <span class="pl-c1">20</span><span class="pl-kos">;</span> <span class="pl-c">// retorna erro 'Assignment to constant variable.''</span> 
+</code></pre>
+<h3 id="obs-as-variaveis-n-o-tem-tipos-definidos">OBS: As variaveis NÂO TEM TIPOS DEFINIDOS</h3>
+<h1 id="tipos-de-dados">TIPOS DE DADOS</h1>
+<h4
+  id="mesmo-que-na-declara-o-de-uma-variavel-ela-n-o-tenha-um-tipo-especifico-de-grande-importancia-aprender-sobre-os-diferentes-tipos-de-dados-para-algumas-opera-es-">
+  Mesmo que na declaração de uma variavel, ela não tenha um tipo especifico, é de grande importancia aprender sobre os
+  diferentes tipos de dados para algumas operações.</h4>
+<h4 id="os-tipo-de-dados-s-o-os-seguintes">Os tipo de dados são os seguintes</h4>
+<h3 id="string">String</h3>
+<h4 id="normalmente-se-refere-a-textos-ou-palavras-">Normalmente se refere a textos ou palavras.</h4>
+<pre><code class="lang-js">   <span class="pl-k">var</span> <span class="pl-s1">string</span> <span class="pl-c1">=</span> <span class="pl-s">"texto aleatorio"</span>
+</code></pre>
+<h3 id="number">Number</h3>
+<h4 id="corresponde-a-qualquer-numero-">Corresponde a qualquer numero.</h4>
+<pre><code class="lang-js">       <span class="pl-k">var</span> <span class="pl-s1">number</span> <span class="pl-c1">=</span> <span class="pl-c1">7</span>
+    <span class="pl-s1">number</span> <span class="pl-c1">=</span> <span class="pl-c1">8.2</span>
+    <span class="pl-s1">numer</span> <span class="pl-c1">=</span> <span class="pl-c1">7.1651846</span>
+</code></pre>
+<h3 id="boolean">Boolean</h3>
+<h4 id="corresponde-aos-valores-verdadeiro-e-falso-comummente-usado-em-verifica-es-">Corresponde aos valores verdadeiro
+  e falso, comummente usado em verificações.</h4>
+<pre><code class="lang-js">   <span class="pl-k">var</span> <span class="pl-s1">variavel_booleana</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span>
+    <span class="pl-s1">variavel_booleana</span> <span class="pl-c1">=</span> <span class="pl-c1">false</span>
+</code></pre>
+<h3 id="null">Null</h3>
+<h4
+  id="apesar-de-null-ser-igual-a-undefined-eles-n-o-s-o-identicos-null-corresponde-a-um-valor-vazio-enquanto-undefined-transmite-que-a-variavel-n-o-existe">
+  Apesar de Null ser igual a Undefined, eles não são identicos. Null corresponde a um valor vazio. Enquanto Undefined
+  transmite que a variavel não existe</h4>
+<pre><code class="lang-js">    <span class="hljs-keyword">var</span> variavel_ = <span class="hljs-literal">undefined</span>
+    <span class="hljs-keyword">var</span> variavel_ = <span class="hljs-literal">null</span>
+</code></pre>
+<h3 id="object">Object</h3>
+<h4 id="se-refere-a-um-conjunto-de-chaves-e-valores-">Se refere a um conjunto de chaves e valores.</h4>
+<pre><code class="lang-js">    <span class="pl-k">var</span> <span class="pl-s1">dados</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">par</span>: <span class="pl-c1">2</span><span class="pl-kos">,</span>
+      <span class="pl-c1">impar</span>: <span class="pl-c1">17</span><span class="pl-kos">,</span>
+      <span class="pl-c1">texto</span>: <span class="pl-s">'um texto'</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+    <span class="pl-c">//para chamar:</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">dados</span><span class="pl-kos">)</span> <span class="pl-c">//{par: 2, impar: 17, texto: 'um texto'}</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">dados</span><span class="pl-kos">.</span><span class="pl-c1">impar</span><span class="pl-kos">)</span> <span class="pl-c">//17</span>
+</code></pre>
+<h1 id="impressão">IMPRESSÃO</h1>
+<h4
+  id="em-projetos-maiores-normalmente-n-o-usada-a-impress-o-por-m-em-menores-ou-at-na-cria-o-dos-maiores-a-impress-o-de-textos-variaveis-e-sa-das-tem-uma-grande-import-ncia">
+  Em projetos maiores, normalmente não é usada a impressão, porém em menores ou até na criação dos maiores a impressão
+  de textos, variaveis e saídas tem uma grande importância</h4>
+<h2 id="tipos-de-impress-o">TIPOS DE IMPRESSÃO</h2>
+<h3 id="string">String</h3>
+<pre><code class="lang-js">    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">variavel</span><span class="pl-kos">)</span> <span class="pl-c">//impressão de variavel</span>
+     <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"TEXTO"</span><span class="pl-kos">)</span> <span class="pl-c">//impressão de texto</span>
+
+    <span class="pl-c">//Use o sinal de '+' para concatenar o texto com variaveis</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"TEXTO "</span> <span class="pl-c1">+</span> <span class="pl-s1">variavel</span><span class="pl-kos">)</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`1 + 1 = <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">variavel</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span> <span class="pl-c">// também é possivel imprimir utilizando '${}' com a variavel dentro</span>
+</code></pre>
+<h1 id="array-basico">ARRAY BASICO</h1>
+<h4
+  id="um-array-serve-para-armazenar-mais-de-uma-variavel-ou-grupo-de-de-dados-um-array-uma-matriz-onde-ela-pode-mudar-de-dimens-o-al-m-disso-o-javascript-permite-armazenar-qualquer-tipo-de-dados-dentro-dela-desde-tipos-basicos-at-fun-es-e-objetos-">
+  Um array serve para armazenar mais de uma variavel ou grupo de de dados, um array é uma matriz onde ela pode mudar de
+  dimensão além disso o JavaScript permite armazenar qualquer tipo de dados dentro dela, desde tipos basicos, até
+  funções e objetos.</h4>
+<pre><code class="lang-js">  <span class="pl-k">var</span> <span class="pl-s1">array_exemplo</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'ola'</span><span class="pl-kos">,</span><span class="pl-c1">10</span><span class="pl-kos">,</span><span class="pl-c1">40</span><span class="pl-kos">,</span><span class="pl-s">'w'</span><span class="pl-kos">,</span><span class="pl-c1">true</span><span class="pl-kos">]</span>
+    <span class="pl-c">// acessando array</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">array_exemplo</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+    <span class="pl-c">//converte para uma string com virgulas separando os dados</span>
+    <span class="pl-s1">array_exemplo</span><span class="pl-kos">.</span><span class="pl-en">toString</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//'ola,10,40,w,true'</span>
+
+    <span class="pl-c">//converte para uma string e junta os dados separando por oque tem dentro do join</span>
+    <span class="pl-s1">array_exemplo</span><span class="pl-kos">.</span><span class="pl-en">join</span><span class="pl-kos">(</span><span class="pl-s">'-'</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//'ola-10-40-w-true'</span>
+</code></pre>
+<h3 id="excluido-dados">Excluido dados</h3>
+<pre><code class="lang-js">   <span class="pl-s1">array_exemplo</span><span class="pl-kos">.</span><span class="pl-en">pop</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//exclui ultimo item</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">array_exemplo</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//['ola',10,40,'w']</span>
+    <span class="pl-c">//caso coloque a posição dentro exclui o dado naquela posição</span>
+    <span class="pl-s1">array_exemplo</span><span class="pl-kos">.</span><span class="pl-en">pop</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">array_exemplo</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//[10,40,'w',true]</span>
+</code></pre>
+<h3 id="incluindo-dados">Incluindo dados</h3>
+<pre><code class="lang-js"> <span class="pl-s1">array_exemplo</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-s">'dado'</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//inclui na ultima posição, pode ser colocar mais de um dado 'push(dado1, dado2,dado3)'</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">array_exemplo</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//['ola',10,40,'w',true,'dado']</span>
+</code></pre>
+<h3 id="tamanho-da-matriz">Tamanho da matriz</h3>
+<pre><code class="lang-js">   <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">array_exemplo</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//5</span>
+</code></pre>
+<h3 id="ordenando-a-matriz">Ordenando a matriz</h3>
+<h4 id="use-o-metodo-sort-para-ordenar-os-dados-e-reverse-para-ordem-decrescente">use o metodo sort para ordenar os
+  dados, e reverse para ordem decrescente</h4>
+<pre><code class="lang-js">   <span class="pl-k">var</span> <span class="pl-s1">array_numeros</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-c1">7</span><span class="pl-kos">,</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">5</span><span class="pl-kos">,</span><span class="pl-c1">9</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">,</span><span class="pl-c1">4</span><span class="pl-kos">,</span><span class="pl-c1">5</span><span class="pl-kos">]</span> 
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">array_</span><span class="pl-kos">.</span><span class="pl-en">sort</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-c">//[2, 3, 4, 5, 5, 7, 9]</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">array_</span><span class="pl-kos">.</span><span class="pl-en">reverse</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-c">//[9, 7, 5, 5, 4, 3, 2]</span>
+</code></pre>
+<h1 id="objetos">OBJETOS</h1>
+<h4
+  id="um-objeto-serve-para-armazenar-variaveis-em-conjuntos-de-chave-valor-al-m-disso-o-javascript-permite-armazenar-qualquer-tipo-de-dados-dentro-dela-desde-tipos-basicos-at-fun-es-e-objetos-">
+  Um objeto serve para armazenar variaveis em conjuntos de chave/valor além disso o JavaScript permite armazenar
+  qualquer tipo de dados dentro dela, desde tipos basicos, até funções e objetos.</h4>
+<h3 id="criando-um-objeto">criando um objeto</h3>
+<pre><code class="lang-js"><span class="pl-k">var</span> <span class="pl-s1">exemplo_de_objeto</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">nome</span> : <span class="pl-s">'hello'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">numero</span> : <span class="pl-c1">10</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+<span class="pl-k">var</span> <span class="pl-s1">outro_objeto</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span>
+</code></pre>
+<h3 id="adicionando-mais-atributos">adicionando mais atributos</h3>
+<pre><code class="lang-js"><span class="pl-k">var</span> <span class="pl-s1">obj1</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-s1">obj1</span><span class="pl-kos">.</span><span class="pl-c1">atributo</span> <span class="pl-c1">=</span> <span class="pl-c1">20</span><span class="pl-kos">;</span> <span class="pl-c">// voce pode apenas chamar um atributo que ele será automaticamente criado caso não exista</span>
+
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">obj1</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//{atributo: 20}</span>
+
+<span class="pl-s1">obj1</span><span class="pl-kos">.</span><span class="pl-en">fucao</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span> <span class="pl-c">//proximo tópico será demostrado como criar uma funcao</span>
+</code></pre>
+<h3 id="-poss-vel-cria-um-objeto-utilizando-o-operador-new-">É possível cria um objeto utilizando o operador
+  &#39;new&#39;</h3>
+<pre><code class="lang-js"><span class="pl-k">var</span> <span class="pl-v">Novo_obj</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Object</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-v">Novo_obj</span><span class="pl-kos">.</span><span class="pl-c1">atributo1</span> <span class="pl-c1">=</span> <span class="pl-s">'Nome'</span>
+</code></pre>
+<h3 id="-possivel-acessar-os-atributos-de-um-objeto-de-diferentes-formas">é possivel acessar os atributos de um objeto
+  de diferentes formas</h3>
+<pre><code class="lang-js"><span class="pl-v">Novo_obj</span><span class="pl-kos">.</span><span class="pl-c1">atributo1</span>
+<span class="pl-c">//Nome</span>
+<span class="pl-v">Novo_obj</span><span class="pl-kos">[</span><span class="pl-s">'atributo1'</span><span class="pl-kos">]</span>
+<span class="pl-c">//Nome</span>
+</code></pre>
+<h1 id="funções">FUNÇÕES</h1>
+<h4 id="fun-es-um-bloco-de-codigo-pronto-e-s-o-executadas-sempre-que-solicitadas-para-declarar-uma-fun-o-use-">Funções é
+  um bloco de codigo pronto e são executadas sempre que solicitadas. Para declarar uma função use:</h4>
+<pre><code class="lang-js"><span class="pl-k">function</span> <span class="pl-en">nome_da_funcao</span><span class="pl-kos">(</span><span class="pl-s1">parametros</span><span class="pl-kos">)</span> <span class="pl-kos">{</span> <span class="pl-c">/* as funções em JavaScript aceitam como parametro qualquer tipo de dado */</span>
+  <span class="pl-c">//escreva sua funcao aqui</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="para-chamar-uma-fun-o">Para chamar uma função</h3>
+<pre><code class="lang-js"><span class="pl-en">nome_da_funcao</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<h4 id="exemplo">Exemplo</h4>
+<pre><code class="lang-js"><span class="pl-k">function</span> <span class="pl-en">imprimeTexto</span><span class="pl-kos">(</span><span class="pl-s1">texto</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">texto</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-en">imprimeTexto</span><span class="pl-kos">(</span><span class="pl-s">'Olá!'</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// imprime "Olá!"</span>
+</code></pre>
+<h3 id="-possivel-que-a-fun-o-retorne-valores">É possivel que a função retorne valores</h3>
+<pre><code class="lang-js"><span class="pl-k">function</span> <span class="pl-en">soma</span><span class="pl-kos">(</span><span class="pl-s1">num1</span><span class="pl-kos">,</span><span class="pl-s1">num2</span><span class="pl-kos">)</span> <span class="pl-kos">{</span> <span class="pl-c">/* as funções em JavaScript retornam qualquer tipo de dado */</span>
+  <span class="pl-k">return</span> <span class="pl-s1">num1</span> <span class="pl-c1">+</span> <span class="pl-s1">num2</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-en">soma</span><span class="pl-kos">(</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">85</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// imprime 87</span>
+</code></pre>
+<h3 id="-possivel-armazenar-uma-fun-o-em-uma-variavel">É possivel armazenar uma função em uma variavel</h3>
+<pre><code class="lang-js"><span class="pl-k">var</span> <span class="pl-en">variavel_</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"esta é uma função"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-en">variavel_</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<h3 id="arrow-function">Arrow function</h3>
+<h4 id="utilizada-na-cria-o-de-fun-es-mais-curtas">Utilizada na criação de funções mais curtas</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-en">media</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">param1</span><span class="pl-kos">,</span><span class="pl-s1">param2</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span><span class="pl-s1">param1</span><span class="pl-c1">+</span><span class="pl-s1">param2</span><span class="pl-kos">)</span><span class="pl-c1">/</span><span class="pl-c1">2</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">const</span> <span class="pl-en">media_3</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">,</span><span class="pl-s1">b</span><span class="pl-kos">,</span><span class="pl-s1">c</span><span class="pl-c1">=</span><span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-c1">+</span><span class="pl-s1">b</span><span class="pl-c1">+</span><span class="pl-s1">c</span><span class="pl-kos">)</span><span class="pl-c1">/</span><span class="pl-c1">3</span> <span class="pl-c">//é implicito o retorno, e em uma linha, não e necessario chave</span>
+<span class="pl-c">//ao igualar um parametro a um valor na declaração da função, quando ao chamar a função ele não receber um valor, ele receberá o valor padrão</span>
+<span class="pl-c">//ex.: media_3(2,3); -&gt; o valor de c será 0</span>
+</code></pre>
+<h3 id="passando-objeto-function-destructuring-">Passando objeto function (destructuring)</h3>
+<h4 id="uma-forma-muito-boa-e-recomendada-de-passar-parametros-por-meio-de-objetos">Uma forma muito boa e recomendada de
+  passar parametros é por meio de objetos</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-en">distancia</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">{</span>v <span class="pl-c1">=</span> <span class="pl-c1">10</span><span class="pl-kos">,</span> t <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">v</span><span class="pl-c1">*</span><span class="pl-s1">t</span><span class="pl-kos">;</span>
+<span class="pl-en">distancia</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-c1">t</span>:<span class="pl-c1">10</span><span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-c">//100</span>
+<span class="pl-k">const</span> <span class="pl-s1">obj</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-c1">v</span>:<span class="pl-c1">5</span><span class="pl-kos">,</span> <span class="pl-c1">t</span>:<span class="pl-c1">10</span><span class="pl-kos">}</span>
+<span class="pl-en">distancia</span><span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">)</span>
+<span class="pl-c">//50</span>
+<span class="pl-c">/* Caso não queira passar nenhum parametro use um objeto vazio*/</span>
+<span class="pl-en">distancia</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-c">//10</span>
+<span class="pl-en">distancia</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c">// retorna erro</span>
+</code></pre>
+<h3 id="passando-array-function-destructuring-">Passando array function (destructuring)</h3>
+<h4 id="a-mesma-forma-serve-para-array">A mesma forma serve para array</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-en">distancia</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">[</span><span class="pl-s1">v</span> <span class="pl-c1">=</span> <span class="pl-c1">10</span><span class="pl-kos">,</span> <span class="pl-s1">t</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">v</span><span class="pl-c1">*</span><span class="pl-s1">t</span><span class="pl-kos">;</span>
+<span class="pl-en">distancia</span><span class="pl-kos">(</span><span class="pl-kos">[</span><span class="pl-kos">,</span><span class="pl-c1">10</span><span class="pl-kos">]</span><span class="pl-kos">)</span>
+<span class="pl-c">//100</span>
+<span class="pl-k">const</span> <span class="pl-s1">array</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-c1">5</span><span class="pl-kos">,</span><span class="pl-c1">10</span><span class="pl-kos">]</span>
+<span class="pl-en">distancia</span><span class="pl-kos">(</span><span class="pl-s1">array</span><span class="pl-kos">)</span>
+<span class="pl-c">//50</span>
+</code></pre>
+<h4 id="caso-n-o-queira-passar-nenhum-parametro-use-um-objeto-vazio">Caso não queira passar nenhum parametro use um
+  objeto vazio</h4>
+<pre><code class="lang-js"><span class="pl-en">distancia</span><span class="pl-kos">(</span><span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">)</span>
+<span class="pl-c">//10</span>
+<span class="pl-en">distancia</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c">// retorna erro</span>
+</code></pre>
+<h1 id="classes">CLASSES</h1>
+<h4
+  id="classes-nada-mais-doque-uma-difini-o-de-objeto-com-seus-atributos-e-metodos-podendo-ser-instanciado-instanciar-como-criar-um-novo-com-base-em-um-modelo-quantas-vezes-for-preciso-">
+  Classes é nada mais doque uma difinição de objeto, com seus atributos e metodos, podendo ser
+  &#39;instanciado&#39;(instanciar é como criar um novo, com base em um modelo) quantas vezes for preciso.</h4>
+<h2 id="criando-uma-classe">Criando uma classe</h2>
+<pre><code class="lang-js"><span class="pl-k">class</span> <span class="pl-v">NomeDaClasse</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">atr1</span><span class="pl-kos">,</span> <span class="pl-s1">atr2</span><span class="pl-kos">,</span> <span class="pl-s1">atrx</span><span class="pl-kos">)</span> <span class="pl-kos">{</span> <span class="pl-c">//o constructor é responsavel pela passagens dos atributos ao instanciar a classe</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">atributo1</span> <span class="pl-c1">=</span> <span class="pl-s1">atr1</span><span class="pl-kos">;</span> 
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">atributo2</span> <span class="pl-c1">=</span> <span class="pl-s1">atr2</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">atributox</span> <span class="pl-c1">=</span> <span class="pl-s1">atrx</span><span class="pl-kos">;</span>
+    <span class="pl-c">/* a palavra 'this' é usada dentro da classe para referenciar uma variavel ou função contida nela</span>
+<span class="pl-c">    ele é parecido como quando acessamos um atributo em um objeto, colocando objeto.atributo1, porém o 'this'</span>
+<span class="pl-c">    é comummente usado dentro da classe*/</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">methodo1</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">methodo2</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+
+  <span class="pl-kos">}</span>
+  <span class="pl-en">methodox</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+
+  <span class="pl-kos">}</span>
+
+<span class="pl-kos">}</span></pre>
+</code></pre>
+<h2 id="instanciando-uma-classe">Instanciando uma classe</h2>
+<h4 id="ao-colocar-os-atributos-dentro-do-parenteses-os-valores-ser-o-armazenados-nas-variaveis-atraves-do-construtor">
+  ao colocar os atributos dentro do parenteses, os valores serão armazenados nas variaveis atraves do construtor</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> variavel_ = <span class="hljs-keyword">new</span> <span class="hljs-type">NomeDaClasse</span>(atributo1, atributo2, atributox);
+</code></pre>
+<h2 id="exemplo-de-uso-de-uma-classe">Exemplo de uso de uma classe</h2>
+<pre><code class="lang-js"><span class="pl-k">class</span> <span class="pl-v">Animal</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">atr1</span><span class="pl-kos">,</span> <span class="pl-s1">atr2</span><span class="pl-kos">,</span> <span class="pl-s1">atrx</span> <span class="pl-c1">=</span> <span class="pl-c1">10</span><span class="pl-kos">,</span> <span class="pl-s1">atry</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">)</span> <span class="pl-kos">{</span> 
+    <span class="pl-c">/*colocar o atributo com um valor (por exemplo, contador = 1), significa que caso ele não receba um valor na função, </span>
+<span class="pl-c">    ele setara um valor padrao*/</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span> <span class="pl-c1">=</span> <span class="pl-s1">atr1</span><span class="pl-kos">;</span> 
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">especie</span> <span class="pl-c1">=</span> <span class="pl-s1">atr2</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">velocidade</span> <span class="pl-c1">=</span> <span class="pl-s1">atrx</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">aceleracao</span> <span class="pl-c1">=</span> <span class="pl-s1">atry</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">distancia</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`O <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> especie <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">especie</span><span class="pl-kos">}</span></span> foi instanciado com sucesso!`</span><span class="pl-kos">)</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">corre</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">distancia</span> <span class="pl-c1">+=</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">velocidade</span><span class="pl-c1">+</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">aceleracao</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">/* o operador '+=' indica soma da variavel anterior mais o outro valor ex: </span>
+<span class="pl-c">    this.distancia = this.distancia + velocidade;  */</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> ultrapassou a distancia de <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">distancia</span><span class="pl-kos">}</span></span> metros`</span><span class="pl-kos">)</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">aumentaAceleracao</span><span class="pl-kos">(</span><span class="pl-s1">contador</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">)</span> <span class="pl-kos">{</span> 
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">aceleracao</span> <span class="pl-c1">+=</span> <span class="pl-s1">contador</span><span class="pl-kos">;</span> 
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`Aceleracao <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">aceleracao</span><span class="pl-kos">}</span></span> m/s2`</span><span class="pl-kos">)</span>
+  <span class="pl-kos">}</span>
+
+<span class="pl-kos">}</span>
+
+
+<span class="pl-k">var</span> <span class="pl-s1">gato</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Animal</span><span class="pl-kos">(</span><span class="pl-s">'Gato'</span><span class="pl-kos">,</span> <span class="pl-s">'felino'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">/* O Gato especie felino foi instanciado com sucesso! */</span>
+
+<span class="pl-s1">gato</span><span class="pl-kos">.</span><span class="pl-en">corre</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+<span class="pl-c">/*Gato ultrapassou a distancia de 11 metros*/</span>
+
+<span class="pl-s1">gato</span><span class="pl-kos">.</span><span class="pl-en">aumentaAceleracao</span><span class="pl-kos">(</span><span class="pl-c1">10</span><span class="pl-kos">)</span>
+<span class="pl-c">/* Aceleracao 11 m/s */</span>
+
+<span class="pl-s1">gato</span><span class="pl-kos">.</span><span class="pl-en">corre</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+<span class="pl-c">/* Gato ultrapassou a distancia de 32 metros */</span>
+</code></pre>
+<h2 id="subclasse-extends">Subclasse Extends</h2>
+<pre><code class="lang-js">
+<span class="pl-k">class</span> <span class="pl-v">Animal</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">atr1</span><span class="pl-kos">,</span> <span class="pl-s1">atr2</span><span class="pl-kos">,</span> <span class="pl-s1">atr3</span><span class="pl-kos">)</span> <span class="pl-kos">{</span> 
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span> <span class="pl-c1">=</span> <span class="pl-s1">atr1</span><span class="pl-kos">;</span> 
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">especie</span> <span class="pl-c1">=</span> <span class="pl-s1">atr2</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">idade</span> <span class="pl-c1">=</span> <span class="pl-s1">atr3</span><span class="pl-kos">;</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`O <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> especie <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">especie</span><span class="pl-kos">}</span></span> foi instanciado com sucesso!`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+     
+  <span class="pl-kos">}</span>
+  <span class="pl-en">animal</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> da especie <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">especie</span><span class="pl-kos">}</span></span> com <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">idade</span><span class="pl-kos">}</span></span> anos de idade`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">falar</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> fale!`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+     <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">class</span> <span class="pl-v">Gato</span> <span class="pl-k">extends</span> <span class="pl-v">Animal</span><span class="pl-kos">{</span> <span class="pl-c">/* extends é usado para determinar qual a classe pai */</span>
+    <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">atr1</span><span class="pl-kos">,</span> <span class="pl-s1">atr2</span><span class="pl-kos">)</span> <span class="pl-kos">{</span> 
+        <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s">'Gato'</span><span class="pl-kos">,</span><span class="pl-s">'felino'</span><span class="pl-kos">,</span> <span class="pl-s1">atr2</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">/* super é usado para referenciar a classe pai assim*/</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">velocidade</span> <span class="pl-c1">=</span> <span class="pl-s1">atr1</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-en">falar</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-smi">super</span><span class="pl-kos">.</span><span class="pl-en">falar</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//super pode ser usado para chamar uma função ou atributo do pai</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`O <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> Mia!`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">corre</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`O <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> corre a uma velocidade de <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">velocidade</span><span class="pl-kos">}</span></span> m/s!`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+<span class="pl-kos">}</span>
+
+
+<span class="pl-k">var</span> <span class="pl-s1">gato</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Gato</span><span class="pl-kos">(</span><span class="pl-c1">10</span><span class="pl-kos">,</span> <span class="pl-c1">8</span><span class="pl-kos">)</span>
+<span class="pl-c">/* O Gato especie felino foi instanciado com sucesso! */</span>
+
+<span class="pl-s1">gato</span><span class="pl-kos">.</span><span class="pl-en">falar</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">/*Gato fale!</span>
+<span class="pl-c">O Gato Mia!*/</span>
+<span class="pl-s1">gato</span><span class="pl-kos">.</span><span class="pl-en">corre</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">/* O Gato corre a uma velocidade de 10 m/s! */</span>
+<span class="pl-s1">gato</span><span class="pl-kos">.</span><span class="pl-en">animal</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<h1 id="try-and-catch">EXCEÇÕES - TRY AND CATCH</h1>
+<h4
+  id="no-ambiente-de-desenvolvimento-comum-aparecerem-alguns-erros-e-exce-es-por-erro-ao-codificar-por-m-algumas-vezes-o-erro-pode-vir-do-usuario-ou-at-mesmo-do-pr-prio-programador-e-alguns-tipo-de-erros-s-o-ncessarios-serem-tratados-no-javascript-s-o-usadas-as-palavras-chave-try-catch-e-throw-">
+  No ambiente de desenvolvimento, é comum aparecerem alguns erros e exceções por erro ao codificar, porém algumas vezes
+  o erro pode vir do usuario ou até mesmo do próprio programador, e alguns tipo de erros são ncessarios serem tratados,
+  no JavaScript são usadas as palavras-chave &#39;try, catch e throw&#39;</h4>
+<h4 id="try-tente-executar-esse-codigo">Try - tente executar esse codigo</h4>
+<h4 id="catch-caso-d-erro-pegue-ele-e-trate-o">Catch - Caso dê erro, pegue ele e trate-o</h4>
+<h4 id="throw-retorne-essa-mensagem-de-erro">Throw - retorne essa mensagem de erro</h4>
+<h4 id="finnaly-sempre-chamado-esse-bloco-com-erro-ou-n-o">Finnaly - Sempre é chamado esse bloco, com erro ou não</h4>
+<pre><code class="lang-js"><span class="pl-k">function</span> <span class="pl-en">trataErro</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">,</span> <span class="pl-s1">func</span><span class="pl-kos">,</span> <span class="pl-s1">where</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-c">//throw 'mensagem' -&gt; trow pode retornar oque for desde uma simples string ou numero, até objeto</span>
+    <span class="pl-k">throw</span><span class="pl-kos">{</span>
+        <span class="pl-c1">erro</span> : <span class="pl-s1">e</span><span class="pl-kos">,</span>
+        <span class="pl-c1">funcaoOriginal</span> : <span class="pl-s1">func</span><span class="pl-kos">,</span>
+        <span class="pl-c1">onde</span> : <span class="pl-s1">where</span>
+    <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">function</span> <span class="pl-en">divideString</span> <span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">let</span> <span class="pl-s1">nome</span><span class="pl-kos">,</span> <span class="pl-s1">endereço</span><span class="pl-kos">;</span>
+    <span class="pl-k">try</span><span class="pl-kos">{</span>
+        <span class="pl-s1">nome</span> <span class="pl-c1">=</span> <span class="pl-s1">obj</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">.</span><span class="pl-en">split</span><span class="pl-kos">(</span><span class="pl-s">'/'</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// divide a string e converte em um array de acordo com o delimitador setado</span>
+        <span class="pl-s1">endereco</span> <span class="pl-c1">=</span> <span class="pl-s1">obj</span><span class="pl-kos">.</span><span class="pl-c1">endereço</span><span class="pl-kos">.</span><span class="pl-en">split</span><span class="pl-kos">(</span><span class="pl-s">' '</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-k">return</span> <span class="pl-kos">[</span><span class="pl-s1">nome</span><span class="pl-kos">,</span> <span class="pl-s1">endereco</span><span class="pl-kos">]</span>
+    <span class="pl-kos">}</span><span class="pl-k">catch</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"error"</span><span class="pl-kos">)</span>
+        <span class="pl-en">trataErro</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">,</span> <span class="pl-s">'divideString'</span><span class="pl-kos">,</span> <span class="pl-s">'primeiro try'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    
+<span class="pl-kos">}</span> 
+
+<span class="pl-k">let</span> <span class="pl-s1">obj</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-c1">nome</span>:<span class="pl-s">'meu/nome'</span><span class="pl-kos">,</span><span class="pl-c1">endereço</span>:<span class="pl-s">'Rua Abril'</span><span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-en">divideString</span><span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">//[[meu,nome],[Rua,Abril]]</span>
+<span class="pl-s1">obj</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-c1">nome</span>:<span class="pl-c1">10</span><span class="pl-kos">,</span><span class="pl-c1">endereço</span>:<span class="pl-c1">5</span><span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-en">divideString</span><span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">//error</span>
+<span class="pl-c">/*Uncaught </span>
+<span class="pl-c">{erro: TypeError: obj.nome.split is not a function</span>
+<span class="pl-c">    at divideString (&lt;anonymous&gt;:13:25)</span>
+<span class="pl-c">    at &lt;anonymo…, funcaoOriginal: 'divideString', onde: 'primeiro try'}</span>
+<span class="pl-c">erro : TypeError: obj.nome.split is not a function at divideString (&lt;anonymous&gt;:13:25) at &lt;anonymous&gt;:27:1</span>
+<span class="pl-c">funcaoOriginal: "divideString"</span>
+<span class="pl-c">onde: "primeiro try"*/</span>
+
+<span class="pl-s1">obj</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-en">divideString</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">//error</span>
+<span class="pl-c">/*Uncaught </span>
+<span class="pl-c">{erro: TypeError: Cannot read properties of undefined (reading 'split')</span>
+<span class="pl-c">    at divideString (&lt;anonymous&gt;:13:25)</span>
+<span class="pl-c">    at &lt;anonymo…, funcaoOriginal: 'divideString', onde: 'primeiro try'}</span>
+<span class="pl-c">erro : TypeError: obj.nome.split is not a function at divideString (&lt;anonymous&gt;:13:25) at &lt;anonymous&gt;:27:1</span>
+<span class="pl-c">funcaoOriginal: "divideString"</span>
+<span class="pl-c">onde: "primeiro try"*/</span>
+</code></pre>
+<h1 id="forIn">FOR/IN</h1>
+<h4 id="-timo-para-usar-ao-iterar-sobre-uma-estrutura-de-dados-mais-simples-que-o-for-covencional">Ótimo para usar ao
+  iterar sobre uma estrutura de dados, mais simples que o for covencional</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">animais</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'gato'</span><span class="pl-kos">,</span><span class="pl-s">'cachorro'</span><span class="pl-kos">,</span><span class="pl-s">'cavalo'</span><span class="pl-kos">,</span><span class="pl-s">'vaca'</span><span class="pl-kos">,</span><span class="pl-s">'alce'</span><span class="pl-kos">]</span>
+
+
+<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">i</span> <span class="pl-k">in</span> <span class="pl-s1">animais</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">i</span><span class="pl-kos">,</span> <span class="pl-s1">animais</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-kos">]</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*</span>
+<span class="pl-c">0 gato</span>
+<span class="pl-c">1 cachorro</span>
+<span class="pl-c">2 cavalo</span>
+<span class="pl-c">3 vaca</span>
+<span class="pl-c">4 alce</span>
+<span class="pl-c">*/</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">animal</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">nome</span> : <span class="pl-s">'gato'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">especie</span> : <span class="pl-s">'felino'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">patas</span> : <span class="pl-s">'4'</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">i</span> <span class="pl-k">in</span> <span class="pl-s1">animal</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">i</span><span class="pl-kos">,</span> <span class="pl-s1">animal</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-kos">]</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span>
+<span class="pl-c">/*</span>
+<span class="pl-c">nome gato</span>
+<span class="pl-c">especie felino</span>
+<span class="pl-c">patas 4</span>
+<span class="pl-c">*/</span>
+</code></pre>
+<h1 id="aprofundando-funções">APROFUNDANDO FUNÇÕES</h1>
+<h4
+  id="fun-es-pode-ter-mais-de-um-parametro-declarado-e-h-uma-forma-de-pegar-todos-os-parametros-utilizando-a-palavra-chave-arguments-">
+  Funções pode ter mais de um parametro declarado, e há uma forma de pegar todos os parametros utilizando a palavra
+  chave &#39;arguments&#39;.</h4>
+<pre><code class="lang-js"><span class="pl-k">function</span> <span class="pl-en">media</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span> <span class="pl-c">//'arguments' só funciona em functions, arrow functions não há essa palavra chave</span>
+    <span class="pl-k">let</span> <span class="pl-s1">soma</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-s1">quantidade</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+    <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">var</span> <span class="pl-s1">i</span> <span class="pl-k">in</span> <span class="pl-smi">arguments</span><span class="pl-kos">)</span><span class="pl-kos">{</span> <span class="pl-c">//usando 'var' para ser possível acessar fora do escopo do 'for'</span>
+        <span class="pl-s1">soma</span> <span class="pl-c1">+=</span> <span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-c">/*o array conta a partir do '0' para a media é preciso contar a partir do '1'</span>
+<span class="pl-c">    é preciso converter o 'i' para int, pois ele vem como string */</span>
+    <span class="pl-s1">quantidade</span> <span class="pl-c1">+=</span> <span class="pl-kos">(</span><span class="pl-en">parseInt</span><span class="pl-kos">(</span><span class="pl-s1">i</span><span class="pl-kos">)</span><span class="pl-c1">+</span><span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span> 
+    <span class="pl-k">return</span> <span class="pl-s1">soma</span><span class="pl-c1">/</span><span class="pl-s1">quantidade</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-en">media</span><span class="pl-kos">(</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">2</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">//x</span>
+<span class="pl-en">media</span><span class="pl-kos">(</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">6</span><span class="pl-kos">,</span><span class="pl-c1">5</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">//3.75</span>
+</code></pre>
+<h2 id="this-e-bind">THIS E BIND</h2>
+<h4
+  id="a-palavra-reservada-this-serve-para-referenciar-o-contexto-onde-est-a-fun-o-ou-parametro-por-m-ele-pode-variar-e-para-impedir-essa-varia-o-a-fun-o-bind-serve-para-isso-abaixo-um-exemplo-com-o-this-com-erro-e-ele-sendo-corrigido-pelo-bind-">
+  A palavra reservada &#39;this&#39;, serve para referenciar o contexto onde está a função ou parametro, porém ele pode
+  variar e para impedir essa variação a função &#39;bind&#39; serve para isso. Abaixo um exemplo com o &#39;this&#39;
+  com erro e ele sendo corrigido pelo &#39;bind&#39;:</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">animal</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">nome</span> : <span class="pl-s">'gato'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">especie</span> : <span class="pl-s">'felino'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">patas</span> : <span class="pl-s">'4'</span><span class="pl-kos">,</span>
+
+    <span class="pl-en">falar</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> Miou!!`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h4 id="ao-chamar-a-fun-o-atrav-s-da-pr-pria-variavel-o-this-tem-o-efeito-desejado">Ao chamar a função através da
+  própria variavel, o this tem o efeito desejado</h4>
+<pre><code class="lang-js"><span class="pl-s1">animal</span><span class="pl-kos">.</span><span class="pl-en">falar</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">//gato Miou!!</span>
+</code></pre>
+<h4
+  id="mas-ao-instanciar-a-fun-o-do-objeto-em-outra-variavel-ele-muda-isso-se-deve-ao-this-apontar-para-a-nova-variavel">
+  Mas ao &#39;instanciar&#39; a função do objeto em outra variavel, ele muda, isso se deve ao &#39;this&#39; apontar
+  para a nova variavel</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">novo_animal</span> <span class="pl-c1">=</span> <span class="pl-s1">animal</span><span class="pl-kos">.</span><span class="pl-c1">falar</span><span class="pl-kos">;</span>
+<span class="pl-s1">novo_animal</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">//undefined Miou!!</span>
+</code></pre>
+<h4 id="uma-forma-de-resolver-isso-utilizando-o-bind-onde-ele-aponta-sempre-para-o-objeto-referencia-desejada">uma forma
+  de resolver isso, é utilizando o bind, onde ele aponta sempre para o objeto/referencia desejada</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">novo_animal</span> <span class="pl-c1">=</span> <span class="pl-s1">animal</span><span class="pl-kos">.</span><span class="pl-c1">falar</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-s1">animal</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">novo_animal</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">//gato Miou!!</span>
+</code></pre>
+<h3
+  id="ainda-poss-vel-usar-uma-outra-forma-de-resolver-o-this-que-seria-com-uma-constante-normalmente-nomeada-de-self-">
+  Ainda é possível usar uma outra forma de resolver o &#39;this&#39;, que seria com uma constante normalmente nomeada de
+  self*/</h3>
+<h4 id="sem-o-self">Sem o self</h4>
+<pre><code class="lang-js"><span class="pl-k">function</span> <span class="pl-v">Gato</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span> <span class="pl-c1">=</span> <span class="pl-s">'gato'</span><span class="pl-kos">;</span>
+        <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span> <span class="pl-c">//função que conta um tempo para chamar outra função</span>
+            <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> Miou!!`</span><span class="pl-kos">)</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">1000</span><span class="pl-kos">)</span>
+        <span class="pl-k">return</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+        
+<span class="pl-kos">}</span>
+
+<span class="pl-k">new</span> <span class="pl-v">Gato</span><span class="pl-kos">;</span> <span class="pl-c">//ao criar como objeto sem armazenar na variavel, o this varia, no caso, aponta para quem invocou  função setTimeout</span>
+<span class="pl-c">//undefined Miou!!</span>
+</code></pre>
+<h4 id="com-o-self">Com o self</h4>
+<pre><code class="lang-js"><span class="pl-k">function</span> <span class="pl-v">Gato</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span> <span class="pl-c1">=</span> <span class="pl-s">'gato'</span><span class="pl-kos">;</span>
+        <span class="pl-k">const</span> <span class="pl-s1">self</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">;</span>
+        <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+            <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">self</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> Miou!!`</span><span class="pl-kos">)</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">1000</span><span class="pl-kos">)</span>
+        <span class="pl-k">return</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+        
+<span class="pl-kos">}</span>
+
+<span class="pl-k">new</span> <span class="pl-v">Gato</span><span class="pl-kos">;</span>
+<span class="pl-c">//gato Miou!!</span>
+</code></pre>
+<h4 id="fun-es-arrow-tiram-o-problema-do-this">Funções arrow tiram o problema do this</h4>
+<pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span> <span class="pl-v">Gato</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span> <span class="pl-c1">=</span> <span class="pl-s">'gato'</span><span class="pl-kos">;</span>
+        <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span><span class="pl-kos">{</span> 
+            <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> Miou!!`</span><span class="pl-kos">)</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">1000</span><span class="pl-kos">)</span>
+        <span class="pl-k">return</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+        
+<span class="pl-kos">}</span>
+
+<span class="pl-k">new</span> <span class="pl-v">Gato</span><span class="pl-kos">;</span>
+<span class="pl-c">//gato Miou!!</span>
+</code></pre>
+<h4
+  id="obs-o-arrow-t-o-forte-que-caso-use-o-bind-para-referenciar-outro-objeto-o-this-ainda-vai-referenciar-no-caso-a-fun-o-gato-o-arrow-sempre-aponta-para-o-contexto-em-que-foi-definido-">
+  Obs.: o arrow é tão forte que caso use o bind para referenciar outro objeto, o this ainda vai referenciar no caso a
+  função Gato, o arrow sempre aponta para o contexto em que foi definido.</h4>
+<h2 id="fun-es-construtoras">Funções construtoras</h2>
+<h4
+  id="fun-es-tamb-m-podem-ser-instanciadas-como-classes-elas-em-geral-s-o-iguais-a-uma-classe-por-m-tem-uma-forma-diferente-de-serem-escritas-">
+  Funções também podem ser instanciadas como classes, elas em geral são iguais a uma classe, porém tem uma forma
+  diferente de serem escritas.</h4>
+<pre><code class="lang-js"><span class="pl-k">function</span> <span class="pl-v">Poligono</span><span class="pl-kos">(</span><span class="pl-s1">tamanho</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-c1">8</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">,</span><span class="pl-c1">5</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-c">// atributos definidos sem o this, são privados, ou seja, não podem ser acessados fora da função</span>
+    <span class="pl-k">let</span> <span class="pl-s1">tipo</span> <span class="pl-c1">=</span> <span class="pl-s">''</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">tamanho</span> <span class="pl-c1">=</span> <span class="pl-s1">tamanho</span><span class="pl-kos">;</span>
+
+    <span class="pl-c">// funcao privada</span>
+    <span class="pl-k">let</span> <span class="pl-en">ordenaLados</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span> <span class="pl-c">//metodos</span>
+        <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-s1">y</span> <span class="pl-k">in</span> <span class="pl-s1">tamanho</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+            <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">x</span><span class="pl-c1">=</span><span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">x</span> <span class="pl-c1">&lt;</span> <span class="pl-s1">tamanho</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span> <span class="pl-s1">x</span><span class="pl-c1">++</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+                <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">tamanho</span><span class="pl-kos">[</span><span class="pl-s1">x</span><span class="pl-kos">]</span> <span class="pl-c1">&gt;</span> <span class="pl-s1">tamanho</span><span class="pl-kos">[</span><span class="pl-s1">x</span><span class="pl-c1">+</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+                  <span class="pl-s1">aux</span> <span class="pl-c1">=</span> <span class="pl-s1">tamanho</span><span class="pl-kos">[</span><span class="pl-s1">x</span><span class="pl-c1">+</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+                  <span class="pl-s1">tamanho</span><span class="pl-kos">[</span><span class="pl-s1">x</span><span class="pl-c1">+</span><span class="pl-c1">1</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">tamanho</span><span class="pl-kos">[</span><span class="pl-s1">x</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+                  <span class="pl-s1">tamanho</span><span class="pl-kos">[</span><span class="pl-s1">x</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">aux</span><span class="pl-kos">;</span>
+                 <span class="pl-kos">}</span>
+            <span class="pl-kos">}</span>                                       
+        <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+    
+    <span class="pl-en">ordenaLados</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">perimetro</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span> 
+        <span class="pl-k">let</span> <span class="pl-s1">resultado</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+        <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-s1">i</span> <span class="pl-k">in</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">tamanho</span><span class="pl-kos">)</span><span class="pl-kos">{</span>  
+            <span class="pl-s1">resultado</span> <span class="pl-c1">+=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">tamanho</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-kos">]</span>
+            
+        <span class="pl-kos">}</span>
+        <span class="pl-k">return</span> <span class="pl-s1">resultado</span>
+    <span class="pl-kos">}</span>
+
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">descobreTipo</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">triagulo</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+        <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">triagulo</span><span class="pl-kos">.</span><span class="pl-c1">tamanho</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span> <span class="pl-c1">==</span> <span class="pl-s1">triagulo</span><span class="pl-kos">.</span><span class="pl-c1">tamanho</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+            <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">triagulo</span><span class="pl-kos">.</span><span class="pl-c1">tamanho</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span> <span class="pl-c1">==</span> <span class="pl-s1">triagulo</span><span class="pl-kos">.</span><span class="pl-c1">tamanho</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+                <span class="pl-s1">tipo</span> <span class="pl-c1">=</span> <span class="pl-s">'equilatero'</span><span class="pl-kos">;</span>
+            <span class="pl-kos">}</span><span class="pl-k">else</span><span class="pl-kos">{</span>
+                <span class="pl-s1">tipo</span> <span class="pl-c1">=</span> <span class="pl-s">'isoceles'</span><span class="pl-kos">;</span>
+            <span class="pl-kos">}</span>
+        <span class="pl-kos">}</span>
+        <span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">triagulo</span><span class="pl-kos">.</span><span class="pl-c1">tamanho</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span> <span class="pl-c1">==</span> <span class="pl-s1">triagulo</span><span class="pl-kos">.</span><span class="pl-c1">tamanho</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+            <span class="pl-s1">tipo</span> <span class="pl-c1">=</span> <span class="pl-s">'isoceles'</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span><span class="pl-k">else</span><span class="pl-kos">{</span>
+            <span class="pl-s1">tipo</span> <span class="pl-c1">=</span> <span class="pl-s">'escaleno'</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span>
+        <span class="pl-k">return</span> <span class="pl-s1">tipo</span>
+    <span class="pl-kos">}</span>
+
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">calculaSemelhanca</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">triangulo</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-k">let</span> <span class="pl-s1">t2</span> <span class="pl-c1">=</span> <span class="pl-s1">triangulo</span><span class="pl-kos">.</span><span class="pl-c1">tamanho</span>
+        <span class="pl-k">let</span> <span class="pl-s1">t1</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">tamanho</span>
+        <span class="pl-k">return</span> <span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">t1</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-c1">/</span><span class="pl-s1">t2</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-c1">==</span> <span class="pl-kos">(</span><span class="pl-s1">t1</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-c1">/</span><span class="pl-s1">t2</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-kos">(</span><span class="pl-s1">t1</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-c1">/</span><span class="pl-s1">t2</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-c1">==</span> <span class="pl-kos">(</span><span class="pl-s1">t1</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-c1">/</span><span class="pl-s1">t2</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-kos">(</span><span class="pl-s1">t1</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-c1">/</span><span class="pl-s1">t2</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-c1">==</span> <span class="pl-kos">(</span><span class="pl-s1">t1</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-c1">/</span><span class="pl-s1">t2</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">)</span> ? <span class="pl-s">'Triangulos Semelhantes'</span> : <span class="pl-s">'Triangulos diferentes'</span><span class="pl-kos">;</span>
+    <span class="pl-c">// (condição) ? retorno se verdadeiro : retorno se falso;</span>
+    <span class="pl-kos">}</span>
+
+<span class="pl-kos">}</span>
+
+
+<span class="pl-k">const</span> <span class="pl-s1">triangulo</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Poligono</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">triangulo2</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Poligono</span><span class="pl-kos">(</span><span class="pl-kos">[</span><span class="pl-c1">16</span><span class="pl-kos">,</span><span class="pl-c1">6</span><span class="pl-kos">,</span><span class="pl-c1">10</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">triangulo3</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Poligono</span><span class="pl-kos">(</span><span class="pl-kos">[</span><span class="pl-c1">4</span><span class="pl-kos">,</span><span class="pl-c1">4</span><span class="pl-kos">,</span><span class="pl-c1">4</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+
+<span class="pl-s1">triangulo</span><span class="pl-kos">.</span><span class="pl-en">perimetro</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//16</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">triangulo</span><span class="pl-kos">.</span><span class="pl-c1">tipo</span><span class="pl-kos">)</span><span class="pl-kos">;</span><span class="pl-c">//undefined -&gt; parametro privado</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">triangulo</span><span class="pl-kos">.</span><span class="pl-c1">tamanho</span><span class="pl-kos">)</span><span class="pl-kos">;</span><span class="pl-c">//[3,5,8] -&gt; parametro publico</span>
+
+<span class="pl-s1">triangulo</span><span class="pl-kos">.</span><span class="pl-en">calculaSemelhanca</span><span class="pl-kos">(</span><span class="pl-s1">triangulo2</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//'Triangulos Semelhantes'</span>
+<span class="pl-s1">triangulo</span><span class="pl-kos">.</span><span class="pl-en">calculaSemelhanca</span><span class="pl-kos">(</span><span class="pl-s1">triangulo3</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//'Triangulos diferentes'</span>
+
+<span class="pl-s1">triangulo</span><span class="pl-kos">.</span><span class="pl-en">descobreTipo</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-c">//'escaleno'</span>
+<span class="pl-s1">triangulo</span><span class="pl-kos">.</span><span class="pl-en">descobreTipo</span><span class="pl-kos">(</span><span class="pl-s1">triangulo3</span><span class="pl-kos">)</span><span class="pl-c">//'equilatero'</span>
+</code></pre>
+<h1 id="json">JSON</h1>
+<h4
+  id="json-uma-forma-de-armazenar-objetos-atrav-s-de-uma-string-amplamente-usado-para-comunica-o-entre-linguagens-s-aceita-valores-numero-string-bool-array-objetos-dentro-de-objetos-fun-es-n-o-">
+  JSON é uma forma de armazenar objetos, através de uma string, amplamente usado para comunicação entre linguagens, só
+  aceita valores (numero, string, bool, array, objetos dentro de objetos), funções não.</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">obj</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">indice1</span>: <span class="pl-c1">123</span><span class="pl-kos">,</span> <span class="pl-c1">numero2</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span> <span class="pl-c1">d</span>: <span class="pl-kos">{</span>
+
+<span class="pl-c1">chave</span> : <span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">,</span><span class="pl-c1">4</span><span class="pl-kos">]</span>
+
+<span class="pl-kos">}</span> <span class="pl-kos">}</span>
+<span class="pl-k">let</span> <span class="pl-s1">json_obj</span> <span class="pl-c1">=</span> <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">stringify</span><span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">)</span> <span class="pl-c">//para converter em json</span>
+<span class="pl-s1">json_obj</span>
+<span class="pl-c">//'{"indice1":123,"numero2":true,"d":{"chave":[1,2,3,4]}}'</span>
+
+
+<span class="pl-k">let</span> <span class="pl-s1">json_obj</span>  <span class="pl-c1">=</span> <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">parse</span><span class="pl-kos">(</span><span class="pl-s">'{ "gato": "hello", "abelha": true, "chaves": 89 , "d": [], "e": { "obj_novo" : { "obj" : [1,2,3] }} }'</span><span class="pl-kos">)</span>
+<span class="pl-s1">json_obj</span>
+
+<span class="pl-c">//{gato: 'hello', abelha: true, chaves: 89, d: [], e: { obj_novo : { obj : [1,2,3] }} }</span>
+</code></pre>
+<h1 id="aprofundando-objetos">APROFUNDANDO OBJETOS</h1>
+<h4 id="alem-das-propriedades-comum-de-um-objeto-de-armazenar-fun-es-e-valores-h-outras-opera-es-possiveis-">Alem das
+  propriedades comum de um objeto, de armazenar funções, e valores, há outras operações possiveis.</h4>
+<h2 id="algumas-fun-es-e-conceitos">Algumas funções e conceitos</h2>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">cachorro</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Object</span>
+
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">nome</span> <span class="pl-c1">=</span> <span class="pl-s">'Spike'</span><span class="pl-kos">;</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">idade</span> <span class="pl-c1">=</span> <span class="pl-c1">10</span><span class="pl-kos">;</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">velocidade</span> <span class="pl-c1">=</span> <span class="pl-c1">5</span><span class="pl-kos">;</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">falar</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> Latiu!!`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-s1">cachorro</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">mudaNome</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">novoNome</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span> <span class="pl-c1">=</span> <span class="pl-s1">novoNome</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-s1">cachorro</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">cachorro</span><span class="pl-kos">)</span>
+<span class="pl-c">//{nome: 'Spike', idade: 10, velocidade: 5, falar: ƒ, mudaNome: ƒ}</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-en">falar</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+<span class="pl-c">//Spike Latiu!!</span>
+
+
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">velocidade</span>
+<span class="pl-c">//5</span>
+<span class="pl-k">delete</span> <span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">velocidade</span> <span class="pl-c">//função deleta qualquer atributo dentro do objeto</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">velocidade</span>
+<span class="pl-c">//undefined</span>
+
+<span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">freeze</span><span class="pl-kos">(</span><span class="pl-s1">cachorro</span><span class="pl-kos">)</span> <span class="pl-c">//bloqueia o objeto para qualquer tipo de alteração</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">nome</span>
+<span class="pl-c">//'Spike'</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">nome</span> <span class="pl-c1">=</span> <span class="pl-s">'Mike'</span><span class="pl-kos">;</span> <span class="pl-c">//não funciona</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">nome</span>
+<span class="pl-c">//'Spike'</span>
+
+<span class="pl-c">//Mesmo uma funcao dentro dele não tem o poder de mudar</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-en">mudaNome</span><span class="pl-kos">(</span><span class="pl-s">'Tony'</span><span class="pl-kos">)</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">nome</span>
+<span class="pl-c">//Spike</span>
+
+<span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">preventExtensions</span><span class="pl-kos">(</span><span class="pl-s1">cachorro</span><span class="pl-kos">)</span> <span class="pl-c">//impede de adcionar atributos no objeto</span>
+<span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">seal</span><span class="pl-kos">(</span><span class="pl-s1">cachorro</span><span class="pl-kos">)</span> <span class="pl-c">//impede de adcionar ou deletar atributos no objeto, modificações de atributos são permitidas</span>
+
+
+
+
+
+
+
+<span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-s1">cachorro</span><span class="pl-kos">)</span> <span class="pl-c">//pega todas as chaves</span>
+<span class="pl-c">//['nome', 'idade', 'falar', 'mudaNome']</span>
+<span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">values</span><span class="pl-kos">(</span><span class="pl-s1">cachorro</span><span class="pl-kos">)</span> <span class="pl-c">//pega todos os chaves</span>
+<span class="pl-c">//['Spike', 10, ƒ, ƒ]</span>
+
+<span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">entries</span><span class="pl-kos">(</span><span class="pl-s1">cachorro</span><span class="pl-kos">)</span> <span class="pl-c">//retorna array de chave e valor</span>
+<span class="pl-c">//[['nome', 'Spike'],['idade', 10],['falar', ƒ],['mudaNome', ƒ]]</span>
+
+
+<span class="pl-k">const</span> <span class="pl-s1">cachorro2</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">nome</span> : <span class="pl-s">'Oi'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">idade</span> : <span class="pl-c1">10</span><span class="pl-kos">,</span>
+    <span class="pl-c1">velocidade</span> : <span class="pl-c1">5</span><span class="pl-kos">,</span>
+    <span class="pl-en">falar</span> : <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> Latiu!!`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+
+    <span class="pl-en">mudaNome</span> : <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">novoNome</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span> <span class="pl-c1">=</span> <span class="pl-s1">novoNome</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+
+<span class="pl-kos">}</span>
+
+
+
+<span class="pl-c">/*A função defineProperty pode definir inumeras propriedades para um atributo de</span>
+<span class="pl-c">um objeto:</span>
+<span class="pl-c">enumerable(true or false) -&gt; pode ser listado, por exemplo, pelo Object.keys</span>
+<span class="pl-c">writable(true or false) -&gt; pode ser modificado</span>
+<span class="pl-c">value(valor) -&gt; atribuir valor a ela</span>
+<span class="pl-c">*/</span>
+<span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">defineProperty</span><span class="pl-kos">(</span><span class="pl-s1">cachorro2</span><span class="pl-kos">,</span> <span class="pl-s">'nome'</span><span class="pl-kos">,</span><span class="pl-kos">{</span>
+    <span class="pl-c1">writable</span> : <span class="pl-c1">false</span><span class="pl-kos">,</span>
+    <span class="pl-c1">value</span> : <span class="pl-s">'Dog'</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-s1">cachorro2</span><span class="pl-kos">.</span><span class="pl-c1">nome</span> <span class="pl-c1">=</span> <span class="pl-s">'Novo_Dog'</span>
+<span class="pl-s1">cachorro2</span><span class="pl-kos">.</span><span class="pl-c1">idade</span> <span class="pl-c1">=</span> <span class="pl-c1">5</span>
+
+<span class="pl-s1">cachorro2</span><span class="pl-kos">.</span><span class="pl-c1">nome</span>
+<span class="pl-c">//Dog</span>
+<span class="pl-s1">cachorro2</span><span class="pl-kos">.</span><span class="pl-c1">idade</span>
+<span class="pl-c">//5</span>
+</code></pre>
+<h4
+  id="a-fun-o-object-assign-permite-concatenar-ou-seja-unir-todos-os-atributos-de-diferentes-objetos-em-um-vale-ressaltar-que-atributos-com-mesmas-chaves-ser-o-sobreescritos-pelo-objeto-mais-recente-">
+  A função Object.assign permite &#39;concatenar&#39; ,ou seja, unir todos os atributos de diferentes objetos, em um
+  vale ressaltar que atributos com mesmas chaves, serão sobreescritos pelo objeto mais recente.</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">obj1</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">a</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">b</span>: <span class="pl-c1">2</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">obj2</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">b</span>: <span class="pl-c1">4</span><span class="pl-kos">,</span> <span class="pl-c1">c</span>: <span class="pl-c1">5</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">obj3</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">e</span>: <span class="pl-c1">8</span><span class="pl-kos">,</span> <span class="pl-c1">a</span>: <span class="pl-c1">5</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">returnedTarget</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">assign</span><span class="pl-kos">(</span><span class="pl-s1">obj1</span><span class="pl-kos">,</span> <span class="pl-s1">obj2</span><span class="pl-kos">,</span> <span class="pl-s1">obj3</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+
+<span class="pl-s1">obj1</span>
+<span class="pl-c">//{a: 5, b: 4, c: 5, e: 8}</span>
+
+<span class="pl-s1">returnedTarget</span>
+<span class="pl-c">//{a: 5, b: 4, c: 5, e: 8}</span>
+</code></pre>
+<h2 id="heran-a">Herança</h2>
+<h4
+  id="em-js-para-heran-a-usado-a-palavra-chave-__proto__-para-estabelecer-um-prototipo-ou-seja-o-__proto__-como-uma-seta-que-aponta-para-o-pai-de-determinado-objeto-com-esse-apontamento-caso-o-filho-n-o-tenha-algum-atributo-e-o-pai-tiver-possivel-acessar-atrav-s-do-filho-o-atributo-valor-ou-fun-o-do-pai-abaixo-um-exemplo-de-utiliza-o-">
+  Em js para herança é usado a palavra chave &#39;<strong>proto</strong>&#39;, para estabelecer um prototipo, ou seja, o
+  &#39;<strong>proto</strong>&#39; é como uma seta que aponta para o pai de determinado objeto, com esse apontamento,
+  caso o filho não tenha algum atributo e o pai tiver, é possivel acessar através do filho o atributo (valor ou função)
+  do pai, abaixo um exemplo de utilização:</h4>
+<h4 id="neste-exemplo-os-objetos-filhos-s-o-gato-e-cachorro-em-que-herdam-o-pai-que-o-objeto-mamifero-">Neste exemplo os
+  objetos filhos são gato e cachorro, em que herdam o pai que é o objeto mamifero.</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">mamifero</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">nome</span> : <span class="pl-s">'Mamifero Sem Nome'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">patas</span> : <span class="pl-c1">0</span><span class="pl-kos">,</span>
+    <span class="pl-c1">tipo</span>: <span class="pl-s">'mamifero'</span><span class="pl-kos">,</span>
+
+<span class="pl-kos">}</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">cachorro</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">__proto__</span> : <span class="pl-s1">mamifero</span><span class="pl-kos">,</span> <span class="pl-c">//Herdando o obj mamifero através do atributo '__proto__'</span>
+    <span class="pl-en">falar</span> : <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> Latiu!!`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+
+
+<span class="pl-kos">}</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">gato</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">__proto__</span> : <span class="pl-s1">mamifero</span><span class="pl-kos">,</span>
+    <span class="pl-en">falar</span> : <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> Miou!!`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+
+
+<span class="pl-kos">}</span>
+
+<span class="pl-c">/*ao tentar acessar um atributo que não existe em gato, ele tenta verificar se o pai </span>
+<span class="pl-c">'mamifero' tem e o retorna caso tenha*/</span>
+<span class="pl-s1">gato</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">;</span> 
+<span class="pl-c">//Mamifero Sem Nome</span>
+
+
+<span class="pl-c">/*Caso o atributo receba valor, o obj filho cria esse atributo, assim perdendo o acesso</span>
+<span class="pl-c">ao atributo em questão do pai*/</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">nome</span> <span class="pl-c1">=</span> <span class="pl-s">"Spike"</span><span class="pl-kos">;</span> 
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">nome</span>
+<span class="pl-c">//Spike</span>
+
+<span class="pl-c">//fora essa palavra chave também pode ser usada uma função equivalente Object.setPrototypeOf(obj, prototipo)</span>
+</code></pre>
+<h4 id="obs-o-objeto-pai-tamb-m-pode-ser-filho-de-outro-objeto">Obs.: o objeto pai, também pode ser filho de outro
+  objeto</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">animal</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">vivo</span> : <span class="pl-s">'Morto'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">tipo</span>: <span class="pl-s">'Indeterminado'</span><span class="pl-kos">,</span>
+
+    <span class="pl-en">status</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-s">` encontra-se <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">vivo</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+
+<span class="pl-k">const</span> <span class="pl-s1">mamifero</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">__proto__</span> : <span class="pl-s1">animal</span><span class="pl-kos">,</span> 
+    <span class="pl-c1">nome</span> : <span class="pl-s">'Mamifero Sem Nome'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">patas</span> : <span class="pl-c1">0</span><span class="pl-kos">,</span>
+    <span class="pl-c1">tipo</span>: <span class="pl-s">'mamifero'</span><span class="pl-kos">,</span>
+
+    <span class="pl-en">status</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-s">`O <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> tipo <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">tipo</span><span class="pl-kos">}</span></span> <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">super</span><span class="pl-kos">.</span><span class="pl-en">status</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span> <span class="pl-c">//super é semelhante ao this, só que ele referencia a classe pai</span>
+    <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">cachorro</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">__proto__</span> : <span class="pl-s1">mamifero</span><span class="pl-kos">,</span> <span class="pl-c">//Herdando o obj mamifero através do atributo '__proto__'</span>
+    <span class="pl-c1">especie</span> : <span class="pl-s">'cachorro'</span><span class="pl-kos">,</span>
+    <span class="pl-en">falar</span> : <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> Latiu!!`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+
+    <span class="pl-en">status</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-s">`O <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">especie</span><span class="pl-kos">}</span></span> <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">super</span><span class="pl-kos">.</span><span class="pl-en">status</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span> <span class="pl-c">//super é semelhante ao this, só que ele referencia a classe pai</span>
+    <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">vivo</span><span class="pl-kos">;</span> <span class="pl-c">//-&gt; caso não encontre o atributo nem no filho, nem no pai, ele vai procurando nos pais mais acima</span>
+<span class="pl-c">//Morto</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">vivo</span> <span class="pl-c1">=</span> <span class="pl-s">'vivo'</span><span class="pl-kos">;</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">tipo</span><span class="pl-kos">;</span> <span class="pl-c">//caso tenha no pai, ele para de buscar nos niveis mais acima</span>
+<span class="pl-c">//mamifero</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">nome</span> <span class="pl-c1">=</span> <span class="pl-s">"Spike"</span><span class="pl-kos">;</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">;</span>
+<span class="pl-c">//Spike</span>
+<span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-c1">__proto__</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">;</span> <span class="pl-c">//com proto é possivel realizar esse tipo de chamada</span>
+<span class="pl-c">//Mamifero Sem Nome</span>
+</code></pre>
+<h4
+  id="seguindo-essa-linha-assim-como-o-objeto-tem-o-this-para-referencia-lo-h-tamb-m-o-super-usado-para-referenciar-o-objeto-pai-no-exemplo-abaixo-a-fun-o-chamada-e-dentro-dela-chamada-como-complemento-a-fun-o-pai-utilizando-o-super-verfique-os-metodos-mais-acima-para-melhor-entendimento-">
+  Seguindo essa linha assim como o objeto tem o &#39;this&#39; para referencia-lo, há também o &#39;super&#39; usado
+  para referenciar o objeto pai no exemplo abaixo, a função é chamada, e dentro dela é chamada como complemento a função
+  pai utilizando o &#39;super&#39; verfique os metodos mais acima para melhor entendimento.</h4>
+<pre><code class="lang-js"><span class="pl-s1">cachorro</span><span class="pl-kos">.</span><span class="pl-en">status</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">//O cachorro O Spike tipo mamifero  encontra-se vivo</span>
+</code></pre>
+<h4 id="a-palavra-nome-foi-sobreescrita-pelo-nome-do-cachorro-pois-o-this-teve">a palavra nome foi sobreescrita pelo
+  nome do cachorro, pois o this teve</h4>
+<p>como referencia a função que o chamou, logo a referencia foi a função dentro
+  do objeto cachorro.</p>
+<h1 id="aprofundando-classe">APROFUNDANDO CLASSE</h1>
+<pre><code class="lang-js"><span class="pl-k">class</span> <span class="pl-v">Animal</span><span class="pl-kos">{</span>
+    <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">tipo</span> <span class="pl-c1">=</span> <span class="pl-s">'sem tipo'</span><span class="pl-kos">,</span><span class="pl-s1">vivo</span> <span class="pl-c1">=</span> <span class="pl-s">'Morto'</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">vivo</span> <span class="pl-c1">=</span> <span class="pl-s1">vivo</span><span class="pl-kos">;</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">tipo</span> <span class="pl-c1">=</span> <span class="pl-s1">tipo</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+
+    <span class="pl-en">status</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-s">` encontra-se <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">vivo</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">class</span> <span class="pl-v">Mamifero</span> <span class="pl-k">extends</span> <span class="pl-v">Animal</span><span class="pl-kos">{</span> <span class="pl-c">//a palavra 'extends' serve como '__proto__' em objeto, definindo a classe pai</span>
+    <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">nome</span> <span class="pl-c1">=</span> <span class="pl-s">'Sem Nome'</span><span class="pl-kos">,</span><span class="pl-s1">patas</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">,</span><span class="pl-s1">tipo</span><span class="pl-kos">,</span><span class="pl-s1">vivo</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">vivo</span><span class="pl-kos">,</span><span class="pl-s1">tipo</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//em classe uma forma de inicializar/chamar o contrutor da classe, é usando a palavra chave 'super'</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span> <span class="pl-c1">=</span> <span class="pl-s1">nome</span><span class="pl-kos">;</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">patas</span> <span class="pl-c1">=</span> <span class="pl-s1">patas</span><span class="pl-kos">;</span>
+        
+    <span class="pl-kos">}</span>
+
+    <span class="pl-en">status</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-s">`O <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span></span> tipo <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">tipo</span><span class="pl-kos">}</span></span> <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">super</span><span class="pl-kos">.</span><span class="pl-en">status</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+
+<span class="pl-k">class</span> <span class="pl-v">Cachorro</span> <span class="pl-k">extends</span> <span class="pl-v">Mamifero</span><span class="pl-kos">{</span> 
+    <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">especie</span> <span class="pl-c1">=</span> <span class="pl-s">'cachorro'</span><span class="pl-kos">,</span><span class="pl-s1">cor</span> <span class="pl-c1">=</span> <span class="pl-s">'marrom'</span><span class="pl-kos">,</span> <span class="pl-s1">nome</span><span class="pl-kos">,</span><span class="pl-s1">patas</span><span class="pl-kos">,</span><span class="pl-s1">tipo</span><span class="pl-kos">,</span><span class="pl-s1">vivo</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">nome</span><span class="pl-kos">,</span><span class="pl-s1">patas</span><span class="pl-kos">,</span><span class="pl-s1">tipo</span><span class="pl-kos">,</span><span class="pl-s1">vivo</span><span class="pl-kos">)</span><span class="pl-kos">;</span> 
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">especie</span> <span class="pl-c1">=</span> <span class="pl-s1">especie</span><span class="pl-kos">;</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">cor</span> <span class="pl-c1">=</span> <span class="pl-s1">cor</span><span class="pl-kos">;</span>
+        
+    <span class="pl-kos">}</span>
+
+    <span class="pl-en">status</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-s">`O <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">especie</span><span class="pl-kos">}</span></span> cor <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">cor</span><span class="pl-kos">}</span></span> <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">super</span><span class="pl-kos">.</span><span class="pl-en">status</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+
+
+<span class="pl-k">const</span> <span class="pl-s1">cachorro1</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Cachorro</span><span class="pl-kos">;</span>
+<span class="pl-s1">cachorro1</span>
+<span class="pl-c">//{vivo: 'Morto', tipo: 'sem tipo', nome: 'Sem Nome', patas: 0, especie: 'cachorro', cor: 'marrom'}</span>
+</code></pre>
+<h1 id="aprofundando-array">APROFUNDANDO ARRAY</h1>
+<h4 id="alem-das-propriedades-comum-de-um-objeto-de-armazenar-fun-es-e-valores-h-outras-opera-es">Alem das propriedades
+  comum de um objeto, de armazenar funções, e valores, há outras operações</h4>
+<p>possiveis.</p>
+<pre><code class="lang-js"><span class="pl-k">var</span> <span class="pl-s1">array_exemplo</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'a'</span><span class="pl-kos">,</span><span class="pl-s">'b'</span><span class="pl-kos">,</span><span class="pl-s">'c'</span><span class="pl-kos">,</span><span class="pl-s">'d'</span><span class="pl-kos">,</span><span class="pl-s">'e'</span><span class="pl-kos">]</span>
+
+
+<span class="pl-s1">array_exemplo</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c">//retorna tamanho do array</span>
+<span class="pl-c">//5</span>
+
+<span class="pl-k">delete</span> <span class="pl-s1">array_exemplo</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span>
+<span class="pl-s1">array_exemplo</span>
+<span class="pl-c">//[undefined,'b','c','d','e']</span>
+
+
+<span class="pl-s1">array_exemplo</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s">'a'</span>
+<span class="pl-s1">array_exemplo</span>
+<span class="pl-c">//['a','b','c','d','e']</span>
+</code></pre>
+<h4 id="exclui-items-a-partir-de-um-indice-e-pode-adicionar-elementos">exclui items a partir de um indice e pode
+  adicionar elementos</h4>
+<pre><code class="lang-js"><span class="pl-s1">array_exemplo</span><span class="pl-kos">.</span><span class="pl-en">splice</span><span class="pl-kos">(</span><span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-c1">2</span><span class="pl-kos">)</span> <span class="pl-c">//(indice de partida, quantidade de elementos)</span>
+<span class="pl-s1">array_exemplo</span>
+<span class="pl-c">//['a', 'd', 'e']</span>
+
+<span class="pl-s1">array_exemplo</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'a'</span><span class="pl-kos">,</span><span class="pl-s">'b'</span><span class="pl-kos">,</span><span class="pl-s">'c'</span><span class="pl-kos">,</span><span class="pl-s">'d'</span><span class="pl-kos">,</span><span class="pl-s">'e'</span><span class="pl-kos">]</span>
+<span class="pl-s1">array_exemplo</span><span class="pl-kos">.</span><span class="pl-en">splice</span><span class="pl-kos">(</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">,</span> <span class="pl-s">'f'</span><span class="pl-kos">,</span><span class="pl-s">'g'</span><span class="pl-kos">,</span><span class="pl-s">'h'</span><span class="pl-kos">,</span> <span class="pl-s">'j'</span><span class="pl-kos">)</span> 
+<span class="pl-s1">array_exemplo</span>
+<span class="pl-c">//['a', 'b', 'f', 'g', 'h']</span>
+
+<span class="pl-c">//caso coloque 0 na quantidade ele não apaga nenhum elemento</span>
+<span class="pl-s1">array_exemplo</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'a'</span><span class="pl-kos">,</span><span class="pl-s">'b'</span><span class="pl-kos">,</span><span class="pl-s">'c'</span><span class="pl-kos">,</span><span class="pl-s">'d'</span><span class="pl-kos">,</span><span class="pl-s">'e'</span><span class="pl-kos">]</span>
+<span class="pl-s1">array_exemplo</span><span class="pl-kos">.</span><span class="pl-en">splice</span><span class="pl-kos">(</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-s">'f'</span><span class="pl-kos">,</span><span class="pl-s">'g'</span><span class="pl-kos">)</span> 
+<span class="pl-s1">array_exemplo</span>
+<span class="pl-c">//['a', 'b', 'f', 'g', 'c', 'd', 'e']</span>
+</code></pre>
+<h2 id="fun-es-simples">Funções simples</h2>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">animais</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'gato'</span><span class="pl-kos">,</span><span class="pl-s">'cachorro'</span><span class="pl-kos">,</span><span class="pl-s">'cavalo'</span><span class="pl-kos">,</span><span class="pl-s">'vaca'</span><span class="pl-kos">,</span><span class="pl-s">'alce'</span><span class="pl-kos">]</span>
+<span class="pl-s1">animais</span>
+<span class="pl-c">//['gato','cachorro','cavalo','vaca','alce']</span>
+</code></pre>
+<h4 id="cria-um-novo-array-pegandos-todos-os-elementos-a-partir-de-um-indice">cria um novo array, pegandos todos os
+  elementos a partir de um indice</h4>
+<pre><code class="lang-js"><span class="pl-k">let</span> <span class="pl-s1">novo_animais</span> <span class="pl-c1">=</span> <span class="pl-s1">animais</span><span class="pl-kos">.</span><span class="pl-en">slice</span><span class="pl-kos">(</span><span class="pl-c1">3</span><span class="pl-kos">)</span> <span class="pl-c">//(inicio,fim) -&gt; caso não determine o fim, ele segue até o ultimo elemento do array</span>
+<span class="pl-s1">novo_animais</span>
+<span class="pl-c">//['vaca', 'alce']</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">novo_animais</span> <span class="pl-c1">=</span> <span class="pl-s1">animais</span><span class="pl-kos">.</span><span class="pl-en">slice</span><span class="pl-kos">(</span><span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">)</span> <span class="pl-c">//(inicio,fim) -&gt; caso determine o fim, ele segue até o indice sem pegar ele</span>
+<span class="pl-s1">novo_animais</span>
+<span class="pl-c">//['cachorro', 'cavalo']</span>
+</code></pre>
+<h2 id="percorrendo-array">Percorrendo array</h2>
+<h3 id="foreach-para-cada-elemento-no-array-fa-a-algo">ForEach -&gt; para cada elemento no array, faça algo</h3>
+<pre><code class="lang-js"><span class="hljs-keyword"><span class="pl-k">const</span> <span class="pl-s1">animais</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'gato'</span><span class="pl-kos">,</span><span class="pl-s">'cachorro'</span><span class="pl-kos">,</span><span class="pl-s">'cavalo'</span><span class="pl-kos">,</span><span class="pl-s">'vaca'</span><span class="pl-kos">,</span><span class="pl-s">'alce'</span><span class="pl-kos">]</span>
+
+
+
+<span class="pl-s1">animais</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">nome</span><span class="pl-kos">,</span><span class="pl-s1">indice</span><span class="pl-kos">)</span><span class="pl-kos">{</span> <span class="pl-c">//o parametro indice pode ser oculto e o nome e há um terceiro que é o array completo</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">indice</span><span class="pl-kos">}</span></span>: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">nome</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+<span class="pl-c">/*</span>
+<span class="pl-c">0: gato</span>
+<span class="pl-c">1: cachorro</span>
+<span class="pl-c">2: cavalo</span>
+<span class="pl-c">3: vaca</span>
+<span class="pl-c">4: alce</span>
+<span class="pl-c">*/</span>
+</code></pre>
+<h3 id="construindo-o-proprio-foreach">Construindo o proprio forEach</h3>
+
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">animais</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'gato'</span><span class="pl-kos">,</span><span class="pl-s">'cachorro'</span><span class="pl-kos">,</span><span class="pl-s">'cavalo'</span><span class="pl-kos">,</span><span class="pl-s">'vaca'</span><span class="pl-kos">,</span><span class="pl-s">'alce'</span><span class="pl-kos">]</span>
+
+
+<span class="pl-c">//criando função e adicionando como atributo atraves da relacao de prototipo</span>
+
+<span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-en">forEach2</span> <span class="pl-c1">=</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">callback</span><span class="pl-kos">)</span><span class="pl-kos">{</span>  <span class="pl-c">//a palavra 'callback' tem como significado, uma função que é chamada varias vezes</span>
+    <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">x</span> <span class="pl-c1">=</span><span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">x</span> <span class="pl-c1">&lt;</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span> <span class="pl-s1">x</span><span class="pl-c1">++</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-s1">callback</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">[</span><span class="pl-s1">x</span><span class="pl-kos">]</span><span class="pl-kos">,</span><span class="pl-s1">x</span><span class="pl-kos">,</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span> 
+
+
+<span class="pl-s1">animais</span><span class="pl-kos">.</span><span class="pl-en">forEach2</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">nome</span><span class="pl-kos">,</span><span class="pl-s1">indice</span><span class="pl-kos">)</span><span class="pl-kos">{</span> <span class="pl-c">//executando como prototipo</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">indice</span><span class="pl-kos">}</span></span>: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">nome</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-c">/*</span>
+<span class="pl-c">0: gato</span>
+<span class="pl-c">1: cachorro</span>
+<span class="pl-c">2: cavalo</span>
+<span class="pl-c">3: vaca</span>
+<span class="pl-c">4: alce</span>
+<span class="pl-c">*/</span>
+</code></pre>
+<h3 id="a-fun-o-map-serve-para-modificar-os-elementos-do-array">A função map serve para modificar os elementos do array
+</h3>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">numeros</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">,</span><span class="pl-c1">4</span><span class="pl-kos">,</span><span class="pl-c1">5</span><span class="pl-kos">]</span>
+
+<span class="pl-k">let</span> <span class="pl-s1">resultado</span> <span class="pl-c1">=</span> <span class="pl-s1">numeros</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-s1">e</span> <span class="pl-c1">*</span> <span class="pl-c1">2</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-s1">resultado</span>
+<span class="pl-c">//[2, 4, 6, 8, 10]</span>
+
+<span class="pl-s1">resultado</span> <span class="pl-c1">=</span> <span class="pl-s1">resultado</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-s1">e</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">e</span><span class="pl-c1">+</span><span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-s1">e</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">e</span><span class="pl-c1">/</span><span class="pl-c1">2</span><span class="pl-kos">)</span>
+                <span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-s1">x</span> <span class="pl-c1">=&gt;</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">round</span><span class="pl-kos">(</span><span class="pl-s1">x</span><span class="pl-kos">)</span> <span class="pl-c1">-</span> <span class="pl-c1">10</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//chamada sucessivas, a fução round da biblioteca Math, arredonda numeros</span>
+
+<span class="pl-s1">resultado</span>
+<span class="pl-c">//[-8, -7, -6, -5, -4]</span>
+</code></pre>
+<h3 id="desafio-map">Desafio Map</h3>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">carrinho</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>
+    <span class="pl-s">'{ "nome": "Borracha", "preco": 3.45 }'</span><span class="pl-kos">,</span>
+    <span class="pl-s">'{ "nome": "Caderno", "preco": 13.90 }'</span><span class="pl-kos">,</span>
+    <span class="pl-s">'{ "nome": "Kit de Lapis", "preco": 41.22 }'</span><span class="pl-kos">,</span>
+    <span class="pl-s">'{ "nome": "Caneta", "preco": 7.50 }'</span>
+<span class="pl-kos">]</span>
+
+<span class="pl-c">//desafio de retornar array apenas com preços</span>
+
+<span class="pl-k">let</span> <span class="pl-s1">tmp</span> <span class="pl-c1">=</span> <span class="pl-s1">carrinho</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">parse</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">preco</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+<span class="pl-s1">tmp</span>
+<span class="pl-c">//[3.45, 13.9, 41.22, 7.5]</span>
+</code></pre>
+<h3 id="criando-fun-o-e-adicionando-como-atributo-atraves-da-relacao-de-prototipo">criando função e adicionando como
+  atributo atraves da relacao de prototipo</h3>
+<pre><code class="lang-js"><span class="pl-k">function</span> <span class="pl-en">map2</span><span class="pl-kos">(</span><span class="pl-s1">callback</span><span class="pl-kos">)</span><span class="pl-kos">{</span> 
+    <span class="pl-k">const</span> <span class="pl-s1">new_array</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span>
+    <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">x</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">x</span> <span class="pl-c1">&lt;</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span> <span class="pl-s1">x</span><span class="pl-c1">++</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-s1">new_array</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-s1">callback</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">[</span><span class="pl-s1">x</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-s1">x</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">return</span> <span class="pl-s1">new_array</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span> 
+
+
+<span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-c1">map2</span> <span class="pl-c1">=</span> <span class="pl-s1">map2</span><span class="pl-kos">;</span>
+
+
+<span class="pl-k">const</span> <span class="pl-s1">numeros</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">,</span><span class="pl-c1">4</span><span class="pl-kos">,</span><span class="pl-c1">5</span><span class="pl-kos">]</span>
+
+<span class="pl-k">let</span> <span class="pl-s1">resultado</span> <span class="pl-c1">=</span> <span class="pl-s1">numeros</span><span class="pl-kos">.</span><span class="pl-en">map2</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-s1">e</span> <span class="pl-c1">*</span> <span class="pl-c1">2</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-s1">resultado</span>
+<span class="pl-c">//[2, 4, 6, 8, 10]</span>
+</code></pre>
+<h3 id="filtrando-array-de-acordo-com-uma-logica">filtrando array de acordo com uma logica</h3>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">alunos</span> <span class="pl-c1">=</span> 
+<span class="pl-kos">[</span> 
+    <span class="pl-kos">{</span><span class="pl-c1">nome</span>: <span class="pl-s">'aluno1'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">10</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span><span class="pl-c1">nome</span>: <span class="pl-s">'aluno2'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">2</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span><span class="pl-c1">nome</span>: <span class="pl-s">'aluno3'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">6</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span><span class="pl-c1">nome</span>: <span class="pl-s">'aluno4'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">3</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span><span class="pl-c1">nome</span>: <span class="pl-s">'aluno5'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">4</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span><span class="pl-c1">nome</span>: <span class="pl-s">'aluno5'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">1</span><span class="pl-kos">}</span>
+
+<span class="pl-kos">]</span>
+
+<span class="pl-k">let</span> <span class="pl-s1">acima_da_media</span> <span class="pl-c1">=</span> <span class="pl-s1">alunos</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">{</span> <span class="pl-c">//ele adciona ou não no array final, dependendo do retorno falso ou verdadeiro  </span>
+    <span class="pl-k">return</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">nota</span> <span class="pl-c1">&gt;=</span> <span class="pl-c1">6</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-s1">acima_da_media</span>
+<span class="pl-c">//[{nome: 'aluno1', nota: 10},{nome: 'aluno3', nota: 6}]</span>
+<span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-en">filter2</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">callback</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">novo_array</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span>
+    <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">x</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">x</span> <span class="pl-c1">&lt;</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span> <span class="pl-s1">x</span><span class="pl-c1">++</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-s1">callback</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">[</span><span class="pl-s1">x</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-s1">x</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">)</span> ? <span class="pl-s1">novo_array</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">[</span><span class="pl-s1">x</span><span class="pl-kos">]</span><span class="pl-kos">)</span> : <span class="pl-s">''</span><span class="pl-kos">;</span> <span class="pl-c">//condição ? se verdadeiro : se falso</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">return</span> <span class="pl-s1">novo_array</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+
+<span class="pl-k">const</span> <span class="pl-s1">alunos</span> <span class="pl-c1">=</span> 
+<span class="pl-kos">[</span> 
+    <span class="pl-kos">{</span><span class="pl-c1">nome</span>: <span class="pl-s">'aluno1'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">10</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span><span class="pl-c1">nome</span>: <span class="pl-s">'aluno2'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">2</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span><span class="pl-c1">nome</span>: <span class="pl-s">'aluno3'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">6</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span><span class="pl-c1">nome</span>: <span class="pl-s">'aluno4'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">3</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span><span class="pl-c1">nome</span>: <span class="pl-s">'aluno5'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">4</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span><span class="pl-c1">nome</span>: <span class="pl-s">'aluno5'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">1</span><span class="pl-kos">}</span>
+
+<span class="pl-kos">]</span>
+
+<span class="pl-k">let</span> <span class="pl-s1">abaixo_da_media</span> <span class="pl-c1">=</span> <span class="pl-s1">alunos</span><span class="pl-kos">.</span><span class="pl-en">filter2</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">{</span> <span class="pl-c">//ele adciona ou não no array final, dependendo do retorno falso ou verdadeiro  </span>
+    <span class="pl-k">return</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">nota</span> <span class="pl-c1">&lt;</span> <span class="pl-c1">6</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-s1">abaixo_da_media</span>
+<span class="pl-c">/*</span>
+<span class="pl-c">[</span>
+<span class="pl-c">{nome: 'aluno2', nota: 2},</span>
+<span class="pl-c">{nome: 'aluno4', nota: 3},</span>
+<span class="pl-c">{nome: 'aluno5', nota: 4}, </span>
+<span class="pl-c">{nome: 'aluno5', nota: 1}</span>
+<span class="pl-c">]</span>
+<span class="pl-c">*/</span>
+</code></pre>
+
+
+
+
+<h3 id="reduzindo-array">reduzindo array</h3>
+<h4
+  id="a-fun-o-reduce-reduz-um-array-em-um-valor-final-basicamente-ele-pega-o-primeiro-valor-e-a-partir-dele-faz-uma-opera-o-onde-ele-pega-o-resultado-da-opera-o-e-realiza-ela-com-o-proximo-elemento-do-array-por-exemplo-uma-soma-">
+  A função reduce, reduz um array em um valor final, basicamente ele pega o primeiro valor e a partir dele faz uma
+  operação, onde ele pega o resultado da operação, e realiza ela com o proximo elemento do array, por exemplo uma soma:
+</h4>
+<h4
+  id="dado-um-array-1-2-4-2-5-1-eu-fa-o-o-reduce-somando-os-elementos-resultado-elemento-ai-ele-pega-o-primeiro-indice-realiza-a-opera-o-0-1-e-chama-a-callback-de-novo-agora-pega-o-segundo-e-soma-com-o-resultado-anterior-1-2-3-e-vai-at-o-ultimo-3-4-7-2-9-5-14-1-por-fim-retorna-o-resultado-15">
+  dado um array -&gt; [1,2,4,2,5,1], eu faço o reduce somando os elementos, resultado+elemento , ai ele pega o primeiro
+  indice realiza a operação , 0+1, e chama a callback de novo agora pega o segundo e soma com o resultado anterior, 1+2
+  -&gt; 3, e vai até o ultimo, 3+4, 7+2, 9+5, 14+1, por fim retorna o resultado 15</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">array_de_numeros</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">4</span><span class="pl-kos">,</span><span class="pl-c1">5</span><span class="pl-kos">,</span><span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">,</span><span class="pl-c1">6</span><span class="pl-kos">]</span>
+
+
+<span class="pl-c">//Argumentos -&gt; callback (acumulador -&gt; resultado, atual -&gt; valor atual) e há outro parametro que é o valor inicial</span>
+<span class="pl-k">let</span> <span class="pl-s1">resultado</span> <span class="pl-c1">=</span> <span class="pl-s1">array_de_numeros</span><span class="pl-kos">.</span><span class="pl-en">reduce</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">acumulador</span><span class="pl-kos">,</span><span class="pl-s1">atual</span><span class="pl-kos">)</span><span class="pl-kos">{</span> 
+    <span class="pl-k">return</span> <span class="pl-s1">acumulador</span> <span class="pl-c1">*</span> <span class="pl-s1">atual</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-s1">resultado</span>
+<span class="pl-c">//1440</span>
+<span class="pl-s1">resultado</span> <span class="pl-c1">=</span> <span class="pl-s1">array_de_numeros</span><span class="pl-kos">.</span><span class="pl-en">reduce</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">acumulador</span><span class="pl-kos">,</span><span class="pl-s1">atual</span><span class="pl-kos">)</span><span class="pl-kos">{</span> 
+    <span class="pl-k">return</span> <span class="pl-s1">acumulador</span> <span class="pl-c1">+</span> <span class="pl-s1">atual</span>
+<span class="pl-kos">}</span><span class="pl-kos">,</span><span class="pl-c1">20</span><span class="pl-kos">)</span>
+<span class="pl-s1">resultado</span>
+<span class="pl-c">//43 -&gt; sem o valor inicial 20, daria 23</span>
+</code></pre>
+<h3 id="desafios-reduce">Desafios reduce</h3>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">alunos</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">nome</span>: <span class="pl-s">'João'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">7.3</span><span class="pl-kos">,</span> <span class="pl-c1">bolsista</span>: <span class="pl-c1">false</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">nome</span>: <span class="pl-s">'Maria'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">9.2</span><span class="pl-kos">,</span> <span class="pl-c1">bolsista</span>: <span class="pl-c1">true</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">nome</span>: <span class="pl-s">'Pedro'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">9.8</span><span class="pl-kos">,</span> <span class="pl-c1">bolsista</span>: <span class="pl-c1">false</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">nome</span>: <span class="pl-s">'Ana'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">8.7</span><span class="pl-kos">,</span> <span class="pl-c1">bolsista</span>: <span class="pl-c1">true</span> <span class="pl-kos">}</span>
+<span class="pl-kos">]</span>
+<span class="pl-c">// Desafio 1: Todos os alunos são bolsista?</span>
+
+<span class="pl-k">let</span> <span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-s1">alunos</span><span class="pl-kos">.</span><span class="pl-en">reduce</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">ac</span><span class="pl-kos">,</span> <span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">ac</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">bolsista</span> <span class="pl-c1">==</span> <span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">result</span>
+<span class="pl-c">//false</span>
+
+<span class="pl-c">// Desafio 2: Algum aluno é bolsista?</span>
+<span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-s1">alunos</span><span class="pl-kos">.</span><span class="pl-en">reduce</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">ac</span><span class="pl-kos">,</span> <span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">ac</span> <span class="pl-c1">||</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">bolsista</span><span class="pl-kos">)</span> <span class="pl-c1">==</span> <span class="pl-c1">true</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">result</span>
+<span class="pl-c">//true</span>
+</code></pre>
+<h4 id="criando-fun-o-e-adicionando-como-atributo-atraves-da-relacao-de-prototipo">criando função e adicionando como
+  atributo atraves da relacao de prototipo</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">alunos</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">nome</span>: <span class="pl-s">'João'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">7.3</span><span class="pl-kos">,</span> <span class="pl-c1">bolsista</span>: <span class="pl-c1">false</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">nome</span>: <span class="pl-s">'Maria'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">9.2</span><span class="pl-kos">,</span> <span class="pl-c1">bolsista</span>: <span class="pl-c1">true</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">nome</span>: <span class="pl-s">'Pedro'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">9.8</span><span class="pl-kos">,</span> <span class="pl-c1">bolsista</span>: <span class="pl-c1">false</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">nome</span>: <span class="pl-s">'Ana'</span><span class="pl-kos">,</span> <span class="pl-c1">nota</span>: <span class="pl-c1">8.7</span><span class="pl-kos">,</span> <span class="pl-c1">bolsista</span>: <span class="pl-c1">true</span> <span class="pl-kos">}</span>
+<span class="pl-kos">]</span>
+<span class="pl-c">// Desafio 1: Todos os alunos são bolsista?</span>
+
+<span class="pl-k">let</span> <span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-s1">alunos</span><span class="pl-kos">.</span><span class="pl-en">reduce</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">ac</span><span class="pl-kos">,</span> <span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">ac</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">bolsista</span> <span class="pl-c1">==</span> <span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">result</span>
+<span class="pl-c">//false</span>
+
+<span class="pl-c">// Desafio 2: Algum aluno é bolsista?</span>
+<span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-s1">alunos</span><span class="pl-kos">.</span><span class="pl-en">reduce</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">ac</span><span class="pl-kos">,</span> <span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">ac</span> <span class="pl-c1">||</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">bolsista</span><span class="pl-kos">)</span> <span class="pl-c1">==</span> <span class="pl-c1">true</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">result</span>
+<span class="pl-c">//true</span>
+</code></pre>
+<h2 id="fun-o-concat">Função concat</h2>
+<h4 id="ela-usada-para-juntar-dois-ou-mais-arrays-em-um-s-">ela é usada para juntar dois ou mais arrays em um só</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">array1</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">]</span>
+<span class="pl-k">const</span> <span class="pl-s1">array2</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-c1">3</span><span class="pl-kos">,</span><span class="pl-c1">4</span><span class="pl-kos">,</span><span class="pl-c1">5</span><span class="pl-kos">]</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">array3</span> <span class="pl-c1">=</span>  <span class="pl-s1">array1</span><span class="pl-kos">.</span><span class="pl-en">concat</span><span class="pl-kos">(</span><span class="pl-s1">array2</span><span class="pl-kos">)</span> 
+<span class="pl-s1">array3</span>
+<span class="pl-c">//[1, 2, 3, 3, 4, 5]</span>
+<span class="pl-k">const</span> <span class="pl-s1">array3</span> <span class="pl-c1">=</span>  <span class="pl-s1">array1</span><span class="pl-kos">.</span><span class="pl-en">concat</span><span class="pl-kos">(</span><span class="pl-s1">array2</span><span class="pl-kos">,</span> <span class="pl-c1">7</span><span class="pl-kos">,</span><span class="pl-c1">8</span><span class="pl-kos">)</span> <span class="pl-c">//é possivel adicionar elementos também</span>
+<span class="pl-s1">array3</span>
+<span class="pl-c">//[1, 2, 3, 3, 4, 5, 7, 8]</span>
+</code></pre>
+<h1 id="referencias">REFERENCIAS</h1>
+<h3 id="https-developer-mozilla-org-pt-br-docs-web-javascript-"><a
+    href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/">https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/</a>
+</h3>
+<h3 id="https-chat-openai-com-chat"><a href="https://chat.openai.com/chat">https://chat.openai.com/chat</a></h3>
+<h3 id="https-www-w3schools-com-js-"><a href="https://www.w3schools.com/js/">https://www.w3schools.com/js/</a></h3>
+<h3 id="https-www-udemy-com-course-curso-web-"><a
+    href="https://www.udemy.com/course/curso-web/">https://www.udemy.com/course/curso-web/</a></h3>
+
+    {% endverbatim %}

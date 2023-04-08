@@ -1,0 +1,198 @@
+{% verbatim %}
+<h1 id="gulp-babel">Gulp &amp; Babel</h1>
+<div class='imgModulo' style="background-image: url('/static/documentations/icons/gulp.png');"></div>
+<h2 id="indice">INDICE</h2>
+<ul>
+  <li><strong><a href="#introducao">Introdução</a></strong></li>
+  <li><strong><a href="#setup-inicial">Setup Inicial</a></strong></li>
+  <li><strong><a href="#padrão-de-projeto-gulp">Padrão de Projeto Gulp</a></strong></li>
+  <li><strong><a href="#nota">Nota</a></strong></li>
+</ul>
+<h1 id="introducao">INTRODUCAO</h1>
+<h3
+  id="o-gulp-um-ferramenta-para-automatizar-o-processo-de-organiza-o-e-preparo-do-seu-projeto-como-c-pia-de-arquivos-renomear-mover-entre-outras-funcionalidades-podendo-realiza-las-uma-em-sequencia-da-outra-ou-paralelamente-">
+  O gulp é um ferramenta para automatizar o processo de organização e preparo do seu projeto, como cópia de arquivos,
+  renomear, mover, entre outras funcionalidades, podendo realiza-las uma em sequencia da outra ou paralelamente.</h3>
+<h3
+  id="babel-um-compilador-que-adapta-seu-codigo-para-poder-ser-utilizado-em-varios-navegadores-mesmo-que-utilize-uma-tecnologia-muito-nova-o-babel-adapta-para-pode-utilizar-em-tantos-browsers-quanto-poss-vel-">
+  Babel é um compilador que adapta seu codigo, para poder ser utilizado em varios navegadores, mesmo que utilize uma
+  tecnologia muito nova, o babel adapta para pode utilizar em tantos browsers quanto possível.</h3>
+<h1 id="setup-inicial">SETUP INICIAL</h1>
+<p>Inicie seu projeto no e coloque em seu package.json as seguintes dependencias e instale logo em seguida</p>
+<pre><code class="lang-json"><span class="hljs-string">"nodemon"</span>: <span class="hljs-string">"^2.0.20"</span>,
+<span class="hljs-string">"babel-core"</span>: <span class="hljs-string">"6.26.3"</span>,
+<span class="hljs-string">"babel-preset-env"</span>: <span class="hljs-string">"1.6.1"</span>,
+<span class="hljs-string">"gulp"</span>: <span class="hljs-string">"4.0.2"</span>,
+<span class="hljs-string">"gulp-babel"</span>: <span class="hljs-string">"7.0.1"</span>,
+<span class="hljs-string">"gulp-concat"</span>: <span class="hljs-string">"2.6.1"</span>,
+<span class="hljs-string">"gulp-sass"</span>: <span class="hljs-string">"5.0.0"</span>,
+<span class="hljs-string">"gulp-typescript"</span>: <span class="hljs-string">"4.0.2"</span>,
+<span class="hljs-string">"gulp-uglify"</span>: <span class="hljs-string">"3.0.0"</span>,
+<span class="hljs-string">"gulp-uglifycss"</span>: <span class="hljs-string">"1.0.9"</span>,
+<span class="hljs-string">"typescript"</span>: <span class="hljs-string">"2.8.3"</span>
+</code></pre>
+<p>Após isso, instale o cli do gulp globalmente</p>
+<pre><code class="lang-cmd">npm <span class="hljs-selector-tag">i</span> -g gulp-cli
+</code></pre>
+<p>O cli é responsavel por executar os comando gulp</p>
+<p>Agora crie seu arquivo gulpfile.js e comece a aprender</p>
+<h1 id="padrão-de-projeto-gulp">PADRÃO DE PROJETO GULP</h1>
+<pre><code class="lang-js"><span class="hljs-comment">//instancie a biblioteca gulp</span>
+<span class="hljs-keyword">const</span> gulp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp'</span>);
+
+<span class="hljs-comment">/*executa comandos e funções em serie
+Assim que uma acaba a outra começa
+Além também de executar em paralelo,
+em que uma função não depende da outra
+*/</span>
+<span class="hljs-keyword">const</span> {series, parallel} = gulp
+
+
+<span class="hljs-comment">/*
+Crie sua tarefa e não esqueça de retornar a callback
+para que o gulp possa chamar outra tarefa em seguida
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">task1</span>(<span class="hljs-params">cb</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Minha tarefa 1"</span>)
+    <span class="hljs-keyword">return</span> cb();
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">task2</span>(<span class="hljs-params">cb</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Minha tarefa 2"</span>)
+    <span class="hljs-keyword">return</span> cb();
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">task3</span>(<span class="hljs-params">cb</span>)</span>{
+
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Minha tarefa 3"</span>)
+
+    <span class="hljs-keyword">return</span> cb();
+}
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">task4</span>(<span class="hljs-params">cb</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Minha tarefa 4"</span>)
+    <span class="hljs-keyword">return</span> cb();
+}
+
+<span class="hljs-comment">/*Após isso é necessário exportar
+as tarefas definindo a sequencia
+Vale lembrar que o gulp espera 
+uma tarefa chamada 'default', uma forma
+de identificar.
+*/</span>
+
+<span class="hljs-built_in">module</span>.exports.default = series(
+    task1,
+    parallel(task2,task3),
+    task4
+    )
+ *<span class="hljs-regexp">/</span>
+</code></pre>
+<h4 id="nota-para-executar-seu-gulpfile-digite-gulp-dentro-do-diretorio">Nota.: Para executar seu gulpfile digite
+  &quot;gulp&quot; dentro do diretorio</h4>
+<p>TERMINAL</p>
+<pre><code class="lang-cmd">gulp
+
+Minha tarefa <span class="hljs-number">1</span>
+Minha tarefa <span class="hljs-number">2</span>
+Minha tarefa <span class="hljs-number">3</span>
+Minha tarefa <span class="hljs-number">4</span>
+</code></pre>
+<h1 id="projeto-gulp-com-js">PROJETO GULP COM JS</h1>
+<p>Neste modulo, é possível utilizar outro projeto e arquivos javascript, lembre-se de separar seus codigos em uma pasta
+  e o gulp em outra, caso queira utilizar o do exemplo, use o seguinte</p>
+<h3 id="arquivo-js-dentro-da-pasta-src-onde-s-o-organizados-os-codigos-">Arquivo .js dentro da pasta src (onde são
+  organizados os codigos)</h3>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span></span>{
+    constructor(tipo = <span class="hljs-symbol">'sem</span> tipo',vivo = <span class="hljs-symbol">'Mort</span>o'){
+        <span class="hljs-keyword">this</span>.vivo = vivo;
+        <span class="hljs-keyword">this</span>.tipo = tipo;
+    }
+
+    status(){
+        <span class="hljs-keyword">return</span> ` encontra-se ${<span class="hljs-keyword">this</span>.vivo}`;
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mamifero</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span></span>{ <span class="hljs-comment">//a palavra 'extends' serve como '__proto__' em objeto, definindo a classe pai</span>
+    constructor(nome = <span class="hljs-symbol">'Sem</span> <span class="hljs-type">Nome</span>',patas = <span class="hljs-number">0</span>,tipo,vivo){
+        <span class="hljs-keyword">super</span>(vivo,tipo); <span class="hljs-comment">//em classe uma forma de inicializar/chamar o contrutor da classe, é usando a palavra chave 'super'</span>
+        <span class="hljs-keyword">this</span>.nome = nome;
+        <span class="hljs-keyword">this</span>.patas = patas;
+
+    }
+
+    status(){
+        <span class="hljs-keyword">return</span> `<span class="hljs-type">O</span> ${<span class="hljs-keyword">this</span>.nome} tipo ${<span class="hljs-keyword">this</span>.tipo} ${<span class="hljs-keyword">super</span>.status()}`;
+    }
+}
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cachorro</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mamifero</span></span>{ 
+    constructor(especie = <span class="hljs-symbol">'cachorr</span>o',cor = <span class="hljs-symbol">'marro</span>m', nome,patas,tipo,vivo){
+        <span class="hljs-keyword">super</span>(nome,patas,tipo,vivo); 
+        <span class="hljs-keyword">this</span>.especie = especie;
+        <span class="hljs-keyword">this</span>.cor = cor;
+
+    }
+
+    status(){
+        <span class="hljs-keyword">return</span> `<span class="hljs-type">O</span> ${<span class="hljs-keyword">this</span>.especie} cor ${<span class="hljs-keyword">this</span>.cor} ${<span class="hljs-keyword">super</span>.status()}`;
+    }
+}
+
+const cachorro = <span class="hljs-keyword">new</span> <span class="hljs-type">Cachorro</span>()
+console.log(cachorro)
+</code></pre>
+<h3 id="com-seus-projetos-e-arquivos-em-m-os-criei-seu-arquivo-gulpfile-js-e-comece-a-programar-">Com seus projetos e
+  arquivos em mãos, criei seu arquivo gulpfile.js e comece a programar:</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> gulp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp'</span>);
+<span class="hljs-keyword">const</span> {series, parallel} = gulp;
+
+<span class="hljs-keyword">const</span> concat = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-concat'</span>); <span class="hljs-comment">//unir codigos de arquivos</span>
+<span class="hljs-keyword">const</span> uglify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-uglify'</span>); <span class="hljs-comment">// compacta o codigo</span>
+<span class="hljs-keyword">const</span> babel = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-babel'</span>); <span class="hljs-comment">// torna o mais compativel possivel</span>
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">task1</span>(<span class="hljs-params">cb</span>)</span>{
+    <span class="hljs-comment">/*definindo arquivos a serem selecionados
+    colocando caminho relativo, o "*.js" refere a todos
+    os arquvios com extensão js dentro da referida pasta */</span>
+    gulp.src(<span class="hljs-string">"./*.js"</span>)
+        .pipe(babel({
+            <span class="hljs-attr">comments</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">//exlui comentarios</span>
+            presets: [<span class="hljs-string">"env"</span>] <span class="hljs-comment">//pega o formato mais novo do js</span>
+        }))
+        .pipe(uglify()) <span class="hljs-comment">//minifica o codigo (deixa ele mais compacto possivel)</span>
+        .pipe(concat(<span class="hljs-string">"codigofinal.min.js"</span>)) <span class="hljs-comment">//gera um arquivo final com todos os outros </span>
+        .pipe(gulp.dest(<span class="hljs-string">"build"</span>)); <span class="hljs-comment">//destino do arquivo</span>
+    <span class="hljs-keyword">return</span> cb();
+}
+
+
+<span class="hljs-built_in">module</span>.exports.default = series(task1);
+</code></pre>
+<p>Ao final, será criada uma pasta chamada build, com o arquivo final com o codigo limpo, compactado e compativel</p>
+<h3 id="arquivo-final">ARQUIVO FINAL</h3>
+<pre><code class="lang-js"><span class="hljs-meta">"use strict"</span>;<span class="hljs-keyword">var</span> _get=<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">t</span>(<span class="hljs-params">e,o,r</span>)</span>{<span class="hljs-literal">null</span>===e&amp;&amp;(e=<span class="hljs-built_in">Function</span>.prototype); ...
+</code></pre>
+<h1 id="nota">NOTA</h1>
+<h4 id="h-diversas-bibliotecas-para-o-gulp-abaixo-algumas-importantes-">Há diversas bibliotecas para o gulp, abaixo
+  algumas importantes.</h4>
+<h3 id="gulp-htmlmin-e-gulp-uglifycss">Gulp-htmlmin e Gulp-uglifycss</h3>
+<h4
+  id="da-mesma-forma-que-tem-como-compactar-o-javascript-em-um-arquivo-e-linha-o-htmlmin-e-uglifycss-compactam-o-html-e-css-respectivamente-">
+  Da mesma forma que tem como compactar o javascript em um arquivo e linha, o htmlmin e uglifycss, compactam o html e
+  css respectivamente.</h4>
+<h3 id="gulp-watch-e-gulp-webserver">Gulp-Watch e Gulp-Webserver</h3>
+<h4
+  id="este-modulo-gulp-webserver-permite-a-criacao-de-um-servidor-de-desenvolvimento-e-o-gulp-watch-permite-monitorar-os-arquivos-a-cada-mudan-a-ou-seja-a-cada-mudan-a-ele-executara-os-procedimentos-de-minificar-mover-arquivos-subir-para-o-um-repositorio-etc-">
+  Este modulo (Gulp-Webserver) permite a criacao de um servidor de desenvolvimento e o Gulp-Watch permite monitorar os
+  arquivos a cada mudança, ou seja, a cada mudança ele executara os procedimentos de minificar, mover arquivos, subir
+  para o um repositorio, etc.</h4>
+<h3 id="refer-ncias">REFERÊNCIAS</h3>
+<p><a href="https://www.udemy.com/course/curso-web">https://www.udemy.com/course/curso-web</a><br>
+  <a href="https://gulpjs.com/">https://gulpjs.com/</a>
+</p>
+{% endverbatim %}

@@ -1,0 +1,608 @@
+{% verbatim %}
+<h1 id="mongodb">MongoDB</h1>
+<div class='imgModulo' style="background-image: url('/static/documentations/icons/mongodb.png');"></div>
+<h2 id="indice">INDICE</h2>
+<ul>
+  <li><strong><a href="#introducao">Introdução</a></strong></li>
+  <li><strong><a href="#comandos-basicos">Comandos basicos</a></strong></li>
+  <li><strong><a href="#inserindo-dados">Inserindo dados</a></strong></li>
+  <li><strong><a href="#consultando-dados">Consultando dados</a></strong></li>
+  <li><strong><a href="#consultas-agregadas">Consultas agregadas</a></strong></li>
+  <li><strong><a href="#update">Update</a></strong></li>
+  <li><strong><a href="#remove">Remove</a></strong></li>
+  <li><strong><a href="#lookup">Lookup</a></strong></li>
+</ul>
+<h1 id="introducao">INTRODUCAO</h1>
+<h3
+  id="mongodb-trabalha-com-dados-organizados-em-um-banco-br-que-dentro-dele-h-documentos-e-nesses-documentos-s-o-armazenados-collections-onde-se-persiste-os-dados-fortemente-agrupados-em-formato-de-json-br-br-por-ele-ser-um-banco-se-eschema-ele-n-o-reclama-em-ter-mais-de-uma-coluna-ou-estar-faltando-um-dado-br-br-mongodb-case-sensitive-ou-seja-ele-diferencia-as-maiusculas-das-minusculas">
+  MongoDB trabalha com dados organizados em um banco<br>que dentro dele há documentos e nesses documentos são
+  armazenados collections onde se persiste os dados fortemente &quot;agrupados&quot; em formato de json<br><br>Por ele
+  ser um banco se eschema, ele não reclama, em ter mais de uma &quot;coluna&quot; ou estar faltando um
+  dado<br><br>MongoDB é case sensitive, ou seja, ele diferencia as maiusculas das minusculas</h3>
+<h1 id="comandos-basicos">COMANDOS BASICOS</h1>
+<h3 id="mostrando-bancos-disponiveis">Mostrando bancos disponiveis</h3>
+<pre><code class="lang-js"><span class="hljs-attribute">show dbs</span>
+</code></pre>
+<h3 id="utilizando-um-banco-o-mesmo-comando-serve-para-cria-lo">Utilizando um banco, o mesmo comando serve para cria-lo
+</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">use</span> databaseName
+</code></pre>
+<h2 id="para-mostrar-as-collections-use-">Para mostrar as collections, use:</h2>
+<pre><code class="lang-js"><span class="hljs-attribute">show collections</span>
+</code></pre>
+<h3
+  id="em-geral-dentro-da-base-de-dados-os-comandos-estar-o-relacionados-a-mesma-ao-chamar-os-comandos-ele-comummente-usaram-db-comando">
+  Em geral, dentro da base de dados, os comandos estarão relacionados a mesma, ao chamar os comandos ele comummente
+  usaram db.comando</h3>
+<h2 id="criando-collections">Criando Collections</h2>
+<pre><code class="lang-js"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.createCollections</span>(<span class="hljs-string">"collectionName"</span>)
+</code></pre>
+<h2 id="deletando-collections">Deletando Collections</h2>
+<pre><code class="lang-js">db<span class="hljs-selector-class">.collectionName</span><span class="hljs-selector-class">.drop</span>()
+</code></pre>
+<h1 id="inserindo-dados">INSERINDO DADOS</h1>
+<h3
+  id="-possivel-inserir-dados-sem-que-o-collection-esteja-criado-basicamente-ao-inserir-um-dados-essa-collection-ser-criada-com-o-nome-dado-o-comando-o-mesmo-para-inserir-em-collections-que-j-existem">
+  É possivel inserir dados sem que o collection esteja criado, basicamente ao inserir um dados essa collection será
+  criada com o nome dado, o comando é o mesmo para inserir em collections que já existem</h3>
+<pre><code class="lang-js">db<span class="hljs-selector-class">.CollectionName</span><span class="hljs-selector-class">.insert</span>({atributo1:<span class="hljs-string">"valor"</span>, attr2:<span class="hljs-string">"valor2"</span>}) <span class="hljs-comment">//insere os dados na collection</span>
+</code></pre>
+<h3 id="caso-d-erro-tente-usar-os-metodos">caso dê erro tente usar os metodos</h3>
+<pre><code class="lang-js">db.CollectionName.insertOne({<span class="hljs-string">atributo1:</span><span class="hljs-string">"valor"</span>, <span class="hljs-string">attr2:</span><span class="hljs-string">"valor2"</span>}) <span class="hljs-comment">//para um registro</span>
+
+db.student.insertMany([ <span class="hljs-comment">//para varios registros</span>
+{<span class="hljs-string">atributo132:</span><span class="hljs-string">"valor"</span>, <span class="hljs-string">attr132:</span><span class="hljs-string">"valor2"</span>}, 
+{<span class="hljs-string">atributo34:</span><span class="hljs-string">"valor"</span>, <span class="hljs-string">attr34:</span><span class="hljs-string">"valor2"</span>}
+]
+)
+</code></pre>
+<h3 id="ao-inserir-esse-dado-receber-um-id-em-hex-unico-para-sua-identifica-o">Ao inserir esse dado receberá um id em
+  hex unico para sua identificação</h3>
+<h3 id="caso-queira-adcionar-um-id-para-subatributos-use-">Caso queira adcionar um id para subatributos, use:</h3>
+<pre><code class="lang-js"><span class="hljs-selector-tag">ObjectId</span>() <span class="hljs-selector-tag">-</span>&gt; <span class="hljs-selector-tag">para</span> <span class="hljs-selector-tag">gerar</span> <span class="hljs-selector-tag">um</span> <span class="hljs-selector-tag">hex</span> <span class="hljs-selector-tag">unico</span>
+
+
+<span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.CollectionName</span><span class="hljs-selector-class">.insert</span>({
+<span class="hljs-attribute">atributo1</span>:<span class="hljs-string">"valor"</span>, 
+<span class="hljs-attribute">attr2</span>:<span class="hljs-string">"valor2"</span>,
+<span class="hljs-attribute">attr3</span>:[ 
+
+    { 
+       <span class="hljs-attribute">_id </span>: ObjectId(),
+      <span class="hljs-attribute">subattr1</span>: <span class="hljs-string">"valor4223"</span>
+    },
+    { 
+       <span class="hljs-attribute">_id </span>: ObjectId(),
+      <span class="hljs-attribute">subattr1</span>: <span class="hljs-string">"valor324423"</span>
+    }
+
+]})
+</code></pre>
+<h1 id="consultando-dados">CONSULTANDO DADOS</h1>
+<h2 id="colection-de-exemplo">COLECTION DE EXEMPLO</h2>
+<pre><code class="lang-js"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.insertMany</span>([
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Minas Gerais"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"MG"</span>,
+<span class="hljs-attribute">cidades</span>:[ 
+    { 
+       <span class="hljs-attribute">_id </span>: ObjectId(),
+      <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Belo Horizonte"</span>
+    },
+    { 
+       <span class="hljs-attribute">_id </span>: ObjectId(),
+      <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Ouro Preto"</span>
+    }
+]},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"São Paulo"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"SP"</span>,
+<span class="hljs-attribute">cidades</span>:[ { <span class="hljs-attribute">_id </span>: ObjectId(),<span class="hljs-attribute">cidade</span>: <span class="hljs-string">"São Paulo"</span>},
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Santo André"</span>}]
+},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Amazonas"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"AM"</span>,
+<span class="hljs-attribute">cidades</span>:[{ <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Manaus"</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Borba"</span>  }]
+}
+]);
+</code></pre>
+<h2 id="visualizando-todos-registros">Visualizando todos registros</h2>
+<h3 id="para-ver-os-dados-de-uma-colection-especifica-use-">Para ver os dados de uma colection especifica use:</h3>
+<pre><code class="lang-js">db.NomeCollection.find()
+Ex.:
+db.estados.find()
+/*
+{ <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"64087becd"</span>), <span class="hljs-string">"nome"</span> : <span class="hljs-string">"Minas Gerais"</span>, <span class="hljs-string">"sigla"</span> : <span class="hljs-string">"MG"</span>, <span class="hljs-string">"cidades"</span> : [ { <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"64087bed6"</span>), <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Belo Horizonte"</span> }, { <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"6408755d7"</span>), <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Ouro Preto"</span> } ] }
+{ <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"64087becd4"</span>), <span class="hljs-string">"nome"</span> : <span class="hljs-string">"São Paulo"</span>, <span class="hljs-string">"sigla"</span> : <span class="hljs-string">"SP"</span>, <span class="hljs-string">"cidades"</span> : [ { <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"64087bed8"</span>), <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"São Paulo"</span> }, { <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"64087be"</span>), <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Santo André"</span> } ] }
+{ <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"64087becd"</span>), <span class="hljs-string">"nome"</span> : <span class="hljs-string">"Amazonas"</span>, <span class="hljs-string">"sigla"</span> : <span class="hljs-string">"AM"</span>, <span class="hljs-string">"cidades"</span> : [ { <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"640855da"</span>), <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Manaus"</span> }, { <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"64087becb"</span>), <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Borba"</span> } ] }
+</code></pre>
+<h3 id="para-visualizar-mais-formatado-no-terminal-use-">para visualizar mais formatado no terminal use:</h3>
+<pre><code class="lang-js"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.find</span>()<span class="hljs-selector-class">.pretty</span>()
+</code></pre>
+<h2 id="filtrando-registros">Filtrando registros</h2>
+<h3 id="para-filtrar-um-registro-especifico-use-">para filtrar um registro especifico use:</h3>
+<pre><code class="lang-js">db<span class="hljs-selector-class">.NomeCollection</span><span class="hljs-selector-class">.findOne</span>() <span class="hljs-comment">//e coloque o objeto para filtrar</span>
+EX.:
+db<span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.findOne</span>({nome: <span class="hljs-string">"Minas Gerais"</span>})
+
+{ <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"64087becd4f55dc"</span>), <span class="hljs-string">"nome"</span> : <span class="hljs-string">"Minas Gerais"</span>, <span class="hljs-string">"sigla"</span> : <span class="hljs-string">"MG"</span>, <span class="hljs-string">"cidades"</span> : [ { <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"64087bed6"</span>), <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Belo Horizonte"</span> }, { <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"64087becdf55d7"</span>), <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Ouro Preto"</span> } ] }
+</code></pre>
+<h2 id="filtrando-registros-com-condi-es">Filtrando registros com condições</h2>
+<h3 id="-poss-vel-filtrar-com-condi-es-logicas-como-or-e-and-ou-e-e-">É possível filtrar com condições logicas como
+  &quot;or e and&quot; (ou e e)</h3>
+<pre><code class="lang-js"><span class="hljs-attribute">db.estados.find({$or</span>: [{sigla: "MG"},{"nome" : "São Paulo"}]})
+
+<span class="json">{ <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"64087be"</span>), <span class="hljs-attr">"nome"</span> : <span class="hljs-string">"Minas Gerais"</span>, <span class="hljs-attr">"sigla"</span> : <span class="hljs-string">"MG"</span>, <span class="hljs-attr">"cidades"</span> : [ { <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"64087be6"</span>), <span class="hljs-attr">"cidade"</span> : <span class="hljs-string">"Belo Horizonte"</span> }, { <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"64087d7"</span>), <span class="hljs-attr">"cidade"</span> : <span class="hljs-string">"Ouro Preto"</span> } ] }
+{ <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"640f"</span>), <span class="hljs-attr">"nome"</span> : <span class="hljs-string">"São Paulo"</span>, <span class="hljs-attr">"sigla"</span> : <span class="hljs-string">"SP"</span>, <span class="hljs-attr">"cidades"</span> : [ { <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"6404a"</span>), <span class="hljs-attr">"cidade"</span> : <span class="hljs-string">"São Paulo"</span> }, { <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"64088b"</span>), <span class="hljs-attr">"cidade"</span> : <span class="hljs-string">"Santo André"</span> } ] }</span>
+</code></pre>
+<pre><code class="lang-js">db<span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.find</span>({<span class="hljs-variable">$and</span>: [{sigla: <span class="hljs-string">"MG"</span>},{<span class="hljs-string">"nome"</span> : <span class="hljs-string">"São Paulo"</span>}])
+<span class="hljs-comment">//Não acha nada, não há estado com sigla MG e nome São Paulo</span>
+</code></pre>
+<h2 id="filtrando-registros-caso-haja-uma-propriedade">Filtrando registros caso haja uma propriedade</h2>
+<pre><code class="lang-js">db<span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.find</span>({populacao : {<span class="hljs-variable">$exists</span>: true}}) 
+<span class="hljs-comment">//não há registro com a propriedade populacao, mas se houvesse, ele seria filtrado</span>
+</code></pre>
+<h2 id="limitando-filtro">Limitando filtro</h2>
+<h3 id="as-vezes-o-collection-um-numero-grande-de-registros-br-para-verificar-a-quantidade-use-">As vezes o collection
+  um numero grande de registros, <br> para verificar a quantidade use:</h3>
+<pre><code class="lang-js">db<span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.count</span>()
+<span class="hljs-comment">//3</span>
+</code></pre>
+<h3 id="para-pular-alguns-registros-use-">Para pular alguns registros use:</h3>
+<pre><code class="lang-js">db<span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.find</span>().skip(<span class="hljs-number">1</span>) <span class="hljs-comment">//dentro do skip use para pular a quantidade de registros desejada</span>
+</code></pre>
+<h3 id="para-limitar-os-registros-use-">Para limitar os registros use:</h3>
+<pre><code class="lang-js">db<span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.find</span>().limit(<span class="hljs-number">1</span>) <span class="hljs-comment">//nesse exemplo, vai aparecer apenas um registro</span>
+</code></pre>
+<h2 id="filtrando-e-recebendo-apenas-alguns-atributos">Filtrando e recebendo apenas alguns atributos</h2>
+<p>Coloque o seu filtro, e como segundo parametro, os atributos que deseja que apareça
+  use 0 para ocultar e 1 para mostrar</p>
+<pre><code class="lang-js">db.estados.find({nome:<span class="hljs-string">"Amazonas"</span>},{<span class="hljs-string">"cidades.cidade"</span>: <span class="hljs-number">1</span>, <span class="hljs-string">"_id"</span>:<span class="hljs-number">0</span>})
+//{ <span class="hljs-string">"cidades"</span> : [ { <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Manaus"</span> }, { <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Borba"</span> } ] }
+</code></pre>
+<h1 id="consultas-agregadas">CONSULTAS AGREGADAS</h1>
+<p>A API do MongoDB tem o chamado PipeLine de Agregação onde se utiliza um padrão chamado Pipes and Filters,
+  onde os dados seguem por um PipeLine (&quot;Tubo&quot;) e conforme passam são filtrados de acordo com
+  funções, abaixo algumas funções e exemplos.
+  Nota.: caso queira ver mais, siga o link abaixo. </p>
+<p><a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/">Link</a></p>
+<h3 id="neste-exemplo-usaremos-a-seguinte-collection">Neste exemplo, usaremos a seguinte collection</h3>
+<pre><code class="lang-js"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.drop</span>()
+
+<span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.insertMany</span>([
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Minas Gerais"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"MG"</span>,
+<span class="hljs-attribute">cidades</span>:[ 
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Belo Horizonte"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">100000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Ouro Preto"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">5000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Ibirité"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">10000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Contagem"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">30000</span> }
+    ]},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"São Paulo"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"SP"</span>,
+<span class="hljs-attribute">cidades</span>:[ { <span class="hljs-attribute">_id </span>: ObjectId(),<span class="hljs-attribute">cidade</span>: <span class="hljs-string">"São Paulo"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">80000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span>},
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Santo André"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">30000</span>},
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"São Roque"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">20000</span>},
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Ribeirão Preto"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">3000</span>}
+    ]
+},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Amazonas"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"AM"</span>,
+<span class="hljs-attribute">cidades</span>:[{ <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Manaus"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">50000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Borba"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">10000</span>  },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Amaturá"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">5000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Barreirinha"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">6000</span> }
+    ]
+},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Bahia"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"BA"</span>,
+<span class="hljs-attribute">cidades</span>:[{ <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Salvador"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">110000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Barreiras"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">30000</span>  },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Porto Seguro"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">20000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Irecê"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">2000</span> }
+    ]
+}
+]);
+</code></pre>
+<h2 id="utilizando-operadores">Utilizando Operadores</h2>
+<h3 id="neste-exemplo-ser-usado-o-operador-project">Neste exemplo será usado o operador $project</h3>
+<pre><code class="lang-js">db.estados.aggregate([
+  {
+     //quando é usado o nome do campo como valor Cava:valor, como em cidades.populacao
+     //é necessario usar o operador <span class="hljs-string">"$"</span>
+    $project : {populacao : {$sum : <span class="hljs-string">"$cidades.populacao"</span> }, sigla:<span class="hljs-number">1</span>, _id:<span class="hljs-number">0</span>}
+
+  }
+  ])
+
+
+{ <span class="hljs-string">"sigla"</span> : <span class="hljs-string">"MG"</span>, <span class="hljs-string">"populacao"</span> : <span class="hljs-number">145000</span> }
+{ <span class="hljs-string">"sigla"</span> : <span class="hljs-string">"SP"</span>, <span class="hljs-string">"populacao"</span> : <span class="hljs-number">133000</span> }
+{ <span class="hljs-string">"sigla"</span> : <span class="hljs-string">"AM"</span>, <span class="hljs-string">"populacao"</span> : <span class="hljs-number">71000</span> }
+{ <span class="hljs-string">"sigla"</span> : <span class="hljs-string">"BA"</span>, <span class="hljs-string">"populacao"</span> : <span class="hljs-number">162000</span> }
+</code></pre>
+<h3
+  id="utilizando-o-operador-filter-dentro-de-project-para-filtrar-as-cidades-com-capitais-usado-o-operador-eq-para-compara-es-de-igualdade-br-nota-a-fun-o-aggregate-permite-concatenar-em-um-array-diversas-etapas">
+  Utilizando o operador $filter dentro de project para filtrar, as cidades com capitais,é usado o operador $eq para
+  comparações de igualdade<br>Nota.: a função aggregate permite concatenar em um array diversas etapas</h3>
+<pre><code class="lang-js">db.estados.aggregate([
+  {
+
+    $project : {capital : {
+      $filter : {
+      //variavel ou array de entrada
+        input: <span class="hljs-string">"$cidades"</span>,
+          //condicao, se cidades.capital tiver capital retorne verdadeiro
+         cond: {$eq: [<span class="hljs-string">"$$cidades.capital"</span>, <span class="hljs-string">"capital"</span>]},
+         //nome da variavel
+         as: <span class="hljs-string">"cidades"</span>
+
+      }
+
+    }, nome:<span class="hljs-number">1</span>, _id:<span class="hljs-number">0</span>, cidade: <span class="hljs-number">1</span>}
+  },
+
+  /*
+  Primeira etapa de filtragem, filtrando apenas campos com nome capital
+  { <span class="hljs-string">"nome"</span> : <span class="hljs-string">"Minas Gerais"</span>, <span class="hljs-string">"capital"</span> : [ { <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"640f7"</span>), <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Belo Horizonte"</span>, <span class="hljs-string">"populacao"</span> : <span class="hljs-number">100000</span>, <span class="hljs-string">"capital"</span> : <span class="hljs-string">"capital"</span> } ] }...
+  */
+  { $unwind: <span class="hljs-string">"$capital"</span> },
+  /*
+  Segund etapa de filtragem usando unwind, para realizar <span class="hljs-string">"destructuring de array"</span>, separar elementos dos arrays
+  { <span class="hljs-string">"nome"</span> : <span class="hljs-string">"Minas Gerais"</span>, <span class="hljs-string">"capital"</span> : { <span class="hljs-string">"_id"</span> : ObjectId(<span class="hljs-string">"640d"</span>), <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Belo Horizonte"</span>, <span class="hljs-string">"populacao"</span> : <span class="hljs-number">100000</span>, <span class="hljs-string">"capital"</span> : <span class="hljs-string">"capital"</span> } }
+  */
+  {$project : {nome:<span class="hljs-number">1</span>, capital: <span class="hljs-string">"$capital.cidade"</span>}}
+  //Terceira, apresentando dados com filtro de campos desejados
+  ])
+
+
+
+/*
+SAIDA
+{ <span class="hljs-string">"nome"</span> : <span class="hljs-string">"Minas Gerais"</span>, <span class="hljs-string">"capital"</span> : <span class="hljs-string">"Belo Horizonte"</span> }
+{ <span class="hljs-string">"nome"</span> : <span class="hljs-string">"São Paulo"</span>, <span class="hljs-string">"capital"</span> : <span class="hljs-string">"São Paulo"</span> }
+{ <span class="hljs-string">"nome"</span> : <span class="hljs-string">"Amazonas"</span>, <span class="hljs-string">"capital"</span> : <span class="hljs-string">"Manaus"</span> }
+{ <span class="hljs-string">"nome"</span> : <span class="hljs-string">"Bahia"</span>, <span class="hljs-string">"capital"</span> : <span class="hljs-string">"Salvador"</span> }
+*/
+</code></pre>
+<h3
+  id="mais-um-exemplo-de-aggregate-dessa-vez-vamos-filtrar-as-cidades-com-popula-o-maior-ou-igual-a-30-000-e-mostrar-em-ordem-decrescente">
+  Mais um exemplo de aggregate, dessa vez, vamos filtrar as cidades com população maior ou igual a 30.000 e mostrar em
+  ordem decrescente</h3>
+<pre><code class="lang-js">db.estados.aggregate([
+  {$project: {
+      populacaoMaior30Mil : {
+        $filter:{
+            input: <span class="hljs-string">"$cidades"</span>,
+            as : <span class="hljs-string">"cidades"</span>,
+            cond: {$gte : [<span class="hljs-string">"$$cidades.populacao"</span>, <span class="hljs-number">30000</span>]} //gte -&gt; maior ou igual
+        }
+      },_id:<span class="hljs-number">0</span>,sigla:<span class="hljs-number">1</span>
+    }
+  },
+  {$unwind : <span class="hljs-string">"$populacaoMaior30Mil"</span>}, // tira os dados do <span class="hljs-keyword">array</span>, realizando destructuring
+  {$project:{ // pegando campos desejados
+          sigla: <span class="hljs-number">1</span>, cidade: <span class="hljs-string">"$populacaoMaior30Mil.cidade"</span>, populacao : <span class="hljs-string">"$populacaoMaior30Mil.populacao"</span>
+        }
+  },
+  {$sort: {populacao: -<span class="hljs-number">1</span>}} //ordenando em ordem decrescente
+
+  ])
+</code></pre>
+<h1 id="update">UPDATE</h1>
+<h2 id="collection-de-exemplo">COLLECTION DE EXEMPLO</h2>
+<pre><code class="lang-js"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.insertMany</span>([
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Minas Gerais"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"MG"</span>,
+<span class="hljs-attribute">cidades</span>:[ 
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Belo Horizonte"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">100000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Ouro Preto"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">5000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Ibirité"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">10000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Contagem"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">30000</span> }
+    ]},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"São Paulo"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"SP"</span>,
+<span class="hljs-attribute">cidades</span>:[ { <span class="hljs-attribute">_id </span>: ObjectId(),<span class="hljs-attribute">cidade</span>: <span class="hljs-string">"São Paulo"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">80000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span>},
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Santo André"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">30000</span>},
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"São Roque"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">20000</span>},
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Ribeirão Preto"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">3000</span>}
+    ]
+},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Amazonas"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"AM"</span>,
+<span class="hljs-attribute">cidades</span>:[{ <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Manaus"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">50000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Borba"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">10000</span>  },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Amaturá"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">5000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Barreirinha"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">6000</span> }
+    ]
+},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Bahia"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"BA"</span>,
+<span class="hljs-attribute">cidades</span>:[{ <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Salvador"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">110000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Barreiras"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">30000</span>  },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Porto Seguro"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">20000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Irecê"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">2000</span> }
+    ]
+}
+]);
+</code></pre>
+<h3 id="adicionando-novo-campo">Adicionando novo campo</h3>
+<pre><code class="lang-js">//<span class="hljs-keyword">update</span>, (FILTRO, ATUALIZACAO)
+db.estados.<span class="hljs-keyword">update</span>({sigla: <span class="hljs-string">"MG"</span>}, {$set : {regiao: <span class="hljs-string">"Sudeste"</span>}})
+
+db.estados.aggregate([ // filtrando para visualizar atualização
+  {$match : {sigla: <span class="hljs-string">"MG"</span>}},
+  {$project: { _id: <span class="hljs-number">0</span>, cidades: <span class="hljs-number">0</span>}}
+  ])
+
+ //SAIDA
+ /*
+ De acordo com o filtro foi achado apenas um objeto e ele foi atualizado
+
+ WriteResult({ <span class="hljs-string">"nMatched"</span> : <span class="hljs-number">1</span>, <span class="hljs-string">"nUpserted"</span> : <span class="hljs-number">0</span>, <span class="hljs-string">"nModified"</span> : <span class="hljs-number">1</span> }) 
+
+{ <span class="hljs-string">"nome"</span> : <span class="hljs-string">"Minas Gerais"</span>, <span class="hljs-string">"sigla"</span> : <span class="hljs-string">"MG"</span>, <span class="hljs-string">"regiao"</span> : <span class="hljs-string">"Sudeste"</span> }
+*/
+</code></pre>
+<h3 id="adicionando-atributos-a-um-campo-existente">Adicionando atributos a um campo existente</h3>
+<pre><code class="lang-js">//Para adicionar um atributo/elemento em um campo já existente, use <span class="hljs-string">"push"</span>
+db.estados.<span class="hljs-keyword">update</span>({sigla: <span class="hljs-string">"MG"</span>}, {
+  $push : {
+    cidades: {
+      _id : ObjectId(),
+      cidade : <span class="hljs-string">"Montes Claros"</span>,
+      populacao: <span class="hljs-number">5000</span>,
+
+    }
+
+  }
+
+})
+
+db.estados.aggregate([
+  {$match : {sigla: <span class="hljs-string">"MG"</span>}},
+  {$project: { _id: <span class="hljs-number">0</span>, <span class="hljs-string">"cidades._id"</span>:<span class="hljs-number">0</span>, <span class="hljs-string">"cidades.capital"</span>: <span class="hljs-number">0</span>}},
+  {$project: {cidades:<span class="hljs-number">1</span>}},
+  {$unwind: <span class="hljs-string">"$cidades"</span>}
+  ])
+
+/*
+SAIDA
+
+WriteResult({ <span class="hljs-string">"nMatched"</span> : <span class="hljs-number">1</span>, <span class="hljs-string">"nUpserted"</span> : <span class="hljs-number">0</span>, <span class="hljs-string">"nModified"</span> : <span class="hljs-number">1</span> })
+
+{ <span class="hljs-string">"cidades"</span> : { <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Belo Horizonte"</span>, <span class="hljs-string">"populacao"</span> : <span class="hljs-number">100000</span> } }
+{ <span class="hljs-string">"cidades"</span> : { <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Ouro Preto"</span>, <span class="hljs-string">"populacao"</span> : <span class="hljs-number">5000</span> } }
+{ <span class="hljs-string">"cidades"</span> : { <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Ibirité"</span>, <span class="hljs-string">"populacao"</span> : <span class="hljs-number">10000</span> } }
+{ <span class="hljs-string">"cidades"</span> : { <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Contagem"</span>, <span class="hljs-string">"populacao"</span> : <span class="hljs-number">30000</span> } }
+{ <span class="hljs-string">"cidades"</span> : { <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Montes Claros"</span>, <span class="hljs-string">"populacao"</span> : <span class="hljs-number">5000</span> } }
+
+*/
+</code></pre>
+<h1 id="remove">REMOVE</h1>
+<h2 id="collection-de-exemplo">COLLECTION DE EXEMPLO</h2>
+<pre><code class="lang-js"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.insertMany</span>([
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Minas Gerais"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"MG"</span>,
+<span class="hljs-attribute">regiao</span>: <span class="hljs-string">"Sudeste"</span>,
+<span class="hljs-attribute">cidades</span>:[ 
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Belo Horizonte"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">100000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Ouro Preto"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">5000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Ibirité"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">10000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Contagem"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">30000</span> },
+    {<span class="hljs-attribute">_id  </span>: ObjectId(),  <span class="hljs-attribute">cidade </span>: <span class="hljs-string">"Montes Claros"</span>,  <span class="hljs-attribute">populacao</span>: <span class="hljs-number">5000</span>}
+    ]},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"São Paulo"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"SP"</span>,
+<span class="hljs-attribute">cidades</span>:[ { <span class="hljs-attribute">_id </span>: ObjectId(),<span class="hljs-attribute">cidade</span>: <span class="hljs-string">"São Paulo"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">80000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span>},
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Santo André"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">30000</span>},
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"São Roque"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">20000</span>},
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Ribeirão Preto"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">3000</span>}
+    ]
+},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Amazonas"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"AM"</span>,
+<span class="hljs-attribute">cidades</span>:[{ <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Manaus"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">50000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Borba"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">10000</span>  },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Amaturá"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">5000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Barreirinha"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">6000</span> }
+    ]
+},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Bahia"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"BA"</span>,
+<span class="hljs-attribute">cidades</span>:[{ <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Salvador"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">110000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Barreiras"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">30000</span>  },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Porto Seguro"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">20000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Irecê"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">2000</span> }
+    ]
+}
+]);
+</code></pre>
+<h3 id="removendo-um-documento-do-collection">Removendo um documento do collection</h3>
+<pre><code class="lang-js">//Removendo estados com a sigla <span class="hljs-string">"AM"</span>
+db.estados.remove({sigla: <span class="hljs-string">"AM"</span>})
+
+//mostrando estados
+db.estados.find({},{_id:<span class="hljs-number">0</span>, nome: <span class="hljs-number">1</span>});
+
+/*
+SAIDA
+WriteResult({ <span class="hljs-string">"nRemoved"</span> : <span class="hljs-number">1</span> })
+{ <span class="hljs-string">"nome"</span> : <span class="hljs-string">"Minas Gerais"</span> }
+{ <span class="hljs-string">"nome"</span> : <span class="hljs-string">"São Paulo"</span> }
+{ <span class="hljs-string">"nome"</span> : <span class="hljs-string">"Bahia"</span> }
+*/
+</code></pre>
+<h3 id="removendo-um-subdocumento-de-uma-collection">Removendo um subdocumento de uma collection</h3>
+<pre><code class="lang-js">//para remover use o operador <span class="hljs-string">"pull"</span> dentro do <span class="hljs-keyword">update</span>
+db.estados.<span class="hljs-keyword">update</span>({sigla: <span class="hljs-string">"MG"</span>}, {$pull : {cidades : {cidade : <span class="hljs-string">"Montes Claros"</span>}}})
+
+//mostrando cidades
+db.estados.find({sigla:<span class="hljs-string">"MG"</span>},{_id:<span class="hljs-number">0</span>, <span class="hljs-string">"cidades.cidade"</span>: <span class="hljs-number">1</span>});
+
+/*
+SAIDA
+WriteResult({ <span class="hljs-string">"nMatched"</span> : <span class="hljs-number">1</span>, <span class="hljs-string">"nUpserted"</span> : <span class="hljs-number">0</span>, <span class="hljs-string">"nModified"</span> : <span class="hljs-number">1</span> })
+{ <span class="hljs-string">"cidades"</span> : [ { <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Belo Horizonte"</span> }, { <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Ouro Preto"</span> }, { <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Ibirité"</span> }, { <span class="hljs-string">"cidade"</span> : <span class="hljs-string">"Contagem"</span> } ] }
+*/
+</code></pre>
+<h3 id="removendo-um-campo-da-collection">Removendo um campo da collection</h3>
+<pre><code class="lang-js">db.estados.<span class="hljs-keyword">update</span>({sigla: <span class="hljs-string">"MG"</span>}, { 
+  $unset : { //removendo campo
+    cidades : <span class="hljs-string">""</span>
+
+  }})
+
+//mostrando modificações
+db.estados.find({sigla:<span class="hljs-string">"MG"</span>},{_id:<span class="hljs-number">0</span>});
+
+/*
+SAIDA
+WriteResult({ <span class="hljs-string">"nMatched"</span> : <span class="hljs-number">1</span>, <span class="hljs-string">"nUpserted"</span> : <span class="hljs-number">0</span>, <span class="hljs-string">"nModified"</span> : <span class="hljs-number">1</span> })
+
+{ <span class="hljs-string">"nome"</span> : <span class="hljs-string">"Minas Gerais"</span>, <span class="hljs-string">"sigla"</span> : <span class="hljs-string">"MG"</span>, <span class="hljs-string">"regiao"</span> : <span class="hljs-string">"Sudeste"</span> }
+*/
+</code></pre>
+<h1 id="lookup">LOOKUP</h1>
+<h4 id="lookup-usado-para-relacionamentos-entre-tabelas">Lookup é usado para relacionamentos entre tabelas</h4>
+<h2 id="collection-de-exemplo">COLLECTION DE EXEMPLO</h2>
+<h4
+  id="neste-collection-foi-criado-os-mesmo-estados-com-componentes-do-anterior-e-foi-criado-tamb-m-uma-collection-de-empresas-br-em-que-as-empresas-cont-m-o-id-de-um-dos-estados-ao-executar-todo-o-comando-certifique-se-de-executar-aos-poucos-para-que-pegue-o-id-correto">
+  Neste collection foi criado os mesmo estados com componentes do anterior e foi criado também uma collection de
+  empresas<br>em que as empresas contém o id de um dos estados, ao executar todo o comando certifique-se de executar aos
+  poucos para que pegue o id correto</h4>
+<pre><code class="lang-js">
+<span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.insertMany</span>([
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Minas Gerais"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"MG"</span>,
+<span class="hljs-attribute">regiao</span>: <span class="hljs-string">"Sudeste"</span>,
+<span class="hljs-attribute">cidades</span>:[ 
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Belo Horizonte"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">100000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Ouro Preto"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">5000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Ibirité"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">10000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Contagem"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">30000</span> },
+    {<span class="hljs-attribute">_id  </span>: ObjectId(),  <span class="hljs-attribute">cidade </span>: <span class="hljs-string">"Montes Claros"</span>,  <span class="hljs-attribute">populacao</span>: <span class="hljs-number">5000</span>}
+    ]},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"São Paulo"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"SP"</span>,
+<span class="hljs-attribute">cidades</span>:[ { <span class="hljs-attribute">_id </span>: ObjectId(),<span class="hljs-attribute">cidade</span>: <span class="hljs-string">"São Paulo"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">80000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span>},
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Santo André"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">30000</span>},
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"São Roque"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">20000</span>},
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Ribeirão Preto"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">3000</span>}
+    ]
+},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Amazonas"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"AM"</span>,
+<span class="hljs-attribute">cidades</span>:[{ <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Manaus"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">50000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Borba"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">10000</span>  },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Amaturá"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">5000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Barreirinha"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">6000</span> }
+    ]
+},
+{
+<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Bahia"</span>, 
+<span class="hljs-attribute">sigla</span>:<span class="hljs-string">"BA"</span>,
+<span class="hljs-attribute">cidades</span>:[{ <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Salvador"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">110000</span>, <span class="hljs-attribute">capital</span>: <span class="hljs-string">"capital"</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Barreiras"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">30000</span>  },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Porto Seguro"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">20000</span> },
+    { <span class="hljs-attribute">_id </span>: ObjectId(), <span class="hljs-attribute">cidade</span>: <span class="hljs-string">"Irecê"</span>, <span class="hljs-attribute">populacao</span>: <span class="hljs-number">2000</span> }
+    ]
+}
+]);
+
+<span class="hljs-comment">//verificando ids</span>
+<span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.estados</span><span class="hljs-selector-class">.find</span>({},{<span class="hljs-attribute">_id</span>:<span class="hljs-number">1</span>, <span class="hljs-attribute">sigla</span>:<span class="hljs-number">1</span>});
+
+
+
+
+
+
+
+<span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.empresas</span><span class="hljs-selector-class">.insertMany</span>([{
+  <span class="hljs-attribute">_id </span>: ObjectId(), 
+  <span class="hljs-attribute">nome </span>: <span class="hljs-string">"Vivo"</span>,
+  <span class="hljs-attribute">capital</span>: <span class="hljs-number">2000000</span>,
+  <span class="hljs-attribute">idEstadoSede</span>: ObjectId() <span class="hljs-comment">//Insira dentro o id de MG</span>
+},
+
+{
+  <span class="hljs-attribute">_id </span>: ObjectId(), 
+  <span class="hljs-attribute">nome </span>: <span class="hljs-string">"Claro"</span>,
+  <span class="hljs-attribute">capital</span>: <span class="hljs-number">100000</span>,
+  <span class="hljs-attribute">idEstadoSede</span>: ObjectId() <span class="hljs-comment">//Insira dentro o id de AM</span>
+},
+
+])
+</code></pre>
+<h4 id="utilizando-lookup-para-buscar-o-estado-sede-da-vivo">Utilizando Lookup para buscar o estado sede da vivo</h4>
+<pre><code class="lang-js"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.empresas</span><span class="hljs-selector-class">.aggregate</span>([
+  {$<span class="hljs-attribute">match </span>: {<span class="hljs-attribute">nome </span>: <span class="hljs-string">"Vivo"</span>}}, <span class="hljs-comment">// filtrando a empresa</span>
+  {
+    $<span class="hljs-attribute">lookup </span>: { <span class="hljs-comment">// filtrando por relacionamento</span>
+      <span class="hljs-attribute">from </span>: <span class="hljs-string">"estados"</span>, <span class="hljs-comment">// de qual collection</span>
+      <span class="hljs-attribute">localField</span>: <span class="hljs-string">"idEstadoSede"</span>, <span class="hljs-comment">// relacionado a que campo neste collection</span>
+      <span class="hljs-attribute">foreignField </span>: <span class="hljs-string">"_id"</span>, <span class="hljs-comment">// qual campo da collection externa deve comparar</span>
+      <span class="hljs-attribute">as </span>: <span class="hljs-string">"estadoSede"</span> <span class="hljs-comment">// nome do objeto a ser apresentado</span>
+    }
+  },
+  {$<span class="hljs-attribute">project </span>: {<span class="hljs-attribute">_id</span>:<span class="hljs-number">0</span>, <span class="hljs-string">"estadoSede.cidades"</span>:<span class="hljs-number">0</span>, <span class="hljs-attribute">idEstadoSede</span>: <span class="hljs-number">0</span>, <span class="hljs-string">"estadoSede._id"</span>:<span class="hljs-number">0</span>}}
+  ])
+
+<span class="hljs-comment">/*
+SAIDA
+{ "nome" : "Vivo", "capital" : 2000000, "estadoSede" : [ { "nome" : "Minas Gerais", "sigla" : "MG", "regiao" : "Sudeste" } ] }
+*/</span>
+</code></pre>
+<h3 id="para-este-exemplo-atualizaremos-a-empresa-claro-e-colocaremos-o-idcidadesede-como-de-manaus">Para este exemplo
+  atualizaremos a empresa Claro e colocaremos o idCidadeSede como de Manaus</h3>
+<pre><code class="lang-js"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.empresas</span><span class="hljs-selector-class">.update</span>({<span class="hljs-attribute">nome</span>:<span class="hljs-string">"Claro"</span>},{$<span class="hljs-attribute">set </span>: {<span class="hljs-attribute">idCidadeSede</span>: ObjectId(IDCIDADEMANAUS)}})
+</code></pre>
+<h4 id="utilizando-lookup-para-localizar-cidade-sede">Utilizando lookup para localizar cidade sede</h4>
+<pre><code class="lang-js">db.empresas.aggregate([
+  {<span class="hljs-string">$match:</span> {<span class="hljs-string">nome:</span><span class="hljs-string">"Claro"</span>}},
+  <span class="hljs-comment">//Primeiramente ele localiza o estado que contem a cidade com o id igual</span>
+  <span class="hljs-comment">// Nota.: para subdocumentos, essa é a unica forma de fazer</span>
+  {<span class="hljs-string">$lookup:</span>{ 
+<span class="hljs-symbol">    from:</span> <span class="hljs-string">"estados"</span>,
+    <span class="hljs-string">localField :</span> <span class="hljs-string">"idCidadeSede"</span>,
+<span class="hljs-symbol">    foreignField:</span> <span class="hljs-string">"cidades._id"</span>,
+    <span class="hljs-string">as :</span> <span class="hljs-string">"estado"</span>
+  }},
+  {<span class="hljs-string">$unwind:</span> <span class="hljs-string">"$estado"</span>}, <span class="hljs-comment">// destructuring do array de estados</span>
+  {<span class="hljs-string">$unwind:</span> <span class="hljs-string">"$estado.cidades"</span>}, <span class="hljs-comment">// destructuring do array de cidades</span>
+
+  <span class="hljs-comment">//Nesta etapa o match não funciona para filtrar a cidade com mesmo id</span>
+  <span class="hljs-comment">//para isso será usado o operador compare adicionando um campo</span>
+  <span class="hljs-comment">//que identifica se os ids são iguais ou não</span>
+  <span class="hljs-comment">// retorna 0 para igual, 1 para maior e -1 para valores menores</span>
+  {<span class="hljs-string">$addFields:</span> {<span class="hljs-string">mesmaCidade :</span> {<span class="hljs-string">$cmp :</span> [<span class="hljs-string">"$estado.cidades._id"</span>,<span class="hljs-string">"$idCidadeSede"</span>]}
+                }
+  },
+  {<span class="hljs-string">$match :</span> {<span class="hljs-string">mesmaCidade:</span> <span class="hljs-number">0</span>}}, <span class="hljs-comment">// agora basta filtrar</span>
+  {<span class="hljs-string">$project :</span> {<span class="hljs-string">_id:</span><span class="hljs-number">0</span>, <span class="hljs-string">nome:</span><span class="hljs-number">1</span>, <span class="hljs-string">capital:</span><span class="hljs-number">1</span>,<span class="hljs-string">cidadeSede:</span> <span class="hljs-string">"$estado.cidades.cidade"</span>}},
+
+  ])
+</code></pre>
+<p>/<em>---------------------------------------------REFERÊNCIAS---------------------------------------------</em>/</p>
+<p><a href="https://www.udemy.com/course/curso-web">https://www.udemy.com/course/curso-web</a>
+  <a href="https://www.mongodb.com/docs/manual/">https://www.mongodb.com/docs/manual/</a>
+</p>
+{% endverbatim %}

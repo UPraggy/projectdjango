@@ -1,0 +1,147 @@
+html {
+  min-height: 100%;
+  width: 100%;
+}
+body{
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #d4d4d4;
+}
+
+#documents{
+  display:flex; 
+  max-width: 90%;
+/*   width: 80%; */
+  flex-wrap: wrap;
+  margin: 2% auto 0 auto;
+}
+
+.docInd{
+/*   max-width: 105px; */
+  max-width: 150px;
+  aspect-ratio:1/1;
+  margin: 0 calc(5%) 1.5% calc(5%);
+}
+
+.docIcon{
+  width:100px;
+  aspect-ratio:1/1; 
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto 5px auto;
+}
+
+.docTitle{
+  text-align: center;
+  font-size: 1.5em;
+}
+
+/*----NavBar-----*/
+
+#navBar{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-height: 15%;
+  margin: 0 0 1% 0;
+  padding: 1% 0;
+  text-align: center;
+  background-color: #000;
+  color: #60d9fa;
+}
+
+#titleNav{
+  font-size: 3em;
+}
+
+#byNav{
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#conIcons{
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  align-items: center;
+  width: 10%;
+/*   height: 12%; */
+  max-height: 12%;
+  right: 0;
+  margin-right: 2%;
+}
+#conIcons a{
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 30%;
+  aspect-ratio: 1/1;
+}
+
+
+#conIcons a:nth-child(1){
+  background-image: url(/static/documentations/infoIcons/linkedin.png);
+}
+
+#conIcons a:nth-child(2){
+  background-image: url(/static/documentations/infoIcons/git.png);
+}
+
+#conIcons a:nth-child(3){
+  background-image: url(/static/documentations/infoIcons/email.png);
+}
+
+.docIcon:hover{
+  cursor: pointer;
+}
+
+
+#mainIcon{
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  align-items: center;
+  width: 10%;
+/*   height: 12%; */
+  max-height: 12%;
+  left: 0;
+  margin-left: 2%;
+}
+
+#mainIcon a{
+  background-image: url(/static/documentations/logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 50%;
+  aspect-ratio: 1/1;
+  border: 2.2px solid #ffffff99;
+  border-radius: 100%;
+}
+
+
+@media (max-width: 767px){
+
+  #navBar{
+    display: block;
+  }
+  #conIcons{
+    position: relative;
+    width: 100px;
+    aspect-ratio: 2/1;
+    margin: 1% auto;
+  }
+
+  #mainIcon{
+    width: 100px;
+    aspect-ratio: 2/1;
+  }
+  #titleNav{
+    top: 1%;
+    font-size: 1.8em;
+  }
+  #documents{
+    justify-content: center;
+  }
+}

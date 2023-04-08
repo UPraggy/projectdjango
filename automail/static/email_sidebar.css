@@ -1,0 +1,159 @@
+body,html{
+background: gray;
+/*background-repeat: no-repeat;*/
+height: 100%;
+width: 100%;
+overflow-x: hidden;
+}
+
+/*LATERAL MENU*/
+.lateral_menu{
+    z-index: 1;
+    position: absolute;
+    width: 250px;
+
+}
+
+/*SIDE BAR*/
+.menu-toggle div {
+  width: 20px;
+  height: 2px;
+  background-color: white;
+  margin: 6px 0;
+  
+}
+.menu-toggle{
+    margin-left: 10px;
+}
+.sidebar-nav{
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/*SIDE BAR ITEMS*/
+.mail_images{
+  margin-left: 10px;
+}
+.mail_opts a{
+  text-indent: 20px;
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+  text-align: left;
+  color: #ddd;
+}
+.mail_opts a:hover{
+  background: skyblue;
+}
+#a_logout{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+/* Sidebar */
+#side_menu_widgets{
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  width: 70px;
+  min-height: 100%;
+  background: #1c1c1c;
+}
+
+#sidebar-wrapper{
+  z-index: 2;
+  position: fixed;
+  width: 0px;
+  height: 100%;
+  overflow-y: hidden;
+  background: #303030;
+  /*padding-left: 10px;/*#2C3E50;*/
+  /*border: 2px solid red;*/
+  
+  /*opacity: 0.9;*/
+}
+
+#wrapper.MenuDisplayed #sidebar-wrapper{
+  animation-duration: 1s;
+    animation-name: side-wrapper;
+    width: 250px;
+  
+
+}
+#wrapper.MenuDisplayed #page-content-wrapper{
+  animation-duration: 1s;
+    animation-name: side-content;
+    padding-left: 250px;
+}
+
+.wrapper-reverse{
+  animation-duration: 1s;
+    animation-name: side-wrapper-reverse;
+}
+
+.content-reverse{
+  animation-duration: 1s;
+    animation-name: side-content-reverse;
+    padding-left: 0px;
+}
+
+@keyframes side-content {
+  from {
+    padding-left: 0px;
+  }
+
+  to {
+    padding-left: 250px;
+  }
+}
+
+@keyframes side-content-reverse {
+  from {
+    padding-left: 250px;
+  }
+
+  to {
+    padding-left: 0px;
+  }
+}
+
+
+@keyframes side-wrapper {
+  from {
+    width: 0px;
+  }
+
+  to {
+    width: 250px;
+  }
+}
+@keyframes side-wrapper-reverse {
+  from {
+    width: 250px;
+  }
+
+  to {
+    width: 0px;
+  }
+}
+
+
+
+/* Sidebar styling*/
+.title-sidebar{
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  color: #ddd;
+  margin-top: 10px;
+}
+
+.sidebar-nav{
+  padding: 0;
+  margin-top: 15px;
+}
+.sidebar-nav a{
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -1,0 +1,809 @@
+{% verbatim %}
+<h1 id="react">React</h1>
+
+<div class='imgModulo' style="background-image: url('/static/documentations/icons/react.png');"></div>
+<h2 id="indice">INDICE</h2>
+<ul>
+  <li><strong><a href="#start">Start</a></strong></li>
+  <li><strong><a href="#introdução">Introdução</a></strong></li>
+  <li><strong><a href="#primeiro-componente">Primeiro Componente</a></strong></li>
+  <li><strong><a href="#passagens-de-argumentos">Passagens de Argumentos</a></strong></li>
+  <li><strong><a href="#multiplos-componentes">Multiplos Componentes</a></strong></li>
+  <li><strong><a href="#usestate">Usestate</a></strong></li>
+  <li><strong><a href="#classes-components">Classes Components</a></strong></li>
+  <li><strong><a href="#contenção">Contenção</a></strong></li>
+  <li><strong><a href="#herdando-components">Herdando Components</a></strong></li>
+  <li><strong><a href="#useeffect">Useeffect</a></strong></li>
+  <li><strong><a href="#variaveis-globais">Variaveis Globais</a></strong></li>
+  <li><strong><a href="#mudando-paginas">Mudando Paginas</a></strong></li>
+</ul>
+<h2 id="obs-">Obs.:</h2>
+<p>Os programas contem comentarios sobre o assunto, ele pode ser executado para
+  melhor entendimento, tente remover os comentários ao copiar e colar o codigo,
+  pois React usa jsx e não aceita um tipo especifico de formatação.
+  Além disso, os exemplo podem usar arquivos diferentes (abordando o tema de modulos)</p>
+<h1 id="start">START</h1>
+<h4
+  id="react-organiza-tudo-em-componentes-e-n-o-linguagens-n-o-html-nem-js-tudo-junto-ele-utiliza-jsx-que-a-jun-o-dos-dois-lembrando-que-jsx-mais-sensivel-e-necessita-fechar-todas-as-tags">
+  React organiza tudo em componentes e não linguagens não é html nem js é tudo junto ele utiliza jsx que é a junção dos
+  dois, lembrando que jsx é mais sensivel e necessita fechar todas as tags</h4>
+<h4 id="para-iniciar-um-projeto-react-preciso-instalar-o-modulo">Para iniciar um projeto react é preciso instalar o
+  modulo</h4>
+<pre><code class="lang-cmd"><span class="hljs-string">npm </span>i -g <span class="hljs-built_in">create-react-app</span> //<span class="hljs-string">para </span><span class="hljs-string">instalaç</span>ão <span class="hljs-string">global</span>
+</code></pre>
+<h4 id="ap-s-isso-para-criar-seu-projeto-basta-digitar-">Após isso, para criar seu projeto, basta digitar:</h4>
+<pre><code class="lang-cmd"><span class="hljs-built_in">create-react-app</span> &lt;<span class="hljs-string">nome_do_seu_projeto&gt;</span>
+</code></pre>
+<h4
+  id="ele-vai-setar-as-dependencias-criar-os-arquivos-com-uma-aplica-o-inicial-padr-o-e-para-iniciar-basta-entrar-pelo-terminal-na-pasta-e-digitar">
+  Ele vai setar as dependencias, criar os arquivos, com uma aplicação inicial padrão. e para iniciar basta entrar pelo
+  terminal na pasta e digitar</h4>
+<pre><code class="lang-cmd"><span class="hljs-built_in">npm</span> start
+</code></pre>
+<h1 id="introdução">INTRODUÇÃO</h1>
+<p>Após criar seu primeiro app é necessário entender oque o React está fazendo. Basicamente, dentro do diretório src
+  existe o arquivo index.js, ele lida com a renderização da pagina, importando seus componentes, e colocando dentro do
+  html. O html fica na pagina public, que seria como o &quot;cliente&quot;, o html que recebe oque o index.js insere se
+  chama index.html. Dificilmente, será preciso mexer na pagina index.html, todas suas configurações serão externas,
+  organizando em componentes.<br><br> Para iniciar o seu projeto, você pode apagar todos os arquivos dentro da pasta
+  src, pois é onde está um projeto padrão e onde vai ficar o seu. Depois de apagar, para criar sua primeira aplicação,
+  crie o arquivo index.js, importe os modulos react (para componentes) e react-dom (para renderizar)</p>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom'</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">element</span> <span class="pl-c1">=</span> <span class="pl-c1">&lt;</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span>My Text<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span> <span class="pl-c">//seu primeiro elemento/componente</span>
+
+<span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-s1">element</span><span class="pl-kos">,</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'root'</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+<span class="pl-c">//ReactDOM.render recebe o elemento e onde vai ser inserido</span>
+</code></pre>
+<h4
+  id="o-modo-mais-recomendado-at-a-cria-o-desse-tutorial-utilizar-o-modulo-react-dom-client-march-29th-2022-reactdom-render-has-been-deprecated-br-basta-criar-uma-constante-chamada-root-criar-o-root-direcionando-ao-elemento-root-do-index-html-e-dar-render-para-renderizar-seu-elemento">
+  O modo mais recomendado até a criação desse tutorial é utilizar o modulo react-dom/client. March 29th, 2022.
+  ReactDOM.render has been deprecated <br> Basta criar uma constante chamada &#39;root&#39; criar o root direcionando ao
+  elemento root do index.html, e dar .render() para renderizar seu elemento</h4>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom/client'</span>
+<span class="pl-k">const</span> <span class="pl-s1">element</span> <span class="pl-c1">=</span> <span class="pl-c1">&lt;</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span>My Text<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span> 
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"root"</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+  <span class="pl-s1">element</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<h1 id="primeiro-componente">PRIMEIRO COMPONENTE</h1>
+<h4
+  id="crie-uma-pasta-para-organizar-seus-componentes-em-src-do-seu-projeto-e-crie-seu-arquivo-jsx-com-o-nome-do-seu-componente-maiusculo-isso-uma-conven-o-para-que-seja-mais-legivel-dentro-dele-exporte-sua-fun-o-para-que-possa-ser-acessada-por-fora-">
+  Crie uma pasta para organizar seus componentes em src do seu projeto e crie seu arquivo jsx com o nome do seu
+  componente maiusculo (isso é uma convenção, para que seja mais legivel), dentro dele exporte sua função para que possa
+  ser acessada por fora.</h4>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+	<span class="pl-k">return</span> <span class="pl-s">'texto aleatorio'</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h4
+  id="e-dentro-do-arquivo-index-js-importe-ele-colocando-seu-caminho-relativo-br-ao-importar-o-nome-ap-s-o-importe-pode-ser-qualquer-um-desde-que-inicie-com-letra-maiuscula">
+  E dentro do arquivo index.js importe ele colocando seu caminho relativo. <br>Ao importar o nome após o importe pode
+  ser qualquer um, desde que inicie com letra maiuscula</h4>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">Meu_componente</span> <span class="pl-k">from</span> <span class="pl-s">'./components/Meu_componente'</span> 
+</code></pre>
+<h4 id="para-renderizar-dentro-do-root-use-o-componente-como-uma-tag-lembre-de-sempre-fechar-a-tag">Para renderizar
+  dentro do root use o componente como uma tag, lembre de sempre fechar a tag</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"root"</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+  <span class="pl-c1">&lt;</span><span class="pl-ent">Meu_componente</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<hr>
+<h4 id="al-m-de-fun-o-an-nima-ele-aceita-arrow-br-nota-sempre-que-usar-jsx-importe-o-react-import-react-from-react-">
+  Além de função anônima ele aceita arrow. <br> Nota: Sempre que usar JSX importe o react (import React from
+  &#39;react&#39;)</h4>
+<h3 id="-meu_componente-jsx-">-----Meu_componente.jsx-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">Meu_componente</span> <span class="pl-k">from</span> <span class="pl-s">'./components/Meu_componente'</span> 
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"root"</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+  <span class="pl-c1">&lt;</span><span class="pl-ent">Meu_componente</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<h3 id="-index-js-">-----index.js-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">Meu_componente</span> <span class="pl-k">from</span> <span class="pl-s">'./components/Meu_componente'</span> 
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"root"</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+  <span class="pl-c1">&lt;</span><span class="pl-ent">Meu_componente</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<h1 id="passagens-de-argumentos">PASSAGENS DE ARGUMENTOS</h1>
+<h4
+  id="por-conven-o-os-parametros-argumentos-devem-ter-nome-props-props-nada-mais-que-um-objeto-com-todos-os-argumentos-br-neste-exemplo-foi-criada-uma-pasta-dentro-de-src-chamada-components-para-melhor-organiza-o-al-m-disso-foi-criado-um-componente-chamado-somanumeros-e-armazenado-a-seguinte-fun-o-">
+  Por convenção os parametros/argumentos devem ter nome &#39;props&#39; props nada mais é que um objeto, com todos os
+  argumentos. <br>Neste exemplo foi criada uma pasta dentro de src, chamada components para melhor organização. Além
+  disso, foi criado um componente chamado &#39;SomaNumeros&#39; e armazenado a seguinte função.</h4>
+<h3 id="-somanumeros-jsx-">-----SomaNumeros.jsx-----</h3>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>O resultado da soma é <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">num1</span> <span class="pl-c1">+</span> <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">num2</span><span class="pl-kos">}</span>!<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+</code></pre>
+<h4 id="ao-importar-recomendado-colocar-um-nome-semelhante-para-identifica-o-do-componente">Ao importar é recomendado
+  colocar um nome semelhante para identificação do componente</h4>
+<h3 id="-index-js-">-----index.js-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">SomaNum</span> <span class="pl-k">from</span> <span class="pl-s">'./components/SomaNumeros'</span>
+<span class="pl-c">//numeros ou outros argumentos que não são strings são usados entre chaves</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"root"</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+  <span class="pl-c1">&lt;</span><span class="pl-ent">SomaNum</span> <span class="pl-c1">num1</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-c1">1</span><span class="pl-kos">}</span> <span class="pl-c1">num2</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-c1">3</span><span class="pl-kos">}</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<hr>
+<h4
+  id="para-passar-mais-de-uma-tag-use-uma-div-para-enla-ar-as-tags-ou-use-a-tag-react-fragment-react-fragment-diferente-da-div-ela-n-o-gera-nada-sua-fun-o-apenas-unir-as-tags">
+  Para passar mais de uma tag, use uma div para enlaçar as tags ou use a tag
+  <code>&lt;React.Fragment&gt;&lt;/React.Fragment&gt;</code> (diferente da div ela não gera nada, sua função é apenas
+  unir as tags)
+</h4>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> 
+	<span class="pl-c1">&lt;</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>O resultado da soma é <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">num1</span> <span class="pl-c1">+</span> <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">num2</span><span class="pl-kos">}</span>!<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>O resultado da multiplicação é <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">num1</span> <span class="pl-c1">*</span> <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">num2</span><span class="pl-kos">}</span>!<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+</code></pre>
+<h4 id="caso-n-o-queira-escrever-react-fragment-importe-dessa-forma-">Caso não queira escrever
+  &lt;React.Fragment&gt;importe
+  dessa forma:</h4>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-v">Fragment</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+</code></pre>
+<h4 id="assim-poss-vel-utilizar">Assim é possível utilizar</h4>
+<pre><code class="lang-js"><span class="pl-c1">&lt;</span><span class="pl-ent">Fragment</span><span class="pl-c1">&gt;</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Fragment</span><span class="pl-c1">&gt;</span>
+</code></pre>
+<h4
+  id="ainda-poss-vel-utilizar-array-por-m-necessario-delcarar-uma-chave-key-pois-sem-ela-o-react-perde-performance-ao-procurar-os-elementos-">
+  Ainda é possível utilizar array, porém é necessario delcarar uma chave (key), pois sem ela o react perde performance
+  ao procurar os elementos:</h4>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> 
+	<span class="pl-kos">[</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span> <span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-s">'tag1'</span><span class="pl-c1">&gt;</span>O resultado da soma é <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">num1</span> <span class="pl-c1">+</span> <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">num2</span><span class="pl-kos">}</span>!<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span><span class="pl-kos">,</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span> <span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-s">'tag2'</span><span class="pl-c1">&gt;</span>O resultado da multiplicação é <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">num1</span> <span class="pl-c1">*</span> <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">num2</span><span class="pl-kos">}</span>!<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+	<span class="pl-kos">]</span>
+</code></pre>
+<h3 id="nota-o-recomendado-div-ou-fragment">Nota: O recomendado é Div ou Fragment</h3>
+<h1 id="multiplos-componentes">MULTIPLOS COMPONENTES</h1>
+<h4 id="-poss-vel-exportar-mais-de-um-componente-al-m-de-exportar-declarando-como-const-let-e-var">É possível exportar
+  mais de um componente além de exportar declarando como const, let e var</h4>
+<h3 id="-multicomponent-jsx-">-----MultiComponent.jsx-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-v">Soma</span> <span class="pl-c1">=</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-k">let</span> <span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+	<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">x</span> <span class="pl-k">of</span> <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">numeros</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+		<span class="pl-s1">result</span> <span class="pl-c1">+=</span> <span class="pl-s1">x</span><span class="pl-kos">;</span>
+	<span class="pl-kos">}</span>
+	<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>Resultado da soma é <span class="pl-kos">{</span><span class="pl-s1">result</span><span class="pl-kos">}</span>!<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-v">Multiplica</span> <span class="pl-c1">=</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-k">let</span> <span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">;</span>
+	<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">x</span> <span class="pl-k">of</span> <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">numeros</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+		<span class="pl-s1">result</span> <span class="pl-c1">*=</span> <span class="pl-s1">x</span><span class="pl-kos">;</span>
+	<span class="pl-kos">}</span>
+	<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>Resultado da soma é <span class="pl-kos">{</span><span class="pl-s1">result</span><span class="pl-kos">}</span>!<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h4
+  id="ao-declarar-components-como-var-let-ou-const-necess-rio-utilizar-o-operador-de-desestrutura-o-meucomponente1-meucomponente2-">
+  Ao declarar components como var, let ou const, é necessário utilizar o operador de desestruturação {MeuComponente1,
+  MeuComponente2}</h4>
+<h3 id="-index-js-">-----index.js-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom/client'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">Soma</span><span class="pl-kos">,</span> <span class="pl-v">Multiplica</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'./components/MultiComponent'</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"root"</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+  <span class="pl-c1">&lt;</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">Soma</span> <span class="pl-c1">numeros</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">,</span><span class="pl-c1">4</span><span class="pl-kos">,</span><span class="pl-c1">9</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">Multiplica</span> <span class="pl-c1">numeros</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">,</span><span class="pl-c1">4</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<hr>
+<h4 id="ainda-poss-vel-exportar-como-default-e-tirar-a-necessidade-do-destructor">Ainda é possível exportar como default
+  e tirar a necessidade do destructor</h4>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-v">Multiplica</span> <span class="pl-c1">=</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-k">let</span> <span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">;</span>
+	<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">x</span> <span class="pl-k">of</span> <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">numeros</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+		<span class="pl-s1">result</span> <span class="pl-c1">*=</span> <span class="pl-s1">x</span><span class="pl-kos">;</span>
+	<span class="pl-kos">}</span>
+	<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>Resultado da soma é <span class="pl-kos">{</span><span class="pl-s1">result</span><span class="pl-kos">}</span>!<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">Multiplica</span>
+</code></pre>
+<h4 id="ao-importar-">Ao importar...</h4>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">Multiplica</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-v">Soma</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'./components/MultiComponent'</span>
+</code></pre>
+<hr>
+<h4 id="ainda-h-outra-forma-de-importar-no-caso-a-mais-usada-e-organizada-exportando-todos-os-componetes-com-default-">
+  Ainda há outra forma de importar, no caso a mais usada, e organizada, é exportando todos os componetes com default:
+</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {Multiplica, Soma}
+</code></pre>
+<h4 id="ao-importar-e-utilizar-">Ao importar e utilizar...</h4>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom/client'</span>
+<span class="pl-k">import</span> <span class="pl-v">Multi</span> <span class="pl-k">from</span> <span class="pl-s">'./components/MultiComponent'</span>
+
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"root"</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+  <span class="pl-c1">&lt;</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-v">Multi</span><span class="pl-kos">.</span><span class="pl-v">Soma</span> <span class="pl-c1">numeros</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">,</span><span class="pl-c1">4</span><span class="pl-kos">,</span><span class="pl-c1">9</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-v">Multi</span><span class="pl-kos">.</span><span class="pl-v">Multiplica</span> <span class="pl-c1">numeros</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">,</span><span class="pl-c1">4</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<h3 id="nota-essa-forma-diminui-a-chance-de-haver-problema-ao-usar-fun-es-e-componentes-com-mesmo-nome">Nota: Essa forma
+  diminui a chance de haver problema ao usar, funções e componentes com mesmo nome</h3>
+<h1 id="usestate">USESTATE</h1>
+<h4
+  id="o-usestate-utilizado-para-criar-variaveis-que-podem-ser-modificadas-e-apresentadas-na-pagina-em-sua-declara-o-usada-duas-variaveis-uma-que-a-propria-e-outra-para-armazenar-a-fun-o-que-vai-modificar-o-estado-valor-da-primeira-">
+  O useState é utilizado para criar variaveis que podem ser modificadas, e apresentadas na pagina, em sua declaração é
+  usada duas variaveis, uma que é a propria e outra para armazenar a função que vai modificar o estado/valor da
+  primeira.</h4>
+<h3 id="exemplo-de-declara-o-">Exemplo de declaração:</h3>
+<h4
+  id="neste-exemplo-foi-criada-um-componente-que-apresenta-a-hora-atual-foi-utilizada-a-fun-o-setinterval-para-atualizar-o-relogio-a-cada-segundo-foi-colocado-o-if-para-evitar-o-bug-de-tentar-setar-o-valor-antes-da-variavel-ser-inicializada-al-m-disso-foi-colocado-outros-exemplos-de-declara-o-">
+  Neste exemplo foi criada um componente que apresenta a hora atual, foi utilizada a função setInterval para atualizar o
+  relogio a cada segundo, foi colocado o IF para evitar o bug de tentar setar o valor antes da variavel ser
+  inicializada. Além disso foi colocado outros exemplos de declaração.</h4>
+<h3 id="-meucomponente-jsx-">----------------MeuComponente.jsx--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-s1">useState</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+
+<span class="pl-k">function</span> <span class="pl-en">getDateAndFormat</span> <span class="pl-kos">(</span><span class="pl-s1">setState</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+	<span class="pl-k">let</span> <span class="pl-s1">date_now</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Date</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toLocaleString</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+
+
+	<span class="pl-s1">setState</span><span class="pl-kos">(</span><span class="pl-s1">date_now</span><span class="pl-kos">)</span>
+
+<span class="pl-kos">}</span>
+
+<span class="pl-k">function</span> <span class="pl-en">setTextoInput</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">,</span><span class="pl-s1">setTexto</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+	<span class="pl-s1">setTexto</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span>
+
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+
+	<span class="pl-c">//É possível utilizar diversos tipo de variaveis, porém algumas tem seus problemas</span>
+	<span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">dataAtual</span><span class="pl-kos">,</span><span class="pl-s1">setData</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-s">"valor inicializador"</span><span class="pl-kos">)</span>
+	<span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">meuObjeto</span><span class="pl-kos">,</span><span class="pl-s1">setDados</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-s">"numeroPar"</span>:<span class="pl-s">""</span><span class="pl-kos">,</span><span class="pl-s">"numeroImpar"</span>:<span class="pl-s">""</span><span class="pl-kos">}</span><span class="pl-kos">)</span>
+	<span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">meuTexto</span><span class="pl-kos">,</span><span class="pl-s1">setTexto</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-s">""</span><span class="pl-kos">)</span>
+	<span class="pl-c">//Esperando Variavel Iniciar</span>
+	<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">dataAtual</span> <span class="pl-c1">!=</span> <span class="pl-c1">undefined</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+		<span class="pl-c">/*passando a função setData que modifica o valor de dataAtual</span>
+<span class="pl-c">		como argumento de função*/</span>
+		<span class="pl-en">setInterval</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span><span class="pl-en">getDateAndFormat</span><span class="pl-kos">(</span><span class="pl-s1">setData</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-c1">1000</span><span class="pl-kos">)</span>
+		<span class="pl-en">setInterval</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span><span class="pl-kos">{</span>
+			<span class="pl-s1">setDados</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-s">"numeroPar"</span>:<span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">,</span><span class="pl-c1">2</span><span class="pl-kos">,</span><span class="pl-c1">4</span><span class="pl-kos">,</span><span class="pl-c1">6</span><span class="pl-kos">,</span><span class="pl-c1">8</span><span class="pl-kos">]</span><span class="pl-kos">,</span><span class="pl-s">"numeroImpar"</span>:<span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-c1">3</span><span class="pl-kos">,</span><span class="pl-c1">5</span><span class="pl-kos">,</span><span class="pl-c1">7</span><span class="pl-kos">,</span><span class="pl-c1">9</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-kos">)</span>
+		<span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">2000</span><span class="pl-kos">)</span>
+	<span class="pl-kos">}</span>
+
+	<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">id</span><span class="pl-c1">=</span><span class="pl-s">'dataAtual'</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-s1">dataAtual</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">id</span><span class="pl-c1">=</span><span class="pl-s">'numeroPar'</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-s1">meuObjeto</span><span class="pl-kos">.</span><span class="pl-c1">numeroPar</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">id</span><span class="pl-c1">=</span><span class="pl-s">'numeroPar'</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-s1">meuObjeto</span><span class="pl-kos">.</span><span class="pl-c1">numeroImpar</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">id</span><span class="pl-c1">=</span><span class="pl-s">"meuTexto"</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"text"</span> <span class="pl-c1">placeholder</span><span class="pl-c1">=</span><span class="pl-s">"Nome"</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span><span class="pl-en">setTextoInput</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">,</span><span class="pl-s1">setTexto</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-ent">p</span><span class="pl-c1">&gt;</span>Texto Digitado: <span class="pl-kos">{</span><span class="pl-s1">meuTexto</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">p</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h4
+  id="neste-exemplo-apresentado-tamb-m-como-lidar-com-eventos-nesse-caso-foi-usado-o-evento-onchange-do-input-os-eventos-tem-que-ser-escritos-com-a-segunda-palavra-com-a-letra-inicial-maiscula">
+  Neste exemplo é apresentado também, como lidar com eventos, nesse caso foi usado o evento onChange do input, os
+  eventos tem que ser escritos com a segunda palavra com a letra inicial maiscula</h4>
+<h3 id="-index-js-">----------------index.js--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom/client'</span>
+<span class="pl-k">import</span> <span class="pl-v">MeuComponente</span> <span class="pl-k">from</span> <span class="pl-s">'./components/MeuComponente'</span>
+
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'root'</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+
+
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+
+	<span class="pl-c1">&lt;</span><span class="pl-ent">MeuComponente</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<h1 id="classes-components">CLASSES COMPONENTS</h1>
+<h4 id="para-esse-modulo-necess-rio-importar-o-modulo-component">Para esse modulo é necessário importar o modulo
+  Component</h4>
+<h3 id="-classecomp-jsx-">----------------ClasseComp.jsx--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-v">Component</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">class</span> <span class="pl-v">Animal</span> <span class="pl-k">extends</span> <span class="pl-v">Component</span> <span class="pl-kos">{</span>
+	<span class="pl-c">//para classe primeiramente ele não te acesso ao props</span>
+	<span class="pl-c">// para acessa-lo é usado this.props</span>
+	<span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span> <span class="pl-c">//função responsavel por renderizar o componente</span>
+		<span class="pl-k">const</span> <span class="pl-kos">{</span>nome<span class="pl-kos">,</span> tipo<span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">;</span>
+
+		<span class="pl-k">return</span> <span class="pl-kos">(</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+				<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>Nome: <span class="pl-kos">{</span><span class="pl-s1">nome</span><span class="pl-kos">}</span> <span class="pl-c1">&lt;</span><span class="pl-ent">br</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span> Tipo: <span class="pl-kos">{</span><span class="pl-s1">tipo</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+				<span class="pl-c1">&lt;</span><span class="pl-ent">hr</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+				<span class="pl-c1">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"text"</span> <span class="pl-c1">placeholder</span><span class="pl-c1">=</span><span class="pl-s">"Nome"</span> <span class="pl-c1">value</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">nome</span><span class="pl-kos">}</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+				<span class="pl-c1">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"text"</span> <span class="pl-c1">placeholder</span><span class="pl-c1">=</span><span class="pl-s">"Tipo"</span> <span class="pl-c1">value</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">tipo</span><span class="pl-kos">}</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+			<span class="pl-kos">)</span>
+	<span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+</code></pre>
+
+<br>
+<h3 id="importanto-">Nota: vale mencionar que não é possível alterar o valor do props, exemplo:</h3>
+<pre><code class="lang-js"><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-c1">atributo</span> <span class="pl-c1">=</span> <span class="pl-s">'valor'</span> <span class="pl-c">//isso dá erro, pois props serve para leitura</span></code></pre>
+
+<h4 id="importanto-">Importanto...</h4>
+<h3 id="-index-js-">----------------index.js--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom/client'</span>
+<span class="pl-k">import</span> <span class="pl-v">ClassComp</span> <span class="pl-k">from</span> <span class="pl-s">'./components/ClasseComp'</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"root"</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+  <span class="pl-c1">&lt;</span><span class="pl-ent">ClassComp</span> <span class="pl-c1">nome</span><span class="pl-c1">=</span><span class="pl-s">'Gato'</span> <span class="pl-c1">tipo</span><span class="pl-c1">=</span><span class="pl-s">'mamifero'</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+
+<h2 id="mudando-valor">Mudando valor</h2>
+<h3 id="-classecomp-jsx-">----------------ClasseComp.jsx--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-v">Component</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">class</span> <span class="pl-v">Animal</span> <span class="pl-k">extends</span> <span class="pl-v">Component</span> <span class="pl-kos">{</span>
+
+	<span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c">//O state é usado para possibilitar a alteração de atributos</span>
+		<span class="pl-c1">tipo</span> : <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-c1">tipo</span><span class="pl-kos">,</span>
+		<span class="pl-c1">nome</span> : <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-c1">nome</span>
+	<span class="pl-kos">}</span>
+
+	<span class="pl-en">setName</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">{</span> 
+		<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">nome</span> : <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-c">//função para alterar o estado podendo passar um ou mais atributos que quer alterar</span>
+	<span class="pl-kos">}</span>
+
+	<span class="pl-en">setTipo</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">{</span> 
+		<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">tipo</span> : <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span><span class="pl-kos">)</span> 
+	<span class="pl-kos">}</span>
+
+
+	<span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span> 
+		<span class="pl-k">const</span> <span class="pl-kos">{</span>nome<span class="pl-kos">,</span> tipo<span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">;</span>
+
+		<span class="pl-c">//para alterar é preciso colocar eventos</span>
+		<span class="pl-k">return</span> <span class="pl-kos">(</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+				<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>Nome: <span class="pl-kos">{</span><span class="pl-s1">nome</span><span class="pl-kos">}</span> <span class="pl-c1">&lt;</span><span class="pl-ent">br</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span> Tipo: <span class="pl-kos">{</span><span class="pl-s1">tipo</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+				<span class="pl-c1">&lt;</span><span class="pl-ent">hr</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+				<span class="pl-c1">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"text"</span> <span class="pl-c1">placeholder</span><span class="pl-c1">=</span><span class="pl-s">"Nome"</span> <span class="pl-c1">value</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">nome</span><span class="pl-kos">}</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">e</span> <span class="pl-c1">=&gt;</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setName</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+				<span class="pl-c1">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"text"</span> <span class="pl-c1">placeholder</span><span class="pl-c1">=</span><span class="pl-s">"Tipo"</span> <span class="pl-c1">value</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">tipo</span><span class="pl-kos">}</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">e</span> <span class="pl-c1">=&gt;</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setTipo</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+			<span class="pl-kos">)</span>
+	<span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h4 id="importando-e-executando">Importando e executando</h4>
+<h3 id="-index-js-">----------------index.js--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom/client'</span>
+<span class="pl-k">import</span> <span class="pl-v">ClassComp</span> <span class="pl-k">from</span> <span class="pl-s">'./components/ClasseComp'</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"root"</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+  <span class="pl-c1">&lt;</span><span class="pl-ent">ClassComp</span> <span class="pl-c1">nome</span><span class="pl-c1">=</span><span class="pl-s">'Gato'</span> <span class="pl-c1">tipo</span><span class="pl-c1">=</span><span class="pl-s">'mamifero'</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<hr>
+<h4
+  id="ao-chamar-a-fun-o-no-evento-da-tag-o-this-pode-variar-logo-usado-uma-arrow-function-para-corrigir-o-problema-no-entanto-poss-vel-usar-um-contructor-para-chamar-a-fun-o-sem-usar-arrow-function-">
+  Ao chamar a função no evento da tag, o this pode variar, logo é usado uma arrow function, para corrigir o problema. No
+  entanto, é possível usar um contructor para chamar a função sem usar arrow function:</h4>
+<h3 id="-classecomp-jsx-">----------------ClasseComp.jsx--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-v">Component</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">class</span> <span class="pl-v">Animal</span> <span class="pl-k">extends</span> <span class="pl-v">Component</span> <span class="pl-kos">{</span>
+
+	<span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> 
+		<span class="pl-c1">tipo</span> : <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-c1">tipo</span><span class="pl-kos">,</span>
+		<span class="pl-c1">nome</span> : <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-c1">nome</span>
+	<span class="pl-kos">}</span>
+
+	<span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">{</span> <span class="pl-c">//constructor da classe</span>
+		<span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+		<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">setName</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">setName</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">//uma forma de referenciar as funções e não  ter problema com o this</span>
+		<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">setTipo</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">setTipo</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+	<span class="pl-kos">}</span>
+
+	<span class="pl-en">setName</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">{</span> 
+		<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">nome</span> : <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+	<span class="pl-kos">}</span>
+
+	<span class="pl-en">setTipo</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">{</span> 
+		<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">tipo</span> : <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span> 
+	<span class="pl-kos">}</span>
+
+	<span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span> 
+		<span class="pl-k">const</span> <span class="pl-kos">{</span>nome<span class="pl-kos">,</span> tipo<span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">;</span>
+
+		<span class="pl-c">//referenciando sem arrow function</span>
+		<span class="pl-k">return</span> <span class="pl-kos">(</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+				<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>Nome: <span class="pl-kos">{</span><span class="pl-s1">nome</span><span class="pl-kos">}</span> <span class="pl-c1">&lt;</span><span class="pl-ent">br</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span> Tipo: <span class="pl-kos">{</span><span class="pl-s1">tipo</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+				<span class="pl-c1">&lt;</span><span class="pl-ent">hr</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+				<span class="pl-c1">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"text"</span> <span class="pl-c1">placeholder</span><span class="pl-c1">=</span><span class="pl-s">"Nome"</span> <span class="pl-c1">value</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">nome</span><span class="pl-kos">}</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">setName</span><span class="pl-kos">}</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+				<span class="pl-c1">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"text"</span> <span class="pl-c1">placeholder</span><span class="pl-c1">=</span><span class="pl-s">"Tipo"</span> <span class="pl-c1">value</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">tipo</span><span class="pl-kos">}</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">setTipo</span><span class="pl-kos">}</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+			<span class="pl-kos">)</span>
+	<span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h4 id="importanto-">Importanto...</h4>
+<h3 id="-index-js-">----------------index.js--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom/client'</span>
+<span class="pl-k">import</span> <span class="pl-v">ClassComp</span> <span class="pl-k">from</span> <span class="pl-s">'./components/ClasseComp'</span>
+
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"root"</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+  <span class="pl-c1">&lt;</span><span class="pl-ent">ClassComp</span> <span class="pl-c1">nome</span><span class="pl-c1">=</span><span class="pl-s">'Gato'</span> <span class="pl-c1">tipo</span><span class="pl-c1">=</span><span class="pl-s">'mamifero'</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+
+<h1 id="contenção">CONTENÇÃO</h1>
+<h4 id="para-rederizar-um-componente-dentro-de-outro-preciso-colocar-props-children-dentro-do-componente-pai">Para
+  rederizar um componente dentro de outro é preciso colocar props.children dentro do componente pai</h4>
+<h3 id="-filho-jsx-">------Filho.jsx------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-v">Mamifero</span> <span class="pl-c1">=</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span> <span class="pl-c">//criando filho</span>
+	<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-v">Fragment</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span>Nome: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span> &amp;nbsp;&amp;nbsp;Tipo: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">tipo</span><span class="pl-kos">}</span> &amp;nbsp;&amp;nbsp;Vivo: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">vivo</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-v">Fragment</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>Mamifero<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-pai-jsx-">------Pai.jsx------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">Filho</span> <span class="pl-k">from</span> <span class="pl-s">'./Filho'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-v">Animal</span> <span class="pl-c1">=</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+
+	<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-v">Fragment</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>PAI 
+				<span class="pl-c1">&lt;</span><span class="pl-ent">br</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>Nome: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span> 
+				<span class="pl-c1">&lt;</span><span class="pl-ent">br</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>Tipo: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">tipo</span><span class="pl-kos">}</span>  
+				<span class="pl-c1">&lt;</span><span class="pl-ent">br</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>Vivo: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">vivo</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">hr</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>FILHOS<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+		<span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">children</span><span class="pl-kos">}</span>
+	<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-v">Fragment</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">}</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>Animal<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-index-js-">----------------index.js--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom/client'</span>
+<span class="pl-k">import</span> <span class="pl-v">Pai</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-v">Animal</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'./components/Pai'</span>
+<span class="pl-k">import</span> <span class="pl-v">Filho</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-v">Mamifero</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'./components/Filho'</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'root'</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+
+	<span class="pl-c1">&lt;</span><span class="pl-ent">Animal</span> <span class="pl-c1">nome</span> <span class="pl-c1">=</span><span class="pl-s">'Nome Animal'</span> <span class="pl-c1">tipo</span><span class="pl-c1">=</span><span class="pl-s">'indeterminado'</span> <span class="pl-c1">vivo</span> <span class="pl-c1">=</span> <span class="pl-s">"nao"</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">Mamifero</span> <span class="pl-c1">nome</span><span class="pl-c1">=</span><span class="pl-s">'Gato'</span> <span class="pl-c1">tipo</span><span class="pl-c1">=</span><span class="pl-s">'mamifero'</span> <span class="pl-c1">vivo</span> <span class="pl-c1">=</span> <span class="pl-s">'Sim'</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span> 
+		<span class="pl-c1">&lt;</span><span class="pl-ent">Mamifero</span> <span class="pl-c1">nome</span><span class="pl-c1">=</span><span class="pl-s">'Cachorro'</span> <span class="pl-c1">vivo</span> <span class="pl-c1">=</span> <span class="pl-s">'Sim'</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">Mamifero</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span> 
+		<span class="pl-c1">&lt;</span><span class="pl-ent">Mamifero</span> <span class="pl-c1">nome</span><span class="pl-c1">=</span><span class="pl-s">'Cavalo'</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span> 
+	<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Animal</span><span class="pl-c1">&gt;</span>
+
+	<span class="pl-kos">)</span>
+</code></pre>
+<h1 id="herdando-components">HERDANDO COMPONENTS</h1>
+<h4
+  id="em-react-poss-vel-criar-componentes-com-base-em-outros-apenas-herdando-um-trecho-abaixo-a-cria-o-e-funcionamento-">
+  Em React é possível criar componentes, com base em outros, apenas herdando um trecho, abaixo a criação e
+  funcionamento:</h4>
+<h3 id="-componente-filho-">------------------Componente Filho----------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-v">Mamifero</span> <span class="pl-c1">=</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span> <span class="pl-c">//criando filho</span>
+	<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-v">Fragment</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span>Nome: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span> &amp;nbsp;&amp;nbsp;Tipo: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">tipo</span><span class="pl-kos">}</span> &amp;nbsp;&amp;nbsp;Vivo: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">vivo</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-v">Fragment</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>Mamifero<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-componente-pai-">----------------Componente Pai------------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">Filho</span> <span class="pl-k">from</span> <span class="pl-s">'./Filho'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-v">Animal</span> <span class="pl-c1">=</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	
+	<span class="pl-c">// Abaixo a ordem dos filhos mostram:</span>
+	<span class="pl-c">// 1- colocando o filho completo</span>
+	<span class="pl-c">// 2- inserindo algumas propriedades do pai</span>
+	<span class="pl-c">// 3- inserindo todas propriedades do pai</span>
+	<span class="pl-c">// 4- inserindo todas propriedades do pai e alterando algumas</span>
+	
+	<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-v">Fragment</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>PAI 
+				<span class="pl-c1">&lt;</span><span class="pl-ent">br</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>Nome: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span> 
+				<span class="pl-c1">&lt;</span><span class="pl-ent">br</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>Tipo: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">tipo</span><span class="pl-kos">}</span>  
+				<span class="pl-c1">&lt;</span><span class="pl-ent">br</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>Vivo: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">vivo</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">hr</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>FILHOS<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-v">Filho</span><span class="pl-kos">.</span><span class="pl-v">Mamifero</span> <span class="pl-c1">nome</span><span class="pl-c1">=</span><span class="pl-s">'Gato'</span> <span class="pl-c1">tipo</span><span class="pl-c1">=</span><span class="pl-s">'mamifero'</span> <span class="pl-c1">vivo</span> <span class="pl-c1">=</span> <span class="pl-s">'Sim'</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span> 
+		<span class="pl-c1">&lt;</span><span class="pl-v">Filho</span><span class="pl-kos">.</span><span class="pl-v">Mamifero</span> <span class="pl-c1">nome</span><span class="pl-c1">=</span><span class="pl-s">'Cachorro'</span> <span class="pl-c1">tipo</span><span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">tipo</span><span class="pl-kos">}</span> <span class="pl-c1">vivo</span> <span class="pl-c1">=</span> <span class="pl-s">'Sim'</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-v">Filho</span><span class="pl-kos">.</span><span class="pl-v">Mamifero</span> <span class="pl-kos">{</span>...<span class="pl-s1">props</span><span class="pl-kos">}</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span> 
+		<span class="pl-c1">&lt;</span><span class="pl-v">Filho</span><span class="pl-kos">.</span><span class="pl-v">Mamifero</span> <span class="pl-kos">{</span>...<span class="pl-s1">props</span><span class="pl-kos">}</span> <span class="pl-c1">nome</span><span class="pl-c1">=</span><span class="pl-s">'Cavalo'</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span> 
+	<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-v">Fragment</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">}</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>Animal<span class="pl-kos">}</span>
+</code></pre>
+
+<h3 id="-importando-para-o-index-e-executando-">----------Importando para o index e executando---------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom/client'</span>
+<span class="pl-k">import</span> <span class="pl-v">Pai</span> <span class="pl-k">from</span> <span class="pl-s">'./components/Pai'</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"root"</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">Pai</span><span class="pl-kos">.</span><span class="pl-v">Animal</span> <span class="pl-c1">nome</span> <span class="pl-c1">=</span><span class="pl-s">'Nome Animal'</span> <span class="pl-c1">tipo</span><span class="pl-c1">=</span><span class="pl-s">'indeterminado'</span> <span class="pl-c1">vivo</span> <span class="pl-c1">=</span> <span class="pl-s">"nao"</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<hr>
+<h4
+  id="para-renderizar-os-filhos-no-arquivo-index-e-quer-herdar-os-componentes-do-pai-preciso-identificar-no-pai-que-ele-recebe-outros-componentes-br-tomando-como-base-que-o-arquivo-filho-jsx-o-mesmo-segue-os-outros-arquivos-">
+  Para renderizar os filhos no arquivo index e quer herdar os componentes do pai, é preciso identificar no pai que ele
+  recebe outros componentes: <br>Tomando como base que o arquivo Filho.jsx é o mesmo, segue os outros arquivos:</h4>
+<h3 id="-pai-jsx-">------Pai.jsx------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">Filho</span> <span class="pl-k">from</span> <span class="pl-s">'./Filho'</span>
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-v">Animal</span> <span class="pl-c1">=</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-c">// No pai é preciso usar a função</span>
+	<span class="pl-c">// React.cloneElement em que clona um elemento</span>
+	<span class="pl-c">// e adciona a possibilidade de adcionar novas</span>
+	<span class="pl-c">// propriedas para ele:</span>
+	<span class="pl-c">// Como a função funciona apenas para um elemento,</span>
+	<span class="pl-c">// foi usado o map em cima dos filhos (React.Children),</span>
+	<span class="pl-c">// e para cada children foi feita a mudança de propriedades.</span>
+	<span class="pl-c">// React.cloneElement('elemento a ser clonado', {'novas propriedades'})</span>
+	<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-v">Fragment</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>PAI 
+				<span class="pl-c1">&lt;</span><span class="pl-ent">br</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>Nome: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">nome</span><span class="pl-kos">}</span> 
+				<span class="pl-c1">&lt;</span><span class="pl-ent">br</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>Tipo: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">tipo</span><span class="pl-kos">}</span>  
+				<span class="pl-c1">&lt;</span><span class="pl-ent">br</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>Vivo: <span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">vivo</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">hr</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>FILHOS<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+		<span class="pl-kos">{</span>
+			<span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Children</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">children</span><span class="pl-kos">,</span> <span class="pl-s1">child</span> <span class="pl-c1">=&gt;</span><span class="pl-kos">{</span>
+				<span class="pl-k">return</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">cloneElement</span><span class="pl-kos">(</span><span class="pl-s1">child</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+				...<span class="pl-s1">props</span><span class="pl-kos">,</span> ...<span class="pl-s1">child</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">}</span><span class="pl-kos">)</span>
+			<span class="pl-kos">}</span><span class="pl-kos">)</span>
+			
+		<span class="pl-kos">}</span>
+	<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-v">Fragment</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-index-js-">----------------index.js--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom/client'</span>
+<span class="pl-k">import</span> <span class="pl-v">Pai</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-v">Animal</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'./components/Pai'</span>
+<span class="pl-k">import</span> <span class="pl-v">Filho</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-v">Mamifero</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'./components/Filho'</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'root'</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+
+	<span class="pl-c1">&lt;</span><span class="pl-ent">Animal</span> <span class="pl-c1">nome</span> <span class="pl-c1">=</span><span class="pl-s">'Nome Animal'</span> <span class="pl-c1">tipo</span><span class="pl-c1">=</span><span class="pl-s">'indeterminado'</span> <span class="pl-c1">vivo</span> <span class="pl-c1">=</span> <span class="pl-s">"nao"</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">Mamifero</span> <span class="pl-c1">nome</span><span class="pl-c1">=</span><span class="pl-s">'Gato'</span> <span class="pl-c1">tipo</span><span class="pl-c1">=</span><span class="pl-s">'mamifero'</span> <span class="pl-c1">vivo</span> <span class="pl-c1">=</span> <span class="pl-s">'Sim'</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span> 
+		<span class="pl-c1">&lt;</span><span class="pl-ent">Mamifero</span> <span class="pl-c1">nome</span><span class="pl-c1">=</span><span class="pl-s">'Cachorro'</span> <span class="pl-c1">vivo</span> <span class="pl-c1">=</span> <span class="pl-s">'Sim'</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">Mamifero</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span> 
+		<span class="pl-c1">&lt;</span><span class="pl-ent">Mamifero</span> <span class="pl-c1">nome</span><span class="pl-c1">=</span><span class="pl-s">'Cavalo'</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span> 
+	<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Animal</span><span class="pl-c1">&gt;</span>
+
+	<span class="pl-kos">)</span>
+</code></pre>
+<h1 id="useeffect">USEEFFECT</h1>
+<h4
+  id="useeffect-chamado-sempre-que-a-pagina-atualizada-carregada-excelente-para-utilizar-para-criar-e-executar-fun-es-assim-que-a-pagina-atualizada-al-m-disso-tira-a-necessidade-do-if-verificando-se-a-variavel-inicializada-exemplo-no-modulo-usestate-">
+  UseEffect é chamado sempre que a pagina é atualizada/carregada, excelente para utilizar para criar e executar funções,
+  assim que a pagina é atualizada, além disso tira a necessidade do if verificando se a variavel é inicializada (exemplo
+  no MODULO USESTATE)</h4>
+<h3 id="-componente-">------------------Componente----------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-s1">useEffect</span><span class="pl-kos">,</span><span class="pl-s1">useState</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+
+	<span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">contaAtualiza</span><span class="pl-kos">,</span><span class="pl-s1">setconta</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">)</span>
+	<span class="pl-c">/*repare que a cada atalização na variavel contaAtualiza,</span>
+<span class="pl-c">	a pagina é atualizada*/</span>
+	<span class="pl-en">useEffect</span><span class="pl-kos">(</span>
+		<span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span><span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"a pagina foi atualizada"</span><span class="pl-kos">)</span><span class="pl-kos">}</span>
+		<span class="pl-kos">)</span>
+
+	<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-ent">p</span><span class="pl-c1">&gt;</span>Meu Contador: <span class="pl-kos">{</span><span class="pl-s1">contaAtualiza</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">p</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span><span class="pl-s1">setconta</span><span class="pl-kos">(</span><span class="pl-s1">contaAtualiza</span><span class="pl-c1">+</span><span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>Set Contagem<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">button</span><span class="pl-c1">&gt;</span>
+	<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="----------------index.js--------------">----------------index.js--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom/client'</span>
+<span class="pl-k">import</span> <span class="pl-v">Clock</span> <span class="pl-k">from</span> <span class="pl-s">'./components/Pai'</span>
+
+
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'root'</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+
+
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+
+	<span class="pl-c1">&lt;</span><span class="pl-ent">Clock</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<h3 id="n-o-esque-a-que-useeffect-s-chamado-quando-a-pagina-totalmente-carregada-ou-seja-ele-tem-um-delay">Não esqueça,
+  que useEffect só é chamado, quando a pagina é totalmente carregada, ou seja ele tem um delay</h3>
+<h1 id="variaveis-globais">VARIAVEIS GLOBAIS</h1>
+<h4
+  id="pode-haver-necessidade-de-passar-um-mesmo-valor-entre-varios-arquivos-e-uma-das-formas-de-fazer-isso-utilizando-variaveis-globais-vale-mencionar-que-as-variaveis-podem-ser-alteradas-por-m-n-o-s-o-renderizadas-como-as-que-utilizam-usestate-elas-s-o-semelhantes-ao-props-por-m-h-formas-de-contornar-isso">
+  Pode Haver necessidade de passar um mesmo valor entre varios, arquivos e uma das formas de fazer isso é utilizando
+  variaveis globais, vale mencionar, que as variaveis podem ser alteradas porém não são renderizadas como as que
+  utilizam useState, elas são semelhantes ao &#39;props&#39;, porém há formas de contornar isso</h4>
+<h3 id="-primeiro-jsx-">----------------Primeiro.jsx--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">class</span> <span class="pl-v">VarGlobais</span><span class="pl-kos">{</span>
+	<span class="pl-k">static</span> <span class="pl-c1">elemento</span> <span class="pl-c1">=</span> <span class="pl-s">'fogo'</span>
+	<span class="pl-k">static</span> <span class="pl-c1">meuNum</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
+
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-comp1-jsx-">----------------Comp1.jsx--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">Global</span> <span class="pl-k">from</span> <span class="pl-s">'./Primeiro'</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+
+		<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>Componente Filho<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-v">Global</span><span class="pl-kos">.</span><span class="pl-c1">elemento</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-v">Global</span><span class="pl-kos">.</span><span class="pl-c1">meuNum</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-comp2-jsx-">----------------Comp2.jsx--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-s1">useState</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">Comp1</span> <span class="pl-k">from</span> <span class="pl-s">'./Comp1'</span>
+<span class="pl-k">import</span> <span class="pl-v">Global</span> <span class="pl-k">from</span> <span class="pl-s">'./Primeiro'</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">alteraGlobal</span><span class="pl-kos">,</span> <span class="pl-s1">setAltera</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-v">Global</span><span class="pl-kos">.</span><span class="pl-c1">meuNum</span><span class="pl-kos">)</span>
+	<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">Comp1</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">hr</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>Componente Pai<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-v">Global</span><span class="pl-kos">.</span><span class="pl-c1">elemento</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-v">Global</span><span class="pl-kos">.</span><span class="pl-c1">meuNum</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span><span class="pl-kos">{</span><span class="pl-v">Global</span><span class="pl-kos">.</span><span class="pl-c1">meuNum</span><span class="pl-c1">+=</span><span class="pl-c1">1</span><span class="pl-kos">;</span> <span class="pl-s1">setAltera</span><span class="pl-kos">(</span><span class="pl-v">Global</span><span class="pl-kos">.</span><span class="pl-c1">meuNum</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>Set Valor novo<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">button</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-index-js-">----------------index.js--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom/client'</span>
+<span class="pl-k">import</span> <span class="pl-v">Comp2</span> <span class="pl-k">from</span> <span class="pl-s">'./components/Comp2'</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'root'</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+
+
+
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+
+	<span class="pl-c1">&lt;</span><span class="pl-ent">Comp2</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+</code></pre>
+<h1 id="mudando-paginas">MUDANDO PAGINAS</h1>
+<h4
+  id="neste-modulo-sera-mostrado-como-mudar-de-pagina-basicamente-a-troca-sera-dada-por-condi-es-onde-vai-ser-renderizado-ou-n-o-um-componente-e-poder-ser-colocada-a-url-ao-realizar-isso-poss-vel-ir-e-voltar-entre-paginas-armazenando-historico">
+  Neste modulo sera mostrado como mudar de pagina, basicamente a troca sera dada por condições, onde vai ser renderizado
+  ou não um componente, e poderá ser colocada a url, ao realizar isso é possível ir e voltar entre paginas, armazenando
+  historico</h4>
+<h3 id="-comp1-jsx-">----------------Comp1.jsx--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">nomePagina</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h1</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">conteudo</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">h2</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-comp2-jsx-">----------------Comp2.jsx--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-s1">useState</span><span class="pl-kos">,</span> <span class="pl-s1">useEffect</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">Comp1</span> <span class="pl-k">from</span> <span class="pl-s">'./Comp1'</span>
+
+
+<span class="pl-k">function</span> <span class="pl-en">showPage</span><span class="pl-kos">(</span><span class="pl-s1">setState</span><span class="pl-kos">,</span> <span class="pl-s1">paginas</span><span class="pl-kos">,</span> <span class="pl-s1">pag</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+	
+	<span class="pl-c">//Parametro Self é usado para não criar uma nova aba</span>
+	<span class="pl-k">const</span> <span class="pl-s1">url</span> <span class="pl-c1">=</span> <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">location</span><span class="pl-kos">.</span><span class="pl-c1">href</span><span class="pl-kos">.</span><span class="pl-en">split</span><span class="pl-kos">(</span><span class="pl-s">"?"</span><span class="pl-kos">)</span> <span class="pl-c">//pegando url atual</span>
+
+	<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">pag</span> <span class="pl-c1">===</span> <span class="pl-s1">url</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+		<span class="pl-s1">setState</span><span class="pl-kos">(</span><span class="pl-s1">paginas</span><span class="pl-kos">[</span><span class="pl-s1">pag</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-c">// setando pagina a ser mostrada</span>
+	<span class="pl-kos">}</span>
+	<span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">pag</span> <span class="pl-c1">===</span> <span class="pl-s">'MinhaPagina1'</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+		<span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-en">open</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-c1">+</span><span class="pl-s">"?MinhaPagina1"</span><span class="pl-kos">,</span><span class="pl-s">'_self'</span><span class="pl-kos">)</span> <span class="pl-c">//setando URL</span>
+	<span class="pl-kos">}</span><span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">pag</span> <span class="pl-c1">===</span> <span class="pl-s">'MinhaPagina2'</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+		<span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-en">open</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-c1">+</span><span class="pl-s">"?MinhaPagina2"</span><span class="pl-kos">,</span><span class="pl-s">'_self'</span><span class="pl-kos">)</span> 
+	<span class="pl-kos">}</span>
+	
+<span class="pl-kos">}</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	
+	<span class="pl-c">//armazenando paginas que podem ser mostradas</span>
+	<span class="pl-k">const</span> <span class="pl-s1">paginas</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-s">"MinhaPagina1"</span>:<span class="pl-c1">&lt;</span><span class="pl-ent">Comp1</span> <span class="pl-c1">nomePagina</span><span class="pl-c1">=</span><span class="pl-s">"Primeira Pagina"</span> <span class="pl-c1">conteudo</span><span class="pl-c1">=</span><span class="pl-s">"meu conteudo"</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span><span class="pl-kos">,</span>
+						<span class="pl-s">"MinhaPagina2"</span>:<span class="pl-c1">&lt;</span><span class="pl-ent">Comp1</span> <span class="pl-c1">nomePagina</span><span class="pl-c1">=</span><span class="pl-s">"Segunda Pagina"</span> <span class="pl-c1">conteudo</span><span class="pl-c1">=</span><span class="pl-s">"meu conteudo pag2"</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span><span class="pl-kos">}</span>
+	<span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">paginaAtual</span><span class="pl-kos">,</span> <span class="pl-s1">setPagina</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-s">""</span><span class="pl-kos">)</span>
+
+	<span class="pl-en">useEffect</span><span class="pl-kos">(</span>
+		<span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span><span class="pl-kos">{</span>
+			<span class="pl-k">const</span> <span class="pl-s1">url</span> <span class="pl-c1">=</span> <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">location</span><span class="pl-kos">.</span><span class="pl-c1">href</span>
+			<span class="pl-k">const</span> <span class="pl-s1">res</span> <span class="pl-c1">=</span> <span class="pl-s1">url</span><span class="pl-kos">.</span><span class="pl-en">split</span><span class="pl-kos">(</span><span class="pl-s">"?"</span><span class="pl-kos">)</span>
+			<span class="pl-en">showPage</span><span class="pl-kos">(</span><span class="pl-s1">setPagina</span><span class="pl-kos">,</span><span class="pl-s1">paginas</span><span class="pl-kos">,</span> <span class="pl-s1">res</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-c">//setando pagina atual</span>
+		<span class="pl-kos">}</span>
+	<span class="pl-kos">)</span>
+	<span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+		
+		<span class="pl-kos">{</span><span class="pl-s1">paginaAtual</span><span class="pl-kos">}</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span><span class="pl-en">showPage</span><span class="pl-kos">(</span><span class="pl-s1">setPagina</span><span class="pl-kos">,</span><span class="pl-s1">paginas</span><span class="pl-kos">,</span><span class="pl-s">"MinhaPagina1"</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>MinhaPagina1<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">button</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span><span class="pl-en">showPage</span><span class="pl-kos">(</span><span class="pl-s1">setPagina</span><span class="pl-kos">,</span><span class="pl-s1">paginas</span><span class="pl-kos">,</span><span class="pl-s">"MinhaPagina2"</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>MinhaPagina2<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">button</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">div</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-index-js-">----------------index.js--------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom/client'</span>
+<span class="pl-k">import</span> <span class="pl-v">Comp2</span> <span class="pl-k">from</span> <span class="pl-s">'./components/Comp2'</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">createRoot</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'root'</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+
+
+
+<span class="pl-s1">root</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+
+	<span class="pl-c1">&lt;</span><span class="pl-ent">Comp2</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span>
+</code></pre>
+<h1 id="referencias">REFERENCIAS</h1>
+<p><a href="https://www.udemy.com/course/curso-web/">https://www.udemy.com/course/curso-web/</a></p>
+
+{% endverbatim %}

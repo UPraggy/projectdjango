@@ -1,0 +1,206 @@
+{% extends 'main/portifolio.html' %}
+{% block title %}Sobre{% endblock %}
+{% load static %}
+{% load i18n %}
+
+{% block imports %}
+ <link rel="stylesheet" type="text/css" href="{% static 'about/about.css' %}" >
+{% endblock%}
+
+{% block content %}
+
+
+
+
+<!---->
+<div id="sobre">
+	<div id="sub_sobre" style="width:100%;  height: 100%; background: #EBDFCC; display: flex;">
+		<div id="left_info">
+
+			<p>Rafael Moreira</p>
+			<!--<div id="photo_l"></div>-->
+			<div id="photo_l" style="
+			    background-color: white;
+			"><img src="/static/about/profile.png" style="
+			    width: 100%;
+			    height: 100%;
+			border-radius: 133px;
+			"></div>
+
+			
+				<p>Olá! Me chamo Rafael Moreira. E seja bem vindo a minha aba sobre!</p>
+			<div id="part2_left" style="height: 100%;">
+				<p id="visite1">Visite meu LinkedIn para mais!</p>
+				<div id="bar3" class="bar_normal"></div>
+				<div id="social_links" style="display: flex; height: 10%;" >
+
+					<a id="mail" href="https://www.linkedin.com/in/rafael-moreira-ramos-de-rezende-16420b21b/" ></a>
+					<a id="linkedin" href="https://github.com/UPraggy"></a>
+					<a id="tel"href="https://stackoverflow.com/users/18738468/rafael-mr" ></a>
+
+				</div>
+				<div id="bar"></div>
+
+				<p id="visite2">Visite meu LinkedIn para mais!</p>
+			</div>
+		</div>
+
+		<div id="right_info">
+			<div id="right_info_top">
+				<p>Rafael Moreira</p>
+				<p>Desenvolvedor e Design</p>
+
+				<p>Sou desenvolvedor, e atualmente estou focando em phyton e javascript, além disso, estou revisando conceitos 
+					sobre git e banco de dados. Ademais, gosto de registrar e detalhar projetos, além de criar uma base de conhecimento 
+					através de apresentações e resumos.</p>
+
+				<div id="bar2" class="bar_normal"></div>
+
+				<p>HABILIDADES</p>
+
+				<p>Conheça um pouco do que domino ou tenho algum conhecimento.</p>
+
+			</div>
+			<div id="habilities" style="display: flex;">
+
+				<div id="Front-end" class="obj">
+					<p>Front-end</p>
+					<div class="line"></div>
+					<div class="grid_icons">
+						<div class="icon"></div>
+						<div class="icon"></div>
+						<div class="icon"></div>
+					</div>
+					
+				</div>
+
+				<div id="Back-end" class="obj">
+					<p>Back-end</p>
+					<div class="line"></div>
+					<div class="grid_icons">
+						<div class="icon"></div>
+						<div class="icon"></div>
+					</div>
+				</div>
+
+				<div id="Banco_de_Dados" class="obj">
+					<p>Banco de Dados</p>
+					<div class="line"></div>
+					<div class="grid_icons">
+						<div class="icon"></div>
+						<div class="icon"></div>
+						<div class="icon"></div>
+					</div>
+				</div>
+
+				<div id="Versão" class="obj">
+					<p>Versão</p>
+					<div class="line"></div>
+					<div class="grid_icons">
+						<div class="icon"></div>
+					</div>
+				</div>
+
+				<div id="Design" class="obj">
+					<p>Design</p>
+					<div class="line"></div>
+					<div class="grid_icons">
+						<div class="icon"></div>
+						<div class="icon"></div>
+					</div>
+				</div>
+
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+	
+$(".menu_font a").css('color','white')
+$("#btn4 a").css('color','rgba(255, 145, 77,1.0)')	
+/*console.log(width_)
+console.log("H " + height_)*/
+
+let wit = $('#photo_l').css('width').split("px")[0];
+$('#photo_l').css('height',wit);
+
+
+//change_back("{% static 'about/profile.png' %}","#photo_l","contain");
+change_back("{% static 'contato/email.png' %}","#mail","contain");
+change_back("{% static 'contato/wp.png' %}","#tel","contain");
+change_back("{% static 'contato/linkedin.png' %}","#linkedin","contain");
+
+
+
+
+change_back("{% static 'about/js.png' %}","#Front-end .icon:nth-child(1)","contain");
+change_back("{% static 'about/html.png' %}","#Front-end .icon:nth-child(2)","contain");
+change_back("{% static 'about/css.png' %}","#Front-end .icon:nth-child(3)","contain");
+
+change_back("{% static 'about/python.png' %}","#Back-end .icon:nth-child(1)","contain");
+change_back("{% static 'about/cpp.png' %}","#Back-end .icon:nth-child(2)","contain");
+
+change_back("{% static 'about/mysql.png' %}","#Banco_de_Dados .icon:nth-child(1)","contain");
+change_back("{% static 'about/sql_server.png' %}","#Banco_de_Dados .icon:nth-child(2)","contain");
+change_back("{% static 'about/Postgresql.png' %}","#Banco_de_Dados .icon:nth-child(3)","contain");
+
+change_back("{% static 'about/git.png' %}","#Versão .icon:nth-child(1)","contain");
+
+change_back("{% static 'about/medi.png' %}","#Design .icon:nth-child(1)","contain");
+change_back("{% static 'about/canva.png' %}","#Design .icon:nth-child(2)","contain");
+
+$('#part2_left #visite1').css("display","none");
+$('#part2_left #bar3').css("display","none");
+
+if ((width_/height_) < 1.77 && (width_/height_) > 0.95){
+
+	//change_back("{% static 'contato/contato_mob.png' %}");
+	
+
+		
+}else if((width_/height_) < 0.95){
+	$('#sub_sobre').css('display',"block");
+	$('#left_info').css("height","10%").css("width","100%").css("display","flex").css("padding","4%");
+	$('#left_info p:nth-child(1)').css("display","none");
+
+	$('#photo_l').css('height',"95%")
+	let wit = $('#photo_l').css('height').split("px")[0];
+	$('#photo_l').css('width',(wit*1.7))
+	.css("margin-left","1%")
+	.css("box-shadow", "4px 4px 8px #3c3e6e, -4px -4px 8px #c4c8ff");
+
+
+	$('#left_info p:nth-child(3)').css("font-size","3vw").css("margin","0");
+
+	$('#part2_left #bar').css("display","none");
+	$('#part2_left #bar3').css("display","block").css("height","5%").css("background","white").css("margin","5% auto");
+	$('#part2_left #visite2').css("display","none");
+	$('#part2_left #visite1').css("display","block").css("margin","0");
+	$('#part2_left').css("width","60%");
+
+	$('#social_links').css("height","50%")
+
+	$('#right_info').css("margin","0 auto")
+
+	
+
+}
+</script>
+
+
+{% endblock%}

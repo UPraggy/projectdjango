@@ -1,0 +1,191 @@
+html {
+  min-height: 100%;
+  width: 100%;
+}
+body{
+  margin: 0;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4{
+  width: fit-content;
+}
+h3, h4{
+  max-width: 90%;
+}
+
+a{
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #7c334f;/*61dafb*/
+  /*text-shadow: -0.4px 0.4px #000000aa;*/
+}
+
+a:hover{
+  color: #ff0062;
+}
+
+h1{
+  background-color: #2ba0e344;
+  padding: 5px;
+  margin: 3% auto 0 auto;
+  border-radius: 5%;
+  text-align: center;
+}
+
+
+p{
+  max-width: 90%;
+  margin: 0;
+}
+h2{
+  background-color: #29b39b44;
+  padding: 5px;
+  border-radius: 10%;
+}
+
+h3{
+  background-color: #d1c03f44;
+  padding: 5px;
+  border-radius: 5%;
+}
+
+.titleMd{
+  font-size: 3em;
+}
+
+
+.imgModulo{
+  width: 20%;
+  aspect-ratio: 1/1;
+  margin: 2% auto 0 auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.slashModule{
+  width: 90%;
+  height: 3px;
+  margin: 3% auto;
+  border-radius: 10px;
+  background-color: #00000088;
+  
+}
+#indexTitle{
+  padding-top:2%;
+}
+/*code BTN*/
+.copyCode{
+  margin-left: 90%;
+  width:30px;
+  aspect-ratio: 1/1;
+  border-radius: 20px;
+  background-color: #7fc784;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5%;
+  border: 3px solid transparent;
+}
+
+.copyCode{
+  background-image: url(/static/documentations/clipboard.png);
+  background-repeat: no-repeat;
+  /*background-position: center;*/
+  background-size: cover;
+  /*width:20px;
+  aspect-ratio: 1/1;*/
+}
+
+pre div{
+  max-width: 80%;
+  overflow: auto;
+}
+
+/*Index Menu*/
+#indexOpt{
+    position: fixed;
+    z-index:2;
+    flex: 1;
+    left: 0;
+    width: 15%;
+    height: 100%;
+    background-color: #ece4d8;
+    color: #7c334f;
+    
+}
+#indexOpt ul{
+  list-style: none;
+  padding: 0;
+  padding-left: 10px;
+}
+#backIndex{
+  position: sticky;
+  z-index:1;
+  flex: 1;
+  left: 0;
+  min-width: 15%;
+  margin-right: 1%;
+
+}
+#indexTitle{
+  text-align: center;
+  font-size: 2em;
+}
+
+.hide_index_mob{
+  display: none;
+}
+.show_index_mob{
+  display: block;
+}
+
+/*Index BTN*/
+#Dbtn_index{
+  position: fixed;
+  z-index: 3;
+  bottom: 10px;
+  right: 6px;
+  padding: 0.5%;
+  border-radius: 100%;
+  background-color: #f54254;
+}
+
+#btn_index {
+    height: 40px;
+    aspect-ratio: 1/1;
+    background-image: url(/static/documentations/IndexIcon.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: none;
+    background-color: transparent;
+}
+
+#btn_index:hover{
+  cursor: pointer;
+}
+
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #61ccca #b0b0b0;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 13px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #b0b0b0;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #61ccca;
+    border-radius: 0px;
+    border: 0px solid #ffffff;
+  }

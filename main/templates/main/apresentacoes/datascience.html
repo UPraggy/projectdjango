@@ -1,0 +1,107 @@
+{% extends 'main/portifolio.html' %}
+{% block title %}Data Science{% endblock %}
+
+
+{% block content %}
+{% load static %}
+		{% load i18n %}
+<style type="text/css">
+	body{
+		background: url("{% static 'apresentacoes/data.png' %}");
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	@font-face { font-family: DM_Serif_Display; 
+       src: url("{% static 'DM_Serif_Display/DMSerifDisplay-Regular.ttf' %}"); } 
+
+    #datascience{
+    	font-family: DM_Serif_Display;
+    	text-align:  left;
+    	color: white;
+	   }
+	   #datascience h1{
+	   		margin-left: 10%;
+	   		color: rgb(0, 168, 76);
+	   		font-size: 60px;
+	   		text-shadow: 0 0 0.2em rgba(0, 168, 76, 0.3), 0 0 0.2em rgba(0, 168, 76, 0.3),
+        0 0 0.2em rgba(0, 168, 76, 0.3)
+	   }
+	   #datascience p{
+	   	margin: 0 auto;
+	   	width: 80%;
+	   	text-align: center;
+	   	font-size: 30px;
+	   	text-shadow: 0.1em 0.1em 0.2em black
+	   }
+	   #datascience #weblink a{
+	   	text-decoration: none;
+	   	color: rgba(5, 179, 130, 1.0);
+	   	font-size: 40px;
+	   	text-shadow: 0.1em 0.1em 0.2em black
+	   }
+	   #datascience #weblink {
+	   	background: rgba(0, 50, 50, 0.5);
+	   	width: 40%;
+	   	margin: 5% auto 0 auto;
+	   	padding-bottom: 5px;
+	   	border-radius: 10px;
+			text-align: center;
+		margin-bottom: 10px;
+	   }
+
+
+
+</style>
+
+
+
+<!---->
+<div id="datascience">
+	<h1>Data Science</h1>
+	<p>No mundo atual com a crecente onda de informações espalhadas por toda parte, foi obtida a necessidade de processar e ,além disso, analisar todos esses dados. A apresentação é focada em demosntrar o funcionamento e uso de alguns desses comandos. A apresentação tem como base motrar alguns comandos e bibliotecas com foco na linguagem python, ela será continuamente atualizada, assim que possível.</p>
+	<div id="weblink">
+	<a href="https://www.linkedin.com/pulse/data-science-machine-learning-python-rafael-moreira-ramos-de-rezende/">Link para a apresentação</a>
+</div>
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+	
+$(".menu_font a").css('color','white')
+$("#btn3 a").css('color','rgba(255, 145, 77,1.0)')	
+
+
+if (width_ >= 900){
+
+}
+else if ((width_/height_) < 1.77){
+
+	change_back("{% static 'apresentacoes/data_mobile.png' %}","body");
+}
+
+
+if ((width_/height_) < 0.81 && (width_/height_) > 0.61){ //&& (width_/height_) > 0.95){
+	$('#datascience p').css('font-size','23px')
+	$('#datascience #weblink a').css('font-size','23px')
+		
+}else if ((width_/height_) < 0.61){
+	$('#datascience h1').css('text-align','center');
+	$('#datascience p').css('font-size','15px');
+	$('#datascience #weblink a').css('font-size','15px');
+}
+
+	
+
+</script>
+
+
+{% endblock%}

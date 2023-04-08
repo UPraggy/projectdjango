@@ -1,0 +1,15 @@
+													<table class="social_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+														<tr>
+															<td class="pad" style="text-align:center;padding-right:0px;padding-left:0px;">
+																<div class="alignment" style="text-align:center;">
+																	<table class="social-table" width="72px" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block;">
+																		<tr>
+
+																			<!--put more social icons here-->
+
+																		</tr>
+																	</table>
+																</div>
+															</td>
+														</tr>
+													</table>

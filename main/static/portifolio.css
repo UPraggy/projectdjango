@@ -1,0 +1,88 @@
+body{
+	background: url('back_porto.png');/*#526b62;*/
+	background-size: cover;
+  background-repeat: no-repeat;
+
+}
+/* button gradient */
+
+
+#wrapper a{
+  text-decoration: none;
+}
+
+
+/* endconfig */
+#page{
+  margin: 0;
+}
+
+
+#myphoto {
+  position: relative;
+  background: url('photo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 80%;
+  height: 100%;
+
+}
+  
+#logo {
+  background: url('logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+
+}
+@font-face { font-family: Cardo; 
+       src: url('Cardo/Cardo-Regular.ttf'); } 
+
+.menu_font{
+  font-family: Cardo;
+  color: white;
+  padding: 0;
+
+  text-decoration: none;
+  
+
+}
+
+.menu_font:hover{
+  /*border: 1px solid red;*/
+  
+  color: white;
+  background: linear-gradient(90deg, 
+    rgba(255, 40, 0, 0.3),
+    rgba(255, 80, 0, 0.45),
+    rgba(255, 120, 0, 0.4), 
+    rgba(255, 160, 0, 0.3),
+    rgba(255, 120, 0, 0.45),
+    rgba(255, 80, 0, 0.3));
+  background-size: 400%;
+  border-radius: 30px;
+  animation:  animate 8s linear infinite;
+}
+
+@keyframes animate{
+  0%{
+    background-position: 0%;
+  }
+  100%{
+    background-position: 400% ;
+  }
+}
+
+
+
+
+
+
+
+/*
+#btn5{
+  margin-left: -5%;
+}*/
+/*SIDEBAR FOR CEL*/

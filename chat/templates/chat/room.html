@@ -1,0 +1,336 @@
+{% extends 'chat/base.html' %}
+
+{% block title %}{{room.name}}{% endblock %}
+
+{% block nav_content %}
+<style>
+  .navbar{
+    background: #0d664c;
+  }
+</style>
+<h2 style="color: white; width: max-content">{{room.name}}</h2>
+{% endblock %}
+
+{% block chat_content %}
+
+<style>
+
+  #chat_box{
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid gray;
+    border-radius: 0 10px 10px 0;
+  }
+  #chat_css{
+    height: 95%;
+    overflow-y: auto;
+  }
+  #chat_room .card {
+    margin-bottom: 10px;  
+    background: #d3dbd9;
+    border: 0px;
+  }
+
+
+
+
+
+  .room {
+  background: white;
+  width: 50%;
+  align-items: center;
+  }
+  .room_style:hover {
+  background: #bfbfbd;
+   color: black;
+  }
+  
+  #chat{
+    position: absolute;
+    width: 98%;
+    height: 90%;
+    margin: 0.2%;
+  }
+  #chat_groups{
+    position: relative;
+    width: 20%;
+    height: 100%;
+    margin: 0.2% 0% 0% 1%;
+    border-radius: 10px 0px 0px 10px;
+    background: #0d7859;
+    overflow-y: auto;
+  }
+  #chat_room{
+    position: relative;
+    width: 80%;
+    height: 100%;
+    margin: 0.2% 0 0 0;
+    padding: 0;
+  }
+  #chat_groups div .card{
+    width: 100%;
+    border: 0;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.250);
+    border-radius: 0;
+    text-decoration: none;
+    color: black;
+    font-family: Arial, sans-serif;
+    margin-bottom: 0px; 
+
+  }
+
+  .btn-group a{
+    border: 0;
+    border-radius: 0;
+    background-color: #32a87d;
+  }
+  .btn-group a:hover{
+    border-radius: 0;
+    background-color: #258562;
+  }
+
+
+
+  /*SCROLL*/
+  .scrollbar-dusty-grass::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+      background-color: #F5F5F5;
+      border-radius: 10px;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+      width: 5px;
+      background-color: #F5F5F5;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+      background-color: rgba(200, 200, 200, 1.0);
+  }
+
+  .scrollbar {
+      scrollbar-color: #d4fc79 #F5F5F5;
+  }
+
+</style>
+<div id='chat' class="row align-items-start">
+  <div id='chat_groups' class="col scrollbar">
+    
+     
+
+      
+    <div class="row align-items-start">
+      <div class="card text-center" style="padding: 0px 0 ">
+          <div class="col">
+            <div class="btn-group" role="group">
+                        <a href="../private/{{room.slug}}" class="btn btn">Private Chats</a>
+                        <a href="../group/{{room.slug}}" class="btn btn">Group Chats</a>
+                        <a href="../public/{{room.slug}}" class="btn btn">Public Chats</a>
+            </div>
+          </div>
+      </div>
+                    
+            {% for room in rooms %}
+            <a href="{% url 'chat:room' slug=room.slug type_room=room.room_type %}" class="card" style="width: 100%;">
+                <div class="row align-items-start">
+                    <img src="../media/{{room.room_picture}}" style="width: 50px; height: 50px; margin: 0; padding: 0 0 0 5px;
+                     margin: 4px 0 4px 0;border-radius: 100%;" alt="...">
+                      <div class="card-body text-left  room fs-5" style="margin: 0; padding: 10px 0 0 10px; height: 40px; overflow-x: initial;overflow-y: hidden;"> {{room.name}}
+                </div>
+              </div>
+            </a>
+
+              <!--<a href="{% url 'chat:room' slug=room.slug type_room=room.room_type %}" class="card text-center room fs-4" >{{room.name}}</a>-->
+            {% endfor %}
+    </div>
+  </div>
+  <div id='chat_room'>
+
+                      <div id="chat_box">
+
+                        <div id="chat_css" class="scrollbar">
+                            {% for message in msg %}
+                            {% if message.user.username == request.user.username %}
+                              <div class="card text-end">
+                            {% else %}
+                              {% if message.user.username|slice:"4:" == request.user.username%}
+                                <div class="card text-end">
+                              {% else %}
+                              <div class="card">
+                              {% endif %}
+                             {% endif %}
+                                <div class="card-body">
+                                  {% if 'not' in message.user.username %} 
+                                    {% else %}
+                                    {% if message.user.first_name != '' %}
+                                            <h5>{{message.user.first_name}}</h5>
+                                      {% else %}
+                                          <h5>{{message.user.username}}</h5>
+                                    {% endif %}
+                                   {% endif %}
+                                    <p class="card-text">{{ message.content}}</p>
+                                    <p class="card-text" style="position: absolute; bottom: 2%; right: 2%;">
+                                    {% if message.date_added.minute < 10 %}
+                                      {{ message.date_added.hour }}:0{{ message.date_added.minute }}
+                                    {% else %}
+                                      {{ message.date_added.hour }}:{{ message.date_added.minute }}
+                                      {% endif %}
+
+                                  </p>
+                                </div>
+                              </div>
+                            {% endfor %}
+                        </div>
+                            <form method="POST" action=".">{% csrf_token %}
+                              <div class="input-group">
+                                  <input type="text" id="chat-message-input" class="form-control" name="content" placeholder="Your message">
+                                  <button id="chat-message-submit" class="btn btn-secondary" >Send</button>
+                              </div>
+                            </form>
+                      </div>
+
+
+
+  </div>
+</div>
+
+
+
+{% block script %}
+{{ room.slug|json_script:"json-roomname" }}
+{{request.user.username|json_script:"json-username"}}
+
+<script>
+  const roomName = JSON.parse(document.getElementById('json-roomname').textContent);
+  const userName = JSON.parse(document.getElementById('json-username').textContent);
+  
+
+  const charSocket = new WebSocket(
+      (window.location.protocol === 'https:' ? 'wss' : 'ws') + '://'
+      + window.location.host
+      + '/ws/chat/'
+      + roomName
+      + '/'
+
+    );
+  charSocket.onmessage = function(e){
+    console.log('onmessage')
+
+    const data = JSON.parse(e.data);
+    const user = document.querySelectorAll('.card h5')
+    
+    const date = new Date();
+    const hour    = date.getHours();          // 0-23
+    const min     = date.getMinutes(); 
+    if (data.message){
+      if (user.length != 0){
+        let html = '<div class="card">'
+        if (data.username == userName){ 
+           html = '<div class="card text-end">'
+         }
+            html +=    '<div class="card-body">'
+        if ((user[user.length - 1].textContent) == data.username){ 
+          }
+        else{
+          html +=      '<h5>' + data.username + '</h5>'
+        }
+            html +=      '<p class="card-text">' + data.message + '</p>'
+            html +=      '<p class="card-text" style="position: absolute; bottom: 2%; right: 2%;">' + hour + ':' + min + '</p>'
+            html +=    '</div>'
+            html +=  '</div>'
+          document.querySelector('#chat_css').innerHTML += html
+        
+      }
+      else{
+        let html = '<div class="card">'
+        if (data.username == userName){ 
+           html = '<div class="card text-end">'
+         }
+              html +=    '<div class="card-body">'
+              html +=      '<h5>' + data.username + '</h5>'
+              html +=      '<p class="card-text">' + data.message + '</p>'
+              html +=      '<p class="card-text" style="position: absolute; bottom: 2%; right: 2%;">' + hour + ':' + min + '</p>'
+              html +=    '</div>'
+              html +=  '</div>'
+          document.querySelector('#chat_css').innerHTML += html
+        
+    }
+    scrollToBottom();
+  }
+    else{
+      alert('The message was empty!');
+    }
+  }
+
+  charSocket.onclose = function(e){
+    console.log('onclose')
+  }
+
+
+
+  //
+
+
+
+  document.querySelector('#chat-message-submit').onclick = function(e){
+    e.preventDefault();
+
+
+    const messageInputDom = document.querySelector('#chat-message-input');
+    const message = messageInputDom.value;
+
+    charSocket.send(JSON.stringify({
+      'message' : message,
+      'username' : userName,
+      'room' : roomName
+    }));
+
+    messageInputDom.value = '';
+
+    return false;
+  }
+
+  //
+
+window.onload = function () {
+  scrollToBottom();
+  $("div .form-group").addClass("form-floating mb-3");
+    $("div .form-floating input").addClass("form-control");
+    $("div .form-floating input").attr("placeholder", "RANDOM");
+}
+  function scrollToBottom(){
+    const objDiv = document.querySelector('#chat_css');
+    objDiv.scrollTop = objDiv.scrollHeight;
+  }
+
+//MEDIA QUERY "CSS" FUNCTIONS
+
+if ((window.matchMedia("(min-width:1200px)").matches)) {
+  /* a viewport tem pelo menos 1200 pixels de largura */
+}else if((window.matchMedia("(min-width:1000px)").matches)){
+    temp = document.querySelectorAll("#chat_groups .card-body")
+    console.log(temp)
+    //document.querySelector("#chat_groups .card-body")
+    var index = 0, length = temp.length;
+  for ( ; index < length; index++) {
+      temp[index].classList.add('fs-6');
+      temp[index].classList.remove('fs-5');
+      temp[index].style.height = '30px';
+  }
+    
+}else{
+  document.querySelector("#chat_groups").style.display = "none";
+  document.querySelector("#chat_room").style.width = "100%";
+  document.querySelector("#chat_box").style.borderRadius = "10px";
+}
+
+</script>
+
+
+{% endblock %}
+
+
+{% endblock %}

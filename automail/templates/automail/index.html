@@ -1,0 +1,196 @@
+{% extends 'automail/base.html' %}
+{% block nav_content %}{% endblock %}
+{% block main_menu_opt %}
+<a href="/automail/view_email/" class='btn'>Create/View Email</a>
+{% endblock %}
+{% block side_opt %}{% endblock %}
+{% block side_buttons %}{% endblock %}
+{% block content_view %}
+
+
+
+<style>
+.email {
+  background: #19b085;
+  width: 30%;
+  margin: 0 0.5%;
+}
+.email:hover {
+  background: #0e7558;
+}
+.card{
+  width: 100%;
+  height: 140px;
+}
+
+
+</style>
+
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col" style="margin: 5px;">
+      <div class="card text-center" style="height: 100%;">
+        <div class="card-body">        
+              <h1 class="card-title" >Search Email</h1>
+                    <div class="form-floating mb-3">
+                      <input type="text" name="src_emails" maxlength="40" required="" id="id_src_emails">
+                      <label for="floatingInput">Name</label>
+                    </div>
+        </div>
+      </div>
+    </div>
+
+
+
+          
+    <div id="emails_cards">
+
+      <div class="row align-items-start alig_cards">
+      {% load custom_filter %}
+          {% for mail in mails %}
+                {% if forloop.counter|mail_order %}
+                    </div>
+                    <div class="row align-items-start alig_cards">
+              {% endif %}
+                  
+                <div id={{mail.id}} class="col initial_card" style="margin: 5px;">
+                  <div id={{mail.subject|lower}} class="card text-center">
+                    <div class="card-body">
+                      <div id="front" style="overflow-y: hidden;margin-top: 20px; height: 60px; margin-bottom: 15px;">
+                      <h1 class="card-title" >
+                      <button  class="btn btn-primary" onmouseover="flipFunc(event,'front')" style="border-radius:100%">...</button>
+                      {{mail.subject}} - {{mail.date_added|dateFormating}} 
+                      </div>
+                     <div id="back" class="row align-items-center" style="display: none; padding: 20px 0 0 0;">
+                        <div class="col">
+                          <button  class="btn btn-primary" onmouseover="flipFunc(event,'back')" style="border-radius:100%">...</button>
+                          <!-- <a href="" class="btn btn-warning">Alter</a> -->
+                          <a href="{% url 'automail:base_temp' mail.id %}" class="btn email" style="color:white;">Send or Alter</a>
+                           <a href="{% url 'automail:delete_email' mail.id %}" class="btn btn-danger">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+          {% endfor %}
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+<script>
+  window.onload = function () {
+    $("div .form-group").addClass("form-floating mb-3");
+    $("div .form-floating input").addClass("form-control").attr("placeholder", "RANDOM");
+    $("#id_email_type").addClass("form-select");
+}
+//
+function flipFunc(e, type){
+    try {
+      var element = e.srcElement
+      element = element.parentNode.parentNode.parentNode.parentNode.parentNode.id.toString()
+    } catch {
+      var element = e.path[5].id.toString()
+    }
+  front = $("#"+element+" #front")
+  back = $("#"+element+" #back")
+  if (front.css("display") == "block" && type == "front"){
+    back.css("display","block");
+    front.css("display","none");
+  }else{
+  back.css("display","none");
+  front.css("display","block");
+  
+  }
+        
+}
+
+//
+
+  //
+
+
+
+// SEARCH emailS - FILTER
+document.querySelector('#id_src_emails').onkeyup = function(e){
+    let input_src = document.querySelector("#id_src_emails").value
+    let temp = document.querySelectorAll("#emails_cards div .initial_card");
+    var index = 0, length = temp.length;
+    if (input_src == ""){
+      for ( ; index < length; index++) {
+        temp[index].style.display =  "block";
+      }
+
+    }
+    else{
+      for ( ; index < length; index++) {
+          temp[index].style.display =  "none";
+      }
+      input_src = input_src.toLowerCase().replace(/ /g, "_");
+      /*temp = document.querySelectorAll("#emails_cards div[id*="+input_src+"]")*/
+      index = 0, length = temp.length;
+      for ( ; index < length; index++) {
+        if(temp[index].querySelector("div[id*="+input_src+"]") != null){
+            temp[index].style.display =  "block";
+        }
+      }
+    }
+}
+
+
+
+
+//MEDIA QUERY "CSS" FUNCTIONS
+
+if (window.matchMedia("(min-width:770px)").matches) {
+  /* a viewport tem pelo menos 800 pixels de largura */
+} 
+else if((window.matchMedia("(min-width:600px)").matches)){
+    /* a viewport menos que 800 pixels de largura */
+  let temp = document.querySelectorAll(".alig_cards")//.classList.remove('row');
+  var index = 0, length = temp.length;
+  for ( ; index < length; index++) {
+      temp[index].classList.remove('row');
+  }
+  temp = document.querySelector("#css_col")
+  temp.style.borderRight = "0";
+  temp.style.borderBottom  = "1px solid black";
+  temp.style.marginBottom  = "30px"
+}
+else{
+  /* a viewport menos que 800 pixels de largura */
+  let temp = document.querySelectorAll(".alig_cards")//.classList.remove('row');
+  var index = 0, length = temp.length;
+  for ( ; index < length; index++) {
+      temp[index].classList.remove('row');
+  }
+  temp = document.querySelector("#css_col")
+  temp.style.borderRight = "0";
+  temp.style.borderBottom  = "1px solid black";
+  temp.style.marginBottom  = "30px";
+
+
+  $("#back button").attr("onmouseover","")
+  $("#back button").attr("onclick","flipFunc(event,'back')")
+  $("#front button").attr("onmouseover","")
+  $("#front button").attr("onclick","flipFunc(event,'front')")
+
+
+
+}
+</script>
+
+
+{% endblock %}

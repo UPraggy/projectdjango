@@ -1,0 +1,589 @@
+{% verbatim %}
+<h1 id="react-native">React Native</h1>
+<div class='imgModulo' style="background-image: url('/static/documentations/icons/react.png');"></div>
+<h2 id="indice">INDICE</h2>
+<ul>
+  <li><strong><a href="#start">Start</a></strong></li>
+  <li><strong><a href="#introdução">Introdução</a></strong></li>
+  <li><strong><a href="#utilizando-css">Utilizando Css</a></strong></li>
+  <li><strong><a href="#passagens-de-argumentos">Passagens de Argumentos</a></strong></li>
+  <li><strong><a href="#css-responsivo">Css Responsivo</a></strong></li>
+  <li><strong><a href="#inserindo-imagens">Inserindo Imagens</a></strong></li>
+  <li><strong><a href="#image-background">Image Background</a></strong></li>
+  <li><strong><a href="#functions">Functions</a></strong></li>
+  <li><strong><a href="#button-and-alert">Button and Alert</a></strong></li>
+</ul>
+<h1 id="start">START</h1>
+<h4
+  id="tente-aprender-react-antes-de-entrar-neste-modulo-alguns-modulostomar-o-como-base-o-conhecimento-do-modulo-anterior-dereact-para-facilitar-e-evitar-repeti-es-br-siga-o-tutorial-https-reactnative-dev-docs-environment-setup-para-criar-seu-ambiente-e-primeiro-projeto-br-nota-sugiro-seguir-o-tutorial-react-native-cli-quickstart-caso-d-erro-ao-iniciar-o-app-siga-a-rota-expo-go-">
+  Tente aprender React antes de entrar neste modulo, alguns modulostomarão como base o conhecimento do modulo anterior
+  deReact, para facilitar e evitar repetições.<br>Siga o Tutorial <a
+    href="https://reactnative.dev/docs/environment-setup">LINK TUTORIAL</a> para criar seu ambiente e primeiro
+  projeto.<br> Nota: Sugiro seguir o tutorial React Native CLI QuickStart, caso dê erro ao iniciar o app, siga a rota
+  Expo GO.</h4>
+<h1 id="introdução">INTRODUÇÃO</h1>
+<h4
+  id="ap-s-criar-seu-primeiro-app-necess-rio-entender-oque-o-react-est-fazendo-basicamente-dentro-do-diret-rio-do-projeto-existe-o-arquivo-app-js-ele-lida-com-a-renderiza-o-da-pagina-o-babel-config-converte-o-app-para-uma-linguagem-em-que-o-android-ou-ios-entende-importando-seus-componentes-e-colocando-dentro-do-app-dificilmente-ser-preciso-mexer-na-pagina-app-js-todas-suas-configura-es-ser-o-externas-organizando-em-componentes-br-para-iniciar-tente-apagar-todo-o-conteudo-dentro-de-app-js-e-inicialmente-usaremos-as-bibliotecas-view-e-text-br-">
+  Após criar seu primeiro app é necessário entender oque o React está fazendo. Basicamente, dentro do diretório do
+  projeto existe o arquivo App.js, ele lida com a renderização da pagina o babel.config converte o app para uma
+  linguagem em que o Android ou Ios entende, importando seus componentes, e colocando dentro do app. Dificilmente, será
+  preciso mexer na pagina App.js, todas suas configurações serão externas, organizando em componentes.<br> Para Iniciar
+  tente apagar todo o conteudo dentro de App.js e inicialmente usaremos as bibliotecas View e Text<br></h4>
+<ul>
+  <li>View -&gt; funciona como uma div só que para dispositivos portateis</li>
+  <li>Text -&gt; renderiza texto</li>
+</ul>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span>
+  <span class="pl-v">View</span><span class="pl-kos">,</span>
+  <span class="pl-v">Text</span>
+<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+
+
+<span class="pl-c">//Seu primeiro elemento</span>
+<span class="pl-k">const</span> <span class="pl-s1">element</span> <span class="pl-c1">=</span> <span class="pl-c1">&lt;</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>Hello World!<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+    <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+
+
+<span class="pl-c">//seu app (pode colocar o nome que quiser)</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">My_App</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-s1">element</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+</code></pre>
+<hr>
+<pre><code class="lang-js"><span class="pl-c">/*Assim como React é possível utilizar classes para renderizar*/</span>
+
+<span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-v">Component</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span>
+  <span class="pl-v">View</span><span class="pl-kos">,</span>
+  <span class="pl-v">Text</span>
+<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+
+
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">class</span> <span class="pl-v">My_App</span> <span class="pl-k">extends</span> <span class="pl-v">Component</span><span class="pl-kos">{</span>
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>Hello World!<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+      <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+</code></pre>
+<h1 id="primeiro-componente">PRIMEIRO COMPONENTE</h1>
+<h4
+  id="crie-uma-pasta-para-organizar-seus-componentes-no-diretorio-do-seu-projeto-e-crie-seu-arquivo-jsx-com-o-nome-do-seu-componente-maiusculo-isso-uma-conven-o-para-que-seja-mais-legivel-dentro-dele-exporte-sua-fun-o-para-que-possa-ser-acessada-por-fora-">
+  Crie uma pasta para organizar seus componentes no diretorio do seu projeto e crie seu arquivo jsx com o nome do seu
+  componente maiusculo (isso é uma convenção, para que seja mais legivel), dentro dele exporte sua função para que possa
+  ser acessada por fora.</h4>
+<h3 id="-firstcomponent-jsx-">-----FirstComponent.jsx-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">,</span> <span class="pl-v">Text</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span><span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-k">return</span> <span class="pl-kos">(</span>
+
+		<span class="pl-c1">&lt;</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+				HELLLO WORLD!
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+		<span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-app-js-">-----App.js-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span>
+  <span class="pl-v">View</span><span class="pl-kos">,</span>
+  <span class="pl-v">Text</span>
+<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-c">//importando componente</span>
+<span class="pl-k">import</span> <span class="pl-v">FirstComponent</span> <span class="pl-k">from</span> <span class="pl-s">'./components/FirstComponent'</span>
+
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">My_App</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">FirstComponent</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+</code></pre>
+<h1 id="utilizando-css">UTILIZANDO CSS</h1>
+<h4
+  id="para-utilizar-css-em-seus-componentes-basta-criar-um-objeto-e-inserir-dentro-do-atributo-style-br-ex-style-color-000-br-para-utilizar-o-esquema-de-classes-do-css-tente-iniciar-uma-variavel-com-objetos">
+  Para utilizar css em seus componentes basta criar um objeto e inserir dentro do atributo style.<br>Ex.: style={{color:
+  &#39;#000&#39;}}<br>Para utilizar o esquema de classes do css tente iniciar uma variavel com objetos</h4>
+<pre><code class="lang-js"><span class="pl-k">const</span> <span class="pl-s1">meu_estilo</span> <span class="pl-c1">=</span> <span class="pl-v">StyleSheet</span><span class="pl-kos">.</span><span class="pl-en">create</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+	<span class="pl-c1">text_classe</span>:<span class="pl-kos">{</span>
+		<span class="pl-c1">color</span> : <span class="pl-s">'#32a842'</span><span class="pl-kos">,</span>
+		<span class="pl-c1">fontSize</span> : <span class="pl-c1">40</span>
+	<span class="pl-kos">}</span><span class="pl-kos"></span><span class="pl-kos">)</span>
+</code></pre>
+<h4 id="e-ao-chamar-no-componente-use-">e ao chamar no componente use:</h4>
+<pre><code class="lang-js"><span class="hljs-attr">style</span>={meu_estilo.text_classe}
+</code></pre>
+<h3 id="-firstcomponent-jsx-">-----FirstComponent.jsx-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">,</span>
+		<span class="pl-v">Text</span><span class="pl-kos">,</span>
+		<span class="pl-v">StyleSheet</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span><span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-k">return</span> <span class="pl-kos">(</span>
+
+		<span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">meu_estilo</span><span class="pl-kos">.</span><span class="pl-c1">container</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">Text</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">meu_estilo</span><span class="pl-kos">.</span><span class="pl-c1">text_classe</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+				HELLLO WORLD!
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">Text</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-c1">color</span>: <span class="pl-s">'#000000'</span><span class="pl-kos">,</span> <span class="pl-c1">fontSize</span>: <span class="pl-c1">20</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+				Seja Bem Vindo!
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+		<span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+
+<span class="pl-k">const</span> <span class="pl-s1">meu_estilo</span> <span class="pl-c1">=</span> <span class="pl-v">StyleSheet</span><span class="pl-kos">.</span><span class="pl-en">create</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+	<span class="pl-c1">text_classe</span>:<span class="pl-kos">{</span>
+		<span class="pl-c1">color</span> : <span class="pl-s">'#32a842'</span><span class="pl-kos">,</span>
+		<span class="pl-c1">fontSize</span> : <span class="pl-c1">40</span>
+	<span class="pl-kos">}</span><span class="pl-kos">,</span>
+	<span class="pl-c1">container</span>:<span class="pl-kos">{</span>
+		<span class="pl-c1">flex</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span>
+		<span class="pl-c1">alignItems</span> : <span class="pl-s">'center'</span><span class="pl-kos">,</span>
+		<span class="pl-c1">justifyContent</span>: <span class="pl-s">'center'</span>
+	<span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+</code></pre>
+<h3 id="-app-js-">-----App.js-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span>
+  <span class="pl-v">View</span><span class="pl-kos">,</span>
+  <span class="pl-v">Text</span>
+<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">FirstComponent</span> <span class="pl-k">from</span> <span class="pl-s">'./components/FirstComponent'</span>
+
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">My_App</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">FirstComponent</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+</code></pre>
+<hr>
+<h4
+  id="ainda-poss-vel-utilizar-como-arquivo-externo-br-neste-exemplo-foi-criada-a-pasta-statics-para-armazenar-os-estilos">
+  Ainda é possível utilizar como arquivo externo.<br>Neste Exemplo foi criada a pasta statics, para armazenar os estilos
+</h4>
+<h3 id="-meuestilo-jsx-">-----MeuEstilo.jsx-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">StyleSheet</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">StyleSheet</span><span class="pl-kos">.</span><span class="pl-en">create</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+	<span class="pl-c1">text_classe</span>:<span class="pl-kos">{</span>
+		<span class="pl-c1">color</span> : <span class="pl-s">'#32a842'</span><span class="pl-kos">,</span>
+		<span class="pl-c1">fontSize</span> : <span class="pl-c1">40</span>
+	<span class="pl-kos">}</span><span class="pl-kos">,</span>
+	<span class="pl-c1">container</span>:<span class="pl-kos">{</span>
+		<span class="pl-c1">flex</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span>
+		<span class="pl-c1">alignItems</span> : <span class="pl-s">'center'</span><span class="pl-kos">,</span>
+		<span class="pl-c1">justifyContent</span>: <span class="pl-s">'center'</span>
+	<span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+</code></pre>
+<h3 id="-firstcomponent-jsx-">-----FirstComponent.jsx-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">,</span>
+		<span class="pl-v">Text</span>
+	<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">MeuEstilo</span> <span class="pl-k">from</span> <span class="pl-s">'./statics/MeuEstilo'</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span><span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-c">//Use array para concatenar diferentes objetos de estilos (o ultimo sobrepõe as propriedades anteriores)</span>
+	<span class="pl-k">return</span> <span class="pl-kos">(</span>
+
+		<span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-v">MeuEstilo</span><span class="pl-kos">.</span><span class="pl-c1">container</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">Text</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">[</span><span class="pl-v">MeuEstilo</span><span class="pl-kos">.</span><span class="pl-c1">text_classe</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-c1">textAlign</span>: <span class="pl-s">'center'</span><span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+				HELLLO WORLD!
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">Text</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-c1">color</span>: <span class="pl-s">'#000000'</span><span class="pl-kos">,</span> <span class="pl-c1">fontSize</span>: <span class="pl-c1">20</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+				Seja Bem Vindo!
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+		<span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-app-js-">-----App.js-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span>
+  <span class="pl-v">View</span><span class="pl-kos">,</span>
+  <span class="pl-v">Text</span>
+<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">FirstComponent</span> <span class="pl-k">from</span> <span class="pl-s">'./components/FirstComponent'</span>
+
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">My_App</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">FirstComponent</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+</code></pre>
+<h1 id="passagens-de-argumentos">PASSAGENS DE ARGUMENTOS</h1>
+<h4
+  id="por-conven-o-os-parametros-argumentos-devem-ter-nome-props-props-nada-mais-que-um-objeto-com-todos-os-argumentos-br-essa-passagem-semelhante-ao-react">
+  Por convenção os parametros/argumentos devem ter nome &#39;props&#39;. Props nada mais é que um objeto, com todos os
+  argumentos.<br>Essa passagem é semelhante ao React</h4>
+<h3 id="-firstcomponent-jsx-">-----FirstComponent.jsx-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">,</span>
+		<span class="pl-v">Text</span><span class="pl-kos">,</span>
+		<span class="pl-v">StyleSheet</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span><span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-k">return</span> <span class="pl-kos">(</span>
+
+		<span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">meu_estilo</span><span class="pl-kos">.</span><span class="pl-c1">container</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">Text</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">meu_estilo</span><span class="pl-kos">.</span><span class="pl-c1">text_classe</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+				Meu Componente
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">Text</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-c1">color</span>: <span class="pl-s">'#000000'</span><span class="pl-kos">,</span> <span class="pl-c1">fontSize</span>: <span class="pl-c1">20</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+				<span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">propriedade</span><span class="pl-kos">}</span>
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+		<span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+
+<span class="pl-k">const</span> <span class="pl-s1">meu_estilo</span> <span class="pl-c1">=</span> <span class="pl-v">StyleSheet</span><span class="pl-kos">.</span><span class="pl-en">create</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+	<span class="pl-c1">text_classe</span>:<span class="pl-kos">{</span>
+		<span class="pl-c1">color</span> : <span class="pl-s">'#32a842'</span><span class="pl-kos">,</span>
+		<span class="pl-c1">fontSize</span> : <span class="pl-c1">40</span>
+	<span class="pl-kos">}</span><span class="pl-kos">,</span>
+	<span class="pl-c1">container</span>:<span class="pl-kos">{</span>
+		<span class="pl-c1">flex</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span>
+		<span class="pl-c1">alignItems</span> : <span class="pl-s">'center'</span><span class="pl-kos">,</span>
+		<span class="pl-c1">justifyContent</span>: <span class="pl-s">'center'</span>
+	<span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+</code></pre>
+<h3 id="-app-js-">-----App.js-----</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span>
+  <span class="pl-v">View</span><span class="pl-kos">,</span>
+  <span class="pl-v">Text</span>
+<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">FirstComponent</span> <span class="pl-k">from</span> <span class="pl-s">'./components/FirstComponent'</span>
+
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">My_App</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">FirstComponent</span> <span class="pl-c1">propriedade</span><span class="pl-c1">=</span><span class="pl-s">"Passando Propriedades"</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+</code></pre>
+<h1 id="css-responsivo">CSS - RESPONSIVO</h1>
+<h4
+  id="para-react-native-ele-n-o-utiliza-unidades-de-medida-comuns-no-react-normal-ou-em-elementos-html-como-pixel-em-vw-etc-br-abaixo-alguns-exemplos-de-configura-es-para-elementos-responsivos-br-">
+  Para React-Native ele não utiliza unidades de medida comuns no React normal ou em elementos html como pixel, em, vw,
+  etc.<br>Abaixo alguns exemplos de configurações para elementos responsivos.<br></h4>
+<h3
+  id="nota-este-modulo-cont-m-apenas-parametros-caso-queira-testar-coloque-em-seu-programa-com-base-no-modulo-css-br-veja-todas-as-propriedades-em-https-reactnative-dev-docs-layout-props">
+  Nota.: Este modulo contém apenas parametros, caso queira testar, coloque em seu programa com base no modulo
+  CSS<br>Veja todas as propriedades em: <a href="https://reactnative.dev/docs/layout-props">LINK LAYOUT PROPS</a></h3>
+<h3 id="escala">Escala</h3>
+<h4 id="para-escala-pode-ser-usado-porcentagens-e-numeros-comuns-a-diferen-a-se-d-no-tamanho">Para escala pode ser usado
+  porcentagens e numeros comuns a diferença se dá no tamanho</h4>
+
+
+<pre><code class="lang-css"><span class="pl-c">/*Caso use 100% por exemplo, ele ocupa todo o espaço disponivel*/</span>
+<span class="pl-ent">width</span> <span class="pl-kos">:</span> <span class="pl-s">'100%'</span>;
+<span class="pl-c">/*Caso use um numero comum ele ocupará a</span>
+<span class="pl-c">quantidade de 'pixels do dispositivo'*/</span>
+<span class="pl-ent">width</span> <span class="pl-kos">:</span> 100;
+</code></pre>
+<h3 id="flex">Flex</h3>
+<h4 id="deixa-todos-os-itens-flex-veis-terem-o-mesmo-comprimento-independentemente-de-seu-conte-do-">Deixa todos os
+  itens flexíveis terem o mesmo comprimento, independentemente de seu conteúdo:</h4>
+<h3 id="nota-um-elemento-importante-para-a-view-principal-do-projeto">Nota: Um elemento importante para a View Principal
+  do projeto</h3>
+<h4 id="ex-">Ex:</h4>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">FirstComponent</span> <span class="pl-k">from</span> <span class="pl-s">'./components/FirstComponent'</span>
+<span class="pl-k">import</span> <span class="pl-v">MeuEstilo</span> <span class="pl-k">from</span> <span class="pl-s">'./components/statics/MeuEstilo'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">My_App</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-c1">flex</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-c1">width</span>:<span class="pl-s">'100%'</span><span class="pl-kos">,</span> <span class="pl-c1">alignItems</span> : <span class="pl-s">'center'</span><span class="pl-kos">,</span>
+      <span class="pl-c1">justifyContent</span> : <span class="pl-s">'center'</span><span class="pl-kos">,</span><span class="pl-c1">backgroundColor</span>: <span class="pl-s">'#cdf7f5'</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span> 
+
+      <span class="pl-c1">&lt;</span><span class="pl-ent">FirstComponent</span> <span class="pl-c1">propriedade</span><span class="pl-c1">=</span><span class="pl-s">"Passando Propriedades"</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+      <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+</code></pre>
+
+
+<h3 id="flexdiretion">FlexDiretion</h3>
+<h4 id="flex-direction-cont-m-dois-parametros-br-row-column-os-elementos-dentro-ser-o-organizados-na-br-">Flex direction
+  contém dois parametros<br>row,column -&gt; os elementos dentro serão organizados na: <br></h4>
+<ul>
+  <li><strong>horizontal -&gt; row</strong></li>
+  <li><strong>vertical -&gt; column</strong>
+    <h4 id="caso-adcione-reverse-br-ex-row-reverse-ele-muda-a-ordem-dos-componentes">Caso adcione -reverse.<br>Ex:
+      <code>row-reverse</code> ele muda a ordem dos componentes
+    </h4>
+  </li>
+</ul>
+<h3 id="justifycontent-e-alignitems">JustifyContent e AlignItems</h3>
+<h4
+  id="op-es-timas-para-organizar-items-tanto-na-vertical-alignitems-quanto-na-horizontal-justifycontent-ambos-funcionam-muito-bem-em-reactnative">
+  Opções ótimas para organizar items tanto na vertical (AlignItems), quanto na horizontal (JustifyContent), ambos
+  funcionam muito bem em ReactNative</h4>
+<h4 id="justify-content-flex-start-flex-end-center-space-between-space-around-space-evenly-">justify-content:
+  flex-start|flex-end|center|space-between|space-around|space-evenly;</h4>
+<h4 id="align-items-normal-stretch-positional-alignment-flex-start-flex-end-baseline-">align-items:
+  normal|stretch|positional alignment|flex-start|flex-end|baseline;</h4>
+<h3 id="flexwrap">FlexWrap</h3>
+<h4 id="determina-como-os-elementos-devem-se-comportar-caso-ocupem-espa-o-al-m-do-espa-o-suportado-pelo-elemento-pai-">
+  Determina como os elementos devem se comportar caso ocupem, espaço além do espaço suportado pelo elemento
+  &#39;pai&#39;</h4>
+<h4 id="flex-wrap-nowrap-wrap-wrap-reverse-">flex-wrap: nowrap|wrap|wrap-reverse;</h4>
+<h1 id="inserindo-imagens">INSERINDO IMAGENS</h1>
+<h4 id="para-inserir-imagem-preciso-importar-o-modulo-utilizando-o-require-tamb-m-poss-vel-criar-um-nome-br-ex-">Para
+  inserir imagem, é preciso importar o modulo utilizando o require também é possível criar um nome.<br> Ex.:</h4>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">MinhaImagem</span> <span class="pl-k">from</span> <span class="pl-s">'meucaminhorealtivo'</span><span class="pl-kos"></span>
+<span class="pl-c1">&lt;</span><span class="pl-ent">Image</span> <span class="pl-c1">source</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-v">MinhaImagem</span><span class="pl-kos">}</span> <span class="pl-c1">&gt;</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Image</span><span class="pl-c1">&gt;</span>
+</code></pre>
+<h4 id="use-source-uri-para-imagens-por-url">Use &#39;source={{uri:}}&#39; para imagens por url</h4>
+<pre><code class="lang-js"><span class="pl-s1">source</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-c1">uri</span>:<span class="pl-s">'http://www.minhaurl.com.br/image.jpg'</span><span class="pl-kos">}</span><span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-firstcomponent-jsx-">--------------------------FirstComponent.jsx-------------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">,</span>
+		<span class="pl-v">Text</span><span class="pl-kos">,</span>
+		<span class="pl-v">Image</span>
+	<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">MeuEstilo</span> <span class="pl-k">from</span> <span class="pl-s">'./statics/MeuEstilo'</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span><span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-k">return</span> <span class="pl-kos">(</span>
+
+		<span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">[</span><span class="pl-v">MeuEstilo</span><span class="pl-kos">.</span><span class="pl-c1">container</span><span class="pl-kos">,</span><span class="pl-kos">{</span><span class="pl-c1">backgroundColor</span>: <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">backColor</span><span class="pl-kos">,</span> <span class="pl-c1">padding</span>: <span class="pl-s">'10%'</span><span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">Text</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">[</span><span class="pl-v">MeuEstilo</span><span class="pl-kos">.</span><span class="pl-c1">text_classe</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-c1">color</span> : <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">fontColor</span><span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+				Inserindo Imagem
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">Image</span>  
+			<span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-c1">width</span>:<span class="pl-s">'50%'</span><span class="pl-kos">,</span> <span class="pl-c1">resizeMode</span>: <span class="pl-s">'contain'</span><span class="pl-kos">,</span> <span class="pl-c1">alignSelf</span>:<span class="pl-s">'center'</span><span class="pl-kos">}</span><span class="pl-kos">}</span>
+			<span class="pl-c1">source</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'./statics/perrito.jpg'</span><span class="pl-kos">)</span><span class="pl-kos">}</span> <span class="pl-c1">&gt;</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Image</span><span class="pl-c1">&gt;</span>
+				
+		<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+		<span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-app-js-">--------------------------App.js-------------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">FirstComponent</span> <span class="pl-k">from</span> <span class="pl-s">'./components/FirstComponent'</span>
+<span class="pl-k">import</span> <span class="pl-v">MeuEstilo</span> <span class="pl-k">from</span> <span class="pl-s">'./components/statics/MeuEstilo'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">My_App</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-v">MeuEstilo</span><span class="pl-kos">.</span><span class="pl-c1">containerPrincipal</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span> 
+      <span class="pl-c1">&lt;</span><span class="pl-ent">FirstComponent</span> <span class="pl-c1">flex</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-c1">1</span><span class="pl-kos">}</span> <span class="pl-c1">backColor</span><span class="pl-c1">=</span><span class="pl-s">"#ffffff"</span> <span class="pl-c1">fontColor</span><span class="pl-c1">=</span><span class="pl-s">"#000000"</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+      <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+</code></pre>
+<h1 id="image-background">IMAGE BACKGROUND</h1>
+<h4
+  id="semelhante-ao-modulo-image-o-imagebackground-insere-uma-imagem-de-fundo-nos-objetos-vale-mencionar-que-ele-deve-envolver-o-objeto-e-n-o-estar-contido-ele-cont-m-o-mesmo-atributo-source-e-caracteristicas-do-image">
+  Semelhante ao modulo IMAGE, o ImageBackground insere uma imagem de fundo nos objetos, vale mencionar que ele deve
+  envolver o objeto e não estar contido, ele contém o mesmo atributo source e caracteristicas do IMAGE</h4>
+<h3 id="-firstcomponent-jsx-">--------------------------FirstComponent.jsx-------------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">,</span>
+		<span class="pl-v">Text</span><span class="pl-kos">,</span>
+		<span class="pl-v">ImageBackground</span>
+	<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">MeuEstilo</span> <span class="pl-k">from</span> <span class="pl-s">'./statics/MeuEstilo'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span><span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+
+	<span class="pl-k">return</span> <span class="pl-kos">(</span>
+
+		<span class="pl-c1">&lt;</span><span class="pl-ent">ImageBackground</span> <span class="pl-c1">source</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'./statics/logo.png'</span><span class="pl-kos">)</span><span class="pl-kos">}</span> <span class="pl-c1">resizeMode</span><span class="pl-c1">=</span><span class="pl-s">"cover"</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">[</span><span class="pl-v">MeuEstilo</span><span class="pl-kos">.</span><span class="pl-c1">container</span><span class="pl-kos">,</span><span class="pl-kos">{</span><span class="pl-c1">backgroundColor</span>: <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">backColor</span><span class="pl-kos">,</span> <span class="pl-c1">padding</span>: <span class="pl-s">'10%'</span><span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">Text</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">[</span><span class="pl-v">MeuEstilo</span><span class="pl-kos">.</span><span class="pl-c1">text_classe</span><span class="pl-c">/*, {color : props.fontColor}*/</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+				TEST APLICATION MOBILE
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+			<span class="pl-kos">{</span><span class="pl-c">/*&lt;Image source={require('./statics/logo.png')} </span>
+<span class="pl-c">			style={{width:'50%',resizeMode :'contain', </span>
+<span class="pl-c">					height:'20%', alignSelf: 'center', marginTop:'5%'}}/&gt;*/</span><span class="pl-kos">}</span>
+			
+		<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">ImageBackground</span><span class="pl-c1">&gt;</span>
+		<span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-app-js-">--------------------------App.js-------------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">FirstComponent</span> <span class="pl-k">from</span> <span class="pl-s">'./components/FirstComponent'</span>
+<span class="pl-k">import</span> <span class="pl-v">MeuEstilo</span> <span class="pl-k">from</span> <span class="pl-s">'./components/statics/MeuEstilo'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">My_App</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-v">MeuEstilo</span><span class="pl-kos">.</span><span class="pl-c1">containerPrincipal</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span> 
+      <span class="pl-c1">&lt;</span><span class="pl-ent">FirstComponent</span> <span class="pl-c1">flex</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-c1">1</span><span class="pl-kos">}</span> <span class="pl-c1">backColor</span><span class="pl-c1">=</span><span class="pl-s">"#ffffff"</span> <span class="pl-c1">fontColor</span><span class="pl-c1">=</span><span class="pl-s">"#000000"</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+      <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+</code></pre>
+<h1 id="functions">FUNCTIONS</h1>
+<h4
+  id="diferente-de-react-react-native-n-o-comporta-arrow-functions-dentro-do-retorno-para-contornar-isso-preciso-declara-la-fora-e-chama-la-depois-ou-utilizar-uma-fun-o-anonima-dentro-do-retorno-">
+  Diferente de React, React Native não comporta arrow functions dentro do &#39;retorno&#39;, para contornar isso é
+  preciso declara-la fora e chama-la depois, ou utilizar uma função anonima dentro do &#39;retorno&#39;</h4>
+<h3 id="-firstcomponent-jsx-">--------------------------FirstComponent.jsx-------------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">,</span>
+		<span class="pl-v">Text</span><span class="pl-kos">,</span>
+		<span class="pl-v">Image</span>
+	<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">MeuEstilo</span> <span class="pl-k">from</span> <span class="pl-s">'./statics/MeuEstilo'</span>
+<span class="pl-k">const</span> <span class="pl-en">soma</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">num</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span> <span class="pl-s1">num</span><span class="pl-c1">+</span><span class="pl-c1">2</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span><span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-k">const</span> <span class="pl-s1">num</span> <span class="pl-c1">=</span><span class="pl-c1">4</span>
+	<span class="pl-k">return</span> <span class="pl-kos">(</span>
+
+		<span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">Text</span> <span class="pl-c1">&gt;</span>
+				Funções&amp;nbsp;
+				<span class="pl-kos">{</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">num</span><span class="pl-kos">)</span><span class="pl-kos">{</span><span class="pl-k">return</span> <span class="pl-s1">num</span><span class="pl-c1">*</span><span class="pl-c1">2</span><span class="pl-kos">}</span><span class="pl-kos">(</span><span class="pl-s1">num</span><span class="pl-kos">)</span><span class="pl-kos">}</span>
+				&amp;nbsp;
+				<span class="pl-kos">{</span><span class="pl-s1">num</span><span class="pl-c1">*</span><span class="pl-c1">3</span><span class="pl-kos">}</span>
+				&amp;nbsp;
+				<span class="pl-kos">{</span><span class="pl-en">soma</span><span class="pl-kos">(</span><span class="pl-s1">num</span><span class="pl-kos">)</span><span class="pl-kos">}</span>
+			<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+		<span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-app-js-">--------------------------App.js-------------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">FirstComponent</span> <span class="pl-k">from</span> <span class="pl-s">'./components/FirstComponent'</span>
+<span class="pl-k">import</span> <span class="pl-v">MeuEstilo</span> <span class="pl-k">from</span> <span class="pl-s">'./components/statics/MeuEstilo'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">My_App</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-v">MeuEstilo</span><span class="pl-kos">.</span><span class="pl-c1">containerPrincipal</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span> 
+      <span class="pl-c1">&lt;</span><span class="pl-ent">FirstComponent</span> <span class="pl-c1">flex</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-c1">1</span><span class="pl-kos">}</span> <span class="pl-c1">backColor</span><span class="pl-c1">=</span><span class="pl-s">"#ffffff"</span> <span class="pl-c1">fontColor</span><span class="pl-c1">=</span><span class="pl-s">"#000000"</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+      <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+</code></pre>
+<h1 id="button-and-alert">BUTTON AND ALERT</h1>
+<p><a href="https://reactnative.dev/docs/button">https://reactnative.dev/docs/button</a>
+  <a href="https://reactnative.dev/docs/alert">https://reactnative.dev/docs/alert</a>
+</p>
+<h3
+  id="em-react-native-existe-o-component-button-e-alert-assim-como-javascript-a-diferen-a-que-ambos-s-o-limitados-button-n-o-recebe-nenhum-tipo-de-css-a-n-o-ser-o-proprio-atributo-color">
+  Em React Native existe o component button e alert, assim como javascript, a diferença é que ambos são limitados button
+  não recebe nenhum tipo de css a não ser o proprio atributo color</h3>
+<h3 id="-firstcomponent-jsx-">--------------------------FirstComponent.jsx-------------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">,</span>
+		<span class="pl-v">Button</span><span class="pl-kos">,</span>
+		<span class="pl-v">Alert</span>
+	<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">MeuEstilo</span> <span class="pl-k">from</span> <span class="pl-s">'./statics/MeuEstilo'</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span><span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-k">return</span> <span class="pl-kos">(</span>
+
+		<span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">[</span><span class="pl-v">MeuEstilo</span><span class="pl-kos">.</span><span class="pl-c1">container</span><span class="pl-kos">,</span><span class="pl-kos">{</span><span class="pl-c1">backgroundColor</span>: <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">backColor</span><span class="pl-kos">,</span> <span class="pl-c1">padding</span>: <span class="pl-s">'10%'</span><span class="pl-kos">,</span> <span class="pl-c1">flex</span>: <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">flex</span><span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">Button</span>
+          <span class="pl-c1">title</span><span class="pl-c1">=</span><span class="pl-s">"Right button"</span>
+          <span class="pl-c1">onPress</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-v">Alert</span><span class="pl-kos">.</span><span class="pl-en">alert</span><span class="pl-kos">(</span><span class="pl-s">'Right button pressed'</span><span class="pl-kos">)</span><span class="pl-kos">}</span>
+        	<span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+		<span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-app-js-">--------------------------App.js-------------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">FirstComponent</span> <span class="pl-k">from</span> <span class="pl-s">'./components/FirstComponent'</span>
+<span class="pl-k">import</span> <span class="pl-v">MeuEstilo</span> <span class="pl-k">from</span> <span class="pl-s">'./components/statics/MeuEstilo'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">My_App</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-v">MeuEstilo</span><span class="pl-kos">.</span><span class="pl-c1">containerPrincipal</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span> 
+      <span class="pl-c1">&lt;</span><span class="pl-ent">FirstComponent</span> <span class="pl-c1">flex</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-c1">1</span><span class="pl-kos">}</span> <span class="pl-c">/*backColor="#f56042"*/</span> <span class="pl-c1">fontColor</span><span class="pl-c1">=</span><span class="pl-s">"#45f542"</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">TesteComp</span> <span class="pl-c1">flex</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-c1">1</span><span class="pl-kos">}</span> <span class="pl-c">/*backColor="#f56042"*/</span> <span class="pl-c1">fontColor</span><span class="pl-c1">=</span><span class="pl-s">"#45f542"</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+      <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+</code></pre>
+<h2 id="ativando-funcao">Ativando Funcao</h2>
+<h4>Assim como no react é possível usar o useState</h4>
+
+<h3 id="-firstcomponent-jsx-">--------------------------FirstComponent.jsx-------------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-s1">useState</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">,</span>
+		<span class="pl-v">Text</span><span class="pl-kos">,</span>
+		<span class="pl-v">Button</span><span class="pl-kos">,</span>
+		<span class="pl-v">Alert</span>
+	<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">MeuEstilo</span> <span class="pl-k">from</span> <span class="pl-s">'./statics/MeuEstilo'</span>
+<span class="pl-k">const</span> <span class="pl-en">soma</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">setNum</span><span class="pl-kos">,</span><span class="pl-s1">num</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span> <span class="pl-s1">setNum</span><span class="pl-kos">(</span><span class="pl-s1">num</span><span class="pl-c1">+</span><span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">props</span><span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">num</span><span class="pl-kos">,</span><span class="pl-s1">setNum</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">)</span>
+	<span class="pl-k">return</span> <span class="pl-kos">(</span>
+
+		<span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">[</span><span class="pl-v">MeuEstilo</span><span class="pl-kos">.</span><span class="pl-c1">container</span><span class="pl-kos">,</span><span class="pl-kos">{</span><span class="pl-c1">backgroundColor</span>: <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">backColor</span><span class="pl-kos">,</span> <span class="pl-c1">padding</span>: <span class="pl-s">'10%'</span><span class="pl-kos">,</span> <span class="pl-c1">flex</span>: <span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">flex</span><span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+			<span class="pl-c1">&lt;</span><span class="pl-ent">Button</span>
+          <span class="pl-c1">title</span><span class="pl-c1">=</span><span class="pl-s">"Right button"</span>
+          <span class="pl-c1">onPress</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span><span class="pl-en">soma</span><span class="pl-kos">(</span><span class="pl-s1">setNum</span><span class="pl-kos">,</span><span class="pl-s1">num</span><span class="pl-kos">)</span><span class="pl-kos">}</span>
+        	<span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+        	<span class="pl-c1">&lt;</span><span class="pl-ent">Text</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-c1">fontSize</span>:<span class="pl-c1">50</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-s1">num</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+		<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+		<span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+</code></pre>
+<h3 id="-app-js-">--------------------------App.js-------------------</h3>
+<pre><code class="lang-js"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span><span class="pl-v">View</span><span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span>
+<span class="pl-k">import</span> <span class="pl-v">FirstComponent</span> <span class="pl-k">from</span> <span class="pl-s">'./components/FirstComponent'</span>
+<span class="pl-k">import</span> <span class="pl-v">MeuEstilo</span> <span class="pl-k">from</span> <span class="pl-s">'./components/statics/MeuEstilo'</span>
+
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">My_App</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-v">MeuEstilo</span><span class="pl-kos">.</span><span class="pl-c1">containerPrincipal</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span> 
+      <span class="pl-c1">&lt;</span><span class="pl-ent">FirstComponent</span> <span class="pl-c1">flex</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-c1">1</span><span class="pl-kos">}</span> <span class="pl-c">/*backColor="#f56042"*/</span> <span class="pl-c1">fontColor</span><span class="pl-c1">=</span><span class="pl-s">"#45f542"</span><span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+      <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+</code></pre>
+<h1 id="referencias">REFERENCIAS</h1>
+<p><a href="https://www.udemy.com/course/curso-web/">https://www.udemy.com/course/curso-web/</a>
+  <a href="https://www.w3schools.com/cssref/">https://www.w3schools.com/cssref/</a>
+</p>
+{% endverbatim %}

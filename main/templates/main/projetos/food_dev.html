@@ -1,0 +1,231 @@
+{% extends 'main/portifolio.html' %}
+{% block title %}Food_Dev{% endblock %}
+
+
+{% block content %}
+{% load static %}
+		{% load i18n %}
+<style type="text/css">
+	html{
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	body{
+		background: url("{% static 'projetos/food_dev_back.png' %}");
+		background-size: 100%;
+		
+	}
+
+    	#food_dev{
+    	font-family: DM_Serif_Display;
+    	text-align:  left;
+    	color: white;
+    	width: 100%;
+    	height: 100%;
+	   }
+
+	   #food_dev_title{
+	   	display: flex;
+	   	justify-content: center;
+	   	width: 100%;
+	   	height: 10vw;
+	   }
+
+	   #logo_food_dev{
+		border-radius: 10px;
+		width: 7%;
+		margin: auto 2% auto 0;
+	   }
+	   #logo_git{
+		border-radius: 100px;
+		width: 5%;
+		margin: auto 0 auto 2%;
+	   }
+
+	   #food_dev_title h1{
+	   		margin: auto 0;
+	   		font-size: 5vw;
+	   		color:  #35522D;
+	   		text-shadow:  0 0 0.2em rgba(138, 206, 119, 0.1), 0 0 0.2em rgba(138, 206, 119, 0.1),
+        0 0 0.2em rgba(138, 206, 119, 0.1);
+	   }
+	   #food_dev p{
+	   	margin: 0 auto;
+	   	width: 80%;
+	   	text-align: center;
+	   	font-size: 2vw;
+	   	text-shadow: 0.1em 0.1em 0.2em black;
+	   	padding: 1%;
+	   	border-radius: 10px;
+	   	background:  rgba(48, 116, 29, 0.5);
+	   	/*background:  rgba(118, 186, 99, 0.5);*/
+	   }
+
+	   .images_food_dev{
+	   	width: 30%;
+		margin: 1% auto;
+	   }
+	   
+	   
+
+	  .video_food_dev{
+	  	width: 35%;
+	  	margin: 1% auto 4% auto;
+	  } 
+	  .video_food_dev video{
+	  	width: 100%;
+	  }
+
+	   #food_dev #weblink a{
+	   	text-decoration: none;
+	   	color: rgba(5, 179, 130, 1.0);
+	   	font-size: 3vw;
+	   	text-shadow: 0.1em 0.1em 0.2em black
+	   }
+	   #food_dev #weblink {
+	   	background: rgba(0, 50, 50, 0.5);
+	   	width: 40%;
+	   	margin: 0 auto 3% auto;
+	   	padding-bottom: 5px;
+	   	border-radius: 10px;
+			text-align: center;
+	   }
+
+	   #spacer_food_dev{
+	   	height: 5vw;
+	   }
+
+</style>
+
+
+
+<!---->
+<div id="food_dev">
+	<div id="food_dev_title">
+
+	<div id="logo_food_dev"></div>
+	<h1>FOOD_DEV</h1>
+	<a id="logo_git" href="https://github.com/UPraggy/FOOD_DEV"></a>
+
+	</div>
+	<div id="weblink">
+	<a href="https://upraggy.github.io/FOOD_DEV/">Link para o projeto</a>
+	</div>
+	
+	<p>O app foi desenvolvido para que possa ser feito o gerenciamento de pedidos, cadastro de clientes e estoque. Todo o armazenamento das informações foram feitas em excel, com objetivo de utilizar a biblioteca pandas. A seguir, um exemplo de uso, desde o cadastro do cliente até a realização do pedido:
+	</p>
+
+
+	<div id="trailer_food_dev" class="images_food_dev video_food_dev" style="margin-bottom: 6%;">
+		<video  controls>
+		  <source src="{% static 'projetos/trailer_food_dev.mp4' %}" type="video/mp4">
+		</video>
+	</div>
+
+	<p>Neste projeto foi utilizado bibliotecas para gráficos, sendo assim, é possível ver estoque, vendas, valores de produtos...</p>
+
+	<div id="graficos_food_dev" class="images_food_dev video_food_dev" style="margin-bottom: 6%;">
+		<video  controls>
+		  <source src="{% static 'projetos/graficos_food_dev.mp4' %}" type="video/mp4">
+		</video>
+	</div>
+
+	<p>É também possível atualizar e deletar registros, como produtos, clientes, e pedidos:</p>
+
+
+	<div id="delete_food_dev" class="images_food_dev video_food_dev" style="margin-bottom: 6%;">
+		<video  controls>
+		  <source src="{% static 'projetos/delete_food_dev.mp4' %}" type="video/mp4">
+		</video>
+	</div>
+
+
+
+	<p>Todos os pedidos são enumerados e ordenados por data, além do próprio excel, eles são organizados em pastas:</p>
+
+
+
+	<div id="folder_food_dev" class="images_food_dev video_food_dev" style="margin-bottom: 6%;">
+		<video  controls>
+		  <source src="{% static 'projetos/folder_food_dev.mp4' %}" type="video/mp4">
+		</video>
+	</div>
+
+
+	<p>Há o tratamento de algumas exeções:</p>
+
+
+	<div id="exception_food_dev" class="images_food_dev video_food_dev" style="margin-bottom: 6%;">
+		<video  controls>
+		  <source src="{% static 'projetos/exception_food_dev.mp4' %}" type="video/mp4">
+		</video>
+	</div>
+
+
+	<p>Além da exceção, também há a criação dos diretórios, caso não haja:</p>
+
+
+
+	<div id="cria_food_dev" class="images_food_dev video_food_dev" style="margin-bottom: 6%;">
+		<video  controls>
+		  <source src="{% static 'projetos/cria_food_dev.mp4' %}" type="video/mp4">
+		</video>
+	</div>
+
+	<p>A criação desse projeto foi o ponto de partida para ter o primeiro contato com as bibliotecas Pandas, Numpy, MatplotLib (há uma documentação/apresentação sobre as duas primeiras). Além disso, foi o primeiro contato com uma interface gráfica, através do PyQt5. 
+<br>Data de início: 01/03/22 &nbsp&nbsp Termino : 27/05/22</p>
+	
+	<div id="spacer_food_dev"></div>
+	
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+	
+$(".menu_font a").css('color','white').css('text-shadow','0.1em 0.1em 0.2em black')
+$("#btn2 a").css('color','rgba(120,7,0,1.0)')
+
+//console.log("SUM "+ (width_/height_))
+
+let wit = $('#logo_food_dev').css('width').split("px")[0];
+$('#logo_food_dev').css('height',wit);
+
+wit = $('#logo_git').css('width').split("px")[0];
+$('#logo_git').css('height',wit);
+
+
+wit = $('.images_food_dev').css('width').split("px")[0];
+$('.images_food_dev').css('height',(wit/2));
+
+
+
+change_back("{% static 'projetos/food_dev.png' %}","#logo_food_dev");
+change_back("{% static 'contato/git.png' %}","#logo_git");
+
+
+if (width_ >= 900){
+
+}
+else if ((width_/height_) < 1.77){ 
+
+	change_back("{% static 'projetos/food_dev_mobile.png' %}","body","cover","repeat");
+
+	$('#food_dev_title h1').css('text-shadow','0 0 0.2em rgba(138, 206, 119, 0.1), 0 0 0.2em rgba(138, 206, 119, 0.1),	\
+        0 0 0.2em rgba(138, 206, 119, 0.1)');
+		
+
+}
+
+
+</script>
+
+
+{% endblock%}

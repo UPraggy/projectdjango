@@ -1,0 +1,29 @@
+.form-floating{
+	margin: 15px 0px;
+}
+small li{
+	display: block;
+	text-decoration: none;
+	text-align: left;
+}
+#form_css{
+	background: red;
+	padding: 50px;
+	/*Style glass*/
+	border-radius: 10px;
+	/*background: rgba(255, 255, 255, 0.133);*/
+	background: rgba(0, 0, 0, 0.350);
+	border: 1px solid #fff;
+	backdrop-filter:  blur(3px);
+	box-shadow: 0 0 6px 0 rgba(29, 29, 29, 0.203);
+}
+small{
+		color: rgb(220, 220, 220);
+}
+#title_reg{
+		padding-bottom: 20px;
+		text-align: center;
+		color: white;
+		-webkit-text-stroke-width: 2px;
+		-webkit-text-stroke-color: rgba(0,0,0,0.200);
+}

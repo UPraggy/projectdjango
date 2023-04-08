@@ -1,0 +1,322 @@
+{% verbatim %}
+<h1 id="webpack">WebPack</h1>
+<div class='imgModulo' style="background-image: url('/static/documentations/icons/webpack.png');"></div>
+<h2 id="indice">INDICE</h2>
+<ul>
+  <li><strong><a href="#introducao">Introdução</a></strong></li>
+  <li><strong><a href="#setup-inicial">Setup Inicial</a></strong></li>
+  <li><strong><a href="#primeiro-projeto">Primeiro Projeto</a></strong></li>
+  <li><strong><a href="#importando-css">Importando Css</a></strong></li>
+  <li><strong><a href="#configurando-ambiente-de-desenvolvimento-e-produção-e-otimizações">Ambiente Dev e Prod/
+        Otimizações</a></strong></li>
+  <li><strong><a href="#carregando-imagens">Carregando Imagens</a></strong></li>
+</ul>
+<h1 id="introducao">INTRODUCAO</h1>
+<h3
+  id="webpack-semelhante-ao-gulp-pois-ambos-s-o-voltados-na-automatiza-o-do-build-do-projeto-por-m-sua-diferen-a-na-organiza-o-em-que-o-gulp-utiliza-de-tasks-que-chamam-outras-e-o-webpack-que-se-baseia-em-m-dulos-o-sitema-comum-de-m-dulos-o-module-export-require-etc-onde-o-node-se-baseia-j-o-webpack-se-baseia-no-sistema-com-export-e-import-que-veio-com-o-ecma-script-2015">
+  WebPack é semelhante ao gulp, pois ambos são voltados na automatização do build do projeto, porém sua diferença é na
+  organização em que o gulp utiliza de tasks que chamam outras e o WebPack que se baseia em módulos. O sitema comum de
+  módulos, é o module.export, require, etc, onde o Node se baseia, já o WebPack se baseia no sistema com export e import
+  que veio com o ECMA Script 2015</h3>
+<h1 id="setup-inicial">SETUP INICIAL</h1>
+<h3 id="-arquivo-package-json-">------------ Arquivo package.json ----------</h3>
+<h4 id="inicie-seu-projeto-e-coloque-em-seu-package-json-as-seguintes-dependencias-e-instale-logo-em-seguida">Inicie seu
+  projeto e coloque em seu package.json as seguintes dependencias e instale logo em seguida</h4>
+<pre><code class="lang-json"><span class="hljs-string">"scripts"</span>: {
+    <span class="hljs-string">"start"</span> : <span class="hljs-string">"webpack"</span>,
+    <span class="hljs-string">"test"</span>: <span class="hljs-string">"echo \"</span><span class="hljs-keyword">Error</span>: <span class="hljs-keyword">no</span> <span class="hljs-keyword">test</span> specified\<span class="hljs-string">" &amp;&amp; exit 1"</span>
+  },
+<span class="hljs-string">"dependencies"</span>: {
+    <span class="hljs-string">"webpack"</span>: <span class="hljs-string">"4.8.1"</span>,
+    <span class="hljs-string">"webpack-cli"</span>: <span class="hljs-string">"2.1.3"</span>,
+  }
+</code></pre>
+<p>Após isso, instale as dependencias</p>
+<h1 id="primeiro-projeto">PRIMEIRO PROJETO</h1>
+<h4 id="para-este-exemplo-criaremos-uma-classe-exemplo-e-a-executaremos-usando-webpack">Para este exemplo criaremos uma
+  classe exemplo, e a executaremos usando webpack</h4>
+<h3 id="pasta-src">Pasta src</h3>
+<h4 id="criando-e-exportando-classe-exemplo">Criando e exportando classe exemplo</h4>
+<h4 id="-arquivo-dog-js-">------------ Arquivo dog.js ------------</h4>
+<pre><code class="lang-js"><span class="hljs-comment">/*utilizando export default,
+possibilitamos o acesso externo da classe
+*/</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cachorro</span></span>{ 
+    falar(){
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Au! Au!"</span>
+    }
+}
+</code></pre>
+<h4 id="-arquivo-principal-js-">------------ Arquivo principal.js ------------</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> DOG <span class="hljs-keyword">from</span> <span class="hljs-string">'./dog'</span> <span class="hljs-comment">//importando classe</span>
+
+<span class="hljs-keyword">const</span> cachorro = <span class="hljs-keyword">new</span> DOG; <span class="hljs-comment">//instanciando</span>
+
+<span class="hljs-built_in">console</span>.log(cachorro.falar()) <span class="hljs-comment">//executando</span>
+</code></pre>
+<h3 id="pasta-inicial">Pasta Inicial</h3>
+<h4 id="configurando-webpack">configurando WebPack</h4>
+<h4 id="-arquivo-webpack-config-js-">------------ Arquivo webpack.config.js ------------</h4>
+<pre><code class="lang-js"><span class="hljs-comment">/*configurando WebPack*/</span>
+
+<span class="hljs-keyword">const</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">"webpack"</span>); <span class="hljs-comment">//importando</span>
+<span class="hljs-keyword">const</span> MiniCssExtractPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"mini-css-extract-plugin"</span>);
+<span class="hljs-built_in">module</span>.exports = { 
+    <span class="hljs-attr">mode</span>: <span class="hljs-string">"development"</span>, 
+    <span class="hljs-attr">entry</span>: <span class="hljs-string">"./src/principal.js"</span>,
+}
+</code></pre>
+<h3 id="executando-webpack">Executando WebPack</h3>
+<h4 id="ap-s-criar-os-arquivos-e-configurar-o-webpack-basta-executa-lo-atrav-s-do-comando-">Após criar os arquivos e
+  configurar o webpack basta executa-lo,através do comando:</h4>
+<pre><code class="lang-terminal"><span class="hljs-built_in">npm</span> start
+</code></pre>
+<h4
+  id="feito-isso-ser-gerado-um-arquivo-dentro-da-pasta-dist-com-nome-main-js-onde-conter-todo-o-c-digo-podendo-ser-interpretado-pelo-browser-caso-queira-texte-executar-o-arquivo-main-js-">
+  Feito isso, será gerado um arquivo dentro da pasta dist com nome &quot;main.js&quot;, onde conterá todo o código,
+  podendo ser interpretado pelo browser, caso queira. Texte executar o arquivo main.js:</h4>
+<pre><code class="lang-terminal">npm <span class="hljs-literal">start</span> &amp;&amp; <span class="hljs-keyword">node</span> <span class="hljs-title">dist</span>/main.js
+
+SAIDA
+
+Au! Au!
+</code></pre>
+<h3 id="outras-configura-es-opcionais">Outras configurações opcionais</h3>
+<h4 id="-poss-vel-configurar-o-nome-e-para-onde-o-arquivo-gerado-vai-ir-">É possível configurar o nome e para onde o
+  arquivo gerado vai ir:</h4>
+<h4 id="-arquivo-webpack-config-js-">------------ Arquivo webpack.config.js ------------</h4>
+<pre><code class="lang-js">const webpack = require(<span class="hljs-string">"webpack"</span>); <span class="hljs-comment">//importando</span>
+
+module.exports = {
+<span class="hljs-symbol">    mode:</span> <span class="hljs-string">"development"</span>, 
+<span class="hljs-symbol">    entry:</span> <span class="hljs-string">"./src/principal.js"</span>,
+<span class="hljs-symbol">    output:</span> {
+<span class="hljs-symbol">        filename:</span> <span class="hljs-string">"arquivoGerado.js"</span>, <span class="hljs-comment">//modifique o nome do seu arquivo de saida</span>
+        path : __dirname + <span class="hljs-string">"/destino"</span> <span class="hljs-comment">//use __dirname, para setar o caminho da pasta atual, e adicione a pasta desejada</span>
+    }
+}
+</code></pre>
+<h1 id="importando-css">IMPORTANDO CSS</h1>
+<h4
+  id="no-webpack-para-que-ele-reconhe-a-arquivos-de-extens-o-css-ele-utiliza-modulos-e-plugins-que-auxiliam-nessa-leitura-ou-parse-abaixo-as-depend-cias-utilizadas-">
+  No webpack para que ele reconheça arquivos de extensão css, ele utiliza modulos e plugins que auxiliam nessa leitura
+  ou parse. Abaixo as dependêcias utilizadas:</h4>
+<h4
+  id="mini-css-extract-plugin-gerar-um-arquivo-de-estilo-final-br-style-loader-em-vez-de-gerar-um-arquivo-css-ele-insere-o-css-atraves-de-uma-dom-dentro-do-arquivo-main-js-br-css-loader-respons-vel-por-ler-e-interpretar-urls-e-imports-">
+  mini-css-extract-plugin -&gt; gerar um arquivo de estilo final<br>style-loader -&gt; Em vez de gerar um arquivo .css,
+  ele insere o css atraves de uma DOM, dentro do arquivo main.js<br>css-loader -&gt; responsável por ler e interpretar
+  urls e imports.</h4>
+<h3 id="-arquivo-package-json-">------------ Arquivo package.json ----------</h3>
+<pre><code class="lang-json"><span class="hljs-string">"dependencies"</span>: {
+    <span class="hljs-string">"webpack"</span>: <span class="hljs-string">"4.8.1"</span>,
+    <span class="hljs-string">"mini-css-extract-plugin"</span> : <span class="hljs-string">"0.4.0"</span>,
+    <span class="hljs-string">"css-loader"</span> : <span class="hljs-string">"0.28.11"</span>,
+    <span class="hljs-string">"style-loader"</span> : <span class="hljs-string">"0.21.0"</span>,
+    <span class="hljs-string">"webpack-cli"</span>: <span class="hljs-string">"2.1.3"</span>
+  }
+</code></pre>
+<h3 id="-arquivo-webpack-config-js-">------------ Arquivo webpack.config.js ------------</h3>
+<pre><code class="lang-js"><span class="hljs-comment">/*configurando WebPack*/</span>
+<span class="hljs-keyword">const</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">"webpack"</span>); <span class="hljs-comment">//importando</span>
+<span class="hljs-keyword">const</span> MiniCssExtractPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"mini-css-extract-plugin"</span>);
+
+<span class="hljs-built_in">module</span>.exports = { 
+    mode: <span class="hljs-string">"development"</span>, 
+    entry: <span class="hljs-string">"./src/principal.js"</span>,
+    plugins :[
+        <span class="hljs-keyword">new</span> MiniCssExtractPlugin({
+            filename: <span class="hljs-string">"estilo.css"</span>,<span class="hljs-comment">//nome do arquivo</span>
+
+        })
+        ],
+    <span class="hljs-keyword">module</span>: {
+        rules: [{
+            test: <span class="hljs-regexp">/\.css$/</span>,<span class="hljs-comment">//expressão regular para ler arquivos .css</span>
+            use : [
+                    MiniCssExtractPlugin.loader,
+                    <span class="hljs-string">"css-loader"</span>,
+                    <span class="hljs-comment">//"style-loader",</span>
+                ]
+        }]
+    }
+}
+</code></pre>
+<h3 id="para-este-exemplo-crie-um-arquivo-css-de-exemplo">Para este exemplo crie um arquivo .css de exemplo</h3>
+<h2 id="pasta-dist">Pasta Dist</h2>
+<h3 id="-arquivo-index-html-">------------ Arquivo index.html ------------</h3>
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>DOCUMENTO TESTE<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"estilo.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"principal.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<h2 id="pasta-src-assets-css">Pasta src/assets/css</h2>
+<h3 id="-arquivo-teste-css-">------------ Arquivo teste.css ------------</h3>
+<pre><code class="lang-css"><span class="hljs-selector-tag">body</span>{
+<span class="hljs-attribute">background-color </span>: <span class="hljs-number">#BAD</span>;
+}
+</code></pre>
+<h2 id="pasta-src">Pasta src</h2>
+<h3 id="-arquivo-principal-js-">------------ Arquivo principal.js ------------</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> DOG <span class="hljs-keyword">from</span> <span class="hljs-string">'./dog'</span> 
+<span class="hljs-keyword">import</span> <span class="hljs-string">"./assets/css/teste.css"</span>
+<span class="hljs-keyword">const</span> cachorro = <span class="hljs-keyword">new</span> DOG;
+
+<span class="hljs-built_in">console</span>.log(cachorro.falar())
+</code></pre>
+<h1 id="configurando-ambiente-de-desenvolvimento-e-produção-e-otimizações">Configurando Ambiente de Desenvolvimento e
+  Produção e Otimizações</h1>
+<h4
+  id="neste-modulo-ser-configurado-o-webpack-de-forma-a-minificar-os-arquivos-caso-set-para-o-modo-de-produ-o-e-apenas-orgarnizar-os-demais-caso-seja-desenvolvimento">
+  Neste modulo, será configurado o webpack de forma a minificar os arquivos caso set para o modo de produção, e apenas
+  orgarnizar os demais caso seja desenvolvimento</h4>
+<h3 id="-arquivo-package-json-">------------ Arquivo package.json ----------</h3>
+<h4 id="build-serve-para-rodar-em-modo-produ-o">Build serve para rodar em modo produção</h4>
+<pre><code class="lang-json"><span class="hljs-string">"scripts"</span>: {
+    <span class="hljs-string">"start"</span> : <span class="hljs-string">"webpack"</span>,
+    <span class="hljs-string">"build"</span> : <span class="hljs-string">"cross-env NODE_ENV=production webpack"</span>
+  },
+<span class="hljs-string">"dependencies"</span>: {
+    <span class="hljs-string">"webpack"</span>: <span class="hljs-string">"4.8.1"</span>,
+    <span class="hljs-string">"cross-env"</span>: <span class="hljs-string">"5.1.5"</span>,
+    <span class="hljs-string">"optimize-css-assets-webpack-plugin"</span> : <span class="hljs-string">"4.0.1"</span>,
+    <span class="hljs-string">"terser-webpack-plugin"</span>: <span class="hljs-string">"4.2.3"</span>,
+    <span class="hljs-string">"mini-css-extract-plugin"</span> : <span class="hljs-string">"0.4.0"</span>,
+    <span class="hljs-string">"css-loader"</span> : <span class="hljs-string">"0.28.11"</span>,
+    <span class="hljs-string">"style-loader"</span> : <span class="hljs-string">"0.21.0"</span>,
+    <span class="hljs-string">"webpack-cli"</span>: <span class="hljs-string">"2.1.3"</span>,
+    <span class="hljs-string">"nodemon"</span>: <span class="hljs-string">"^2.0.21"</span>
+  }
+</code></pre>
+<h4 id="-croos-env-possiblita-setar-uma-variavel-de-ambiente-suportada-em-todos-sistemas-operacionais">
+  &quot;croos-env&quot; -&gt; possiblita setar uma variavel de ambiente suportada em &quot;todos&quot; sistemas
+  operacionais</h4>
+<h4
+  id="-optimise-css-assets-webpack-plugin-responsavel-por-minificar-os-arquivos-css-j-que-o-webpack-ainda-n-o-cont-m-um-plugin-para-css">
+  &quot;optimise-css-assets-webpack-plugin&quot; -&gt; Responsavel por minificar os arquivos css, já que o webpack ainda
+  não contém um plugin para css</h4>
+<h4 id="-uglify-webpack-plugin-responsavel-por-minificar-os-arquivo">&quot;uglify-webpack-plugin&quot; -&gt; Responsavel
+  por minificar os arquivo</h4>
+<h3 id="-arquivo-webpack-config-js-">------------ Arquivo webpack.config.js ------------</h3>
+<pre><code class="lang-js"><span class="hljs-comment">/*configurando WebPack*/</span>
+<span class="hljs-keyword">const</span> modeDev = process.env.NODE_ENV !== <span class="hljs-string">"production"</span>; <span class="hljs-comment">// verificando qual tipo de modo está rodando</span>
+<span class="hljs-keyword">const</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">"webpack"</span>); 
+<span class="hljs-keyword">const</span> MiniCssExtractPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"mini-css-extract-plugin"</span>);
+
+<span class="hljs-keyword">const</span> OptimizeCssAssetsPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"optimize-css-assets-webpack-plugin"</span>);
+<span class="hljs-keyword">const</span> TerserPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'terser-webpack-plugin'</span>);
+
+
+<span class="hljs-built_in">module</span>.exports = { 
+    mode: modeDev ? <span class="hljs-string">"development"</span> : <span class="hljs-string">"production"</span> , <span class="hljs-comment">//setando o modo</span>
+    entry: <span class="hljs-string">"./src/principal.js"</span>,
+    plugins :[
+        <span class="hljs-keyword">new</span> MiniCssExtractPlugin({
+            filename: <span class="hljs-string">"estilo.css"</span>,
+        })
+        ],
+    <span class="hljs-keyword">module</span>: {
+        rules: [{
+            test: <span class="hljs-regexp">/\.css$/</span>,
+            use : [
+                    MiniCssExtractPlugin.loader,
+                    <span class="hljs-string">"css-loader"</span>,
+                    <span class="hljs-comment">//"style-loader",</span>
+                ]
+        }]
+    },
+    optimization:{
+        minimizer: [
+            <span class="hljs-keyword">new</span> TerserPlugin({<span class="hljs-comment">// minificando js</span>
+                parallel: <span class="hljs-literal">true</span>,<span class="hljs-comment">//executando o mais rapido possivel</span>
+                terserOptions: {
+                ecma: <span class="hljs-number">6</span>,
+                },
+            }),
+
+            <span class="hljs-keyword">new</span> OptimizeCssAssetsPlugin({}) <span class="hljs-comment">//minificando css</span>
+        ]
+    }
+}
+</code></pre>
+<h3 id="rodando-em-ambos-os-modos">Rodando em ambos os modos</h3>
+<h4 id="para-rodar-como-produ-o-digite-no-terminal-">Para rodar como produção digite no terminal:</h4>
+<pre><code class="lang-terminal">npm <span class="hljs-keyword">run</span><span class="bash"> build</span>
+</code></pre>
+<h4 id="para-rodar-como-desenvolvimento-digite-no-terminal-">Para rodar como desenvolvimento digite no terminal:</h4>
+<pre><code class="lang-terminal"><span class="hljs-built_in">npm</span> start
+</code></pre>
+<h1 id="carregando-imagens">CARREGANDO IMAGENS</h1>
+<h4 id="para-este-exemplo-dentro-de-assets-crie-uma-pasta-chamada-imgs-e-coloque-uma-imagem-de-teste">Para este exemplo,
+  dentro de assets crie uma pasta chamada imgs e coloque uma imagem de teste</h4>
+<h3 id="-arquivo-src-assets-teste-css-">------------ Arquivo src/assets/teste.css ----------</h3>
+<pre><code class="lang-css"><span class="hljs-selector-tag">body</span>{
+    <span class="hljs-attribute">background-color </span>: <span class="hljs-number">#BADA55</span>;
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(../imgs/imagem.png);
+}
+</code></pre>
+<h3 id="adicione-o-file-loader-no-seu-package-json">Adicione o file-loader no seu package.json</h3>
+<h4
+  id="o-css-loader-em-webpack-config-reconhece-o-import-e-url-dos-arquivos-por-m-necessario-um-modulo-que-interprete-os-arquivos-que-no-caso-o-file-loader-consegue-realizar-tal-tarefa">
+  O css-loader em webpack config reconhece o import e url dos arquivos, porém é necessario um modulo que interprete os
+  arquivos, que no caso o file-loader consegue realizar tal tarefa</h4>
+<pre><code class="lang-json"><span class="hljs-string">"file-loader"</span> : <span class="hljs-string">"1.1.11"</span>,
+</code></pre>
+<h3 id="-arquivo-webpack-config-js-">------------ Arquivo webpack.config.js ------------</h3>
+<pre><code class="lang-js"><span class="hljs-comment">/*configurando WebPack*/</span>
+<span class="hljs-keyword">const</span> modeDev = process.env.NODE_ENV !== <span class="hljs-string">"production"</span>; 
+<span class="hljs-keyword">const</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">"webpack"</span>); 
+<span class="hljs-keyword">const</span> MiniCssExtractPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"mini-css-extract-plugin"</span>);
+
+<span class="hljs-keyword">const</span> OptimizeCssAssetsPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"optimize-css-assets-webpack-plugin"</span>);
+<span class="hljs-keyword">const</span> TerserPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'terser-webpack-plugin'</span>);
+
+
+<span class="hljs-built_in">module</span>.exports = { 
+    mode: modeDev ? <span class="hljs-string">"development"</span> : <span class="hljs-string">"production"</span> , 
+    entry: <span class="hljs-string">"./src/principal.js"</span>,
+    plugins :[
+        <span class="hljs-keyword">new</span> MiniCssExtractPlugin({
+            filename: <span class="hljs-string">"estilo.css"</span>,
+        })
+        ],
+    <span class="hljs-keyword">module</span>: {
+        rules: [{
+            test: <span class="hljs-regexp">/\.css$/</span>,
+            use : [
+                    MiniCssExtractPlugin.loader,
+                    <span class="hljs-string">"css-loader"</span>,
+                    <span class="hljs-comment">//"style-loader",</span>
+                ]
+        },
+        {
+            test : <span class="hljs-regexp">/\.(png|svg|jpg|gif)$/</span>, <span class="hljs-comment">//filtrando extensões</span>
+            use: [<span class="hljs-string">"file-loader"</span>] <span class="hljs-comment">//usando pacote</span>
+        }]
+    },
+    optimization:{
+        minimizer: [
+            <span class="hljs-keyword">new</span> TerserPlugin({
+                parallel: <span class="hljs-literal">true</span>,
+                terserOptions: {
+                ecma: <span class="hljs-number">6</span>,
+                },
+            }),
+
+            <span class="hljs-keyword">new</span> OptimizeCssAssetsPlugin({}) 
+        ]
+    }
+}
+</code></pre>
+
+{% endverbatim %}
