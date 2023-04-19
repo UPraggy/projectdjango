@@ -1,11 +1,11 @@
 const nodeDocumentations =
 {
 
-  name: ['JavaScript', 'React', 'React Native', 'WebPack', 'Gulp & Babel', 'Java Basico', 'MongoDb'],
+  name: ['JavaScript', 'React', 'React Native', 'WebPack', 'Gulp & Babel', 'Java Basico', 'MongoDb', 'Cpp Avançado'],
 
-  html: ['JavaScriptBasico', 'react', 'reactNative', 'webpack', 'gulp', 'javaBasico', 'mongodb'],
+  html: ['JavaScriptBasico', 'react', 'reactNative', 'webpack', 'gulp', 'javaBasico', 'mongodb', 'CppAdvanced'],
 
-  img: ['javaScript', 'react', 'react', 'webpack', 'gulp', 'java', 'mongodb']
+  img: ['javaScript', 'react', 'react', 'webpack', 'gulp', 'java', 'mongodb', 'cppadvanced']
 
 
 }
