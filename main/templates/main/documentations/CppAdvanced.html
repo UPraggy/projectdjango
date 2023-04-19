@@ -1,0 +1,979 @@
+<h1 id="cpp">Cpp Advanced</h1>
+<div class='imgModulo' style="background-image: url('./static/icons/cppadvanced.png');"></div>
+
+<h2 id="indice">INDICE</h2>
+<ul>
+  <li><strong><a href="#recursão-exemplo---fatorial">Recursão Exemplo</a></strong></li>
+  <li><strong><a href="#pilha">Pilha</a></strong></li>
+  <li><strong><a href="#fila">Fila</a></strong></li>
+  <li><strong><a href="#lista">Lista</a></strong></li>
+  <li><strong><a href="#struct">Struct</a></strong></li>
+  <li><strong><a href="#ponteiros">Ponteiros</a></strong></li>
+  <li><strong><a href="#alocação-dinamica">Alocação Dinâmica</a></strong></li>
+  <li><strong><a href="#vector">Vector</a></strong></li>
+  <li><strong><a href="#struct-avançado-e-bilbiotecas-externas">Struct Avançado e Bilbiotecas Externas</a></strong></li>
+  <li><strong><a href="#new-e-delete">New e Delete</a></strong></li>
+  <li><strong><a href="#classe">Classe</a></strong></li>
+  <li><strong><a href="#herança-de-classe">Herança de Classe</a></strong></li>
+  <li><strong><a href="#virtual">Virtual</a></strong></li>
+  <li><strong><a href="#tratamento-de-erro---try-e-catch">Tratamento de Erro (try e Catch)</a></strong></li>
+  <li><strong><a href="#for-range">For Range</a></strong></li>
+  <li><strong><a href="#auto">Auto</a></strong></li>
+  <li><strong><a href="#funções-lambda">Funções Lambda</a></strong></li>
+  <li><strong><a href="#map">Map</a></strong></li>
+  <li><strong><a href="#ponteiro-inteligente">Ponteiro Inteligente</a></strong></li>
+</ul>
+<h1 id="recursão-exemplo---fatorial">RECURSÃO EXEMPLO - FATORIAL</h1>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+<span class="pl-k">int</span> <span class="pl-en">fatorial</span>(<span class="pl-k">int</span> n);
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>()
+{
+    <span class="pl-k">int</span> num;
+    cout &lt;&lt;  <span class="pl-s"><span class="pl-pds">"</span>Insira o numero que deseja calcular o fatorial: <span class="pl-pds">"</span></span>;
+    cin &gt;&gt; num;
+    cout &lt;&lt; <span class="pl-c1">fatorial</span>(num);
+    
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+
+<span class="pl-k">int</span> <span class="pl-en">fatorial</span>(<span class="pl-k">int</span> n){
+    <span class="pl-k">int</span> actual_number;
+    <span class="pl-k">if</span> (n &gt; <span class="pl-c1">0</span>){
+        actual_number = n * <span class="pl-c1">fatorial</span>(n-<span class="pl-c1">1</span>);
+        <span class="pl-k">return</span> actual_number;
+    }
+    <span class="pl-k">return</span> <span class="pl-c1">1</span>;
+}
+
+<span class="pl-k">void</span> <span class="pl-en">fibonachi</span>(<span class="pl-k">int</span> n){
+    
+    <span class="pl-k">int</span> num1=<span class="pl-c1">1</span>, num2=<span class="pl-c1">1</span>, result;
+    <span class="pl-k">if</span> (n &gt; <span class="pl-c1">0</span>){
+        <span class="pl-k">if</span> (n &gt; <span class="pl-c1">2</span>){
+            n = n-<span class="pl-c1">2</span>;
+            cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>0 1 1 <span class="pl-pds">"</span></span>;
+            <span class="pl-k">for</span> (<span class="pl-k">int</span> x = <span class="pl-c1">0</span>; x &lt; n; x++){
+                result = num1 + num2;
+                num1 = num2;
+                num2 = result;
+                cout &lt;&lt; result &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span>;
+            }
+        }
+        <span class="pl-k">else</span> <span class="pl-k">if</span> (n == <span class="pl-c1">2</span>){
+            cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>0 1 1<span class="pl-pds">"</span></span>;
+        }
+        <span class="pl-k">else</span>{
+           cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>0 1<span class="pl-pds">"</span></span>; 
+        }
+        
+    }<span class="pl-k">else</span>{
+        cout &lt;&lt; <span class="pl-c1">0</span>;
+    }
+}
+</code></pre>
+<h1 id="pilha">PILHA</h1>
+<h3 id="primeiro-a-entrar-ultimo-a-sair-filo">PRIMEIRO A ENTRAR ULTIMO A SAIR - FILO</h3>
+<h4 id="utilize-a-biblioteca-stack-br-exemplo-">utilize a biblioteca stack. <br>Exemplo:</h4>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>stack<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+<span class="pl-k">int</span> <span class="pl-en">main</span>()
+{
+    stack &lt;string&gt; animals;
+
+    <span class="pl-c"><span class="pl-c">//</span> INSERINDO NA PILHA</span>
+    animals.<span class="pl-c1">push</span>(<span class="pl-s"><span class="pl-pds">"</span>lion<span class="pl-pds">"</span></span>);
+    animals.<span class="pl-c1">push</span>(<span class="pl-s"><span class="pl-pds">"</span>horse<span class="pl-pds">"</span></span>);
+    <span class="pl-c"><span class="pl-c">//</span> IMPRIMINDO O ITEM NO TOPO</span>
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>Top Item: <span class="pl-pds">"</span></span> &lt;&lt; animals.<span class="pl-c1">top</span>() &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+    <span class="pl-c"><span class="pl-c">//</span> IMPRIMINDO O TAMANHO</span>
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>stack size: <span class="pl-pds">"</span></span> &lt;&lt; animals.<span class="pl-c1">size</span>() &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+    <span class="pl-c"><span class="pl-c">//</span> RETIRANDO DA PILHA</span>
+    animals.<span class="pl-c1">pop</span>();
+    animals.<span class="pl-c1">pop</span>();
+    <span class="pl-c"><span class="pl-c">//</span> PILHA VAZIA?</span>
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>stack empty? <span class="pl-pds">"</span></span> &lt;&lt; animals.<span class="pl-c1">empty</span>() &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="fila">FILA</h1>
+<h3 id="primeiro-a-entrar-primeiro-a-sair-fifo">PRIMEIRO A ENTRAR PRIMEIRO A SAIR - FIFO</h3>
+<h4 id="utilize-a-biblioteca-queue-br-exemplo-">Utilize a biblioteca queue.<br>Exemplo:</h4>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>queue<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+<span class="pl-k">int</span> <span class="pl-en">main</span>()
+{
+    queue &lt;string&gt; animals;
+
+    <span class="pl-c"><span class="pl-c">//</span> INSERINDO NA FILA</span>
+    animals.<span class="pl-c1">push</span>(<span class="pl-s"><span class="pl-pds">"</span>lion<span class="pl-pds">"</span></span>);
+    animals.<span class="pl-c1">push</span>(<span class="pl-s"><span class="pl-pds">"</span>horse<span class="pl-pds">"</span></span>);
+    <span class="pl-c"><span class="pl-c">//</span> IMPRIMINDO O ITEMS NA FRENTE E ATRAS</span>
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>item que está na frente da fila: <span class="pl-pds">"</span></span> &lt;&lt; animals.<span class="pl-c1">front</span>() &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>item que está atrás da fila (ultimo): <span class="pl-pds">"</span></span> &lt;&lt; animals.<span class="pl-c1">back</span>() &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+    <span class="pl-c"><span class="pl-c">//</span> IMPRIMINDO O TAMANHO</span>
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>stack size: <span class="pl-pds">"</span></span> &lt;&lt; animals.<span class="pl-c1">size</span>() &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+    <span class="pl-c"><span class="pl-c">//</span> RETIRANDO DA FILA</span>
+    animals.<span class="pl-c1">pop</span>();
+    animals.<span class="pl-c1">pop</span>();
+    <span class="pl-c"><span class="pl-c">//</span> FILA VAZIA?</span>
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>stack empty? <span class="pl-pds">"</span></span> &lt;&lt; animals.<span class="pl-c1">empty</span>() &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="lista">LISTA</h1>
+<h3 id="n-o-trabalha-com-ordem-como-os-acima">NÃO TRABALHA COM ORDEM COMO OS ACIMA</h3>
+<h4 id="utilize-a-biblioteca-list-br-exemplo-">Utilize a biblioteca list.<br>Exemplo:</h4>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>list<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+<span class="pl-k">int</span> <span class="pl-en">main</span>(){
+    list &lt;<span class="pl-k">int</span>&gt; components, lista2; <span class="pl-c"><span class="pl-c">//</span> list &lt;int&gt; components(50); forma de definir tamanho</span>
+
+    list&lt;<span class="pl-k">int</span>&gt;::iterator it; <span class="pl-c"><span class="pl-c">//</span> usado para auxiliar a localização dos elementos em uma lista</span>
+    
+    <span class="pl-c"><span class="pl-c">/*</span> INSERINDO NA LISTA</span>
+<span class="pl-c">    components.push_front(atributo); insere do fim da lista até o inicio</span>
+<span class="pl-c">    components.push_back(atributo); insere do inicio da lista até o fim<span class="pl-c">*/</span></span>
+    components.<span class="pl-c1">push_front</span>(<span class="pl-c1">0</span>);
+    components.<span class="pl-c1">push_front</span>(<span class="pl-c1">1</span>);
+    components.<span class="pl-c1">push_front</span>(<span class="pl-c1">2</span>);
+    components.<span class="pl-c1">push_front</span>(<span class="pl-c1">3</span>);
+    components.<span class="pl-c1">push_front</span>(<span class="pl-c1">4</span>);
+    <span class="pl-c"><span class="pl-c">//</span> lista = [4,3,2,1,0]</span>
+    
+    it = components.<span class="pl-c1">begin</span>(); <span class="pl-c"><span class="pl-c">//</span> posicionando iterator no inicio da lista</span>
+    <span class="pl-c1">advance</span>(it, <span class="pl-c1">3</span>); <span class="pl-c"><span class="pl-c">//</span> iterator aponta agora para 3 posições a frente na lista</span>
+
+    components.<span class="pl-c1">insert</span>(it,<span class="pl-c1">100</span>); <span class="pl-c"><span class="pl-c">//</span> .insert(posição/iterator, componente a ser inserido)</span>
+    <span class="pl-c"><span class="pl-c">//</span> lista = [4,3,2,100,1,0]</span>
+
+    <span class="pl-c"><span class="pl-c">//</span> IMPRIMINDO O TAMANHO</span>
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>list size: <span class="pl-pds">"</span></span> &lt;&lt; components.<span class="pl-c1">size</span>() &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+    
+    <span class="pl-c"><span class="pl-c">//</span> ORDENANDO LISTA</span>
+    components.<span class="pl-c1">sort</span>(); <span class="pl-c"><span class="pl-c">//</span>ordena componentes de forma crescente/ascendente</span>
+    components.<span class="pl-c1">reverse</span>(); <span class="pl-c"><span class="pl-c">//</span>ordena componentes de forma decrescente/descendente</span>
+
+    <span class="pl-c"><span class="pl-c">//</span> RETIRANDO DA LISTA</span>
+    components.<span class="pl-c1">pop_front</span>(); <span class="pl-c"><span class="pl-c">//</span>retira o elemento a frente (ultimo elemento) .pop_back() faz ao contrario</span>
+    <span class="pl-c"><span class="pl-c">//</span>components.erase(it) remove o elemento da lista uma posição depois da informada no iterator</span>
+    components.<span class="pl-c1">erase</span>(--it); <span class="pl-c"><span class="pl-c">//</span>decrementar um do iterator ajusta o problema do erase apagar uma posição depois da desejada</span>
+
+    <span class="pl-c"><span class="pl-c">//</span>ESVAZIAR LISTA</span>
+    components.<span class="pl-c1">clear</span>();
+
+    <span class="pl-c"><span class="pl-c">//</span>JUNTANDO LISTAS</span>
+    lista2.<span class="pl-c1">push_front</span>(<span class="pl-c1">3</span>);
+    lista2.<span class="pl-c1">push_front</span>(<span class="pl-c1">4</span>);
+    components.<span class="pl-c1">merge</span>(lista2); <span class="pl-c"><span class="pl-c">//</span> Insere os elementos da lista dois ao final da lista components</span>
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="struct">STRUCT</h1>
+<h4
+  id="structs-s-o-usados-normalmente-para-definir-uma-estrutura-ou-seja-um-conjunto-que-agrupa-varias-caracteristicas-que-podem-ser-fun-es-e-atributos-variaveis-">
+  Structs são usados normalmente para definir uma estrutura, ou seja, um conjunto que agrupa varias caracteristicas, que
+  podem ser funções e atributos (variaveis)</h4>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>string<span class="pl-pds">&gt;</span></span> <span class="pl-c"><span class="pl-c">//</span>biblioteca para strings</span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+<span class="pl-k">struct</span> <span class="pl-en">Estrutura</span>{ <span class="pl-c"><span class="pl-c">//</span>Priorizar pela inicial maiuscula ao criar o struct</span>
+    string nome; <span class="pl-c"><span class="pl-c">//</span>definimos os atributos da estrutura</span>
+    string cor;
+    <span class="pl-k">int</span> quantidade;
+    
+    <span class="pl-en">Estrutura</span>(){ <span class="pl-c"><span class="pl-c">//</span> Usado para inicializar os atributos (necessario para a função Estruct(atributos))</span>
+        <span class="pl-c1">this</span>-&gt;<span class="pl-smi">nome</span> = <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>;
+        <span class="pl-c1">this</span>-&gt;<span class="pl-smi">cor</span> = <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>;
+        <span class="pl-c1">this</span>-&gt;<span class="pl-smi">quantidade</span> = <span class="pl-c1">0</span>;
+    }
+    
+    <span class="pl-en">Estrutura</span>(string nome,string cor, <span class="pl-k">int</span> quantidade){ <span class="pl-c"><span class="pl-c">//</span> Usado para criar uma nova estrutura com ponteiro </span>
+        <span class="pl-c1">this</span>-&gt;<span class="pl-smi">nome</span> = nome;
+        <span class="pl-c1">this</span>-&gt;<span class="pl-smi">cor</span> = cor;
+        <span class="pl-c1">this</span>-&gt;<span class="pl-smi">quantidade</span> = quantidade;
+    }
+
+    <span class="pl-k">void</span> <span class="pl-en">mostra_atributos</span>(){
+        <span class="pl-c"><span class="pl-c">//</span>this se refere a "esse", ou seja,  a estrutura que está chamando a função</span>
+        cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span>Nome <span class="pl-pds">"</span></span> &lt;&lt; <span class="pl-c1">this</span>-&gt;<span class="pl-smi">nome</span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> cor <span class="pl-pds">"</span></span> &lt;&lt; <span class="pl-c1">this</span>-&gt;<span class="pl-smi">cor</span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> quantidade <span class="pl-pds">"</span></span> &lt;&lt; <span class="pl-c1">this</span>-&gt;<span class="pl-smi">quantidade</span>;
+    }
+};
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>(){
+
+    <span class="pl-c"><span class="pl-c">//</span>declarando a estrutura (inicializando)</span>
+
+    Estrutura est1;
+    Estrutura *est2; <span class="pl-c"><span class="pl-c">//</span>estrutura com ponteiro (proximo topico)</span>
+    <span class="pl-c"><span class="pl-c">/*</span></span>
+<span class="pl-c">    criando um array de estruturas</span>
+<span class="pl-c">    Estrutura *ests = new ests[5]; foram criadas 5 estruturas</span>
+<span class="pl-c">    <span class="pl-c">*/</span></span>
+
+    est1.<span class="pl-smi">nome</span> = <span class="pl-s"><span class="pl-pds">"</span>estrutura primeira<span class="pl-pds">"</span></span>;
+    est1.<span class="pl-smi">cor</span> = <span class="pl-s"><span class="pl-pds">"</span>vermelho<span class="pl-pds">"</span></span>;
+    est1.<span class="pl-smi">quantidade</span> = <span class="pl-c1">1</span>;
+
+    est2 = <span class="pl-k">new</span> <span class="pl-c1">Estrutura</span>(<span class="pl-s"><span class="pl-pds">"</span>estrutura segunda<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>azul<span class="pl-pds">"</span></span>,<span class="pl-c1">1</span>); <span class="pl-c"><span class="pl-c">//</span>criação de estrutura ideal para ponteiros // EXEMPLO NO CAPITULO DE BIBLIOTECAS .HPP</span>
+
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>Nome <span class="pl-pds">"</span></span> &lt;&lt; est1.<span class="pl-smi">nome</span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> cor <span class="pl-pds">"</span></span> &lt;&lt; est1.<span class="pl-smi">cor</span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> quantidade <span class="pl-pds">"</span></span> &lt;&lt; est1.<span class="pl-smi">quantidade</span>;
+
+    est2-&gt;<span class="pl-c1">mostra_atributos</span>();
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="ponteiros">PONTEIROS</h1>
+<h4
+  id="ponteiros-s-o-usados-para-apontar-referenciar-uma-variavel-seu-funcionamento-semelhante-a-uma-ponte-em-que-se-pode-acessar-o-valor-da-variavel-em-que-ele-est-apontado-de-acordo-com-o-endere-o-armazenado-amplamente-usado-e-normalmente-usado-em-arrays-e-listas-possibilitando-seu-crescimento-ele-tamb-m-usado-em-fun-es-dado-a-necessidade-de-alterar-o-valor-de-variaveis-sem-a-necessidade-de-retorno-na-fun-o-">
+  Ponteiros são usados para apontar/referenciar uma variavel, seu funcionamento é semelhante a uma ponte, em que se pode
+  acessar o valor da variavel em que ele está apontado, de acordo com o endereço armazenado, amplamente usado, e
+  normalmente usado em arrays e listas, possibilitando seu crescimento Ele também é usado em funções, dado a necessidade
+  de alterar o valor de variaveis sem a necessidade de retorno na função.</h4>
+<pre><code class="lang-cpp">
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>string<span class="pl-pds">&gt;</span></span> <span class="pl-c"><span class="pl-c">//</span>biblioteca para strings</span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>(){
+
+    <span class="pl-c"><span class="pl-c">//</span> declarando ponteiro e variavel a ser apontada</span>
+    string movel = <span class="pl-s"><span class="pl-pds">"</span>sofá<span class="pl-pds">"</span></span>;
+
+    string *ponteiro = <span class="pl-c1">nullptr</span>; <span class="pl-c"><span class="pl-c">//</span> declaração do ponteiro, não esquecer o '*' que simboliza o ponteiro</span>
+    <span class="pl-c"><span class="pl-c">//</span> Obs.: o ponteiro precisa ser do mesmo tipo da variavel apontada.</span>
+
+    ponteiro = &amp;movel; <span class="pl-c"><span class="pl-c">//</span> armazenando o endereço da variavel a ser apontada</span>
+
+
+    cout &lt;&lt; ponteiro; <span class="pl-c"><span class="pl-c">//</span> imprime a posição armazenada</span>
+
+    cout &lt;&lt; *ponteiro; <span class="pl-c"><span class="pl-c">//</span> imprime o valor dentro do endereço, ou seja, o valor da variavel movel</span>
+
+
+    *ponteiro = <span class="pl-s"><span class="pl-pds">"</span>Novo valor<span class="pl-pds">"</span></span>; <span class="pl-c"><span class="pl-c">//</span> Alterando o valor da variavel 'movel' atraves do ponteiro</span>
+
+    cout &lt;&lt; movel; <span class="pl-c"><span class="pl-c">//</span> Imprime "Novo Valor"</span>
+
+    <span class="pl-c"><span class="pl-c">//</span>------------------------------- PONTEIRO COM VETOR --------------------------------------</span>
+
+
+    <span class="pl-k">int</span> *p = <span class="pl-c1">nullptr</span>;
+    <span class="pl-k">int</span> vetor[<span class="pl-c1">5</span>] = {<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>};
+    p = vetor; <span class="pl-c"><span class="pl-c">//</span> a variavel vetor já é a posição do vetor, para valores é usado vetor[indice] para acessa-los</span>
+
+    <span class="pl-c"><span class="pl-c">//</span> Imprimindo valores através do ponteiro</span>
+    <span class="pl-c"><span class="pl-c">//</span>sizeof pega o tamanho do vetor em bytes, e para descobrir a quantidade de elementos basta dividir pelo tipo do vetor</span>
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> i = <span class="pl-c1">0</span>; i &lt; (<span class="pl-k">sizeof</span>(vetor)/<span class="pl-k">sizeof</span>(<span class="pl-k">int</span>)); i++){ 
+        cout &lt;&lt; *(p+i); 
+        <span class="pl-c"><span class="pl-c">//</span>essa notação se chama 'ponteiro deslocamento', como é um vetor, as posições estão </span>
+        <span class="pl-c"><span class="pl-c">//</span>em ordem, uma após a outra na memoria, então ao somar uma unidade, é possivel ir acessando os indices</span>
+    }
+
+
+    <span class="pl-c"><span class="pl-c">//</span>------------------------------- PONTEIRO DE PONTEIRO --------------------------------------</span>
+
+    <span class="pl-k">int</span> **p_p = <span class="pl-c1">nullptr</span>;
+
+    **p_p = &amp;p;
+
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span>ENDEREÇO DO PONTEIRO p: <span class="pl-pds">"</span></span> &lt;&lt; (p_p) &lt;&lt; endl;
+
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span>VALOR DO PONTEIRO p: <span class="pl-pds">"</span></span> &lt;&lt; (*p_p) &lt;&lt; endl;
+
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span>VALOR GUARDADO NO PONTEIRO p: <span class="pl-pds">"</span></span> &lt;&lt; (**p_p) &lt;&lt; endl;
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+
+</code></pre>
+<h1 id="alocação-dinamica">Alocação dinâmica</h1>
+<h4
+  id="neste-topico-ser-usado-o-rescurso-malloc-que-usado-para-alocar-memoria-para-determinada-variavel-a-seguir-um-exemplo-util-usando-vetores-br-obs-vale-resaltar-que-por-mais-que-o-vetor-funcione-sem-malloc-br-1-a-quantidade-de-elementos-menor-doque-ele-suporta-_-ele-ou-vai-ocupar-espa-os-de-memoria-a-menos-por-exemplo-um-vetor-char-de-10-espa-os-armazena-a-palavra-ma-6-espa-os-v-o-ficar-em-branco-ou-seja-n-o-ser-o-usados-tornando-o-programa-lento-caso-isso-seja-repetido-diversas-vezes-br-2-a-quantidade-de-elementos-maio-doque-ele-suporta-_-ele-ou-vai-ocupar-espa-os-de-memoria-a-menos-logo-ocupar-espa-os-que-n-o-foram-endere-ados-ou-reservados-aquele-vetor-que-consequentemente-pode-sobrepor-os-valores-de-uma-outra-variavel-dando-pane-no-programa-">
+  Neste topico será usado o rescurso, malloc, que é usado para alocar memoria para determinada variavel, a seguir um
+  exemplo util usando vetores. <br>Obs.: Vale resaltar que por mais que o vetor funcione sem malloc:<br>1 - a quantidade
+  de elementos é menor doque ele suporta <em> ele ou vai ocupar espaços de memoria a menos, por exemplo, um vetor char
+    de 10 espaços, armazena a palavra &#39;maçã&#39;, 6 espaços vão ficar em branco, ou seja, não serão usados, tornando
+    o programa lento, caso isso seja repetido diversas vezes.<br>2- a quantidade de elementos é maio doque ele suporta
+  </em> ele ou vai ocupar espaços de memoria a menos, logo, ocupará espaços que não foram &#39;endereçados ou
+  reservados&#39; á aquele vetor, que consequentemente pode sobrepor os valores de uma outra variavel, dando pane no
+  programa.</h4>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>stdio.h<span class="pl-pds">&gt;</span></span> <span class="pl-c"><span class="pl-c">//</span>gets</span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>stdlib.h<span class="pl-pds">&gt;</span></span> <span class="pl-c"><span class="pl-c">//</span>malloc</span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>(){
+
+    <span class="pl-k">char</span> *vetor;
+
+    vetor = (<span class="pl-k">char</span> *) <span class="pl-c1">malloc</span>(<span class="pl-k">sizeof</span>(<span class="pl-k">char</span>)+<span class="pl-c1">1</span>); <span class="pl-c"><span class="pl-c">//</span>alocando espaço</span>
+
+    <span class="pl-c1">gets</span>(vetor); <span class="pl-c"><span class="pl-c">//</span>gets serve para receber toda a string digitada, o 'cin' não aceita espaços</span>
+
+    cout &lt;&lt; vetor;
+}
+</code></pre>
+<h1 id="vector">VECTOR</h1>
+<h4
+  id="semelhante-ao-list-por-m-seu-custo-de-processamento-al-m-da-facilidade-de-localizar-valores-superam-o-list-sendo-recomendado-seu-uso-a-n-o-ser-que-tenha-um-motivo-para-usar-list-ou-array-vector-vetor">
+  Semelhante ao list, porém seu custo de processamento, além da facilidade de localizar valores, superam o list, sendo
+  recomendado seu uso, a não ser que tenha um motivo para usar list ou array vector != vetor</h4>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>vector<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+<span class="pl-k">int</span> <span class="pl-en">main</span>(){
+    vector&lt;<span class="pl-k">int</span>&gt; components;
+    <span class="pl-k">int</span> tamanho;
+
+
+    <span class="pl-c"><span class="pl-c">/*</span> INSERINDO NA LISTA</span>
+<span class="pl-c">    components.push_front(atributo); insere do fim da vector até o inicio</span>
+<span class="pl-c">    components.push_back(atributo); insere do inicio da vector até o fim<span class="pl-c">*/</span></span>
+    components.<span class="pl-c1">push_back</span>(<span class="pl-c1">0</span>);
+    components.<span class="pl-c1">push_back</span>(<span class="pl-c1">1</span>);
+    components.<span class="pl-c1">push_back</span>(<span class="pl-c1">2</span>);
+    components.<span class="pl-c1">push_back</span>(<span class="pl-c1">3</span>);
+    components.<span class="pl-c1">push_back</span>(<span class="pl-c1">4</span>);
+    <span class="pl-c"><span class="pl-c">//</span> vector = [0,1,2,3,4]</span>
+
+    <span class="pl-c"><span class="pl-c">//</span> Atualizando valores</span>
+    components[<span class="pl-c1">1</span>] = <span class="pl-c1">100</span>;
+    <span class="pl-c"><span class="pl-c">//</span> vector = [0,100,2,3,4]</span>
+
+    tamanho = components.<span class="pl-c1">size</span>(); <span class="pl-c"><span class="pl-c">//</span> pegando tamanho do vector</span>
+
+    components.<span class="pl-c1">insert</span>(components.<span class="pl-c1">begin</span>()+<span class="pl-c1">4</span>,<span class="pl-c1">5</span>); <span class="pl-c"><span class="pl-c">//</span> vector = [0,100,2,3,5]</span>
+    <span class="pl-c"><span class="pl-c">//</span> .insert(inicio do vector + posição, componente a ser inserido) | não é necessario advance ou iterator</span>
+    <span class="pl-c"><span class="pl-c">//</span> a soma do valor com o vector.begin() já é o 'advance'</span>
+
+    <span class="pl-c"><span class="pl-c">//</span> IMPRIMINDO OS VALORES</span>
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> x=<span class="pl-c1">0</span>; x &lt; tamanho; x++){
+        cout &lt;&lt; components[x] &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span>;
+    }
+
+    <span class="pl-c"><span class="pl-c">//</span>components.erase(it) remove o elemento da vector uma posição depois da informada no iterator</span>
+    components.<span class="pl-c1">erase</span>(components.<span class="pl-c1">begin</span>()+<span class="pl-c1">2</span>); <span class="pl-c"><span class="pl-c">//</span> vector = [0,100,3,5] | lembre-se de atualizar a variavel 'tamanho'</span>
+    <span class="pl-c"><span class="pl-c">//</span>pois ao imprimir sem atualizar irá acessar uma posição invalida</span>
+
+    <span class="pl-c"><span class="pl-c">//</span>ESVAZIAR vector</span>
+    components.<span class="pl-c1">clear</span>(); <span class="pl-c"><span class="pl-c">//</span>lembre-se de atualizar a variavel 'tamanho'</span>
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="struct-avançado-e-bilbiotecas-externas">STRUCT AVANÇADO E BILBIOTECAS EXTERNAS</h1>
+<h4
+  id="neste-topico-ser-descrito-formas-de-como-criar-sua-propria-biblioteca-al-m-de-utilizar-structs-br-obs-neste-t-pico-ter-marca-es-indicando-arquivos-diferentes-">
+  Neste topico, será descrito formas de como criar sua propria biblioteca, além de utilizar structs <br>Obs.: neste
+  tópico terá marcações indicando arquivos diferentes.</h4>
+<h3 id="arquivo-ponto2d-hpp">ARQUIVO PONTO2D.hpp</h3>
+<h4 id="arquivos-hpp-normalmente-servem-para-armanezar-structs-e-classes">Arquivos .hpp normalmente servem para
+  armanezar structs e classes</h4>
+<h4
+  id="ifndef-significado-se-n-o-definido-serve-para-que-n-o-haja-duplicidade-ao-definir-a-biblioteca-em-mais-de-um-arquivo-assim-que-inserido-ele-entende-que-a-variavel-j-foi-definida-ent-o-ele-n-o-l-oque-est-dentro-dele-caso-n-o-fique-claro-https-www-youtube-com-watch-v-wrq8pxjepfc">
+  ifndef (significado -&gt; se não definido) serve para que não haja duplicidade, ao definir a biblioteca em mais de um
+  arquivo, assim que inserido ele entende que a &quot;variavel&quot; já foi definida, então ele não lê oque está dentro
+  dele. Caso não fique claro: <a
+    href="https://www.youtube.com/watch?v=wRq8pxJEpfc">https://www.youtube.com/watch?v=wRq8pxJEpfc</a></h4>
+<pre><code class="lang-cpp">#<span class="pl-k">ifndef</span> PONTO2D_H
+<span class="pl-c"><span class="pl-c">/*</span></span>
+<span class="pl-c">Neste exemplo foi definido a variavel PONTO2D_H (seguindo o nome do arquivo), necessario para </span>
+<span class="pl-c">que o ifndef entenda a execução</span>
+<span class="pl-c"><span class="pl-c">*/</span></span>
+#<span class="pl-k">define</span> <span class="pl-en">PONTO2D_H</span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+<span class="pl-k">struct</span> <span class="pl-en">Ponto2D</span>{
+    <span class="pl-k">double</span> x,y;
+
+    <span class="pl-en">Ponto2D</span>(){
+        <span class="pl-c1">this</span>-&gt;<span class="pl-smi">x</span> = <span class="pl-c1">0</span>;
+        <span class="pl-c1">this</span>-&gt;<span class="pl-smi">y</span> = <span class="pl-c1">0</span>;
+    }
+    <span class="pl-c"><span class="pl-c">/*</span> com a relação de arquivos de biblioteca é possivel simplificar a declaração de funções</span>
+<span class="pl-c">    de forma a ter uma visão mais limpa dos atributos do struct ou classe, as funções podem </span>
+<span class="pl-c">    ser definidas apenas colocando sua entradas e nome (o codigo que a função executa será</span>
+<span class="pl-c">    colocado no outro arquivo)<span class="pl-c">*/</span></span>
+    <span class="pl-en">Ponto2D</span>(<span class="pl-k">double</span> x, <span class="pl-k">double</span> y); 
+    <span class="pl-k">double</span> <span class="pl-en">calcular_distancia</span>(Ponto2D* ponto);
+};
+#<span class="pl-k">endif</span> <span class="pl-c"><span class="pl-c">//</span> PONTO2D_H</span>
+</code></pre>
+<h3 id="arquivo-ponto2d-cpp">ARQUIVO PONTO2D.cpp</h3>
+<h4
+  id="arquivos-cpp-com-o-mesmo-nome-do-hpp-servem-para-armanezar-fun-es-daquela-biblioteca-como-neste-exemplo-em-que-as-fun-es-ponto2d-e-calcular_distancia-referente-ao-struct-ponto2d-foram-definidas-neste-arquivo-br-n-o-esque-a-de-incluir-a-biblioteca-hpp">
+  Arquivos .cpp com o mesmo nome do .hpp servem para armanezar funções daquela biblioteca, Como neste exemplo, em que as
+  funções Ponto2D e calcular_distancia referente ao struct Ponto2D, foram definidas neste arquivo. <br>Não esqueça de
+  incluir a biblioteca .hpp</h4>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>Ponto2D.hpp<span class="pl-pds">"</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>cmath<span class="pl-pds">&gt;</span></span> <span class="pl-c"><span class="pl-c">//</span> biblioteca para operações matematicas</span>
+<span class="pl-c"><span class="pl-c">//</span> Coloque o nome do struct::Função, para referenciar a função declarada no arquivo .hpp</span>
+<span class="pl-en">Ponto2D::Ponto2D</span>(<span class="pl-k">double</span> x, <span class="pl-k">double</span> y){
+    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">x</span> = x;
+    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">y</span> = y;
+}
+
+<span class="pl-k">double</span> <span class="pl-en">Ponto2D::calcular_distancia</span>(Ponto2D* ponto){
+        <span class="pl-c"><span class="pl-c">//</span> sqrt -&gt; raiz | quadrada por padrão</span>
+        <span class="pl-k">return</span> <span class="pl-c1">sqrt</span>(((<span class="pl-c1">this</span>-&gt;<span class="pl-smi">x</span> - ponto-&gt;<span class="pl-smi">x</span>)*(<span class="pl-c1">this</span>-&gt;<span class="pl-smi">x</span> - ponto-&gt;<span class="pl-smi">x</span>)) +  ((ponto-&gt;<span class="pl-smi">y</span> - <span class="pl-c1">this</span>-&gt;<span class="pl-smi">y</span>)*(ponto-&gt;<span class="pl-smi">y</span> - <span class="pl-c1">this</span>-&gt;<span class="pl-smi">y</span>)));
+}
+</code></pre>
+<h3 id="arquivo-main-cpp">ARQUIVO main.cpp</h3>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>Ponto2D.cpp<span class="pl-pds">"</span></span> <span class="pl-c"><span class="pl-c">//</span>em alguns programas em que não identifica a biblioteca</span>
+<span class="pl-c"><span class="pl-c">//</span>tente colocar Ponto2D.cpp funciona, porém é prefirivel colocar .hpp</span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>() {
+
+    Ponto2D _ponto1, _ponto2;
+    _ponto1 = <span class="pl-c1">Ponto2D</span>(<span class="pl-c1">0.0</span>, <span class="pl-c1">0.0</span>);
+    _ponto2 = <span class="pl-c1">Ponto2D</span>(<span class="pl-c1">0.0</span>, <span class="pl-c1">3.0</span>);
+
+    cout &lt;&lt; _ponto1.<span class="pl-c1">calcular_distancia</span>(&amp;_ponto2);
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="new-e-delete">NEW E DELETE</h1>
+<h4
+  id="de-forma-resumida-o-operador-new-estancia-uma-classe-struct-de-forma-a-permanecer-na-memoria-pois-sempre-que-uma-variavel-deixa-a-fun-o-ela-automaticamente-excluida-da-memoria-stack-ou-pilha-j-com-o-new-ela-for-ada-a-ficar-na-memoria-o-nome-dessa-memoria-heap-o-heap-onde-apenas-o-programador-controla-a-entrada-e-saida-de-variaveis-e-o-stack-ou-pilha-o-programa-que-administra-a-saida-e-entrada">
+  De forma resumida o operador &#39;new&#39; &#39;estancia&#39; uma classe,struct... de forma a permanecer na memoria,
+  pois sempre que uma variavel deixa a função, ela é automaticamente excluida da memoria (STACK OU PILHA), já com o
+  &#39;new&#39; ela é forçada a ficar na memoria, o nome dessa memoria é HEAP. O HEAP é onde apenas o programador
+  controla a entrada e saida de variaveis. E o stack ou pilha é o programa que administra a saida e entrada</h4>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+
+<span class="pl-k">struct</span> <span class="pl-en">Exemplo</span>{
+    string nome;
+
+    <span class="pl-en">Exemplo</span>(){
+        <span class="pl-c1">this</span>-&gt;<span class="pl-smi">nome</span> = <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>;
+    }
+    <span class="pl-k">void</span> <span class="pl-en">imprime_nome</span>(){
+        cout &lt;&lt; <span class="pl-c1">this</span>-&gt;<span class="pl-smi">nome</span>  &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>Posicao na memoria <span class="pl-pds">"</span></span> &lt;&lt; <span class="pl-c1">this</span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span> &lt;&lt; endl;
+    }
+};
+
+Exemplo* <span class="pl-en">funcao_sem_new</span>(){
+    Exemplo variavel_volatil;
+    variavel_volatil.<span class="pl-smi">nome</span> = <span class="pl-s"><span class="pl-pds">"</span>Variavel sem New<span class="pl-pds">"</span></span>;
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>Dentro da Funcao<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+    variavel_volatil.<span class="pl-c1">imprime_nome</span>();
+    <span class="pl-k">return</span> &amp;variavel_volatil;
+
+}
+
+Exemplo* <span class="pl-en">funcao_com_new</span>(){
+    Exemplo *variavel_com_new = <span class="pl-k">new</span> <span class="pl-c1">Exemplo</span>();
+    variavel_com_new-&gt;<span class="pl-smi">nome</span> = <span class="pl-s"><span class="pl-pds">"</span>Variavel com New<span class="pl-pds">"</span></span>;
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>Dentro da Funcao<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+    variavel_com_new-&gt;<span class="pl-c1">imprime_nome</span>();
+    <span class="pl-k">return</span> variavel_com_new;
+}
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>(){
+    Exemplo *v1, *v2;
+
+    v1 = <span class="pl-c1">funcao_com_new</span>(); <span class="pl-c"><span class="pl-c">//</span> retorna uma posição de memoria com o struct</span>
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>Fora da Funcao<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+    v1-&gt;<span class="pl-c1">imprime_nome</span>();
+    <span class="pl-c"><span class="pl-c">/*</span> Imprime a variavel apontada, pois ela permanece na memoria, que independe de</span>
+<span class="pl-c">    uma função, a variavel ao ser criada com o new permanece na memoria chamada HEAP até que o programa acabe</span>
+<span class="pl-c">    ou até que o programador a delete<span class="pl-c">*/</span></span>
+
+
+
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span>-----------variavel SEM NEW -----------<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+
+    v2 = <span class="pl-c1">funcao_sem_new</span>(); <span class="pl-c"><span class="pl-c">//</span> retorna nada</span>
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>Fora da Funcao<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+    cout &lt;&lt; v2;
+    <span class="pl-c"><span class="pl-c">/*</span> Não imprime em vez disso dá erro:</span>
+<span class="pl-c">    ERRO -&gt; warning: address of local variable 'variavel_volatil' returned [-Wreturn-local-addr]</span>
+<span class="pl-c"></span>
+<span class="pl-c">    Isso acontece pois ao sair da função, a posição de memoria apontada é limpa e</span>
+<span class="pl-c">    a variavel deixa a memoria<span class="pl-c">*/</span></span>
+
+
+
+
+    <span class="pl-c"><span class="pl-c">//</span>DELETANDO VARIAVEL CRIADA COM 'NEW'</span>
+    <span class="pl-k">delete</span> v1; <span class="pl-c"><span class="pl-c">//</span> PARA DELETAR, APENAS DELETE A POSIÇÃO DE MEMORIA</span>
+
+    <span class="pl-c"><span class="pl-c">/*</span>Obs.: Sempre que puder, delete a variavel, caso não vá mais usa-la,</span>
+<span class="pl-c">    pois ela terá um custo de processamento desnecessario caso não a utilize<span class="pl-c">*/</span></span>
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="classe">CLASSE</h1>
+<h4 id="classe-basicamente-uma-struct-turbinada-ela-oferece-mais-op-es-e-seguran-a">Classe é basicamente uma struct
+  turbinada, ela oferece mais opções e segurança</h4>
+<h3 id="arquivo-ponto2d-hpp">ARQUIVO PONTO2D.hpp</h3>
+<h4 id="arquivos-hpp-normalmente-servem-para-armanezar-structs-e-classes">Arquivos .hpp normalmente servem para
+  armanezar structs e classes</h4>
+<pre><code class="lang-cpp">#<span class="pl-k">ifndef</span> PONTO2D_H
+#<span class="pl-k">define</span> <span class="pl-en">PONTO2D_H</span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+<span class="pl-k">class</span> <span class="pl-en">Ponto2D</span>{
+    <span class="pl-c"><span class="pl-c">/*</span>Todos atributos ou funções neste arquivo, estarão disponiveis, para acesso</span>
+<span class="pl-c">    apenas por funções dentro da classe <span class="pl-c">*/</span></span>
+    <span class="pl-k">private:</span> 
+        <span class="pl-k">double</span> x,y;
+
+        <span class="pl-en">Ponto2D</span>(){
+            <span class="pl-c1">this</span>-&gt;<span class="pl-smi">x</span> = <span class="pl-c1">0</span>;
+            <span class="pl-c1">this</span>-&gt;<span class="pl-smi">y</span> = <span class="pl-c1">0</span>;
+        }
+
+    <span class="pl-c"><span class="pl-c">/*</span>Todos atributos ou funções neste arquivo, estarão disponiveis, </span>
+<span class="pl-c">    para acesso fora da classe <span class="pl-c">*/</span></span>
+    <span class="pl-k">public:</span>
+        <span class="pl-en">Ponto2D</span>(<span class="pl-k">double</span> x, <span class="pl-k">double</span> y); 
+        <span class="pl-k">double</span> <span class="pl-en">calcular_distancia</span>(Ponto2D* ponto);
+
+
+    <span class="pl-c"><span class="pl-c">/*</span> Ainda há tambem o 'protected', ele funciona como o private, porém ele pode ser acessado por outras classes ao</span>
+<span class="pl-c">    herdar a classe principal<span class="pl-c">*/</span></span>
+};
+#<span class="pl-k">endif</span> <span class="pl-c"><span class="pl-c">//</span> PONTO2D_H</span>
+</code></pre>
+<h3 id="arquivo-ponto2d-cpp">ARQUIVO PONTO2D.cpp</h3>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>Ponto2D.hpp<span class="pl-pds">"</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>cmath<span class="pl-pds">&gt;</span></span> 
+<span class="pl-en">Ponto2D::Ponto2D</span>(<span class="pl-k">double</span> x, <span class="pl-k">double</span> y){
+    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">x</span> = x;
+    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">y</span> = y;
+}
+
+<span class="pl-k">double</span> <span class="pl-en">Ponto2D::calcular_distancia</span>(Ponto2D* ponto){
+        <span class="pl-k">return</span> <span class="pl-c1">sqrt</span>(((<span class="pl-c1">this</span>-&gt;<span class="pl-smi">x</span> - ponto-&gt;<span class="pl-smi">x</span>)*(<span class="pl-c1">this</span>-&gt;<span class="pl-smi">x</span> - ponto-&gt;<span class="pl-smi">x</span>)) +  ((ponto-&gt;<span class="pl-smi">y</span> - <span class="pl-c1">this</span>-&gt;<span class="pl-smi">y</span>)*(ponto-&gt;<span class="pl-smi">y</span> - <span class="pl-c1">this</span>-&gt;<span class="pl-smi">y</span>)));
+}
+</code></pre>
+<h3 id="arquivo-main-cpp">ARQUIVO main.cpp</h3>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>Ponto2D.cpp<span class="pl-pds">"</span></span> <span class="pl-c"><span class="pl-c">//</span>em alguns programas em que não identifica a biblioteca</span>
+<span class="pl-c"><span class="pl-c">//</span>tente colocar Ponto2D.cpp funciona, porém é prefirivel colocar .hpp</span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>() {
+
+    Ponto2D *_ponto1 = <span class="pl-k">new</span> <span class="pl-c1">Ponto2D</span>(); <span class="pl-c"><span class="pl-c">//</span> como especificação é necessário criar a variavel como ponteiro</span>
+    Ponto2D *_ponto2 = <span class="pl-k">new</span> <span class="pl-c1">Ponto2D</span>();
+    _ponto1 = <span class="pl-c1">Ponto2D</span>(<span class="pl-c1">0.0</span>, <span class="pl-c1">0.0</span>);
+    _ponto2 = <span class="pl-c1">Ponto2D</span>(<span class="pl-c1">0.0</span>, <span class="pl-c1">3.0</span>);
+
+    cout &lt;&lt; _ponto1.<span class="pl-c1">calcular_distancia</span>(&amp;_ponto2);
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="herança-de-classe">HERANÇA DE CLASSE</h1>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+<span class="pl-k">class</span> <span class="pl-en">Animais</span>{
+    <span class="pl-k">protected:</span> <span class="pl-c"><span class="pl-c">/*</span> Usando 'protected' para possibilitar acesso aos atributos, pelas classes que vão herda-la <span class="pl-c">*/</span></span>
+        string nome, tipo, especie;
+
+        <span class="pl-en">Animais</span>(){
+            <span class="pl-c1">this</span>-&gt;<span class="pl-smi">nome</span> = <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>;
+            <span class="pl-c1">this</span>-&gt;<span class="pl-smi">tipo</span> = <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>;
+            <span class="pl-c1">this</span>-&gt;<span class="pl-smi">especie</span> = <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>;
+        }
+
+    <span class="pl-k">public:</span>
+        <span class="pl-en">Animais</span>(string nome, string tipo,string especie);
+};
+
+<span class="pl-en">Animais::Animais</span>(string nome, string tipo,string especie){
+    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">nome</span> = nome;
+    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">tipo</span> = tipo;
+    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">especie</span> = especie;
+
+}
+
+
+<span class="pl-k">class</span> <span class="pl-en">Gato</span>:<span class="pl-k">public</span> <span class="pl-en">Animais</span>{ <span class="pl-c"><span class="pl-c">/*</span> Para mais de uma herança, basta colocar virgula EX.: class Gato:public Animais, public SeresVivos<span class="pl-c">*/</span></span>
+    <span class="pl-k">private:</span>
+        string cor;
+        <span class="pl-k">int</span> idade;
+    <span class="pl-en">Gato</span>(){
+            <span class="pl-c1">this</span>-&gt;<span class="pl-smi">cor</span> = <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>;
+            <span class="pl-c1">this</span>-&gt;<span class="pl-smi">idade</span> = <span class="pl-c1">0</span>;
+            tipo = <span class="pl-s"><span class="pl-pds">"</span>mamifero<span class="pl-pds">"</span></span>;
+            especie = <span class="pl-s"><span class="pl-pds">"</span>felino<span class="pl-pds">"</span></span>;
+        }
+
+    <span class="pl-k">public:</span>
+        <span class="pl-en">Gato</span>(string nome, string cor, <span class="pl-k">int</span> idade);
+        <span class="pl-k">void</span> <span class="pl-en">imprime_gato</span>();
+};
+
+<span class="pl-en">Gato::Gato</span>(string nome, string cor, <span class="pl-k">int</span> idade){
+    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">cor</span> = cor;
+    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">idade</span> = idade;
+    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">nome</span> = nome;
+    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">tipo</span> = <span class="pl-s"><span class="pl-pds">"</span>mamifero<span class="pl-pds">"</span></span>;
+    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">especie</span> = <span class="pl-s"><span class="pl-pds">"</span>gato<span class="pl-pds">"</span></span>;
+}
+
+
+<span class="pl-k">void</span> <span class="pl-en">Gato::imprime_gato</span>(){
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>Nome: <span class="pl-pds">"</span></span> &lt;&lt; nome &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span>Tipo: <span class="pl-pds">"</span></span> &lt;&lt; tipo &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span>Especie: <span class="pl-pds">"</span></span> &lt;&lt; especie &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span>Cor: <span class="pl-pds">"</span></span> &lt;&lt; cor &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span>Idade: <span class="pl-pds">"</span></span> &lt;&lt; idade &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> Anos<span class="pl-pds">"</span></span>;
+}
+
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>() {
+
+    Gato *gato1 = <span class="pl-k">new</span> <span class="pl-c1">Gato</span>(<span class="pl-s"><span class="pl-pds">"</span>Rogerio<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>preta<span class="pl-pds">"</span></span>,<span class="pl-c1">12</span>);
+
+    gato1-&gt;<span class="pl-c1">imprime_gato</span>();
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="virtual">VIRTUAL</h1>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+
+<span class="pl-k">class</span> <span class="pl-en">Base</span>{
+  <span class="pl-k">public:</span>
+  <span class="pl-k">virtual</span> <span class="pl-k">void</span> <span class="pl-en">imprime</span>();
+  <span class="pl-k">void</span> <span class="pl-en">imprime2</span>();
+};
+
+<span class="pl-k">void</span> <span class="pl-en">Base::imprime</span>(){
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>classe Base<span class="pl-pds">"</span></span> &lt;&lt; endl;
+}
+<span class="pl-k">void</span> <span class="pl-en">Base::imprime2</span>(){
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>classe Base<span class="pl-pds">"</span></span> &lt;&lt; endl;
+}
+
+<span class="pl-k">class</span> <span class="pl-en">Nova_Classe</span>:<span class="pl-k">public</span> <span class="pl-en">Base</span>
+{
+  <span class="pl-k">public:</span>
+  <span class="pl-k">void</span> <span class="pl-en">imprime</span>();
+  <span class="pl-k">void</span> <span class="pl-en">imprime2</span>();
+
+  <span class="pl-en">~Nova_Classe</span>();
+};
+
+<span class="pl-k">void</span> <span class="pl-en">Nova_Classe::imprime</span>(){
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>classe Nova_Classe<span class="pl-pds">"</span></span> &lt;&lt; endl;
+}
+<span class="pl-k">void</span> <span class="pl-en">Nova_Classe::imprime2</span>(){
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>classe Nova_Classe<span class="pl-pds">"</span></span> &lt;&lt; endl;
+}
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>(){
+    Base* base = <span class="pl-k">new</span> <span class="pl-c1">Nova_Classe</span>();
+    base-&gt;<span class="pl-c1">imprime</span>();  <span class="pl-c"><span class="pl-c">//</span>chama a função f na classe Foo</span>
+    base-&gt;<span class="pl-c1">imprime2</span>();
+
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="tratamento-de-erro---try-e-catch">TRATAMENTO DE ERRO - TRY e CATCH</h1>
+<h4 id="geralmente-usado-para-pegar-erros-j-conhecidos-e-trata-los-da-melhor-forma-">Geralmente usado para pegar erros
+  já conhecidos e trata-los da melhor forma*/</h4>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>vector<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>stdexcept<span class="pl-pds">&gt;</span></span> <span class="pl-c"><span class="pl-c">//</span> biblioteca para o try e catch</span>
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>() {
+    vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-c1">num</span>(<span class="pl-c1">3</span>);
+    <span class="pl-k">int</span> numerador = <span class="pl-c1">5</span>;
+
+    <span class="pl-k">try</span>{
+        <span class="pl-k">if</span> (numerador &gt; <span class="pl-c1">4</span>){
+        <span class="pl-k">throw</span> <span class="pl-s"><span class="pl-pds">"</span>ERRO: numerador maior que 4<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>; <span class="pl-c"><span class="pl-c">//</span> usado para retornar um 'erro'/exceção personalizada</span>
+        }
+    }<span class="pl-k">catch</span>(<span class="pl-k">const</span> <span class="pl-k">char</span>* e){
+        cout &lt;&lt; e;
+    }
+
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span>OUTRO TRY CATCH<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+
+    <span class="pl-k">try</span>{
+        num.<span class="pl-c1">at</span>(<span class="pl-c1">3</span>) = <span class="pl-c1">10</span>;
+        cout &lt;&lt; num[<span class="pl-c1">3</span>]; <span class="pl-c"><span class="pl-c">//</span> Caso dê erro, o programa para de executar tudo dentro do try, e redireciona para o catch</span>
+    }<span class="pl-k">catch</span>(<span class="pl-c1">exception</span>&amp; e){
+        cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>Erro: <span class="pl-pds">"</span></span> &lt;&lt; e.<span class="pl-c1">what</span>();
+    }
+
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="for-range">FOR RANGE</h1>
+<h4 id="for-personalizado-de-forma-a-n-o-precisar-de-muito-codigo-para-iterar">FOR PERSONALIZADO, de forma a não
+  precisar de muito codigo para iterar</h4>
+<code class="lang-cpp"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>vector<span class="pl-pds">&gt;</span></span>
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>() {
+    vector&lt;<span class="pl-k">int</span>&gt; num;
+
+    <span class="pl-k">for</span>(<span class="pl-k">int</span> x=<span class="pl-c1">0</span>; x &lt; <span class="pl-c1">9</span>; x++){
+            num.<span class="pl-c1">push_back</span>(x);
+    }
+     <span class="pl-k">for</span>(<span class="pl-k">int</span> x=<span class="pl-c1">0</span>; x &lt; <span class="pl-c1">9</span>; x++){ <span class="pl-c"><span class="pl-c">//</span>FOR NORMAL</span>
+            cout &lt;&lt; num[x] &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span>;
+    }
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n\n</span><span class="pl-pds">"</span></span>;
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> i:num){ <span class="pl-c"><span class="pl-c">//</span>FOR RANGE</span>
+         cout &lt;&lt; i &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span>;
+    }
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="auto">AUTO</h1>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>() {
+
+    <span class="pl-k">int</span> num = <span class="pl-c1">10</span>;
+    <span class="pl-k">float</span> num2 = <span class="pl-c1">5.5</span>;
+    <span class="pl-k">auto</span> var = num; 
+    <span class="pl-c"><span class="pl-c">/*</span>o tipo auto pode tanto receber num como num2, pois ele </span>
+<span class="pl-c">    não tem um tipo definido, ele pode receber qualquer tipo de variavel,</span>
+<span class="pl-c">    porém ao receber e ser inicializado com esse tipo, não há como </span>
+<span class="pl-c">    modifica-lo depois</span>
+<span class="pl-c">    <span class="pl-c">*/</span></span>
+    cout &lt;&lt; var &lt;&lt; endl;
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="template">TEMPLATE</h1>
+<h4
+  id="quando-uma-funcao-nao-tem-um-tipo-definido-de-entrada-declarar-um-template-e-a-melhor-forma-de-ser-feito-podendo-ser-mais-eficaz-doque-o-auto-">
+  Quando uma funcao nao tem um tipo definido de entrada, declarar um template e a melhor forma de ser feito, podendo ser
+  mais eficaz doque o &#39;auto&#39;</h4>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>cstring<span class="pl-pds">&gt;</span></span>
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+
+<span class="pl-k">template </span>&lt;<span class="pl-k">class</span> <span class="pl-en">TodosTipos</span>&gt;
+
+<span class="pl-k">void</span> <span class="pl-en">print</span>(TodosTipos msg){
+    cout &lt;&lt; msg &lt;&lt; endl;
+}
+
+<span class="pl-k">template </span>&lt;<span class="pl-k">class</span> <span class="pl-en">OutroTipo</span>&gt; <span class="pl-c"><span class="pl-c">/*</span> Aparentemente para e preciso declarar novamente para usar em outra funcao <span class="pl-c">*/</span></span>
+
+OutroTipo <span class="pl-en">soma</span>(OutroTipo param1, OutroTipo param2){
+        <span class="pl-k">return</span> param1 + param2;
+}
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>(){
+    
+    <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>hello<span class="pl-pds">"</span></span>);
+    <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">'</span>h<span class="pl-pds">'</span></span>);
+    <span class="pl-c1">print</span>(<span class="pl-c1">true</span>);
+    <span class="pl-c1">print</span>(<span class="pl-c1">5</span>);
+    <span class="pl-c1">print</span>(<span class="pl-c1">10.0</span>);
+    
+    <span class="pl-c1">print</span>(soma&lt;<span class="pl-k">int</span>&gt;(<span class="pl-c1">8</span>,<span class="pl-c1">10</span>)); <span class="pl-c"><span class="pl-c">/*</span> E possivel definir o tipo de retorno<span class="pl-c">*/</span></span>
+    <span class="pl-c1">print</span>(soma&lt;<span class="pl-k">int</span>&gt;(<span class="pl-c1">20.5</span>,<span class="pl-c1">2.3</span>));
+    <span class="pl-c1">print</span>(soma&lt;string&gt;(<span class="pl-s"><span class="pl-pds">"</span>Hello <span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>World!<span class="pl-pds">"</span></span>));
+
+
+
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="funções-lambda">FUNÇÕES LAMBDA</h1>
+<h4 id="fun-es-mais-simples-de-declarar-funciona-no-c-11-ou-superior-br-estrutura-">Funções mais simples de declarar,
+  funciona no c++ 11 ou superior.<br>Estrutura:</h4>
+<p><code>[ area de captura ](parametros){funcao a ser escrita};</code></p>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>() {
+
+    <span class="pl-c"><span class="pl-c">/*</span> A estrutura comum é usar:</span>
+<span class="pl-c">    auto nome_funcao=[]()-&gt;tipo_de_retorno{};<span class="pl-c">*/</span></span>
+
+    <span class="pl-k">auto</span> media_de_3=[](<span class="pl-k">float</span> x, <span class="pl-k">float</span> y, <span class="pl-k">float</span> z)-&gt;<span class="pl-smi">float</span>{
+        <span class="pl-k">return</span> ((x+y+z)/<span class="pl-c1">3</span>);
+    };
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>----Funcao media_de_3----<span class="pl-cce">\n</span>      <span class="pl-pds">"</span></span> &lt;&lt; <span class="pl-c1">media_de_3</span>(<span class="pl-c1">3</span>,<span class="pl-c1">1.5</span>,<span class="pl-c1">3</span>) &lt;&lt; endl;
+
+    <span class="pl-c"><span class="pl-c">//</span>-------------------------------------------------------------------------------------------------</span>
+
+    
+    <span class="pl-k">int</span> var1 = <span class="pl-c1">5</span>, var2 = <span class="pl-c1">9</span>, var3 = <span class="pl-c1">20</span>;
+
+    <span class="pl-k">auto</span> media=[var1,var2]()-&gt;<span class="pl-smi">int</span>{ <span class="pl-c"><span class="pl-c">//</span> Dessa forma ele pegara, as variaveis especificadas, a partir do escopo</span>
+        <span class="pl-k">return</span> (var1+var2)/<span class="pl-c1">2</span>;
+    };
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>----Funcao media----<span class="pl-cce">\n</span>      <span class="pl-pds">"</span></span> &lt;&lt; <span class="pl-c1">media</span>() &lt;&lt; endl;
+
+
+    <span class="pl-c"><span class="pl-c">//</span>-------------------------------------------------------------------------------------------------</span>
+
+    
+    <span class="pl-k">auto</span> media_x=[=]()-&gt;<span class="pl-smi">int</span>{ <span class="pl-c"><span class="pl-c">//</span> Utilizando o igual, o programa pegará todas as variaveis do escopo</span>
+        <span class="pl-k">return</span> (var1+var2+var3)/<span class="pl-c1">3</span>;
+    };
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>----Funcao media_x----<span class="pl-cce">\n</span>      <span class="pl-pds">"</span></span> &lt;&lt; <span class="pl-c1">media_x</span>() &lt;&lt; endl;
+
+
+    <span class="pl-c"><span class="pl-c">//</span>-------------------------------------------------------------------------------------------------</span>
+
+    
+
+    <span class="pl-k">auto</span> soma=[=](<span class="pl-k">int</span> x, <span class="pl-k">int</span> y)-&gt;<span class="pl-smi">int</span>{ <span class="pl-c"><span class="pl-c">//</span> É possivel utilizar ambos</span>
+        <span class="pl-k">return</span> (var1+var2+var3+x+y);
+    };
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>----Funcao soma----<span class="pl-cce">\n</span>      <span class="pl-pds">"</span></span> &lt;&lt; <span class="pl-c1">soma</span>(<span class="pl-c1">100</span>,<span class="pl-c1">112</span>) &lt;&lt; endl;
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="map">MAP</h1>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>map<span class="pl-pds">&gt;</span></span> <span class="pl-c"><span class="pl-c">//</span>biblioteca para o map</span>
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>() {
+
+    <span class="pl-c"><span class="pl-c">//</span>map&lt;tipo,tipo&gt; os tipos podem variar</span>
+    map&lt;<span class="pl-k">int</span>,string&gt; animais;
+
+    animais[<span class="pl-c1">0</span>] = <span class="pl-s"><span class="pl-pds">"</span>cavalo<span class="pl-pds">"</span></span>; <span class="pl-c"><span class="pl-c">//</span>map[chave_do_tipo_declarado] = valor;</span>
+    animais[<span class="pl-c1">1</span>] = <span class="pl-s"><span class="pl-pds">"</span>gato<span class="pl-pds">"</span></span>;
+    animais[<span class="pl-c1">2</span>] = <span class="pl-s"><span class="pl-pds">"</span>cachorro<span class="pl-pds">"</span></span>;
+    animais[<span class="pl-c1">35</span>] = <span class="pl-s"><span class="pl-pds">"</span>avestruz<span class="pl-pds">"</span></span>; <span class="pl-c"><span class="pl-c">/*</span>Não importa o indice, porém é recomendavel não colocar, sem uma ordem,</span>
+<span class="pl-c">    pois pode provocar erro<span class="pl-c">*/</span></span>
+    <span class="pl-k">for</span>(<span class="pl-k">auto</span> i:animais){
+        cout &lt;&lt; i.<span class="pl-smi">first</span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>-&gt;<span class="pl-pds">"</span></span> &lt;&lt; i.<span class="pl-smi">second</span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> // <span class="pl-pds">"</span></span>; <span class="pl-c"><span class="pl-c">//</span> first imprime chave, second imprime valor</span>
+    }
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n\n\n</span>-------PROVOCANDO ERRO----------<span class="pl-cce">\n\n</span><span class="pl-pds">"</span></span>;
+    <span class="pl-k">for</span>(<span class="pl-k">int</span> i=<span class="pl-c1">0</span>; i&lt;=<span class="pl-c1">35</span>; i++){ <span class="pl-c"><span class="pl-c">//</span></span>
+        cout &lt;&lt; animais[i] &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span>;
+        <span class="pl-c"><span class="pl-c">/*</span> ao tentar imprimir dessa forma, ao chamar map[posicao]</span>
+<span class="pl-c">        e possivel acessar uma posicao que nao existe que por consequencia, cria essa chave,</span>
+<span class="pl-c">        uma boa ordenacao, pode corrigir/previnir esse erro<span class="pl-c">*/</span></span>
+    }
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n\n\n</span>-------MOSTRANDO ERRO----------<span class="pl-cce">\n\n</span><span class="pl-pds">"</span></span>;
+
+    <span class="pl-k">for</span>(<span class="pl-k">auto</span> i:animais){ <span class="pl-c"><span class="pl-c">//</span>erro provocado por colocar um indice alto</span>
+        cout &lt;&lt; i.<span class="pl-smi">first</span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>-&gt;<span class="pl-pds">"</span></span> &lt;&lt; i.<span class="pl-smi">second</span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> // <span class="pl-pds">"</span></span>;
+    }
+
+    cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n\n\n</span>-------APAGANDO CHAVES----------<span class="pl-cce">\n\n</span><span class="pl-pds">"</span></span>;
+    <span class="pl-c"><span class="pl-c">//</span>APAGANDO CHAVES</span>
+    <span class="pl-k">for</span>(<span class="pl-k">int</span> i=<span class="pl-c1">3</span>; i&lt;=<span class="pl-c1">35</span>; i++){
+        animais.<span class="pl-c1">erase</span>(i);
+    }
+
+    <span class="pl-k">for</span>(<span class="pl-k">auto</span> i:animais){
+        cout &lt;&lt; i.<span class="pl-smi">first</span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>-&gt;<span class="pl-pds">"</span></span> &lt;&lt; i.<span class="pl-smi">second</span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> // <span class="pl-pds">"</span></span>;
+    }
+    
+    <span class="pl-c"><span class="pl-c">//</span>para apagar todo o map, use o map.clear()</span>
+    animais.<span class="pl-c1">clear</span>();
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="ponteiro-inteligente">PONTEIRO INTELIGENTE</h1>
+<h4 id="tipo-de-ponteiro-que-ao-sair-do-escopo-ele-retirado-do-heap-automaticamente">Tipo de ponteiro, que ao sair do
+  escopo ele é retirado do heap automaticamente</h4>
+<pre><code class="lang-cpp">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>memory<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+<span class="pl-k">class</span> <span class="pl-en">Animais</span>{
+    <span class="pl-k">protected:</span>
+        string nome;
+    <span class="pl-k">public:</span>
+        <span class="pl-en">Animais</span>(){
+            <span class="pl-c1">this</span>-&gt;<span class="pl-smi">nome</span> = <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>;
+        }
+        <span class="pl-en">~Animais</span>(){ <span class="pl-c"><span class="pl-c">//</span> destrutor, ele é chamado quando a classe e removida do Heap</span>
+            cout &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>removido da memoria<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;
+        }
+        <span class="pl-en">Animais</span>(string nome);
+        <span class="pl-k">void</span> <span class="pl-en">print</span>();
+};
+
+<span class="pl-en">Animais::Animais</span>(string nome){
+    <span class="pl-c1">this</span>-&gt;<span class="pl-smi">nome</span> = nome;
+}
+
+<span class="pl-k">void</span> <span class="pl-en">Animais::print</span>(){
+    cout &lt;&lt; <span class="pl-c1">this</span>-&gt;<span class="pl-smi">nome</span> &lt;&lt; endl;
+}
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>(){
+
+
+    {
+    unique_ptr&lt;Animais&gt; <span class="pl-c1">ptr_unq1</span>(<span class="pl-k">new</span> <span class="pl-c1">Animais</span>(<span class="pl-s"><span class="pl-pds">"</span>Gato<span class="pl-pds">"</span></span>));
+    unique_ptr&lt;Animais&gt; ptr_unq2;
+
+    ptr_unq1-&gt;<span class="pl-c1">print</span>();
+
+    <span class="pl-c"><span class="pl-c">/*</span>ptr_unq2 = ptr_unq1; #ERRO</span>
+<span class="pl-c">    ponteiro unique não pode ser copiado ou apontado por mais de um ponteiro,</span>
+<span class="pl-c">    caso tente, o retorno dara erro<span class="pl-c">*/</span></span>
+
+    } <span class="pl-c"><span class="pl-c">//</span> simulado "escopo de uma funcao"</span>
+
+    {
+
+
+    shared_ptr&lt;Animais&gt; <span class="pl-c1">ptr_shr1</span>(<span class="pl-k">new</span> <span class="pl-c1">Animais</span>(<span class="pl-s"><span class="pl-pds">"</span>Cachorro<span class="pl-pds">"</span></span>));
+    shared_ptr&lt;Animais&gt; ptr_shr2;
+
+    ptr_shr1-&gt;<span class="pl-c1">print</span>();
+
+    ptr_shr2 = ptr_shr1; <span class="pl-c"><span class="pl-c">//</span>shared_ptr como o nome diz, permite compartilhar o ponteiro</span>
+
+    ptr_shr2-&gt;<span class="pl-c1">print</span>();
+    }
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}
+</code></pre>
+<h1 id="referencias">REFERENCIAS</h1>
+<p><a href="https://www.youtube.com/watch?v=nUQKr-ey86Y&amp;list=PLx4x_zx8csUjczg1qPHavU1vw1IkBcm40">PLAYLIST CPP
+    CFB</a></p>
